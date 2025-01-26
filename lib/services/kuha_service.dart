@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:tarinappi/models/image_item.dart';
+import 'package:kuha_app/models/kuha_image.dart';
 
 
 class KuhaService {

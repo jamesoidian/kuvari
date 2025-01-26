@@ -1,4 +1,4 @@
-# tarinappi
+# kuha_app
 
 A new Flutter project.
 
