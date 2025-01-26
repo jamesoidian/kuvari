@@ -1,4 +1,4 @@
-package com.example.tarinappi
+package com.example.kuha_app
 
 import io.flutter.embedding.android.FlutterActivity
 

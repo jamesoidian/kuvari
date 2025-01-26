@@ -1,7 +1,7 @@
 // lib/pages/selected_images_page.dart
 
 import 'package:flutter/material.dart';
-import 'package:tarinappi/models/image_item.dart';
+import 'package:kuha_app/models/kuha_image.dart';
 
 class SelectedImagesPage extends StatelessWidget {
   final List<KuhaImage> images;
