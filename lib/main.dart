@@ -2,29 +2,26 @@
 
 import 'package:flutter/material.dart';
 import 'package:kuha_app/pages/home_page.dart';
+import 'package:kuha_app/services/kuha_service.dart';
 
 void main() {
-  runApp(const KuhaApp());
+  runApp(const KuvariApp());
 }
 
-class KuhaApp extends StatelessWidget {
-  const KuhaApp({Key? key}) : super(key: key);
+class KuvariApp extends StatelessWidget {
+  const KuvariApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Luo instanssi KuhaServicea
+    final kuhaService = KuhaService();
+
     return MaterialApp(
       title: 'Kuvari',
       theme: ThemeData(
-        primarySwatch: Colors.teal,
-        useMaterial3: true, // Ota käyttöön Material 3
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.teal,
-          foregroundColor: Colors.white,
-          shadowColor: Colors.tealAccent,
-          elevation: 6.0,
-        ),
+        primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: HomePage(kuhaService: kuhaService),
     );
   }
 }
