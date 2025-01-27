@@ -11,7 +11,9 @@ import 'package:kuha_app/widgets/selected_images_carousel.dart';
 import 'package:kuha_app/widgets/image_grid.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final KuhaService kuhaService;
+
+  const HomePage({Key? key, required this.kuhaService}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -47,7 +49,7 @@ class _HomePageState extends State<HomePage> {
     });
 
     try {
-      final results = await KuhaService.searchImages(query);
+      final results = await widget.kuhaService.searchImages(query);
       setState(() {
         _images = results;
       });
@@ -166,8 +168,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:
-            const Text(style: TextStyle(fontWeight: FontWeight.bold), 'Kuvari'),
+        title: const Text(
+          'Kuvari',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         centerTitle: true, // Keskittää otsikon
         backgroundColor: Colors.teal, // Taustaväri
         foregroundColor: Colors.white, // Etualan väri (teksti ja ikonit)
