@@ -1,0 +1,24 @@
+// lib/models/image_story.dart
+
+import 'package:hive/hive.dart';
+import 'kuha_image.dart';
+
+part 'image_story.g.dart';
+
+@HiveType(typeId: 0)
+class ImageStory extends HiveObject {
+  @HiveField(0)
+  final String id; // Lisää id-kenttä
+
+  @HiveField(1)
+  final String name;
+
+  @HiveField(2)
+  final List<KuhaImage> images;
+
+  ImageStory({
+    required this.id,
+    required this.name,
+    required this.images,
+  });
+}
