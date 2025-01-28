@@ -14,15 +14,13 @@ class SavedImageStoriesPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tallennetut Kuvajonot'),
+        title: const Text('Tallennetut kuvajonot'),
       ),
       body: ValueListenableBuilder(
         valueListenable: imageStoriesBox.listenable(),
         builder: (context, Box<ImageStory> box, _) {
           if (box.values.isEmpty) {
-            return const Center(
-              child: Text('Ei tallennettuja kuvajonoja.'),
-            );
+            return const Center(child: Text('Ei tallennettuja kuvajonoja.'));
           }
 
           return ListView.builder(
@@ -37,7 +35,7 @@ class SavedImageStoriesPage extends StatelessWidget {
                   subtitle: SelectedImagesCarousel(
                     selectedImages: story.images,
                     currentStartIndex: 0,
-                    maxVisibleImages: 3,
+                    maxVisibleImages: 4,
                     onScrollLeft: () {},
                     onScrollRight: () {},
                     onClear: () {},
