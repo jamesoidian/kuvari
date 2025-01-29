@@ -14,12 +14,12 @@ import 'kuvari_service_test.mocks.dart';
 
 void main() {
   group('KuvariService Test', () {
-    late KuvariService KuvariService;
+    late KuvariService kuvariService;
     late MockClient mockClient;
 
     setUp(() {
       mockClient = MockClient();
-      KuvariService = KuvariService(client: mockClient);
+      kuvariService = KuvariService(client: mockClient);
     });
 
     test('returns a list of KuvariImage if the http call completes successfully', () async {
@@ -46,7 +46,7 @@ void main() {
       when(mockClient.get(Uri.parse('https://kuvari.papunet.net/api/search/all/test?lang=fi')))
           .thenAnswer((_) async => http.Response(json.encode(mockResponse), 200));
 
-      final images = await KuvariService.searchImages('test');
+      final images = await kuvariService.searchImages('test');
 
       expect(images, isA<List<KuvariImage>>());
       expect(images.length, 2);
@@ -59,7 +59,7 @@ void main() {
       when(mockClient.get(Uri.parse('https://kuvari.papunet.net/api/search/all/test?lang=fi')))
           .thenAnswer((_) async => http.Response('Not Found', 404));
 
-      expect(KuvariService.searchImages('test'), throwsException);
+      expect(kuvariService.searchImages('test'), throwsException);
     });
 
     test('returns empty list if images key is missing in response', () async {
@@ -71,7 +71,7 @@ void main() {
       when(mockClient.get(Uri.parse('https://kuvari.papunet.net/api/search/all/test?lang=fi')))
           .thenAnswer((_) async => http.Response(json.encode(mockResponse), 200));
 
-      final images = await KuvariService.searchImages('test');
+      final images = await kuvariService.searchImages('test');
 
       expect(images, isA<List<KuvariImage>>());
       expect(images.length, 0);
@@ -84,7 +84,7 @@ void main() {
       when(mockClient.get(Uri.parse('https://kuvari.papunet.net/api/search/all/test?lang=fi')))
           .thenAnswer((_) async => http.Response(mockResponse, 200));
 
-      expect(KuvariService.searchImages('test'), throwsException);
+      expect(kuvariService.searchImages('test'), throwsException);
     });
   });
 }
