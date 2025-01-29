@@ -1,6 +1,6 @@
 # Kuvari
 
-Kuvari is a mobile application for organizing and displaying images i.e. social stories  from the **Papunet Image Bank** [https://papunet.net/kuvatyokalut/kuvapankki/] to support alternative communication methods. The app allows users to **search for images, create image sequences, and display them interactively**.
+Kuvari is a mobile application for organizing and displaying images i.e. social stories  from the **Papunet Image Bank** (https://papunet.net/kuvatyokalut/kuvapankki/) to support alternative communication methods. The app allows users to **search for images, create image sequences, and display them interactively**.
 
 ## Features
 
@@ -36,7 +36,7 @@ See the [LICENSE](LICENSE) file for details.
 
 # Kuvari
 
-Kuvari on mobiilisovellus **Papunetin kuvapankin kuvien järjestämiseen ja näyttämiseen** vaihtoehtoisen kommunikaation tueksi. Sovellus mahdollistaa **kuvien haun, kuvajonojen koostamisen ja niiden esittämisen interaktiivisesti**.
+Kuvari on mobiilisovellus **Papunetin kuvapankin kuvien järjestämiseen ja näyttämiseen** (https://papunet.net/kuvatyokalut/kuvapankki/) vaihtoehtoisen kommunikaation tueksi. Sovellus mahdollistaa **kuvien haun, kuvajonojen koostamisen ja niiden esittämisen interaktiivisesti**.
 
 ## Ominaisuudet
 
