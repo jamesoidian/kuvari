@@ -1,7 +1,7 @@
 // lib/models/image_story.dart
 
 import 'package:hive/hive.dart';
-import 'kuha_image.dart';
+import 'kuvari_image.dart';
 
 part 'image_story.g.dart';
 
@@ -14,7 +14,7 @@ class ImageStory extends HiveObject {
   final String name;
 
   @HiveField(2)
-  final List<KuhaImage> images;
+  final List<KuvariImage> images;
 
   ImageStory({
     required this.id,

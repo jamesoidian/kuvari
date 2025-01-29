@@ -2,26 +2,26 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kuha_app/models/kuha_image.dart';
-import 'package:kuha_app/widgets/image_grid.dart';
+import 'package:kuvari_app/models/kuvari_image.dart';
+import 'package:kuvari_app/widgets/image_grid.dart';
 
 void main() {
   group('ImageGrid Widget Tests', () {
-    late List<KuhaImage> images;
-    late List<KuhaImage> selectedImages;
+    late List<KuvariImage> images;
+    late List<KuvariImage> selectedImages;
     late bool onSelectCalled;
-    late KuhaImage selectedImage;
+    late KuvariImage selectedImage;
 
     setUp(() {
       images = [
-        KuhaImage(
+        KuvariImage(
           author: 'John Doe',
           name: 'Sunset',
           thumb: 'https://example.com/thumb/sunset.png',
           url: 'https://example.com/images/sunset.png',
           uid: 101,
         ),
-        KuhaImage(
+        KuvariImage(
           author: 'Jane Smith',
           name: 'Mountain',
           thumb: 'https://example.com/thumb/mountain.png',

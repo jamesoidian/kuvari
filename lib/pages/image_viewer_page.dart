@@ -1,10 +1,10 @@
 // lib/pages/image_viewer_page.dart
 
 import 'package:flutter/material.dart';
-import 'package:kuha_app/models/kuha_image.dart';
+import 'package:kuvari_app/models/kuvari_image.dart';
 
 class ImageViewerPage extends StatefulWidget {
-  final List<KuhaImage> images;
+  final List<KuvariImage> images;
 
   const ImageViewerPage({Key? key, required this.images}) : super(key: key);
 

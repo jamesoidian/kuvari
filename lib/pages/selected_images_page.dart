@@ -1,12 +1,61 @@
 // lib/pages/selected_images_page.dart
 
 import 'package:flutter/material.dart';
-import 'package:kuha_app/models/kuha_image.dart';
+import 'package:hive/hive.dart';
+import 'package:kuvari_app/models/image_story.dart';
+import 'package:kuvari_app/models/kuvari_image.dart';
+import 'package:uuid/uuid.dart';
 
 class SelectedImagesPage extends StatelessWidget {
-  final List<KuhaImage> images;
+  final List<KuvariImage> images;
 
   const SelectedImagesPage({Key? key, required this.images}) : super(key: key);
+
+  Future<void> _saveImageStory(BuildContext context) async {
+    if (images.isEmpty) return;
+
+    final storyNameController = TextEditingController();
+    final Box<ImageStory> imageStoriesBox =
+        Hive.box<ImageStory>('imageStories');
+
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Anna kuvajonon nimi'),
+          content: TextField(
+            controller: storyNameController,
+            decoration: const InputDecoration(labelText: 'Nimi'),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Peruuta'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                final name = storyNameController.text.trim();
+                if (name.isNotEmpty) {
+                  final newStory = ImageStory(
+                    id: const Uuid().v4(),
+                    name: name,
+                    images: List<KuvariImage>.from(images), // Syväkopio
+                  );
+
+                  imageStoriesBox.add(newStory);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Kuvajono "$name" tallennettu.')),
+                  );
+                  Navigator.of(context).pop();
+                }
+              },
+              child: const Text('Tallenna'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +67,16 @@ class SelectedImagesPage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Valitut kuvat')),
+      appBar: AppBar(
+        title: const Text('Valitut kuvat'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.save),
+            onPressed: () => _saveImageStory(context),
+            tooltip: 'Tallenna kuvajono',
+          ),
+        ],
+      ),
       body: GridView.builder(
         padding: const EdgeInsets.all(8.0),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

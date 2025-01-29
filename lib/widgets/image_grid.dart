@@ -1,12 +1,12 @@
 // lib/widgets/image_grid.dart
 
 import 'package:flutter/material.dart';
-import 'package:kuha_app/models/kuha_image.dart';
+import 'package:kuvari_app/models/kuvari_image.dart';
 
 class ImageGrid extends StatelessWidget {
-  final List<KuhaImage> images;
-  final List<KuhaImage> selectedImages;
-  final Function(KuhaImage) onSelect;
+  final List<KuvariImage> images;
+  final List<KuvariImage> selectedImages;
+  final Function(KuvariImage) onSelect;
 
   const ImageGrid({
     Key? key,

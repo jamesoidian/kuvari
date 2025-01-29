@@ -2,27 +2,27 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kuha_app/models/kuha_image.dart';
-import 'package:kuha_app/widgets/selected_images_carousel.dart';
+import 'package:kuvari_app/models/kuvari_image.dart';
+import 'package:kuvari_app/widgets/selected_images_carousel.dart';
 
 void main() {
   group('SelectedImagesCarousel Widget Tests', () {
     final mockImages = [
-      KuhaImage(
+      KuvariImage(
         author: 'John Doe',
         name: 'Sunset',
         thumb: 'https://example.com/thumb/sunset.png',
         url: 'https://example.com/images/sunset.png',
         uid: 101,
       ),
-      KuhaImage(
+      KuvariImage(
         author: 'Jane Smith',
         name: 'Mountain',
         thumb: 'https://example.com/thumb/mountain.png',
         url: 'https://example.com/images/mountain.png',
         uid: 102,
       ),
-      KuhaImage(
+      KuvariImage(
         author: 'Alice Johnson',
         name: 'Forest',
         thumb: 'https://example.com/thumb/forest.png',

@@ -4,36 +4,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:kuha_app/models/kuha_image.dart';
-import 'package:kuha_app/pages/home_page.dart';
-import 'package:kuha_app/services/kuha_service.dart';
-import 'package:kuha_app/widgets/image_grid.dart';
-import 'package:kuha_app/widgets/selected_images_carousel.dart';
-import 'package:kuha_app/widgets/kuha_search_bar.dart';
+import 'package:kuvari_app/models/kuvari_image.dart';
+import 'package:kuvari_app/pages/home_page.dart';
+import 'package:kuvari_app/services/kuvari_service.dart';
+import 'package:kuvari_app/widgets/image_grid.dart';
+import 'package:kuvari_app/widgets/selected_images_carousel.dart';
+import 'package:kuvari_app/widgets/kuvari_search_bar.dart';
 import 'home_page_test.mocks.dart';
 import 'dart:convert';
 
 // Määrittele mock-objekti
-@GenerateMocks([KuhaService])
+@GenerateMocks([KuvariService])
 void main() {
   group('HomePage Widget Tests', () {
-    late MockKuhaService mockKuhaService;
+    late MockKuvariService mockKuvariService;
 
     setUp(() {
-      mockKuhaService = MockKuhaService();
+      mockKuvariService = MockKuvariService();
     });
 
  /*    testWidgets('Displays CircularProgressIndicator when loading', (WidgetTester tester) async {
-      // Määritä mock KuhaService palauttamaan odotettava vastaus
-      when(mockKuhaService.searchImages(any)).thenAnswer((_) async {
+      // Määritä mock KuvariService palauttamaan odotettava vastaus
+      when(mockKuvariService.searchImages(any)).thenAnswer((_) async {
         // Simuloidaan viivettä
         return Future.delayed(const Duration(seconds: 2), () => []);
       });
 
-      // Luo HomePage käyttäen mock KuhaServicea
+      // Luo HomePage käyttäen mock KuvariServicea
       await tester.pumpWidget(
         MaterialApp(
-          home: HomePage(kuhaService: mockKuhaService),
+          home: HomePage(KuvariService: mockKuvariService),
         ),
       );
 
@@ -48,14 +48,14 @@ void main() {
 
     testWidgets('Displays images after successful search', (WidgetTester tester) async {
       final mockImages = [
-        KuhaImage(
+        KuvariImage(
           author: 'John Doe',
           name: 'Sunset',
           thumb: 'https://example.com/thumb/sunset.png',
           url: 'https://example.com/images/sunset.png',
           uid: 101,
         ),
-        KuhaImage(
+        KuvariImage(
           author: 'Jane Smith',
           name: 'Mountain',
           thumb: 'https://example.com/thumb/mountain.png',
@@ -64,13 +64,13 @@ void main() {
         ),
       ];
 
-      // Määritä mock KuhaService palauttamaan mockImages
-      when(mockKuhaService.searchImages('test')).thenAnswer((_) async => mockImages);
+      // Määritä mock KuvariService palauttamaan mockImages
+      when(mockKuvariService.searchImages('test')).thenAnswer((_) async => mockImages);
 
-      // Luo HomePage käyttäen mock KuhaServicea
+      // Luo HomePage käyttäen mock KuvariServicea
       await tester.pumpWidget(
         MaterialApp(
-          home: HomePage(kuhaService: mockKuhaService),
+          home: HomePage(kuvariService: mockKuvariService),
         ),
       );
 
@@ -85,13 +85,13 @@ void main() {
     });
 
     testWidgets('Displays error message on failed search', (WidgetTester tester) async {
-      // Määritä mock KuhaService heittämään poikkeus
-      when(mockKuhaService.searchImages('test')).thenThrow(Exception('Failed to load images'));
+      // Määritä mock KuvariService heittämään poikkeus
+      when(mockKuvariService.searchImages('test')).thenThrow(Exception('Failed to load images'));
 
-      // Luo HomePage käyttäen mock KuhaServicea
+      // Luo HomePage käyttäen mock KuvariServicea
       await tester.pumpWidget(
         MaterialApp(
-          home: HomePage(kuhaService: mockKuhaService),
+          home: HomePage(kuvariService: mockKuvariService),
         ),
       );
 
@@ -108,14 +108,14 @@ void main() {
 
     testWidgets('Can select and remove images', (WidgetTester tester) async {
       final mockImages = [
-        KuhaImage(
+        KuvariImage(
           author: 'John Doe',
           name: 'Sunset',
           thumb: 'https://example.com/thumb/sunset.png',
           url: 'https://example.com/images/sunset.png',
           uid: 101,
         ),
-        KuhaImage(
+        KuvariImage(
           author: 'Jane Smith',
           name: 'Mountain',
           thumb: 'https://example.com/thumb/mountain.png',
@@ -124,13 +124,13 @@ void main() {
         ),
       ];
 
-      // Määritä mock KuhaService palauttamaan mockImages
-      when(mockKuhaService.searchImages('test')).thenAnswer((_) async => mockImages);
+      // Määritä mock KuvariService palauttamaan mockImages
+      when(mockKuvariService.searchImages('test')).thenAnswer((_) async => mockImages);
 
-      // Luo HomePage käyttäen mock KuhaServicea
+      // Luo HomePage käyttäen mock KuvariServicea
       await tester.pumpWidget(
         MaterialApp(
-          home: HomePage(kuhaService: mockKuhaService),
+          home: HomePage(kuvariService: mockKuvariService),
         ),
       );
 

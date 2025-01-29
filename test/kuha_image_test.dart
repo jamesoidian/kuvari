@@ -1,11 +1,11 @@
-// test/models/kuha_image_test.dart
+// test/models/kuvari_image_test.dart
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kuha_app/models/kuha_image.dart';
+import 'package:kuvari_app/models/kuvari_image.dart';
 
 void main() {
-  group('KuhaImage Model Test', () {
-    test('fromJson creates a valid KuhaImage object', () {
+  group('KuvariImage Model Test', () {
+    test('fromJson creates a valid KuvariImage object', () {
       final json = {
         'author': 'John Doe',
         'name': 'Sunset',
@@ -14,7 +14,7 @@ void main() {
         'uid': 101,
       };
 
-      final kuva = KuhaImage.fromJson(json);
+      final kuva = KuvariImage.fromJson(json);
 
       expect(kuva.author, 'John Doe');
       expect(kuva.name, 'Sunset');
@@ -32,7 +32,7 @@ void main() {
         // 'uid' on puuttuu
       };
 
-      final kuva = KuhaImage.fromJson(json);
+      final kuva = KuvariImage.fromJson(json);
 
       expect(kuva.author, 'Jane Smith');
       expect(kuva.name, ''); // Oletusarvo
