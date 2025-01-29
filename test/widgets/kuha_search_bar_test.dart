@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kuha_app/models/kuha_image.dart';
-import 'package:kuha_app/widgets/kuha_search_bar.dart'; // Oletetaan, että tämä on oikea polku
+import 'package:kuvari_app/models/kuvari_image.dart';
+import 'package:kuvari_app/widgets/kuvari_search_bar.dart'; // Oletetaan, että tämä on oikea polku
 
 void main() {
-  group('KuhaSearchBar Widget Tests', () {
+  group('KuvariSearchBar Widget Tests', () {
     testWidgets('Displays clear button when text is entered and calls onClear when pressed', (WidgetTester tester) async {
       final controller = TextEditingController();
       bool onSearchCalled = false;
@@ -15,7 +15,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: KuhaSearchBar(
+            body: KuvariSearchBar(
               controller: controller,
               onSearch: () { onSearchCalled = true; },
               onClear: () { 

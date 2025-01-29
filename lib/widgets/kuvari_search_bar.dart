@@ -1,13 +1,13 @@
-// lib/widgets/kuha_search_bar.dart
+// lib/widgets/kuvari_search_bar.dart
 
 import 'package:flutter/material.dart';
 
-class KuhaSearchBar extends StatelessWidget {
+class KuvariSearchBar extends StatelessWidget {
   final TextEditingController controller;
   final VoidCallback onSearch;
   final VoidCallback onClear;
 
-  const KuhaSearchBar({
+  const KuvariSearchBar({
     Key? key,
     required this.controller,
     required this.onSearch,
@@ -27,7 +27,7 @@ class KuhaSearchBar extends StatelessWidget {
                 textInputAction: TextInputAction.search,
                 onSubmitted: (_) => onSearch(),
                 decoration: InputDecoration(
-                  labelText: 'Hae kuvalla esim. apina',
+                  labelText: 'Hae kuvalla esim. hymy',
                   border: const OutlineInputBorder(),
                   suffixIcon: value.text.isNotEmpty
                       ? IconButton(

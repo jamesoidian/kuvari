@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'kuha_image.dart';
+part of 'kuvari_image.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class KuhaImageAdapter extends TypeAdapter<KuhaImage> {
+class KuvariImageAdapter extends TypeAdapter<KuvariImage> {
   @override
   final int typeId = 1;
 
   @override
-  KuhaImage read(BinaryReader reader) {
+  KuvariImage read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return KuhaImage(
+    return KuvariImage(
       author: fields[0] as String,
       name: fields[1] as String,
       thumb: fields[2] as String,
@@ -26,7 +26,7 @@ class KuhaImageAdapter extends TypeAdapter<KuhaImage> {
   }
 
   @override
-  void write(BinaryWriter writer, KuhaImage obj) {
+  void write(BinaryWriter writer, KuvariImage obj) {
     writer
       ..writeByte(5)
       ..writeByte(0)
@@ -47,7 +47,7 @@ class KuhaImageAdapter extends TypeAdapter<KuhaImage> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is KuhaImageAdapter &&
+      other is KuvariImageAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

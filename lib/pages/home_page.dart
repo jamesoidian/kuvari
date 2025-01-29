@@ -1,19 +1,20 @@
 // lib/pages/home_page.dart
 
 import 'package:flutter/material.dart';
-import 'package:kuha_app/models/kuha_image.dart';
-import 'package:kuha_app/services/kuha_service.dart';
-import 'package:kuha_app/pages/selected_images_page.dart';
-import 'package:kuha_app/pages/image_viewer_page.dart';
-import 'package:kuha_app/pages/info_page.dart';
-import 'package:kuha_app/widgets/kuha_search_bar.dart';
-import 'package:kuha_app/widgets/selected_images_carousel.dart';
-import 'package:kuha_app/widgets/image_grid.dart';
+import 'package:kuvari_app/models/kuvari_image.dart';
+import 'package:kuvari_app/services/kuvari_service.dart';
+import 'package:kuvari_app/pages/selected_images_page.dart';
+import 'package:kuvari_app/pages/image_viewer_page.dart';
+import 'package:kuvari_app/pages/saved_image_stories_page.dart';
+import 'package:kuvari_app/pages/info_page.dart';
+import 'package:kuvari_app/widgets/kuvari_search_bar.dart';
+import 'package:kuvari_app/widgets/selected_images_carousel.dart';
+import 'package:kuvari_app/widgets/image_grid.dart';
 
 class HomePage extends StatefulWidget {
-  final KuhaService kuhaService;
+  final KuvariService kuvariService;
 
-  const HomePage({Key? key, required this.kuhaService}) : super(key: key);
+  const HomePage({Key? key, required this.kuvariService}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -21,8 +22,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final TextEditingController _searchController = TextEditingController();
-  List<KuhaImage> _images = [];
-  List<KuhaImage> _selectedImages = [];
+  List<KuvariImage> _images = [];
+  List<KuvariImage> _selectedImages = [];
 
   bool _isLoading = false;
 
@@ -49,7 +50,7 @@ class _HomePageState extends State<HomePage> {
     });
 
     try {
-      final results = await widget.kuhaService.searchImages(query);
+      final results = await widget.kuvariService.searchImages(query);
       setState(() {
         _images = results;
       });
@@ -66,7 +67,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   // Kuvan valinta
-  void _selectImage(KuhaImage image) {
+  void _selectImage(KuvariImage image) {
     setState(() {
       _selectedImages.add(image);
       // Jos lisätty kuva ylittää näkyvien kuvien määrän, siirrytään oikealle
@@ -200,6 +201,18 @@ class _HomePageState extends State<HomePage> {
             tooltip: 'Näytä valitut kuvat',
           ),
           IconButton(
+            icon: const Icon(Icons.list),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const SavedImageStoriesPage(),
+                ),
+              );
+            },
+            tooltip: 'Tallennetut kuvajonot',
+          ),
+          IconButton(
             icon: const Icon(Icons.info),
             onPressed: () {
               Navigator.push(
@@ -231,7 +244,7 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 8),
 
             // Hakukenttä
-            KuhaSearchBar(
+            KuvariSearchBar(
               controller: _searchController,
               onSearch: _search,
               onClear: _clearSearch,

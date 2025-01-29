@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kuha_app/models/kuha_image.dart';
-import 'package:kuha_app/pages/selected_images_page.dart';
+import 'package:kuvari_app/models/kuvari_image.dart';
+import 'package:kuvari_app/pages/selected_images_page.dart';
 
 void main() {
   group('SelectedImagesPage Widget Tests', () {
@@ -20,14 +20,14 @@ void main() {
 
     testWidgets('Displays GridView with images when images list is not empty', (WidgetTester tester) async {
       final mockImages = [
-        KuhaImage(
+        KuvariImage(
           author: 'John Doe',
           name: 'Sunset',
           thumb: 'https://example.com/thumb/sunset.png',
           url: 'https://example.com/images/sunset.png',
           uid: 101,
         ),
-        KuhaImage(
+        KuvariImage(
           author: 'Jane Smith',
           name: 'Mountain',
           thumb: 'https://example.com/thumb/mountain.png',

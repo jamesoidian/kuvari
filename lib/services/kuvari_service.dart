@@ -1,15 +1,15 @@
-// lib/services/kuha_service.dart
+// lib/services/kuvari_service.dart
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:kuha_app/models/kuha_image.dart';
+import 'package:kuvari_app/models/kuvari_image.dart';
 
-class KuhaService {
+class KuvariService {
   final http.Client client;
 
-  KuhaService({http.Client? client}) : client = client ?? http.Client();
+  KuvariService({http.Client? client}) : client = client ?? http.Client();
 
-  Future<List<KuhaImage>> searchImages(String query) async {
+  Future<List<KuvariImage>> searchImages(String query) async {
     // Rakennetaan URL:
     final url = Uri.parse('https://kuha.papunet.net/api/search/all/$query?lang=fi');
 
@@ -21,8 +21,8 @@ class KuhaService {
       final data = jsonDecode(response.body);
       final List imagesList = data['images'] ?? [];
 
-      // Muutetaan jokainen imagesList:in alkio KuhaImage-olioksi
-      return imagesList.map((json) => KuhaImage.fromJson(json)).toList();
+      // Muutetaan jokainen imagesList:in alkio KuvariImage-olioksi
+      return imagesList.map((json) => KuvariImage.fromJson(json)).toList();
     } else {
       // Heitetään virhe, jos statuskoodi ei ole 200
       throw Exception('Failed to fetch images');

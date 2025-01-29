@@ -19,7 +19,7 @@ class ImageStoryAdapter extends TypeAdapter<ImageStory> {
     return ImageStory(
       id: fields[0] as String,
       name: fields[1] as String,
-      images: (fields[2] as List).cast<KuhaImage>(),
+      images: (fields[2] as List).cast<KuvariImage>(),
     );
   }
 

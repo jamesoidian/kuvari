@@ -2,16 +2,23 @@
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:kuha_app/models/image_story.dart';
-import 'package:kuha_app/widgets/selected_images_carousel.dart';
+import 'package:kuvari_app/models/image_story.dart';
+import 'package:kuvari_app/pages/image_viewer_page.dart';
+import 'package:kuvari_app/widgets/selected_images_carousel.dart';
 
-class SavedImageStoriesPage extends StatelessWidget {
+class SavedImageStoriesPage extends StatefulWidget {
   const SavedImageStoriesPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final Box<ImageStory> imageStoriesBox = Hive.box<ImageStory>('imageStories');
+  State<SavedImageStoriesPage> createState() => _SavedImageStoriesPageState();
+}
 
+class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
+  final Box<ImageStory> imageStoriesBox = Hive.box<ImageStory>('imageStories');
+  final Map<int, int> _currentStartIndices = {};
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tallennetut kuvajonot'),
@@ -19,36 +26,89 @@ class SavedImageStoriesPage extends StatelessWidget {
       body: ValueListenableBuilder(
         valueListenable: imageStoriesBox.listenable(),
         builder: (context, Box<ImageStory> box, _) {
-          if (box.values.isEmpty) {
-            return const Center(child: Text('Ei tallennettuja kuvajonoja.'));
+          // Hae kaikki kuvajonot suoraan Hive-tietokannasta
+          final stories = box.values.toList();
+
+          if (stories.isEmpty) {
+            return const Center(
+              child: Text('Ei tallennettuja kuvajonoja.'),
+            );
           }
 
           return ListView.builder(
-            itemCount: box.values.length,
+            itemCount: stories.length,
             itemBuilder: (context, index) {
-              final ImageStory story = box.getAt(index)!;
+              final ImageStory story = stories[index];
 
-              return Card(
-                margin: const EdgeInsets.all(8.0),
-                child: ListTile(
-                  title: Text(story.name),
-                  subtitle: SelectedImagesCarousel(
-                    selectedImages: story.images,
-                    currentStartIndex: 0,
-                    maxVisibleImages: 4,
-                    onScrollLeft: () {},
-                    onScrollRight: () {},
-                    onClear: () {},
-                    onRemove: (i) {},
+              return Dismissible(
+                key: Key(story.id),
+                direction: DismissDirection.endToStart,
+                background: Container(
+                  color: Colors.red,
+                  alignment: Alignment.centerRight,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: const Icon(
+                    Icons.delete,
+                    color: Colors.white,
+                    size: 30,
                   ),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.delete, color: Colors.red),
-                    onPressed: () {
-                      story.delete();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Kuvajono poistettu.')),
-                      );
-                    },
+                ),
+                onDismissed: (direction) {
+                  story.delete();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Kuvajono "${story.name}" poistettu.')),
+                  );
+                },
+                child: Card(
+                  margin: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    title: Text(story.name),
+                    subtitle: SelectedImagesCarousel(
+                      selectedImages: story.images,
+                      currentStartIndex: _currentStartIndices[index] ?? 0,
+                      maxVisibleImages: 4,
+                      onScrollLeft: () {
+                        setState(() {
+                          _currentStartIndices[index] =
+                              (_currentStartIndices[index] ?? 0 - 1).clamp(0, story.images.length - 1);
+                        });
+                      },
+                      onScrollRight: () {
+                        setState(() {
+                          _currentStartIndices[index] =
+                              (_currentStartIndices[index] ?? 0 + 1).clamp(0, story.images.length - 4);
+                        });
+                      },
+                      onClear: () {},
+                      onRemove: (i) {},
+                      showClearButton: false,
+                    ),
+                    trailing: IconButton(
+                      icon: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Icon(
+                            Icons.play_arrow,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                          Icon(
+                            Icons.play_arrow,
+                            color: Colors.teal,
+                            size: 24,
+                          ),
+                        ],
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => ImageViewerPage(images: story.images),
+                          ),
+                        );
+                      },
+                      tooltip: 'Näytä kuvajono',
+                    ),
                   ),
                 ),
               );

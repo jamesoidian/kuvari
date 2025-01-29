@@ -1,16 +1,17 @@
 // lib/widgets/selected_images_carousel.dart
 
 import 'package:flutter/material.dart';
-import 'package:kuha_app/models/kuha_image.dart';
+import 'package:kuvari_app/models/kuvari_image.dart';
 
 class SelectedImagesCarousel extends StatelessWidget {
-  final List<KuhaImage> selectedImages;
+  final List<KuvariImage> selectedImages;
   final int currentStartIndex;
   final int maxVisibleImages;
   final VoidCallback onScrollLeft;
   final VoidCallback onScrollRight;
   final VoidCallback onClear;
   final Function(int) onRemove;
+  final bool showClearButton; // Uusi parametri
 
   const SelectedImagesCarousel({
     Key? key,
@@ -21,12 +22,13 @@ class SelectedImagesCarousel extends StatelessWidget {
     required this.onScrollRight,
     required this.onClear,
     required this.onRemove,
+    this.showClearButton = true, // Oletuksena näytetään delete-ikoni
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    bool canScrollLeft = currentStartIndex > 0;
-    bool canScrollRight = (currentStartIndex + maxVisibleImages) < selectedImages.length;
+    final bool canScrollLeft = currentStartIndex > 0;
+    final bool canScrollRight = (currentStartIndex + maxVisibleImages) < selectedImages.length;
 
     return Container(
       decoration: BoxDecoration(
@@ -80,7 +82,6 @@ class SelectedImagesCarousel extends StatelessWidget {
                               },
                             ),
                           ),
-                          // Poisto-ikoni
                           Positioned(
                             right: 0,
                             top: 0,
@@ -113,12 +114,13 @@ class SelectedImagesCarousel extends StatelessWidget {
             onPressed: canScrollRight ? onScrollRight : null,
             tooltip: 'Selaa oikealle',
           ),
-          // Tyhjennysikoni
-          IconButton(
-            icon: const Icon(Icons.delete_sweep, color: Colors.red),
-            onPressed: onClear,
-            tooltip: 'Tyhjennä kuvajono',
-          ),
+          // Tyhjennysikoni (näkyy vain, jos showClearButton on true)
+          if (showClearButton)
+            IconButton(
+              icon: const Icon(Icons.delete_sweep, color: Colors.red),
+              onPressed: onClear,
+              tooltip: 'Tyhjennä kuvajono',
+            ),
         ],
       ),
     );
