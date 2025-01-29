@@ -43,7 +43,7 @@ void main() {
       };
 
       // Määritä mock-asiakas palauttamaan onnistunut vastaus
-      when(mockClient.get(Uri.parse('https://kuvari.papunet.net/api/search/all/test?lang=fi')))
+      when(mockClient.get(Uri.parse('https://kuha.papunet.net/api/search/all/test?lang=fi')))
           .thenAnswer((_) async => http.Response(json.encode(mockResponse), 200));
 
       final images = await kuvariService.searchImages('test');
@@ -56,7 +56,7 @@ void main() {
 
     test('throws an exception if the http call completes with an error', () async {
       // Määritä mock-asiakas palauttamaan virheellinen vastaus
-      when(mockClient.get(Uri.parse('https://kuvari.papunet.net/api/search/all/test?lang=fi')))
+      when(mockClient.get(Uri.parse('https://kuha.papunet.net/api/search/all/test?lang=fi')))
           .thenAnswer((_) async => http.Response('Not Found', 404));
 
       expect(kuvariService.searchImages('test'), throwsException);
@@ -68,7 +68,7 @@ void main() {
       };
 
       // Määritä mock-asiakas palauttamaan onnistunut vastaus ilman 'images' avainta
-      when(mockClient.get(Uri.parse('https://kuvari.papunet.net/api/search/all/test?lang=fi')))
+      when(mockClient.get(Uri.parse('https://kuha.papunet.net/api/search/all/test?lang=fi')))
           .thenAnswer((_) async => http.Response(json.encode(mockResponse), 200));
 
       final images = await kuvariService.searchImages('test');
@@ -81,7 +81,7 @@ void main() {
       final mockResponse = 'Invalid JSON';
 
       // Määritä mock-asiakas palauttamaan epäkelpo JSON
-      when(mockClient.get(Uri.parse('https://kuvari.papunet.net/api/search/all/test?lang=fi')))
+      when(mockClient.get(Uri.parse('https://kuha.papunet.net/api/search/all/test?lang=fi')))
           .thenAnswer((_) async => http.Response(mockResponse, 200));
 
       expect(kuvariService.searchImages('test'), throwsException);
