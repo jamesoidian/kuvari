@@ -1,16 +1,68 @@
-# kuha_app
+# Kuvari
 
-A new Flutter project.
+Kuvari is a mobile application for organizing and displaying images i.e. social stories  from the **Papunet Image Bank** [https://papunet.net/kuvatyokalut/kuvapankki/] to support alternative communication methods. The app allows users to **search for images, create image sequences, and display them interactively**.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- 🔍 **Search images** from the Papunet Image Bank.
+- 📌 **Select images** to create an ordered sequence.
+- 🎭 **Interactive viewing mode** to display images one by one.
+- 💾 **Save and load image sequences** for later use.
 
-A few resources to get you started if this is your first Flutter project:
+## Installation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Clone this repository:
+   ```bash
+   git clone git@github.com:your-username/kuvari.git
+   cd kuvari
+   ```
+2. Install dependencies:
+   ```bash
+   flutter pub get
+   ```
+3. Run the app on an emulator or a connected device:
+   ```bash
+   flutter run
+   ```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## License
+
+This project is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)**.\
+See the [LICENSE](LICENSE) file for details.
+
+---
+
+## **Suomeksi**
+
+# Kuvari
+
+Kuvari on mobiilisovellus **Papunetin kuvapankin kuvien järjestämiseen ja näyttämiseen** vaihtoehtoisen kommunikaation tueksi. Sovellus mahdollistaa **kuvien haun, kuvajonojen koostamisen ja niiden esittämisen interaktiivisesti**.
+
+## Ominaisuudet
+
+- 🔍 **Hae kuvia** Papunetin kuvapankista.
+- 📌 **Valitse kuvat** ja luo järjestetty kuvajono.
+- 🎭 **Interaktiivinen katselutila**, jossa kuvat voi näyttää yksi kerrallaan.
+- 💾 **Tallenna ja lataa kuvajonoja**, jolloin sinun ei tarvitse aina luoda tarinaa uudestaan.
+
+## Asennus
+
+1. Kloonaa tämä GitHub-repositorio:
+   ```bash
+   git clone git@github.com:your-username/kuvari.git
+   cd kuvari
+   ```
+2. Asenna riippuvuudet:
+   ```bash
+   flutter pub get
+   ```
+3. Käynnistä sovellus emulaattorissa tai liitetyssä laitteessa:
+   ```bash
+   flutter run
+   ```
+
+## Lisenssi
+
+Tämä projekti on lisensoitu **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)** -lisenssillä.\
+Katso lisätiedot tiedostosta [LICENSE](LICENSE).
+

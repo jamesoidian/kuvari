@@ -1,6 +1,6 @@
 {
-    "name": "kuha_app",
-    "short_name": "kuha_app",
+    "name": "kuvari_app",
+    "short_name": "kuvari_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
