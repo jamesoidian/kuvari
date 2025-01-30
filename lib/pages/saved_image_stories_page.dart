@@ -15,7 +15,9 @@ class SavedImageStoriesPage extends StatefulWidget {
 
 class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
   final Box<ImageStory> imageStoriesBox = Hive.box<ImageStory>('imageStories');
-  final Map<int, int> _currentStartIndices = {};
+  final Map<String, int> _currentStartIndices = {};
+
+  static const int _maxVisibleImages = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -65,18 +67,20 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
                     title: Text(story.name),
                     subtitle: SelectedImagesCarousel(
                       selectedImages: story.images,
-                      currentStartIndex: _currentStartIndices[index] ?? 0,
-                      maxVisibleImages: 4,
+                      currentStartIndex: _currentStartIndices[story.id] ?? 0,
+                      maxVisibleImages: _maxVisibleImages,
                       onScrollLeft: () {
                         setState(() {
-                          _currentStartIndices[index] =
-                              (_currentStartIndices[index] ?? 0 - 1).clamp(0, story.images.length - 1);
+                          _currentStartIndices[story.id] =
+                              ((_currentStartIndices[story.id] ?? 0) - 1)
+                                  .clamp(0, story.images.length - _maxVisibleImages);
                         });
                       },
                       onScrollRight: () {
                         setState(() {
-                          _currentStartIndices[index] =
-                              (_currentStartIndices[index] ?? 0 + 1).clamp(0, story.images.length - 4);
+                          _currentStartIndices[story.id] =
+                              ((_currentStartIndices[story.id] ?? 0) + 1)
+                                  .clamp(0, story.images.length - _maxVisibleImages);
                         });
                       },
                       onClear: () {},
