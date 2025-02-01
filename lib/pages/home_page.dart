@@ -33,6 +33,9 @@ class _HomePageState extends State<HomePage> {
   // Maximum number of visible images
   final int _maxVisibleImages = 4;
 
+  // Tila, joka kertoo, että seuraavan kerran kun hakukenttä saa fokuksen, valitaan kaikki teksti
+  bool _shouldSelectAll = false;
+
   @override
   void dispose() {
     _searchController.dispose(); // Varmistetaan, että controllerit suljetaan
@@ -74,6 +77,8 @@ class _HomePageState extends State<HomePage> {
       if (_selectedImages.length > _maxVisibleImages) {
         _currentStartIndex = _selectedImages.length - _maxVisibleImages;
       }
+      // Asetetaan tila valitsemaan kaikki teksti seuraavalla taputuksella
+      _shouldSelectAll = true;
     });
   }
 
@@ -110,6 +115,8 @@ class _HomePageState extends State<HomePage> {
                 setState(() {
                   _selectedImages.clear();
                   _currentStartIndex = 0;
+                  // Asetetaan tila valitsemaan kaikki teksti seuraavalla taputuksella
+                  _shouldSelectAll = true;
                 });
                 Navigator.of(context).pop(); // Sulje dialogi
               },
@@ -163,6 +170,17 @@ class _HomePageState extends State<HomePage> {
   void _clearSearch() {
     _searchController.clear();
     setState(() {}); // Päivitetään UI:ta
+  }
+
+  // Metodi, jota kutsutaan kun hakukenttä valitsee kaiken tekstin
+  void _onSearchFieldTap() {
+    if (_shouldSelectAll) {
+      _searchController.selection =
+          TextSelection(baseOffset: 0, extentOffset: _searchController.text.length);
+      setState(() {
+        _shouldSelectAll = false;
+      });
+    }
   }
 
   @override
@@ -248,6 +266,7 @@ class _HomePageState extends State<HomePage> {
               controller: _searchController,
               onSearch: _search,
               onClear: _clearSearch,
+              onTap: _onSearchFieldTap, // Lisätään taputuskäsittelijä
             ),
             const SizedBox(height: 8),
 
