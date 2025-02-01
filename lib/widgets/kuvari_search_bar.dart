@@ -2,17 +2,44 @@
 
 import 'package:flutter/material.dart';
 
-class KuvariSearchBar extends StatelessWidget {
+class KuvariSearchBar extends StatefulWidget {
   final TextEditingController controller;
   final VoidCallback onSearch;
   final VoidCallback onClear;
+  final VoidCallback onTap; // Lisätään taputuskäsittelijä
 
   const KuvariSearchBar({
     Key? key,
     required this.controller,
     required this.onSearch,
     required this.onClear,
+    required this.onTap, // Lisätään taputuskäsittelijä
   }) : super(key: key);
+
+  @override
+  _KuvariSearchBarState createState() => _KuvariSearchBarState();
+}
+
+class _KuvariSearchBarState extends State<KuvariSearchBar> {
+  late FocusNode _focusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+
+    _focusNode.addListener(() {
+      if (_focusNode.hasFocus) {
+        widget.onTap(); // Kutsutaan taputuskäsittelijää kun kenttä saa fokuksen
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,19 +47,20 @@ class KuvariSearchBar extends StatelessWidget {
       children: [
         Expanded(
           child: ValueListenableBuilder(
-            valueListenable: controller,
+            valueListenable: widget.controller,
             builder: (context, TextEditingValue value, child) {
               return TextField(
-                controller: controller,
+                focusNode: _focusNode, // Määritetään FocusNode
+                controller: widget.controller,
                 textInputAction: TextInputAction.search,
-                onSubmitted: (_) => onSearch(),
+                onSubmitted: (_) => widget.onSearch(),
                 decoration: InputDecoration(
                   labelText: 'Hae kuvalla esim. hymy',
                   border: const OutlineInputBorder(),
                   suffixIcon: value.text.isNotEmpty
                       ? IconButton(
                           icon: const Icon(Icons.clear),
-                          onPressed: onClear,
+                          onPressed: widget.onClear,
                           tooltip: 'Tyhjennä hakukenttä',
                         )
                       : null,
@@ -44,7 +72,7 @@ class KuvariSearchBar extends StatelessWidget {
         ),
         const SizedBox(width: 8),
         ElevatedButton(
-          onPressed: onSearch,
+          onPressed: widget.onSearch,
           child: const Icon(Icons.search),
         ),
       ],
