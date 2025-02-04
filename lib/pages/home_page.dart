@@ -10,6 +10,7 @@ import 'package:kuvari_app/pages/info_page.dart';
 import 'package:kuvari_app/widgets/kuvari_search_bar.dart';
 import 'package:kuvari_app/widgets/selected_images_carousel.dart';
 import 'package:kuvari_app/widgets/image_grid.dart';
+import 'package:kuvari_app/widgets/category_selection_dialog.dart';
 
 class HomePage extends StatefulWidget {
   final KuvariService kuvariService;
@@ -26,6 +27,7 @@ class _HomePageState extends State<HomePage> {
   List<KuvariImage> _selectedImages = [];
 
   bool _isLoading = false;
+  List<String> _selectedCategories = []; // Oletuksena ei valittuja kategorioita
 
   // Current starting index of the visible images
   int _currentStartIndex = 0;
@@ -53,7 +55,7 @@ class _HomePageState extends State<HomePage> {
     });
 
     try {
-      final results = await widget.kuvariService.searchImages(query);
+      final results = await widget.kuvariService.searchImages(query, _selectedCategories);
       setState(() {
         _images = results;
       });
@@ -169,7 +171,9 @@ class _HomePageState extends State<HomePage> {
   // Päivitä hakukenttä tyhjennyksen jälkeen
   void _clearSearch() {
     _searchController.clear();
-    setState(() {}); // Päivitetään UI:ta
+    setState(() {
+      _images = []; // Tyhjennetään hakutulokset
+    });
   }
 
   // Metodi, jota kutsutaan kun hakukenttä valitsee kaiken tekstin
@@ -179,6 +183,21 @@ class _HomePageState extends State<HomePage> {
           TextSelection(baseOffset: 0, extentOffset: _searchController.text.length);
       setState(() {
         _shouldSelectAll = false;
+      });
+    }
+  }
+
+  void _selectCategories() async {
+    final selected = await showDialog<List<String>>(
+      context: context,
+      builder: (BuildContext context) {
+        return CategorySelectionDialog(selectedCategories: _selectedCategories);
+      },
+    );
+
+    if (selected != null) {
+      setState(() {
+        _selectedCategories = selected;
       });
     }
   }
@@ -262,11 +281,22 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 8),
 
             // Hakukenttä
-            KuvariSearchBar(
-              controller: _searchController,
-              onSearch: _search,
-              onClear: _clearSearch,
-              onTap: _onSearchFieldTap, // Lisätään taputuskäsittelijä
+            Row(
+              children: [
+                Expanded(
+                  child: KuvariSearchBar(
+                    controller: _searchController,
+                    onSearch: _search,
+                    onClear: _clearSearch,
+                    onTap: _onSearchFieldTap,
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.filter_list),
+                  onPressed: _selectCategories,
+                  tooltip: 'Valitse kategoriat',
+                ),
+              ],
             ),
             const SizedBox(height: 8),
 
