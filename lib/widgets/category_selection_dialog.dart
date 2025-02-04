@@ -44,10 +44,16 @@ class _CategorySelectionDialogState extends State<CategorySelectionDialog> {
               title: Text(entry.value),
               value: _selected[entry.key],
               onChanged: (bool? value) {
+                if (value == false && _selected.values.where((isSelected) => isSelected).length <= 1) {
+                  // Estetään viimeisen valinnan poistaminen
+                  return;
+                }
                 setState(() {
                   _selected[entry.key] = value!;
                 });
               },
+              // Estetään poiskytkeminen, jos vain yksi kategoria on valittuna
+              enabled: _selected.values.where((isSelected) => isSelected).length > 1 || _selected[entry.key] == false,
             );
           }).toList(),
         ),
