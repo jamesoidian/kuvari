@@ -27,7 +27,16 @@ class _HomePageState extends State<HomePage> {
   List<KuvariImage> _selectedImages = [];
 
   bool _isLoading = false;
-  List<String> _selectedCategories = []; // Oletuksena ei valittuja kategorioita
+  List<String> _selectedCategories = [
+    'arasaac',
+    'kuvako',
+    'mulberry',
+    'drawing',
+    'sclera',
+    'toisto',
+    'photo',
+    'sign',
+  ]; // Oletuksena kaikki kategoriat valittuina
 
   // Current starting index of the visible images
   int _currentStartIndex = 0;
@@ -292,7 +301,24 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.filter_list),
+                  icon: Stack(
+                    children: [
+                      const Icon(Icons.filter_list),
+                      if (_selectedCategories.length < 8) // Jos kaikki kategoriat eivät ole valittuina
+                        Positioned(
+                          right: 0,
+                          top: 0,
+                          child: Container(
+                            width: 12,
+                            height: 12,
+                            decoration: const BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
                   onPressed: _selectCategories,
                   tooltip: 'Valitse kategoriat',
                 ),
