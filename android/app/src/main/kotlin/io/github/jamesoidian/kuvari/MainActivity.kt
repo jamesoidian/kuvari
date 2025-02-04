@@ -1,4 +1,4 @@
-package com.example.kuvari_app
+package io.github.jamesoidian.kuvari
 
 import io.flutter.embedding.android.FlutterActivity
 
