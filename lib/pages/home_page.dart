@@ -1,9 +1,11 @@
 // lib/pages/home_page.dart
 
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:uuid/uuid.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
+import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/services/kuvari_service.dart';
-import 'package:kuvari_app/pages/selected_images_page.dart';
 import 'package:kuvari_app/pages/image_viewer_page.dart';
 import 'package:kuvari_app/pages/saved_image_stories_page.dart';
 import 'package:kuvari_app/pages/info_page.dart';
@@ -140,12 +142,49 @@ class _HomePageState extends State<HomePage> {
   }
 
   // Siirtyminen "pino-näkymään"
-  void _navigateToSelectedImages() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => SelectedImagesPage(images: _selectedImages),
-      ),
+  Future<void> _saveImageStory() async {
+    if (_selectedImages.isEmpty) return;
+
+    final storyNameController = TextEditingController();
+    final Box<ImageStory> imageStoriesBox =
+        Hive.box<ImageStory>('imageStories');
+
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Anna kuvajonon nimi'),
+          content: TextField(
+            controller: storyNameController,
+            decoration: const InputDecoration(labelText: 'Nimi'),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Peruuta'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                final name = storyNameController.text.trim();
+                if (name.isNotEmpty) {
+                  final newStory = ImageStory(
+                    id: const Uuid().v4(),
+                    name: name,
+                    images: List<KuvariImage>.from(_selectedImages),
+                  );
+
+                  imageStoriesBox.add(newStory);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Kuvajono "$name" tallennettu.')),
+                  );
+                  Navigator.of(context).pop();
+                }
+              },
+              child: const Text('Tallenna'),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -241,10 +280,9 @@ class _HomePageState extends State<HomePage> {
         ), // Gradient taustalle
         actions: [
           IconButton(
-            icon: const Icon(Icons.photo_library),
-            onPressed:
-                _selectedImages.isNotEmpty ? _navigateToSelectedImages : null,
-            tooltip: 'Näytä valitut kuvat',
+            icon: const Icon(Icons.save),
+            onPressed: _selectedImages.isNotEmpty ? _saveImageStory : null,
+            tooltip: 'Tallenna kuvajono',
           ),
           IconButton(
             icon: const Icon(Icons.list),
