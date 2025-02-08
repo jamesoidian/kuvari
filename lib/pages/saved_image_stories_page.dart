@@ -25,7 +25,7 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tallennetut kuvajonot'),
+        title: Text(AppLocalizations.of(context)!.savedImageStories),
       ),
       body: ValueListenableBuilder(
         valueListenable: imageStoriesBox.listenable(),
@@ -34,7 +34,7 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
           final stories = box.values.toList();
 
           if (stories.isEmpty) {
-            return const Center(
+            return Center(
               child: Text(AppLocalizations.of(context)!.noSavedImageStories),
             );
           }
