@@ -22,7 +22,7 @@ class InfoPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Tämä sovellus on syntynyt ydhen yksityishenkilön vapaaehtoistyönä. '
+              'Tämä sovellus on syntynyt yhden yksityishenkilön vapaaehtoistyönä. '
               'Sovellus käyttää Papunetin kuvapankkia ja se on kehitetty '
               'epäkaupallisiin tarkoituksiin, erityisesti vaihtoehtoisen kommunikoinnin tueksi. '
               'Inspiraatio sovelluksen kehittämiseen on peräisin Rinnekotien asumisyksiköstä käytännön arjen tarpeista.',
