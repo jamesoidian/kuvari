@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
     } catch (e) {
       // Virheenkäsittely
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Virhe haussa: $e')),
+        SnackBar(content: Text('${AppLocalizations.of(context)!.searchError} $e')),
       );
     } finally {
       setState(() {
