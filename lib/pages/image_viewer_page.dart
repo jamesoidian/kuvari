@@ -192,8 +192,8 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
   Widget build(BuildContext context) {
     if (widget.images.isEmpty) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Image Viewer')),
-        body: const Center(child: Text('Ei kuvia katsottavaksi.')),
+        appBar: AppBar(title: Text(AppLocalizations.of(context)!.imageViewer)),
+        body: Center(child: Text(AppLocalizations.of(context)!.noImagesToView)),
       );
     }
 
@@ -201,14 +201,14 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Kuva ${_currentPage + 1}/${widget.images.length}'),
+        title: Text('${AppLocalizations.of(context)!.imageViewer} ${_currentPage + 1}/${widget.images.length}'),
         actions: [
           IconButton(
             icon: const Icon(Icons.home),
             onPressed: () {
               Navigator.popUntil(context, (route) => route.isFirst);
             },
-            tooltip: 'Home',
+            tooltip: AppLocalizations.of(context)!.home,
           ),
         ],
       ),
