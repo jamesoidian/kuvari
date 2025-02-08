@@ -10,6 +10,7 @@
 .svn/
 .env
 Appicons.zip
+aider*
 
 # IntelliJ related
 *.iml
