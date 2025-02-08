@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/pages/image_viewer_page.dart';
 import 'package:kuvari_app/widgets/selected_images_carousel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SavedImageStoriesPage extends StatefulWidget {
   const SavedImageStoriesPage({Key? key}) : super(key: key);
@@ -33,7 +34,7 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
 
           if (stories.isEmpty) {
             return const Center(
-              child: Text('Ei tallennettuja kuvajonoja.'),
+              child: Text(AppLocalizations.of(context)!.noSavedImageStories),
             );
           }
 
