@@ -31,5 +31,15 @@
   "delete": "Poista",
   "scrollLeft": "Selaa vasemmalle",
   "scrollRight": "Selaa oikealle",
-  "emptySelectedImagesConfirm": "Haluatko varmasti tyhjentää kaikki valitut kuvat?"
+  "emptySelectedImagesConfirm": "Haluatko varmasti tyhjentää kaikki valitut kuvat?",
+  "noSavedImageStories": "Ei tallennettuja kuvajonoja.",
+  "imageStoryDeleted": "Kuvajono \"{name}\" poistettu.",
+  "viewImageStory": "Näytä kuvajono",
+  "giveImageStoryName": "Anna kuvajonon nimi",
+  "name": "Nimi",
+  "save": "Tallenna",
+  "imageStorySaved": "Kuvajono \"{name}\" tallennettu.",
+  "clearImageStory": "Tyhjennä kuvajono",
+  "yes": "Kyllä",
+  "showImages": "Näytä kuvat"
 }

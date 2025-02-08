@@ -11,16 +11,31 @@ class CategorySelectionDialog extends StatefulWidget {
 }
 
 class _CategorySelectionDialogState extends State<CategorySelectionDialog> {
-  final Map<String, String> categories = {
-    'arasaac': 'Arasaac',
-    'kuvako': 'KUVAKO',
-    'mulberry': 'Mulberry',
-    'drawing': 'Piirroskuva',
-    'sclera': 'Sclera',
-    'toisto': 'Toisto',
-    'photo': 'Valokuva',
-    'sign': 'Viittoma',
-  };
+  late Map<String, String> categories;
+
+  @override
+  void initState() {
+    super.initState();
+    _selected = {};
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    categories = {
+      'arasaac': AppLocalizations.of(context)!.categoryArasaac,
+      'kuvako': AppLocalizations.of(context)!.categoryKuvako,
+      'mulberry': AppLocalizations.of(context)!.categoryMulberry,
+      'drawing': AppLocalizations.of(context)!.categoryDrawing,
+      'sclera': AppLocalizations.of(context)!.categorySclera,
+      'toisto': AppLocalizations.of(context)!.categoryToisto,
+      'photo': AppLocalizations.of(context)!.categoryPhoto,
+      'sign': AppLocalizations.of(context)!.categorySign,
+    };
+    categories.forEach((key, value) {
+      _selected[key] = widget.selectedCategories.contains(key);
+    });
+  }
 
   late Map<String, bool> _selected;
 
@@ -36,7 +51,7 @@ class _CategorySelectionDialogState extends State<CategorySelectionDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Valitse kategoriat'),
+      title: Text(AppLocalizations.of(context)!.selectCategories),
       content: SingleChildScrollView(
         child: Column(
           children: categories.entries.map((entry) {
@@ -63,7 +78,7 @@ class _CategorySelectionDialogState extends State<CategorySelectionDialog> {
           onPressed: () {
             Navigator.of(context).pop(); // Suljetaan dialogi ilman muutoksia
           },
-          child: const Text('Peruuta'),
+          child: Text(AppLocalizations.of(context)!.cancel),
         ),
         ElevatedButton(
           onPressed: () {
@@ -74,7 +89,7 @@ class _CategorySelectionDialogState extends State<CategorySelectionDialog> {
 
             Navigator.of(context).pop(selectedCategories); // Palautetaan valitut kategoriat
           },
-          child: const Text('OK'),
+          child: Text(AppLocalizations.of(context)!.ok),
         ),
       ],
     );

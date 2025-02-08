@@ -31,5 +31,15 @@
   "delete": "Radera",
   "scrollLeft": "Bläddra vänster",
   "scrollRight": "Bläddra höger",
-  "emptySelectedImagesConfirm": "Vill du verkligen rensa alla valda bilder?"
+  "emptySelectedImagesConfirm": "Vill du verkligen rensa alla valda bilder?",
+  "noSavedImageStories": "Inga sparade bildsekvenser.",
+  "imageStoryDeleted": "Bildsekvensen \"{name}\" har raderats.",
+  "viewImageStory": "Visa bildsekvens",
+  "giveImageStoryName": "Ange namn på bildsekvensen",
+  "name": "Namn",
+  "save": "Spara",
+  "imageStorySaved": "Bildsekvensen \"{name}\" har sparats.",
+  "clearImageStory": "Rensa bildsekvens",
+  "yes": "Ja",
+  "showImages": "Visa bilder"
 }
