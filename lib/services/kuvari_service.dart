@@ -12,8 +12,11 @@ class KuvariService {
   Future<List<KuvariImage>> searchImages(String query, List<String> categories, String languageCode) async {
     final categoriesString = categories.isEmpty ? 'all' : categories.join('-');
 
-    // Rakennetaan URL:
-    final url = Uri.parse('https://kuha.papunet.net/api/search/$categoriesString/$query?lang=$languageCode');
+    // Muunnetaan 'sv' -> 'se', jos tarpeen
+    final apiLanguageCode = languageCode == 'sv' ? 'se' : languageCode;
+
+    // Rakennetaan URL käyttäen oikeaa kielikoodia:
+    final url = Uri.parse('https://kuha.papunet.net/api/search/$categoriesString/$query?lang=$apiLanguageCode');
 
     // Tehdään HTTP GET -kutsu:
     final response = await client.get(url);
