@@ -363,7 +363,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   onPressed: _selectCategories,
-                  tooltip: 'Valitse kategoriat',
+                  tooltip: AppLocalizations.of(context)!.selectCategories,
                 ),
               ],
             ),
