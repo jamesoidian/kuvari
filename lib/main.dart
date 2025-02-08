@@ -54,7 +54,7 @@ class _KuvariAppState extends State<KuvariApp> {
       locale: _locale,
       supportedLocales: const [
         Locale('fi'),
-        Locale('se'),
+        Locale('sv'),
       ],
       localizationsDelegates: const [
         AppLocalizations.delegate,

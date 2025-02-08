@@ -23,8 +23,8 @@ class LanguageSelector extends StatelessWidget {
           child: Text('FI', style: TextStyle(color: Colors.white)),
         ),
         DropdownMenuItem(
-          value: Locale('se'),
-          child: Text('SE', style: TextStyle(color: Colors.white)),
+          value: Locale('sv'),
+          child: Text('SV', style: TextStyle(color: Colors.white)),
         ),
       ],
       onChanged: (Locale? locale) {

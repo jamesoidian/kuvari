@@ -13,6 +13,8 @@ import 'package:kuvari_app/widgets/kuvari_search_bar.dart';
 import 'package:kuvari_app/widgets/selected_images_carousel.dart';
 import 'package:kuvari_app/widgets/image_grid.dart';
 import 'package:kuvari_app/widgets/category_selection_dialog.dart';
+import 'package:kuvari_app/widgets/language_selector.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   final KuvariService kuvariService;
@@ -259,13 +261,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Kuvari',
-          style: TextStyle(fontWeight: FontWeight.bold),
+        leading: LanguageSelector(
+          currentLocale: Localizations.localeOf(context),
+          onLocaleChange: widget.setLocale,
         ),
-        centerTitle: true, // Keskittää otsikon
-        backgroundColor: Colors.teal, // Taustaväri
-        foregroundColor: Colors.white, // Etualan väri (teksti ja ikonit)
+        title: Text(
+          AppLocalizations.of(context)!.appTitle,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
         shadowColor: Colors.tealAccent, // Varjon väri
         elevation: 6.0, // Varjon korkeus
         surfaceTintColor: Colors.teal.shade700, // Material 3 pinnansävy
@@ -287,7 +293,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             icon: const Icon(Icons.save),
             onPressed: _selectedImages.isNotEmpty ? _saveImageStory : null,
-            tooltip: 'Tallenna kuvajono',
+            tooltip: AppLocalizations.of(context)!.saveImageStory,
           ),
           IconButton(
             icon: const Icon(Icons.list),
@@ -299,7 +305,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               );
             },
-            tooltip: 'Tallennetut kuvajonot',
+            tooltip: AppLocalizations.of(context)!.savedImageStories,
           ),
           IconButton(
             icon: const Icon(Icons.info),
@@ -311,7 +317,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               );
             },
-            tooltip: 'Tietoa sovelluksesta',
+            tooltip: AppLocalizations.of(context)!.info,
           ),
         ],
       ),
