@@ -16,8 +16,13 @@ import 'package:kuvari_app/widgets/category_selection_dialog.dart';
 
 class HomePage extends StatefulWidget {
   final KuvariService kuvariService;
+  final Function(Locale) setLocale;
 
-  const HomePage({Key? key, required this.kuvariService}) : super(key: key);
+  const HomePage({
+    Key? key, 
+    required this.kuvariService,
+    required this.setLocale,
+  }) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
