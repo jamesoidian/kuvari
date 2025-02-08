@@ -9,11 +9,11 @@ class KuvariService {
 
   KuvariService({http.Client? client}) : client = client ?? http.Client();
 
-  Future<List<KuvariImage>> searchImages(String query, List<String> categories) async {
+  Future<List<KuvariImage>> searchImages(String query, List<String> categories, String languageCode) async {
     final categoriesString = categories.isEmpty ? 'all' : categories.join('-');
 
     // Rakennetaan URL:
-    final url = Uri.parse('https://kuha.papunet.net/api/search/$categoriesString/$query?lang=fi');
+    final url = Uri.parse('https://kuha.papunet.net/api/search/$categoriesString/$query?lang=$languageCode');
 
     // Tehdään HTTP GET -kutsu:
     final response = await client.get(url);

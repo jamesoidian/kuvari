@@ -18,7 +18,7 @@ class ImageGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return images.isEmpty
-        ? const Center(child: Text('Ei hakutuloksia'))
+        ? Center(child: Text(AppLocalizations.of(context)!.noResults))
         : GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, // kaksi saraketta rinnakkain

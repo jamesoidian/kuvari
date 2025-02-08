@@ -55,13 +55,13 @@ class _KuvariSearchBarState extends State<KuvariSearchBar> {
                 textInputAction: TextInputAction.search,
                 onSubmitted: (_) => widget.onSearch(),
                 decoration: InputDecoration(
-                  labelText: 'Hae kuvalla esim. hymy',
+                  labelText: AppLocalizations.of(context)!.searchHint,
                   border: const OutlineInputBorder(),
                   suffixIcon: value.text.isNotEmpty
                       ? IconButton(
                           icon: const Icon(Icons.clear),
                           onPressed: widget.onClear,
-                          tooltip: 'Tyhjennä hakukenttä',
+                          tooltip: AppLocalizations.of(context)!.clear,
                         )
                       : null,
                 ),

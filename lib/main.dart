@@ -47,7 +47,7 @@ class _KuvariAppState extends State<KuvariApp> {
     final kuvariService = KuvariService();
 
     return MaterialApp(
-      title: 'Kuvari',
+      onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
