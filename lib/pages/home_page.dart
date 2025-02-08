@@ -73,7 +73,8 @@ class _HomePageState extends State<HomePage> {
     });
 
     try {
-      final results = await widget.kuvariService.searchImages(query, _selectedCategories);
+      final languageCode = Localizations.localeOf(context).languageCode;
+      final results = await widget.kuvariService.searchImages(query, _selectedCategories, languageCode);
       setState(() {
         _images = results;
       });
