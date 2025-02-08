@@ -1,6 +1,7 @@
 // lib/pages/saved_image_stories_page.dart
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/pages/image_viewer_page.dart';
@@ -59,7 +60,7 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
                 onDismissed: (direction) {
                   story.delete();
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Kuvajono "${story.name}" poistettu.')),
+                    SnackBar(content: Text(AppLocalizations.of(context)!.imageStoryDeleted(name: story.name))),
                   );
                 },
                 child: Card(
@@ -112,7 +113,7 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
                           ),
                         );
                       },
-                      tooltip: 'Näytä kuvajono',
+                      tooltip: AppLocalizations.of(context)!.viewImageStory,
                     ),
                   ),
                 ),
