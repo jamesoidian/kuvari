@@ -40,15 +40,6 @@ class _CategorySelectionDialogState extends State<CategorySelectionDialog> {
   late Map<String, bool> _selected;
 
   @override
-  void initState() {
-    super.initState();
-    _selected = {};
-    categories.forEach((key, value) {
-      _selected[key] = widget.selectedCategories.contains(key);
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text(AppLocalizations.of(context)!.selectCategories),
