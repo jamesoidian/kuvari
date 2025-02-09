@@ -33,12 +33,25 @@
   "scrollRight": "Bläddra höger",
   "emptySelectedImagesConfirm": "Vill du verkligen rensa alla valda bilder?",
   "noSavedImageStories": "Inga sparade bildsekvenser.",
-  "imageStoryDeleted": "Bildsekvensen \"{name}\" har raderats.",
+
   "viewImageStory": "Visa bildsekvens",
   "giveImageStoryName": "Ange namn på bildsekvensen",
   "name": "Namn",
   "save": "Spara",
-  "imageStorySaved": "Bildsekvensen \"{name}\" har sparats.",
+    "imageStorySaved": "Bildsekvensen \"{name}\" har sparats.",
+  "@imageStorySaved": {
+    "description": "Message shown when an image story is saved",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "imageStoryDeleted": "Bildsekvensen \"{name}\" har raderats.",
+  "@imageStoryDeleted": {
+    "description": "Message shown when an image story is deleted",
+    "placeholders": {
+      "name": {}
+    }
+  },
   "clearImageStory": "Rensa bildsekvens",
   "yes": "Ja",
   "showImages": "Visa bilder"

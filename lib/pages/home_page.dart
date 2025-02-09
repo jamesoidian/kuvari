@@ -123,9 +123,8 @@ class _HomePageState extends State<HomePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Tyhjennä kuvajono'),
-          content:
-              const Text('Haluatko varmasti tyhjentää kaikki valitut kuvat?'),
+          title: Text(AppLocalizations.of(context)!.clearImageStory), 
+          content: Text(AppLocalizations.of(context)!.emptySelectedImagesConfirm),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(), // Peruuta
@@ -141,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                 });
                 Navigator.of(context).pop(); // Sulje dialogi
               },
-              child: const Text('Kyllä'),
+              child:  Text(AppLocalizations.of(context)!.clear),
             ),
           ],
         );
@@ -149,52 +148,51 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // Siirtyminen "pino-näkymään"
+  // Kuvajonon tallentaminen
   Future<void> _saveImageStory() async {
-    if (_selectedImages.isEmpty) return;
+  if (_selectedImages.isEmpty) return;
 
-    final storyNameController = TextEditingController();
-    final Box<ImageStory> imageStoriesBox =
-        Hive.box<ImageStory>('imageStories');
+  final storyNameController = TextEditingController();
+  final Box<ImageStory> imageStoriesBox = Hive.box<ImageStory>('imageStories');
 
-    await showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Anna kuvajonon nimi'),
-          content: TextField(
-            controller: storyNameController,
-            decoration: const InputDecoration(labelText: 'Nimi'),
+  await showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(AppLocalizations.of(context)!.saveImageStory),
+        content: TextField(
+          controller: storyNameController,
+          decoration: InputDecoration(labelText: AppLocalizations.of(context)!.giveImageStoryName),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text(AppLocalizations.of(context)!.cancel),
           ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Peruuta'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                final name = storyNameController.text.trim();
-                if (name.isNotEmpty) {
-                  final newStory = ImageStory(
-                    id: const Uuid().v4(),
-                    name: name,
-                    images: List<KuvariImage>.from(_selectedImages),
-                  );
+          ElevatedButton(
+            onPressed: () {
+              final name = storyNameController.text.trim();
+              if (name.isNotEmpty) {
+                final newStory = ImageStory(
+                  id: const Uuid().v4(),
+                  name: name,
+                  images: List<KuvariImage>.from(_selectedImages),
+                );
 
-                  imageStoriesBox.add(newStory);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Kuvajono "$name" tallennettu.')),
-                  );
-                  Navigator.of(context).pop();
-                }
-              },
-              child: const Text('Tallenna'),
-            ),
-          ],
-        );
-      },
-    );
-  }
+                imageStoriesBox.add(newStory);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(AppLocalizations.of(context)!.imageStorySaved(newStory.name))),
+                );
+                Navigator.of(context).pop();
+              }
+            },
+            child: Text(AppLocalizations.of(context)!.save),
+          ),
+        ],
+      );
+    },
+  );
+}
 
   // Siirtyminen ImageViewerPage:lle
   void _navigateToImageViewer() {
@@ -391,7 +389,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _navigateToImageViewer,
-        tooltip: 'Näytä kuvat',
+        tooltip: AppLocalizations.of(context)!.viewImageStory,
         backgroundColor: Colors.teal, // FABin taustaväri
         foregroundColor: Colors.white, // Ikonin oletusväri
         child: Stack(

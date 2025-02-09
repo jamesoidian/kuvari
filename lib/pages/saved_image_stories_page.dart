@@ -60,7 +60,7 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
                 onDismissed: (direction) {
                   story.delete();
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(AppLocalizations.of(context)!.imageStoryDeleted(name: story.name))),
+                    SnackBar(content: Text(AppLocalizations.of(context)!.imageStoryDeleted(story.name))),
                   );
                 },
                 child: Card(

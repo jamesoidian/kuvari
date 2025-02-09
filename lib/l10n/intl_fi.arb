@@ -33,12 +33,24 @@
   "scrollRight": "Selaa oikealle",
   "emptySelectedImagesConfirm": "Haluatko varmasti tyhjentää kaikki valitut kuvat?",
   "noSavedImageStories": "Ei tallennettuja kuvajonoja.",
+  "imageStorySaved": "Kuvajono \"{name}\" tallennettu.",
+  "@imageStorySaved": {
+    "description": "Message shown when an image story is saved",
+    "placeholders": {
+      "name": {}
+    }
+  },
   "imageStoryDeleted": "Kuvajono \"{name}\" poistettu.",
+  "@imageStoryDeleted": {
+    "description": "Message shown when an image story is deleted",
+    "placeholders": {
+      "name": {}
+    }
+  },
   "viewImageStory": "Näytä kuvajono",
   "giveImageStoryName": "Anna kuvajonon nimi",
   "name": "Nimi",
   "save": "Tallenna",
-  "imageStorySaved": "Kuvajono \"{name}\" tallennettu.",
   "clearImageStory": "Tyhjennä kuvajono",
   "yes": "Kyllä",
   "showImages": "Näytä kuvat"
