@@ -82,8 +82,8 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
                 children: [
                   for (int i = 0; i < widget.selectedImages.length; i++)
                     GestureDetector(
-                      key: ValueKey(selectedImages[i]),
-                      onTap: () => onRemove(i),
+                      key: ValueKey(widget.selectedImages[i]),
+                      onTap: () => widget.onRemove(i),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 4.0),
                         child: Stack(
@@ -91,7 +91,7 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
                               child: Image.network(
-                                selectedImages[i].thumb,
+                                widget.selectedImages[i].thumb,
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
