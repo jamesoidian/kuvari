@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SelectedImagesCarousel extends StatelessWidget {
   final List<KuvariImage> selectedImages;
@@ -46,7 +47,7 @@ class SelectedImagesCarousel extends StatelessWidget {
               color: canScrollLeft ? Colors.black : Colors.grey,
             ),
             onPressed: canScrollLeft ? onScrollLeft : null,
-            tooltip: 'Selaa vasemmalle',
+            tooltip: AppLocalizations.of(context)!.scrollLeft,
           ),
           // Kuvajono
           Expanded(
@@ -112,7 +113,7 @@ class SelectedImagesCarousel extends StatelessWidget {
               color: canScrollRight ? Colors.black : Colors.grey,
             ),
             onPressed: canScrollRight ? onScrollRight : null,
-            tooltip: 'Selaa oikealle',
+            tooltip: AppLocalizations.of(context)!.scrollRight,
           ),
           // Tyhjennysikoni (näkyy vain, jos showClearButton on true)
           if (showClearButton)
