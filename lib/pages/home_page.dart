@@ -96,12 +96,9 @@ class _HomePageState extends State<HomePage> {
   void _selectImage(KuvariImage image) {
     setState(() {
       _selectedImages.add(image);
-      _updateMaxVisibleImages();
-      // Jos lisätty kuva ylittää näkyvien kuvien määrän, siirrytään oikealle
       if (_selectedImages.length > _maxVisibleImages) {
         _currentStartIndex = max(0, _selectedImages.length - _maxVisibleImages);
       }
-      // Asetetaan tila valitsemaan kaikki teksti seuraavalla taputuksella
       _shouldSelectAll = true;
     });
   }
@@ -110,8 +107,6 @@ class _HomePageState extends State<HomePage> {
   void _removeSelectedImage(int index) {
     setState(() {
       _selectedImages.removeAt(index);
-      _updateMaxVisibleImages();
-      // Jos poistettu kuva vaikutti aloitusindeksiin, päivitetään se
       if (_currentStartIndex > _selectedImages.length - _maxVisibleImages) {
         _currentStartIndex = max(0, _selectedImages.length - _maxVisibleImages);
       }

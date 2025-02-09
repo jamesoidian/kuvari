@@ -44,6 +44,7 @@ class _KuvariAppState extends State<KuvariApp> {
 
   @override
   Widget build(BuildContext context) {
+    _maxVisibleImages = calculateMaxVisibleImages(context);
     final kuvariService = KuvariService();
 
     return MaterialApp(
