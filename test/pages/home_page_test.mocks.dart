@@ -46,9 +46,13 @@ class MockKuvariService extends _i1.Mock implements _i3.KuvariService {
           as _i2.Client);
 
   @override
-  _i4.Future<List<_i5.KuvariImage>> searchImages(String? query) =>
+  _i4.Future<List<_i5.KuvariImage>> searchImages(
+    String? query,
+    List<String>? categories,
+    String? languageCode,
+  ) =>
       (super.noSuchMethod(
-            Invocation.method(#searchImages, [query]),
+            Invocation.method(#searchImages, [query, categories, languageCode]),
             returnValue: _i4.Future<List<_i5.KuvariImage>>.value(
               <_i5.KuvariImage>[],
             ),
