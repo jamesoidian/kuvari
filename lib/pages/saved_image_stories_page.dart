@@ -1,7 +1,7 @@
 // lib/pages/saved_image_stories_page.dart
 
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'dart:math';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/pages/image_viewer_page.dart';
@@ -18,19 +18,28 @@ class SavedImageStoriesPage extends StatefulWidget {
 class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
   final Box<ImageStory> imageStoriesBox = Hive.box<ImageStory>('imageStories');
   final Map<String, int> _currentStartIndices = {};
+  int _maxVisibleImages = 1;
 
-  static const int _maxVisibleImages = 4;
+  void _updateMaxVisibleImages() {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    const double imageWidth = 60.0;
+    const double imageSpacing = 8.0;
+    const double sidePadding = 16.0;
+    const double buttonWidth = 48.0;
+
+    final double availableWidth = screenWidth - sidePadding - (buttonWidth * 3);
+    int maxImages = ((availableWidth + imageSpacing) / (imageWidth + imageSpacing)).floor();
+    _maxVisibleImages = max(1, maxImages);
+  }
 
   @override
   Widget build(BuildContext context) {
+    _updateMaxVisibleImages();
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.savedImageStories),
-      ),
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.savedImageStories)),
       body: ValueListenableBuilder(
         valueListenable: imageStoriesBox.listenable(),
         builder: (context, Box<ImageStory> box, _) {
-          // Hae kaikki kuvajonot suoraan Hive-tietokannasta
           final stories = box.values.toList();
 
           if (stories.isEmpty) {
@@ -73,24 +82,20 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
                       maxVisibleImages: _maxVisibleImages,
                       onScrollLeft: () {
                         setState(() {
-                          _currentStartIndices[story.id] =
-                              ((_currentStartIndices[story.id] ?? 0) - 1)
-                                  .clamp(0, story.images.length - _maxVisibleImages);
+                          _currentStartIndices[story.id] = ((_currentStartIndices[story.id] ?? 0) - _maxVisibleImages)
+                              .clamp(0, max(0, story.images.length - _maxVisibleImages));
                         });
                       },
                       onScrollRight: () {
                         setState(() {
-                          _currentStartIndices[story.id] =
-                              ((_currentStartIndices[story.id] ?? 0) + 1)
-                                  .clamp(0, story.images.length - _maxVisibleImages);
+                          _currentStartIndices[story.id] = ((_currentStartIndices[story.id] ?? 0) + _maxVisibleImages)
+                              .clamp(0, max(0, story.images.length - _maxVisibleImages));
                         });
                       },
                       onClear: () {},
                       onRemove: (i) {},
                       showClearButton: false,
-                      onReorder: (int oldIndex, int newIndex) {
-                        // Ei tehdä mitään, koska emme halua sallia kuvien järjestämistä täällä
-                      },
+                      onReorder: (int oldIndex, int newIndex) {},
                     ),
                     trailing: IconButton(
                       icon: Stack(
