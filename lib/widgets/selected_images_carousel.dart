@@ -4,12 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SelectedImagesCarousel extends StatelessWidget {
+class SelectedImagesCarousel extends StatefulWidget {
   final List<KuvariImage> selectedImages;
   final int currentStartIndex;
   final int maxVisibleImages;
-  final VoidCallback onScrollLeft;
-  final VoidCallback onScrollRight;
   final VoidCallback onClear;
   final Function(int) onRemove;
   final Function(int, int) onReorder;
@@ -20,8 +18,6 @@ class SelectedImagesCarousel extends StatelessWidget {
     required this.selectedImages,
     required this.currentStartIndex,
     required this.maxVisibleImages,
-    required this.onScrollLeft,
-    required this.onScrollRight,
     required this.onClear,
     required this.onRemove,
     required this.onReorder,
@@ -29,10 +25,42 @@ class SelectedImagesCarousel extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final bool canScrollLeft = currentStartIndex > 0;
-    final bool canScrollRight = (currentStartIndex + maxVisibleImages) < selectedImages.length;
+  _SelectedImagesCarouselState createState() => _SelectedImagesCarouselState();
+}
 
+class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
+  final ScrollController _scrollController = ScrollController();
+  bool _canScrollLeft = false;
+  bool _canScrollRight = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_scrollListener);
+    WidgetsBinding.instance.addPostFrameCallback((_) => _updateScrollButtons());
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollListener() {
+    _updateScrollButtons();
+  }
+
+  void _updateScrollButtons() {
+    if (!mounted) return;
+    setState(() {
+      _canScrollLeft = _scrollController.hasClients && _scrollController.offset > 0;
+      _canScrollRight = _scrollController.hasClients && 
+          _scrollController.offset < _scrollController.position.maxScrollExtent;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.grey[200],
@@ -40,32 +68,19 @@ class SelectedImagesCarousel extends StatelessWidget {
         border: Border.all(color: Colors.grey),
       ),
       padding: const EdgeInsets.all(4.0),
-      child: Row(
+      child: Stack(
         children: [
-          // Vasenta nuolta
-          IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: canScrollLeft ? Colors.black : Colors.grey,
-            ),
-            onPressed: canScrollLeft ? onScrollLeft : null,
-            tooltip: AppLocalizations.of(context)!.scrollLeft,
-          ),
           // Kuvajono
-          Expanded(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40.0),
             child: SizedBox(
               height: 80,
               child: ReorderableListView(
+                scrollController: _scrollController,
                 scrollDirection: Axis.horizontal,
-                onReorder: (int oldIndex, int newIndex) {
-                  oldIndex += currentStartIndex;
-                  newIndex += currentStartIndex;
-                  onReorder(oldIndex, newIndex);
-                },
+                onReorder: widget.onReorder,
                 children: [
-                  for (int i = currentStartIndex;
-                      i < (currentStartIndex + maxVisibleImages) && i < selectedImages.length;
-                      i++)
+                  for (int i = 0; i < widget.selectedImages.length; i++)
                     GestureDetector(
                       key: ValueKey(selectedImages[i]),
                       onTap: () => onRemove(i),
@@ -112,21 +127,42 @@ class SelectedImagesCarousel extends StatelessWidget {
               ),
             ),
           ),
-          // Oikeaa nuolta
-          IconButton(
-            icon: Icon(
-              Icons.arrow_forward,
-              color: canScrollRight ? Colors.black : Colors.grey,
+          // Scroll indicators
+          if (_canScrollLeft)
+            Positioned(
+              left: 0,
+              top: 0,
+              bottom: 0,
+              child: Container(
+                width: 40,
+                color: Colors.black26,
+                alignment: Alignment.center,
+                child: const Icon(Icons.arrow_back_ios, color: Colors.white),
+              ),
             ),
-            onPressed: canScrollRight ? onScrollRight : null,
-            tooltip: AppLocalizations.of(context)!.scrollRight,
-          ),
-          // Tyhjennysikoni (näkyy vain, jos showClearButton on true)
-          if (showClearButton)
-            IconButton(
-              icon: const Icon(Icons.delete_sweep, color: Colors.red),
-              onPressed: onClear,
-              tooltip: 'Tyhjennä kuvajono',
+          if (_canScrollRight)
+            Positioned(
+              right: 40,
+              top: 0,
+              bottom: 0,
+              child: Container(
+                width: 40,
+                color: Colors.black26,
+                alignment: Alignment.center,
+                child: const Icon(Icons.arrow_forward_ios, color: Colors.white),
+              ),
+            ),
+          // Clear button
+          if (widget.showClearButton)
+            Positioned(
+              right: 0,
+              top: 0,
+              bottom: 0,
+              child: IconButton(
+                icon: const Icon(Icons.delete_sweep, color: Colors.red),
+                onPressed: widget.onClear,
+                tooltip: 'Tyhjennä kuvajono',
+              ),
             ),
         ],
       ),

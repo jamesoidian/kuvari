@@ -80,18 +80,6 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
                       selectedImages: story.images,
                       currentStartIndex: _currentStartIndices[story.id] ?? 0,
                       maxVisibleImages: _maxVisibleImages,
-                      onScrollLeft: () {
-                        setState(() {
-                          _currentStartIndices[story.id] = ((_currentStartIndices[story.id] ?? 0) - _maxVisibleImages)
-                              .clamp(0, max(0, story.images.length - _maxVisibleImages));
-                        });
-                      },
-                      onScrollRight: () {
-                        setState(() {
-                          _currentStartIndices[story.id] = ((_currentStartIndices[story.id] ?? 0) + _maxVisibleImages)
-                              .clamp(0, max(0, story.images.length - _maxVisibleImages));
-                        });
-                      },
                       onClear: () {},
                       onRemove: (i) {},
                       showClearButton: false,

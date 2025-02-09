@@ -340,8 +340,6 @@ class _HomePageState extends State<HomePage> {
                 selectedImages: _selectedImages,
                 currentStartIndex: _currentStartIndex,
                 maxVisibleImages: _maxVisibleImages,
-                onScrollLeft: _scrollLeft,
-                onScrollRight: _scrollRight,
                 onClear: _clearSelectedImages,
                 onRemove: _removeSelectedImage,
                 onReorder: _onReorderSelectedImages,
