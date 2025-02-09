@@ -1,7 +1,7 @@
 {
   "@@locale": "sv",
   "appTitle": "Kuvari",
-  "searchHint": "Sök med bild t.ex. leende",
+  "searchHint": "Sök bilder med sökordet t.ex. leende",
   "noResults": "Inga sökresultat",
   "searchError": "Fel vid sökning: {error}",
   "selectedImages": "Valda bilder",

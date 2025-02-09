@@ -1,7 +1,7 @@
 {
   "@@locale": "fi",
   "appTitle": "Kuvari",
-  "searchHint": "Hae kuvalla esim. hymy",
+  "searchHint": "Hae kuvia hakusanalla esim. hymy",
   "noResults": "Ei hakutuloksia",
   "searchError": "Virhe haussa: {error}",
   "selectedImages": "Valitut kuvat",
@@ -15,7 +15,7 @@
   "cancel": "Peruuta",
   "ok": "OK",
   "home": "Etusivu",
-  "imageViewer": "Kuvan katselu",
+  "imageViewer": "Kuvien katselu",
   "noImagesToView": "Ei kuvia katsottavaksi.",
   "search": "Hae",
   "selectCategories": "Valitse kategoriat",
