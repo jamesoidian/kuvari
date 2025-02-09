@@ -1,5 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+import 'package:uuid/uuid.dart';
 part of 'kuvari_image.dart';
 
 // **************************************************************************
@@ -22,7 +23,7 @@ class KuvariImageAdapter extends TypeAdapter<KuvariImage> {
       thumb: fields[2] as String,
       url: fields[3] as String,
       uid: fields[4] as int,
-      uuid: fields[5] as String,
+      uuid: (fields[5] as String?) ?? const Uuid().v4(),
     );
   }
 
