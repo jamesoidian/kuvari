@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:uuid/uuid.dart';
 
 part 'kuvari_image.g.dart';
 
@@ -19,13 +20,17 @@ class KuvariImage {
   @HiveField(4)
   final int uid;
 
+  @HiveField(5)
+  final String uuid;
+
   KuvariImage({
     required this.author,
     required this.name,
     required this.thumb,
     required this.url,
     required this.uid,
-  });
+    String? uuid,
+  }) : uuid = uuid ?? const Uuid().v4();
 
   // Tehdään tehtaan konstruktori, joka luo olion JSONista.
   factory KuvariImage.fromJson(Map<String, dynamic> json) {
@@ -35,6 +40,16 @@ class KuvariImage {
       thumb: json['thumb'] ?? '',
       url: json['url'] ?? '',
       uid: json['uid'] ?? 0,
+      uuid: const Uuid().v4(),
     );
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is KuvariImage && uuid == other.uuid;
+  }
+
+  @override
+  int get hashCode => uuid.hashCode;
 }

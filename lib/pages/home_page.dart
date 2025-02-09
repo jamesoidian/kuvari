@@ -95,7 +95,14 @@ class _HomePageState extends State<HomePage> {
   // Kuvan valinta
   void _selectImage(KuvariImage image) {
     setState(() {
-      _selectedImages.add(image);
+      final newImage = KuvariImage(
+        author: image.author,
+        name: image.name,
+        thumb: image.thumb,
+        url: image.url,
+        uid: image.uid,
+      );
+      _selectedImages.add(newImage);
       if (_selectedImages.length > _maxVisibleImages) {
         _currentStartIndex = max(0, _selectedImages.length - _maxVisibleImages);
       }

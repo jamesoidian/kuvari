@@ -22,13 +22,14 @@ class KuvariImageAdapter extends TypeAdapter<KuvariImage> {
       thumb: fields[2] as String,
       url: fields[3] as String,
       uid: fields[4] as int,
+      uuid: fields[5] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, KuvariImage obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.author)
       ..writeByte(1)
@@ -38,7 +39,9 @@ class KuvariImageAdapter extends TypeAdapter<KuvariImage> {
       ..writeByte(3)
       ..write(obj.url)
       ..writeByte(4)
-      ..write(obj.uid);
+      ..write(obj.uid)
+      ..writeByte(5)
+      ..write(obj.uuid);
   }
 
   @override
