@@ -222,7 +222,7 @@ class _HomePageState extends State<HomePage> {
   // Navigoi vasemmalle kuvajonossa
   void _scrollLeft() {
     setState(() {
-      _currentStartIndex = (_currentStartIndex - _maxVisibleImages)
+      _currentStartIndex = (_currentStartIndex - 1)
           .clamp(0, max(0, _selectedImages.length - _maxVisibleImages));
     });
   }
@@ -230,7 +230,7 @@ class _HomePageState extends State<HomePage> {
   // Navigoi oikealle kuvajonossa
   void _scrollRight() {
     setState(() {
-      _currentStartIndex = (_currentStartIndex + _maxVisibleImages)
+      _currentStartIndex = (_currentStartIndex + 1)
           .clamp(0, max(0, _selectedImages.length - _maxVisibleImages));
     });
   }
