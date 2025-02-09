@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
+import 'package:kuvari_app/utils.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/services/kuvari_service.dart';
@@ -268,21 +269,10 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  void _updateMaxVisibleImages() {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    const double imageWidth = 60.0;
-    const double imageSpacing = 8.0;
-    const double sidePadding = 16.0;
-    const double buttonWidth = 48.0;
-
-    final double availableWidth = screenWidth - sidePadding - (buttonWidth * 3);
-    int maxImages = ((availableWidth + imageSpacing) / (imageWidth + imageSpacing)).floor();
-    _maxVisibleImages = max(1, maxImages);
-  }
 
   @override
   Widget build(BuildContext context) {
-    _updateMaxVisibleImages();
+    _maxVisibleImages = calculateMaxVisibleImages(context);
     return Scaffold(
       appBar: AppBar(
         leading: LanguageSelector(
