@@ -12,7 +12,8 @@ class SelectedImagesCarousel extends StatelessWidget {
   final VoidCallback onScrollRight;
   final VoidCallback onClear;
   final Function(int) onRemove;
-  final bool showClearButton; // Uusi parametri
+  final Function(int, int) onReorder;
+  final bool showClearButton;
 
   const SelectedImagesCarousel({
     Key? key,
@@ -23,7 +24,8 @@ class SelectedImagesCarousel extends StatelessWidget {
     required this.onScrollRight,
     required this.onClear,
     required this.onRemove,
-    this.showClearButton = true, // Oletuksena näytetään delete-ikoni
+    required this.onReorder,
+    this.showClearButton = true,
   }) : super(key: key);
 
   @override
@@ -53,56 +55,60 @@ class SelectedImagesCarousel extends StatelessWidget {
           Expanded(
             child: SizedBox(
               height: 80,
-              child: ListView.builder(
+              child: ReorderableListView(
                 scrollDirection: Axis.horizontal,
-                itemCount: selectedImages.length,
-                itemBuilder: (context, index) {
-                  if (index < currentStartIndex || index >= currentStartIndex + maxVisibleImages) {
-                    return const SizedBox.shrink();
-                  }
-                  final image = selectedImages[index];
-                  return GestureDetector(
-                    onTap: () => onRemove(index),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      child: Stack(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.network(
-                              image.thumb,
-                              width: 60,
-                              height: 60,
-                              fit: BoxFit.cover,
-                              loadingBuilder: (context, child, loadingProgress) {
-                                if (loadingProgress == null) return child;
-                                return const Center(child: CircularProgressIndicator(strokeWidth: 2));
-                              },
-                              errorBuilder: (context, error, stackTrace) {
-                                return const Icon(Icons.broken_image, size: 60);
-                              },
-                            ),
-                          ),
-                          Positioned(
-                            right: 0,
-                            top: 0,
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                color: Colors.black54,
-                                shape: BoxShape.circle,
-                              ),
-                              child: const Icon(
-                                Icons.close,
-                                color: Colors.white,
-                                size: 16,
+                onReorder: (int oldIndex, int newIndex) {
+                  oldIndex += currentStartIndex;
+                  newIndex += currentStartIndex;
+                  onReorder(oldIndex, newIndex);
+                },
+                children: [
+                  for (int i = currentStartIndex;
+                      i < (currentStartIndex + maxVisibleImages) && i < selectedImages.length;
+                      i++)
+                    GestureDetector(
+                      key: ValueKey(selectedImages[i]),
+                      onTap: () => onRemove(i),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                        child: Stack(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.network(
+                                selectedImages[i].thumb,
+                                width: 60,
+                                height: 60,
+                                fit: BoxFit.cover,
+                                loadingBuilder: (context, child, loadingProgress) {
+                                  if (loadingProgress == null) return child;
+                                  return const Center(child: CircularProgressIndicator(strokeWidth: 2));
+                                },
+                                errorBuilder: (context, error, stackTrace) {
+                                  return const Icon(Icons.broken_image, size: 60);
+                                },
                               ),
                             ),
-                          ),
-                        ],
+                            Positioned(
+                              right: 0,
+                              top: 0,
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  color: Colors.black54,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: const Icon(
+                                  Icons.close,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  );
-                },
+                ],
               ),
             ),
           ),

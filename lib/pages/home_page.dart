@@ -117,6 +117,16 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void _onReorderSelectedImages(int oldIndex, int newIndex) {
+    setState(() {
+      if (newIndex > oldIndex) {
+        newIndex -= 1;
+      }
+      final image = _selectedImages.removeAt(oldIndex);
+      _selectedImages.insert(newIndex, image);
+    });
+  }
+
   // Kuvajonon tyhjentäminen
   void _clearSelectedImages() {
     if (_selectedImages.isEmpty) return;
@@ -349,6 +359,7 @@ class _HomePageState extends State<HomePage> {
                 onScrollRight: _scrollRight,
                 onClear: _clearSelectedImages,
                 onRemove: _removeSelectedImage,
+                onReorder: _onReorderSelectedImages,
               ),
             const SizedBox(height: 8),
 
