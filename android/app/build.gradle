@@ -20,7 +20,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17
+        jvmTarget = "17"
     }
 
     defaultConfig {
@@ -68,8 +68,9 @@ android {
             }
             
             firebaseCrashlytics {
-                nativeSymbolUploadEnabled = true
-                unmappedSymbolDumpEnabled = true
+                nativeSymbolUploadEnabled true
+                strippedNativeLibsDir 'build/intermediates/stripped_native_libs/release/out/lib'
+                unstrippedNativeLibsDir 'build/intermediates/merged_native_libs/release/out/lib'
             }
         }
     }
