@@ -11,5 +11,9 @@
 -dontwarn com.google.android.play.core.tasks.OnSuccessListener
 -dontwarn com.google.android.play.core.tasks.Task
 -keep class io.flutter.embedding.engine.FlutterJNI { *; }    
--keep class io.github.jamesoidian.kuvari.KuvariApp { *; }                                                                                         
+-keep class io.github.jamesoidian.kuvari.KuvariApp { *; }
+
+# NDK debug symbols
+-keepattributes LineNumberTable,SourceFile
+-renamesourcefileattribute SourceFile
                                                        
