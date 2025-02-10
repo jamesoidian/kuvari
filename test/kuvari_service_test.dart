@@ -46,7 +46,7 @@ void main() {
       when(mockClient.get(Uri.parse('https://kuha.papunet.net/api/search/all/test?lang=fi')))
           .thenAnswer((_) async => http.Response(json.encode(mockResponse), 200));
 
-      final images = await kuvariService.searchImages('test');
+      final images = await kuvariService.searchImages('test', [], 'fi');
 
       expect(images, isA<List<KuvariImage>>());
       expect(images.length, 2);
@@ -59,7 +59,7 @@ void main() {
       when(mockClient.get(Uri.parse('https://kuha.papunet.net/api/search/all/test?lang=fi')))
           .thenAnswer((_) async => http.Response('Not Found', 404));
 
-      expect(kuvariService.searchImages('test'), throwsException);
+      expect(kuvariService.searchImages('test', [], 'fi'), throwsException);
     });
 
     test('returns empty list if images key is missing in response', () async {
@@ -71,7 +71,7 @@ void main() {
       when(mockClient.get(Uri.parse('https://kuha.papunet.net/api/search/all/test?lang=fi')))
           .thenAnswer((_) async => http.Response(json.encode(mockResponse), 200));
 
-      final images = await kuvariService.searchImages('test');
+      final images = await kuvariService.searchImages('test', [], 'fi');
 
       expect(images, isA<List<KuvariImage>>());
       expect(images.length, 0);
@@ -84,7 +84,7 @@ void main() {
       when(mockClient.get(Uri.parse('https://kuha.papunet.net/api/search/all/test?lang=fi')))
           .thenAnswer((_) async => http.Response(mockResponse, 200));
 
-      expect(kuvariService.searchImages('test'), throwsException);
+      expect(kuvariService.searchImages('test', [], 'fi'), throwsException);
     });
   });
 }

@@ -65,7 +65,7 @@ void main() {
       ];
 
       // Määritä mock KuvariService palauttamaan mockImages
-      when(mockKuvariService.searchImages('test')).thenAnswer((_) async => mockImages);
+      when(mockKuvariService.searchImages('test', any, any)).thenAnswer((_) async => mockImages);
 
       // Luo HomePage käyttäen mock KuvariServicea
       await tester.pumpWidget(
@@ -86,7 +86,7 @@ void main() {
 
     testWidgets('Displays error message on failed search', (WidgetTester tester) async {
       // Määritä mock KuvariService heittämään poikkeus
-      when(mockKuvariService.searchImages('test')).thenThrow(Exception('Failed to load images'));
+      when(mockKuvariService.searchImages('test', any, any)).thenThrow(Exception('Failed to load images'));
 
       // Luo HomePage käyttäen mock KuvariServicea
       await tester.pumpWidget(
