@@ -1,9 +1,12 @@
 // test/pages/home_page_test.dart
 
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/pages/home_page.dart';
 import 'package:kuvari_app/services/kuvari_service.dart';
@@ -70,9 +73,24 @@ void main() {
       // Luo HomePage käyttäen mock KuvariServicea
       await tester.pumpWidget(
         MaterialApp(
-          home: HomePage(kuvariService: mockKuvariService),
+          locale: const Locale('fi'),
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('fi'),
+            Locale('sv'),
+          ],
+          home: HomePage(
+            kuvariService: mockKuvariService,
+            setLocale: (_) {}, // Empty function for testing
+          ),
         ),
       );
+      await tester.pump();
 
       // Syötä hakusana ja aloita haku
       await tester.enterText(find.byType(TextField), 'test');
@@ -91,9 +109,24 @@ void main() {
       // Luo HomePage käyttäen mock KuvariServicea
       await tester.pumpWidget(
         MaterialApp(
-          home: HomePage(kuvariService: mockKuvariService),
+          locale: const Locale('fi'),
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('fi'),
+            Locale('sv'),
+          ],
+          home: HomePage(
+            kuvariService: mockKuvariService,
+            setLocale: (_) {}, // Empty function for testing
+          ),
         ),
       );
+      await tester.pump();
 
       // Syötä hakusana ja aloita haku
       await tester.enterText(find.byType(TextField), 'test');
@@ -125,14 +158,29 @@ void main() {
       ];
 
       // Määritä mock KuvariService palauttamaan mockImages
-      when(mockKuvariService.searchImages('test')).thenAnswer((_) async => mockImages);
+      when(mockKuvariService.searchImages('test', any, any)).thenAnswer((_) async => mockImages);
 
       // Luo HomePage käyttäen mock KuvariServicea
       await tester.pumpWidget(
         MaterialApp(
-          home: HomePage(kuvariService: mockKuvariService),
+          locale: const Locale('fi'),
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('fi'),
+            Locale('sv'),
+          ],
+          home: HomePage(
+            kuvariService: mockKuvariService,
+            setLocale: (_) {}, // Empty function for testing
+          ),
         ),
       );
+      await tester.pump();
 
       // Syötä hakusana ja aloita haku
       await tester.enterText(find.byType(TextField), 'test');
