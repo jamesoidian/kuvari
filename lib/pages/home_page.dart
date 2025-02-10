@@ -277,10 +277,14 @@ class _HomePageState extends State<HomePage> {
     _maxVisibleImages = calculateMaxVisibleImages(context);
     return Scaffold(
       appBar: AppBar(
-        leading: LanguageSelector(
-          currentLocale: Localizations.localeOf(context),
-          onLocaleChange: widget.setLocale,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: LanguageSelector(
+            currentLocale: Localizations.localeOf(context),
+            onLocaleChange: widget.setLocale,
+          ),
         ),
+        leadingWidth: 80.0,
         title: Text(
           AppLocalizations.of(context)!.appTitle,
           style: const TextStyle(fontWeight: FontWeight.bold),
