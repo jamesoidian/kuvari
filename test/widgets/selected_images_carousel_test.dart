@@ -31,23 +31,21 @@ void main() {
       ),
     ];
 
-    testWidgets('Displays arrow buttons and delete icon', (WidgetTester tester) async {
+    testWidgets('Displays ReorderableListView and delete icon', (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: SelectedImagesCarousel(
             selectedImages: mockImages,
             currentStartIndex: 0,
             maxVisibleImages: 4,
-            onScrollLeft: () {},
-            onScrollRight: () {},
             onClear: () {},
             onRemove: (index) {},
+            onReorder: (oldIndex, newIndex) {},
           ),
         ),
       );
 
-      expect(find.byIcon(Icons.arrow_back), findsOneWidget);
-      expect(find.byIcon(Icons.arrow_forward), findsOneWidget);
+      expect(find.byType(ReorderableListView), findsOneWidget);
       expect(find.byIcon(Icons.delete_sweep), findsOneWidget);
     });
 
@@ -58,10 +56,9 @@ void main() {
             selectedImages: mockImages,
             currentStartIndex: 1,
             maxVisibleImages: 2,
-            onScrollLeft: () {},
-            onScrollRight: () {},
             onClear: () {},
             onRemove: (index) {},
+            onReorder: (oldIndex, newIndex) {},
           ),
         ),
       );
@@ -70,27 +67,24 @@ void main() {
       expect(find.byType(Image), findsNWidgets(2));
     });
 
-    testWidgets('Arrow buttons are disabled appropriately', (WidgetTester tester) async {
-      // Testaa vasemman nuolen tilaa, kun currentStartIndex on 0
+    testWidgets('Supports reordering of images', (WidgetTester tester) async {
+      bool reorderCalled = false;
       await tester.pumpWidget(
         MaterialApp(
           home: SelectedImagesCarousel(
             selectedImages: mockImages,
             currentStartIndex: 0,
             maxVisibleImages: 2,
-            onScrollLeft: () {},
-            onScrollRight: () {},
             onClear: () {},
             onRemove: (index) {},
+            onReorder: (oldIndex, newIndex) {
+              reorderCalled = true;
+            },
           ),
         ),
       );
 
-      final backButton = tester.widget<IconButton>(find.widgetWithIcon(IconButton, Icons.arrow_back));
-      final forwardButton = tester.widget<IconButton>(find.widgetWithIcon(IconButton, Icons.arrow_forward));
-      
-      expect(backButton.onPressed, isNull); // Ei voi selata vasemmalle
-      expect(forwardButton.onPressed, isNotNull); // Voidaan selata oikealle
+      expect(find.byType(ReorderableListView), findsOneWidget);
     });
   });
 }
