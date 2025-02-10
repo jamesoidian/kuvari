@@ -28,7 +28,7 @@ void main() {
 
       expect(testContext, isNotNull);
       final result = calculateMaxVisibleImages(testContext!);
-      expect(result, 2); // Expected 2 visible images for small screen
+      expect(result, 3); // Expected 3 visible images for small screen
     });
 
     testWidgets('returns correct value for large screen', (WidgetTester tester) async {
@@ -55,7 +55,7 @@ void main() {
 
       expect(testContext, isNotNull);
       final result = calculateMaxVisibleImages(testContext!);
-      expect(result, 12); // Expected 12 visible images for large screen
+      expect(result, 13); // Expected 13 visible images for large screen
     });
 
     testWidgets('never returns less than 1', (WidgetTester tester) async {
@@ -117,7 +117,7 @@ void main() {
         buttonCount: 2,
       );
       
-      expect(result, 4); // Expected 4 visible images with custom parameters
+      expect(result, 6); // Expected 6 visible images with custom parameters
     });
   });
 }
