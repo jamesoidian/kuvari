@@ -40,16 +40,22 @@ void main() {
       ),
     );
 
+    // Get localized strings
+    final BuildContext context = tester.element(find.byType(ImageViewerPage));
+    final imageViewerText = AppLocalizations.of(context)!.imageViewer;
+
     // Varmista, että ensimmäinen kuva näkyy
     expect(find.byType(Image), findsNWidgets(2));
-    expect(find.text('Kuvakatselu 1/2'), findsOneWidget);
+    final expectedTitle = '$imageViewerText 1/2';
+    expect(find.text(expectedTitle), findsOneWidget);
 
     // Pyyhkäise seuraavaan kuvaan
     await tester.fling(find.byType(PageView), const Offset(-400, 0), 1000);
     await tester.pumpAndSettle();
 
     // Varmista, että toinen kuva näkyy
-    expect(find.text('Kuvakatselu 2/2'), findsOneWidget);
+    final expectedTitlePage2 = '$imageViewerText 2/2';
+    expect(find.text(expectedTitlePage2), findsOneWidget);
     });
   });
 
@@ -69,8 +75,12 @@ void main() {
       ),
     );
 
+    // Get localized strings
+    final BuildContext context = tester.element(find.byType(ImageViewerPage));
+    final noImagesText = AppLocalizations.of(context)!.noImagesToView;
+
     // Varmista, että virheilmoitus näkyy
-    expect(find.text('Ei kuvia näytettäväksi'), findsOneWidget);
+    expect(find.text(noImagesText), findsOneWidget);
     });
   });
 
@@ -104,8 +114,7 @@ void main() {
     await tester.tap(find.byIcon(Icons.home));
     await tester.pumpAndSettle();
 
-    // Koska sovelluksella ei ole määriteltyä aloitussivua tässä testissä, varmistetaan, että
-    // navigointi tapahtui (historia on tyhjä)
+    // Varmista, että navigointi aloitussivulle on tapahtunut
     expect(find.byType(ImageViewerPage), findsNothing);
     });
   });
