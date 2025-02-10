@@ -1,29 +1,42 @@
 // lib/main.dart
 
+import 'dart:async';  
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/pages/home_page.dart';
 import 'package:kuvari_app/services/kuvari_service.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Alusta Hive
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  // Configure Crashlytics
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+
+  // Initialize Hive
   await Hive.initFlutter();
 
-  // Rekisteröi Hive-adapterit
+  // Register Hive adapters
   Hive.registerAdapter(ImageStoryAdapter());
   Hive.registerAdapter(KuvariImageAdapter());
 
-  // Avaa tietokantaboxi
+  // Open database box
   await Hive.openBox<ImageStory>('imageStories');
 
-  runApp(const KuvariApp());
+  // Run app with error handling
+  runZonedGuarded<Future<void>>(() async {
+    runApp(const KuvariApp());
+  }, FirebaseCrashlytics.instance.recordError);
 }
 
 class KuvariApp extends StatefulWidget {

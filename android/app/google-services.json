@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "120509578729",
+    "project_id": "kuvari-2fae4",
+    "storage_bucket": "kuvari-2fae4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120509578729:android:51ff620e33bc2a3b62df78",
+        "android_client_info": {
+          "package_name": "io.github.jamesoidian.kuvari"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYTSPsGQpQwvmBQvzYv3PSiyEcwOrnqsE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

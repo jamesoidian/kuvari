@@ -1,6 +1,10 @@
 plugins {
     id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    // END: FlutterFire Configuration
     id "kotlin-android"
+    id "com.google.firebase.crashlytics"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
 }
@@ -44,17 +48,28 @@ android {
         
         debug {
             debuggable = true  
-            minifyEnabled = false  
+            minifyEnabled = false
+            firebaseCrashlytics {
+                mappingFileUploadEnabled false
+            }
         }
 
         release {
             minifyEnabled = true 
             shrinkResources = true 
             signingConfig = signingConfigs.release
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'    
+            proguardFiles (
+                getDefaultProguardFile('proguard-android-optimize.txt'), 
+                'proguard-rules.pro'    
+            )
             
             ndk {
-                debugSymbolLevel 'FULL'
+                debugSymbolLevel = 'FULL'
+            }
+            
+            firebaseCrashlytics {
+                nativeSymbolUploadEnabled = true
+                unmappedSymbolDumpEnabled = true
             }
         }
     }

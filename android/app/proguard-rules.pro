@@ -16,4 +16,7 @@
 # NDK debug symbols
 -keepattributes LineNumberTable,SourceFile
 -renamesourcefileattribute SourceFile
-                                                       
+
+# Firebase Crashlytics
+-keepattributes SourceFile,LineNumberTable
+-keep public class * extends java.lang.Exception
