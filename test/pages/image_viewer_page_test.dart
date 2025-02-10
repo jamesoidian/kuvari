@@ -4,10 +4,12 @@ import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/pages/image_viewer_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:network_image_mock/network_image_mock.dart';
 
 void main() {
   testWidgets('Displays images in portrait mode', (WidgetTester tester) async {
-    final images = [
+    await mockNetworkImagesFor(() async {
+      final images = [
       KuvariImage(
         author: 'Author',
         name: 'Image1',
@@ -39,7 +41,7 @@ void main() {
     );
 
     // Varmista, että ensimmäinen kuva näkyy
-    expect(find.byType(Image), findsOneWidget);
+    expect(find.byType(Image), findsNWidgets(2));
     expect(find.text('Kuvakatselu 1/2'), findsOneWidget);
 
     // Pyyhkäise seuraavaan kuvaan
@@ -48,10 +50,12 @@ void main() {
 
     // Varmista, että toinen kuva näkyy
     expect(find.text('Kuvakatselu 2/2'), findsOneWidget);
+    });
   });
 
   testWidgets('Shows no images message when image list is empty', (WidgetTester tester) async {
-    await tester.pumpWidget(
+    await mockNetworkImagesFor(() async {
+      await tester.pumpWidget(
       MaterialApp(
         locale: const Locale('fi'),
         localizationsDelegates: const [
@@ -67,10 +71,12 @@ void main() {
 
     // Varmista, että virheilmoitus näkyy
     expect(find.text('Ei kuvia näytettäväksi'), findsOneWidget);
+    });
   });
 
   testWidgets('Navigates to home when home button is pressed', (WidgetTester tester) async {
-    final images = [
+    await mockNetworkImagesFor(() async {
+      final images = [
       KuvariImage(
         author: 'Author',
         name: 'Image1',
@@ -101,5 +107,6 @@ void main() {
     // Koska sovelluksella ei ole määriteltyä aloitussivua tässä testissä, varmistetaan, että
     // navigointi tapahtui (historia on tyhjä)
     expect(find.byType(ImageViewerPage), findsNothing);
+    });
   });
 }
