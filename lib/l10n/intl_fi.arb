@@ -9,7 +9,7 @@
   "rinnekoditLinkLabel": "Rinnekodit",
   "infoPageParagraph2": "Papunetin kuvapankin kuvat on lisensoitu Nimeä-EiKaupallinen-JaaSamoin-lisenssillä (Creative Commons). Lisenssi kieltää kuvien käytön kaupallisiin tarkoituksiin.",
   "licenseLinkLabel": "NIMEÄ-EIKAUPALLINEN-JAASAMOIN 4.0",
-  "searchError": "Virhe haussa: {error}",
+  "searchError": "Virhe haussa:",
   "selectedImages": "Valitut kuvat",
   "noSelectedImages": "Ei valittuja kuvia.",
   "clear": "Tyhjennä",

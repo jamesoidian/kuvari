@@ -9,7 +9,7 @@
   "rinnekoditLinkLabel": "Rinnekodit",
   "infoPageParagraph2": "Bilderna i Papunets bildbank är licensierade under licensen Erkännande-IckeKommersiell-DelaLika (Creative Commons). Licensen förbjuder användning av bilderna för kommersiella ändamål.",
   "licenseLinkLabel": "ERKÄNNANDE-ICKEKOMMERSIELL-DELALIKA 4.0",
-  "searchError": "Fel vid sökning: {error}",
+  "searchError": "Fel vid sökning:",
   "selectedImages": "Valda bilder",
   "noSelectedImages": "Inga valda bilder.",
   "clear": "Rensa",
