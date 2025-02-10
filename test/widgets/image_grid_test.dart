@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/widgets/image_grid.dart';
 
@@ -37,6 +39,17 @@ void main() {
     testWidgets('Displays message when images list is empty', (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
+          locale: const Locale('fi'),
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('fi'),
+            Locale('sv'),
+          ],
           home: ImageGrid(
             images: [],
             selectedImages: selectedImages,
@@ -44,6 +57,8 @@ void main() {
           ),
         ),
       );
+
+      await tester.pump();
 
       expect(find.text('Ei hakutuloksia'), findsOneWidget);
       expect(find.byType(GridView), findsNothing);
