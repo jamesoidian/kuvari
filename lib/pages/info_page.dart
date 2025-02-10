@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InfoPage extends StatelessWidget {
   const InfoPage({Key? key}) : super(key: key);
@@ -21,13 +22,8 @@ class InfoPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Tämä sovellus on syntynyt yhden yksityishenkilön vapaaehtoistyönä. '
-              'Sovellus käyttää Papunetin kuvapankkia ja se on kehitetty '
-              'epäkaupallisiin tarkoituksiin, erityisesti vaihtoehtoisen kommunikoinnin tueksi. '
-              'Inspiraatio sovelluksen kehittämiseen on peräisin Rinnekotien asumisyksiköstä käytännön arjen tarpeista.',
-              style: TextStyle(fontSize: 16),
-            ),
+            Text(AppLocalizations.of(context)!.infoPageParagraph1,
+                style: TextStyle(fontSize: 16)),
             const SizedBox(height: 12),
             Row(
               children: [
@@ -38,7 +34,7 @@ class InfoPage extends StatelessWidget {
                   onTap: () => _launchURL(
                       'https://papunet.net/kuvatyokalut/kuvapankki/'),
                   child: const Text(
-                    'Papunetin kuvapankki',
+                    'Papunetin kuvapankki / Papunet bildbank',
                     style: TextStyle(
                         fontSize: 16,
                         color: Colors.blue,
@@ -66,11 +62,8 @@ class InfoPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 12),
-            const Text(
-              'Papunetin kuvapankin kuvat on lisensoitu Nimeä-Eikaupallinen-JaaSamoin-lisenssillä (Creative Commons). '
-              'Lisenssi kieltää kuvien käytön kaupallisiin tarkoituksiin.',
-              style: TextStyle(fontSize: 16),
-            ),
+            Text(AppLocalizations.of(context)!.infoPageParagraph2,
+                style: TextStyle(fontSize: 16)),
             const SizedBox(height: 12),
             Row(
               children: [
@@ -80,8 +73,8 @@ class InfoPage extends StatelessWidget {
                 GestureDetector(
                   onTap: () => _launchURL(
                       'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fi'),
-                  child: const Text(
-                    'NIMEÄ-EIKAUPALLINEN-JAASAMOIN 4.0',
+                  child: Text(
+                    AppLocalizations.of(context)!.licenseLinkLabel,
                     style: TextStyle(
                         fontSize: 16,
                         color: Colors.blue,
