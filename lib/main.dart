@@ -17,25 +17,22 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
   // Configure Crashlytics
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
-  // Initialize Hive
-  await Hive.initFlutter();
-
-  // Register Hive adapters
-  Hive.registerAdapter(ImageStoryAdapter());
-  Hive.registerAdapter(KuvariImageAdapter());
-
-  // Open database box
-  await Hive.openBox<ImageStory>('imageStories');
-
-  // Run app with error handling
+  // Run app with error handling in the same zone
   runZonedGuarded<Future<void>>(() async {
+    // Ensure all async initialization is done before running the app
+    await Future.wait([
+      Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
+      Hive.initFlutter(),
+      Hive.openBox<ImageStory>('imageStories'),
+    ]);
+    
+    // Register Hive adapters
+    Hive.registerAdapter(ImageStoryAdapter());
+    Hive.registerAdapter(KuvariImageAdapter());
+    
     runApp(const KuvariApp());
   }, FirebaseCrashlytics.instance.recordError);
 }
