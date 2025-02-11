@@ -1,6 +1,6 @@
 // lib/main.dart
 
-import 'dart:async';  
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,9 +21,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // Configure Crashlytics and Analytics
+  // Configure Crashlytics
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-  final analytics = FirebaseAnalytics.instance;
 
   // Initialize Hive
   await Hive.initFlutter();
@@ -42,14 +41,16 @@ void main() async {
 }
 
 class KuvariApp extends StatefulWidget {
-  const KuvariApp({Key? key}) : super(key: key);
+  const KuvariApp({super.key});
 
   @override
-  _KuvariAppState createState() => _KuvariAppState();
+  State<KuvariApp> createState() => _KuvariAppState();
 }
 
 class _KuvariAppState extends State<KuvariApp> {
   Locale _locale = const Locale('fi');
+  late FirebaseAnalytics analytics;
+  late FirebaseAnalyticsObserver observer;
 
   void _setLocale(Locale locale) {
     setState(() {
@@ -62,9 +63,7 @@ class _KuvariAppState extends State<KuvariApp> {
     final kuvariService = KuvariService();
 
     return MaterialApp(
-      navigatorObservers: [
-        FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
-      ],
+      navigatorObservers: [observer],
       onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
       theme: ThemeData(
         primarySwatch: Colors.teal,
@@ -83,7 +82,15 @@ class _KuvariAppState extends State<KuvariApp> {
       home: HomePage(
         kuvariService: kuvariService,
         setLocale: _setLocale,
+        analytics: analytics,
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    analytics = FirebaseAnalytics.instance;
+    observer = FirebaseAnalyticsObserver(analytics: analytics);
   }
 }
