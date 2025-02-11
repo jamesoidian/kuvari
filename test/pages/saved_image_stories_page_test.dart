@@ -48,7 +48,10 @@ void main() {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: const [Locale('fi'), Locale('sv')],
-        home: const SavedImageStoriesPage(),
+        home: MediaQuery(
+          data: const MediaQueryData(),
+          child: const SavedImageStoriesPage(),
+        ),
       ),
     );
 
@@ -74,7 +77,10 @@ void main() {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: const [Locale('fi'), Locale('sv')],
-        home: const SavedImageStoriesPage(),
+        home: MediaQuery(
+          data: const MediaQueryData(),
+          child: const SavedImageStoriesPage(),
+        ),
       ),
     );
 
