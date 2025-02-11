@@ -4,10 +4,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class CategorySelectionDialog extends StatefulWidget {
   final List<String> selectedCategories;
 
-  const CategorySelectionDialog({Key? key, required this.selectedCategories}) : super(key: key);
+  const CategorySelectionDialog({super.key, required this.selectedCategories});
 
   @override
-  _CategorySelectionDialogState createState() => _CategorySelectionDialogState();
+  State<CategorySelectionDialog> createState() => _CategorySelectionDialogState();
 }
 
 class _CategorySelectionDialogState extends State<CategorySelectionDialog> {

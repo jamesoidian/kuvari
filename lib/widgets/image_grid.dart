@@ -10,11 +10,11 @@ class ImageGrid extends StatelessWidget {
   final Function(KuvariImage) onSelect;
 
   const ImageGrid({
-    Key? key,
+    super.key,
     required this.images,
     required this.selectedImages,
     required this.onSelect,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

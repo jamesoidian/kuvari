@@ -5,10 +5,10 @@ class LanguageSelector extends StatelessWidget {
   final Function(Locale) onLocaleChange;
 
   const LanguageSelector({
-    Key? key,
+    super.key,
     required this.currentLocale,
     required this.onLocaleChange,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

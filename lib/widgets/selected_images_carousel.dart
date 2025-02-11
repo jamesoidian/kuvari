@@ -14,7 +14,7 @@ class SelectedImagesCarousel extends StatefulWidget {
   final bool showClearButton;
 
   const SelectedImagesCarousel({
-    Key? key,
+    super.key,
     required this.selectedImages,
     required this.currentStartIndex,
     required this.maxVisibleImages,
@@ -22,10 +22,10 @@ class SelectedImagesCarousel extends StatefulWidget {
     required this.onRemove,
     required this.onReorder,
     this.showClearButton = true,
-  }) : super(key: key);
+  });
 
   @override
-  _SelectedImagesCarouselState createState() => _SelectedImagesCarouselState();
+  State<SelectedImagesCarousel> createState() => _SelectedImagesCarouselState();
 }
 
 class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
@@ -161,7 +161,7 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
               child: IconButton(
                 icon: const Icon(Icons.delete_sweep, color: Colors.red),
                 onPressed: widget.onClear,
-                tooltip: 'Tyhjennä kuvajono',
+                tooltip: AppLocalizations.of(context)!.clearImageStory,
               ),
             ),
         ],

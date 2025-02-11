@@ -7,7 +7,7 @@ import 'package:kuvari_app/models/kuvari_image.dart';
 class ImageViewerPage extends StatefulWidget {
   final List<KuvariImage> images;
 
-  const ImageViewerPage({Key? key, required this.images}) : super(key: key);
+  const ImageViewerPage({super.key, required this.images});
 
   @override
   State<ImageViewerPage> createState() => _ImageViewerPageState();

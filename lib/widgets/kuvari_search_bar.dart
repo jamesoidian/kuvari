@@ -10,15 +10,15 @@ class KuvariSearchBar extends StatefulWidget {
   final VoidCallback onTap; // Lisätään taputuskäsittelijä
 
   const KuvariSearchBar({
-    Key? key,
+    super.key,
     required this.controller,
     required this.onSearch,
     required this.onClear,
     required this.onTap, // Lisätään taputuskäsittelijä
-  }) : super(key: key);
+  });
 
   @override
-  _KuvariSearchBarState createState() => _KuvariSearchBarState();
+  State<KuvariSearchBar> createState() => _KuvariSearchBarState();
 }
 
 class _KuvariSearchBarState extends State<KuvariSearchBar> {

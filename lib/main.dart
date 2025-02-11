@@ -14,30 +14,54 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'firebase_options.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-
-  // Run app with error handling in the same zone
-  runZonedGuarded<Future<void>>(() async {
-    // Ensure all async initialization is done before running the app
-    await Future.wait([
-      Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
-      Hive.initFlutter(),
-      Hive.openBox<ImageStory>('imageStories'),
-    ]);
-    
-    // Register Hive adapters
-    Hive.registerAdapter(ImageStoryAdapter());
-    Hive.registerAdapter(KuvariImageAdapter());
-    
-    runApp(const KuvariApp());
-  }, FirebaseCrashlytics.instance.recordError);
-}
+ void main() {                                                                                                                              
+   runZonedGuarded<Future<void>>(() async {                                                                                                 
+     // Varmistetaan, että WidgetsBinding on alustettu tässä zonessa                                                                        
+     WidgetsFlutterBinding.ensureInitialized();                                                                                             
+                                                                                                                                            
+     // Alustetaan Firebase                                                                                                                 
+     await Firebase.initializeApp(                                                                                                          
+       options: DefaultFirebaseOptions.currentPlatform,                                                                                     
+     );                                                                                                                                     
+                                                                                                                                            
+     // Asetetaan Crashlyticsin virheenkäsittelijä nyt, kun Firebase on alustettu                                                           
+     FlutterError.onError =                                                                                                                 
+         FirebaseCrashlytics.instance.recordFlutterFatalError;                                                                              
+                                                                                                                                            
+     // Alustetaan Hive                                                                                                                     
+     await Hive.initFlutter();                                                                                                              
+                                                                                                                                            
+     // Rekisteröidään Hive-adapterit ennen kuin avataan laatikot                                                                           
+     Hive.registerAdapter(ImageStoryAdapter());                                                                                             
+     Hive.registerAdapter(KuvariImageAdapter());                                                                                            
+                                                                                                                                            
+     // Avataan Hive-laatikot                                                                                                               
+     await Hive.openBox<ImageStory>('imageStories');                                                                                        
+                                                                                                                                            
+     // Alustetaan Firebase Analytics                                                                                                       
+     final analytics = FirebaseAnalytics.instance;                                                                                          
+     final observer = FirebaseAnalyticsObserver(analytics: analytics);                                                                      
+                                                                                                                                            
+     // Ajetaan sovellus                                                                                                                    
+     runApp(KuvariApp(                                                                                                                      
+       analytics: analytics,                                                                                                                
+       observer: observer,                                                                                                                  
+     ));                                                                                                                                    
+   }, (error, stackTrace) {                                                                                                                 
+     // Käsitellään virheet Crashlyticsin avulla                                                                                            
+     FirebaseCrashlytics.instance.recordError(error, stackTrace);                                                                           
+   });                                                                                                                                      
+ }  
 
 class KuvariApp extends StatefulWidget {
-  const KuvariApp({super.key});
+  final FirebaseAnalytics analytics;
+  final FirebaseAnalyticsObserver observer;
+
+  const KuvariApp({
+    super.key,
+    required this.analytics,
+    required this.observer,
+  });
 
   @override
   State<KuvariApp> createState() => _KuvariAppState();

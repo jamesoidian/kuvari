@@ -219,6 +219,7 @@ class _HomePageState extends State<HomePage> {
                       'image_count': newStory.images.length,
                     },
                   );
+                  
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                         content: Text(AppLocalizations.of(context)!
