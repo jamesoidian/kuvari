@@ -59,5 +59,6 @@
   "save": "Tallenna",
   "clearImageStory": "Tyhjennä kuvajono",
   "yes": "Kyllä",
-  "showImages": "Näytä kuvat"
+  "showImages": "Näytä kuvat",
+  "noSavedStories": "Sinulla ei ole tallennettuja kuvatarinoita."
 }
