@@ -11,6 +11,7 @@ import 'package:kuvari_app/pages/home_page.dart';
 import 'package:kuvari_app/services/kuvari_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -20,8 +21,9 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // Configure Crashlytics
+  // Configure Crashlytics and Analytics
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  final analytics = FirebaseAnalytics.instance;
 
   // Initialize Hive
   await Hive.initFlutter();
@@ -60,6 +62,9 @@ class _KuvariAppState extends State<KuvariApp> {
     final kuvariService = KuvariService();
 
     return MaterialApp(
+      navigatorObservers: [
+        FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
+      ],
       onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
       theme: ThemeData(
         primarySwatch: Colors.teal,
