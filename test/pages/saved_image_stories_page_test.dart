@@ -6,15 +6,18 @@ import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/pages/saved_image_stories_page.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'saved_image_stories_page_test.mocks.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-@GenerateMocks([Box])
+@GenerateMocks(customMocks: [
+  MockSpec<Box<ImageStory>>(as: 'MockImageStoryBox')
+])
 void main() {
-  late MockBox<ImageStory> mockBox;
+  late MockImageStoryBox mockBox;
 
   setUp(() {
-    mockBox = MockBox<ImageStory>();
+    mockBox = MockImageStoryBox();
   });
 
   testWidgets('Displays saved image stories when available', (WidgetTester tester) async {
