@@ -45,6 +45,14 @@ void main() {
         ),
       );
 
+      // Preload images before continuing with the test
+      for (var image in images) {
+        await tester.runAsync(() async {
+          await precacheImage(NetworkImage(image.url), tester.element(find.byType(ImageViewerPage)));
+        });
+      }
+      await tester.pumpAndSettle();
+
       // Get localized strings
       final BuildContext context = tester.element(find.byType(ImageViewerPage));
       final imageViewerText = AppLocalizations.of(context)!.imageViewer;
