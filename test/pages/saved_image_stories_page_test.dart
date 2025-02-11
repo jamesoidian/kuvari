@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_test/hive_test.dart'; // Lisää tämä import
 import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/pages/saved_image_stories_page.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
-import 'saved_image_stories_page_test.mocks.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-@GenerateMocks([ImageStory], customMocks: [
-  MockSpec<Box<ImageStory>>(as: 'MockImageStoryBox')
-])
 void main() {
-  late MockImageStoryBox mockBox;
-
-  setUp(() {
-    mockBox = MockImageStoryBox();
+  setUp(() async {
+    // Alusta Hive testejä varten
+    await setUpTestHive();
+    // Rekisteröi adapterit
+    Hive.registerAdapter(ImageStoryAdapter());
+    Hive.registerAdapter(KuvariImageAdapter());
+    // Avaa testiä varten laatikko
+    await Hive.openBox<ImageStory>('imageStories');
   });
 
-  testWidgets('Displays saved image stories when available', (WidgetTester tester) async {
+  tearDown(() async {
+    // Sulje Hive testin jälkeen
+    await tearDownTestHive();
+  });
+
+  testWidgets('Displays saved image stories when available',
+      (WidgetTester tester) async {
     final stories = [
       ImageStory(
         id: '1',
@@ -29,9 +34,9 @@ void main() {
       ),
     ];
 
-    // Määritä mockBox palauttamaan tarinat
-    when(mockBox.values).thenReturn(stories);
-    when(mockBox.listenable()).thenReturn(ValueNotifier(mockBox));
+    // Tallenna tarina Hive-laatikkoon
+    final box = Hive.box<ImageStory>('imageStories');
+    await box.addAll(stories);
 
     await tester.pumpWidget(
       MaterialApp(
@@ -47,22 +52,17 @@ void main() {
       ),
     );
 
-    // Aseta Hive.box<ImageStory> palauttamaan mockBox
-    Hive.registerAdapter(ImageStoryAdapter());
-    Hive.registerAdapter(KuvariImageAdapter());
-    Hive.init('');
-    when(Hive.box<ImageStory>('imageStories')).thenReturn(mockBox);
-
-    await tester.pump();
+    await tester.pumpAndSettle();
 
     // Varmista, että tarina näkyy
     expect(find.text('Kuvatarina 1'), findsOneWidget);
   });
 
-  testWidgets('Shows message when no saved image stories are available', (WidgetTester tester) async {
-    // Määritä mockBox palauttamaan tyhjä lista
-    when(mockBox.values).thenReturn([]);
-    when(mockBox.listenable()).thenReturn(ValueNotifier(mockBox));
+  testWidgets('Shows message when no saved image stories are available',
+      (WidgetTester tester) async {
+    // Varmista, että laatikko on tyhjä
+    final box = Hive.box<ImageStory>('imageStories');
+    await box.clear();
 
     await tester.pumpWidget(
       MaterialApp(
@@ -78,15 +78,14 @@ void main() {
       ),
     );
 
-    // Aseta Hive.box<ImageStory> palauttamaan mockBox
-    Hive.registerAdapter(ImageStoryAdapter());
-    Hive.registerAdapter(KuvariImageAdapter());
-    Hive.init('');
-    when(Hive.box<ImageStory>('imageStories')).thenReturn(mockBox);
+    await tester.pumpAndSettle();
 
-    await tester.pump();
+    // Hae lokalisoitu teksti
+    final BuildContext context =
+        tester.element(find.byType(SavedImageStoriesPage));
+    final noStoriesText = AppLocalizations.of(context)!.noSavedStories;
 
     // Varmista, että oikea viesti näkyy
-    expect(find.text('Ei tallennettuja kuvatarinoita'), findsOneWidget);
+    expect(find.text(noStoriesText), findsOneWidget);
   });
 }
