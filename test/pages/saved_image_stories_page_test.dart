@@ -10,7 +10,7 @@ import 'saved_image_stories_page_test.mocks.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-@GenerateMocks(customMocks: [
+@GenerateMocks([ImageStory], customMocks: [
   MockSpec<Box<ImageStory>>(as: 'MockImageStoryBox')
 ])
 void main() {
