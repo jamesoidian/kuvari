@@ -7,9 +7,10 @@ import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/pages/image_viewer_page.dart';
 import 'package:kuvari_app/widgets/selected_images_carousel.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 class SavedImageStoriesPage extends StatefulWidget {
-  const SavedImageStoriesPage({Key? key}) : super(key: key);
+  const SavedImageStoriesPage({super.key});
 
   @override
   State<SavedImageStoriesPage> createState() => _SavedImageStoriesPageState();
@@ -28,7 +29,8 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
     const double buttonWidth = 48.0;
 
     final double availableWidth = screenWidth - sidePadding - (buttonWidth * 3);
-    int maxImages = ((availableWidth + imageSpacing) / (imageWidth + imageSpacing)).floor();
+    int maxImages =
+        ((availableWidth + imageSpacing) / (imageWidth + imageSpacing)).floor();
     _maxVisibleImages = max(1, maxImages);
   }
 
@@ -36,7 +38,8 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
   Widget build(BuildContext context) {
     _updateMaxVisibleImages();
     return Scaffold(
-      appBar: AppBar(title: Text(AppLocalizations.of(context)!.savedImageStories)),
+      appBar:
+          AppBar(title: Text(AppLocalizations.of(context)!.savedImageStories)),
       body: ValueListenableBuilder(
         valueListenable: imageStoriesBox.listenable(),
         builder: (context, Box<ImageStory> box, _) {
@@ -69,7 +72,9 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
                 onDismissed: (direction) {
                   story.delete();
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(AppLocalizations.of(context)!.imageStoryDeleted(story.name))),
+                    SnackBar(
+                        content: Text(AppLocalizations.of(context)!
+                            .imageStoryDeleted(story.name))),
                   );
                 },
                 child: Card(
@@ -102,10 +107,21 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
                         ],
                       ),
                       onPressed: () {
+                        final analytics = FirebaseAnalytics.instance;
+
+                        // Kirjaa katselutapahtuma
+                        analytics.logEvent(
+                          name: 'view_image_story',
+                          parameters: {
+                            'image_count': story.images.length,
+                            'source': 'saved_stories',
+                          },
+                        );
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => ImageViewerPage(images: story.images),
+                            builder: (_) =>
+                                ImageViewerPage(images: story.images),
                           ),
                         );
                       },

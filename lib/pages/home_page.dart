@@ -17,16 +17,19 @@ import 'package:kuvari_app/widgets/image_grid.dart';
 import 'package:kuvari_app/widgets/category_selection_dialog.dart';
 import 'package:kuvari_app/widgets/language_selector.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 class HomePage extends StatefulWidget {
   final KuvariService kuvariService;
   final Function(Locale) setLocale;
+  final FirebaseAnalytics analytics;
 
   const HomePage({
-    Key? key, 
+    super.key,
     required this.kuvariService,
     required this.setLocale,
-  }) : super(key: key);
+    required this.analytics,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -69,6 +72,14 @@ class _HomePageState extends State<HomePage> {
     final query = _searchController.text.trim();
     if (query.isEmpty) return;
 
+    await widget.analytics.logEvent(
+      name: 'search',
+      parameters: {
+        'query': query,
+        'language': Localizations.localeOf(context).languageCode,
+      },
+    );
+
     setState(() {
       _isLoading = true;
       _images = [];
@@ -76,14 +87,16 @@ class _HomePageState extends State<HomePage> {
 
     try {
       final languageCode = Localizations.localeOf(context).languageCode;
-      final results = await widget.kuvariService.searchImages(query, _selectedCategories, languageCode);
+      final results = await widget.kuvariService
+          .searchImages(query, _selectedCategories, languageCode);
       setState(() {
         _images = results;
       });
     } catch (e) {
       // Virheenkäsittely
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('${AppLocalizations.of(context)!.searchError} $e')),
+        SnackBar(
+            content: Text('${AppLocalizations.of(context)!.searchError} $e')),
       );
     } finally {
       setState(() {
@@ -138,15 +151,16 @@ class _HomePageState extends State<HomePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(AppLocalizations.of(context)!.clearImageStory), 
-          content: Text(AppLocalizations.of(context)!.emptySelectedImagesConfirm),
+          title: Text(AppLocalizations.of(context)!.clearImageStory),
+          content:
+              Text(AppLocalizations.of(context)!.emptySelectedImagesConfirm),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(), // Peruuta
               child: Text(AppLocalizations.of(context)!.cancel),
             ),
             TextButton(
-              onPressed: () {
+              onPressed: () async {
                 setState(() {
                   _selectedImages.clear();
                   _currentStartIndex = 0;
@@ -155,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                 });
                 Navigator.of(context).pop(); // Sulje dialogi
               },
-              child:  Text(AppLocalizations.of(context)!.clear),
+              child: Text(AppLocalizations.of(context)!.clear),
             ),
           ],
         );
@@ -165,53 +179,73 @@ class _HomePageState extends State<HomePage> {
 
   // Kuvajonon tallentaminen
   Future<void> _saveImageStory() async {
-  if (_selectedImages.isEmpty) return;
+    if (_selectedImages.isEmpty) return;
 
-  final storyNameController = TextEditingController();
-  final Box<ImageStory> imageStoriesBox = Hive.box<ImageStory>('imageStories');
+    final storyNameController = TextEditingController();
+    final Box<ImageStory> imageStoriesBox =
+        Hive.box<ImageStory>('imageStories');
 
-  await showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text(AppLocalizations.of(context)!.saveImageStory),
-        content: TextField(
-          controller: storyNameController,
-          decoration: InputDecoration(labelText: AppLocalizations.of(context)!.giveImageStoryName),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: Text(AppLocalizations.of(context)!.cancel),
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context)!.saveImageStory),
+          content: TextField(
+            controller: storyNameController,
+            decoration: InputDecoration(
+                labelText: AppLocalizations.of(context)!.giveImageStoryName),
           ),
-          ElevatedButton(
-            onPressed: () {
-              final name = storyNameController.text.trim();
-              if (name.isNotEmpty) {
-                final newStory = ImageStory(
-                  id: const Uuid().v4(),
-                  name: name,
-                  images: List<KuvariImage>.from(_selectedImages),
-                );
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text(AppLocalizations.of(context)!.cancel),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                final name = storyNameController.text.trim();
+                if (name.isNotEmpty) {
+                  final newStory = ImageStory(
+                    id: const Uuid().v4(),
+                    name: name,
+                    images: List<KuvariImage>.from(_selectedImages),
+                  );
 
-                imageStoriesBox.add(newStory);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(AppLocalizations.of(context)!.imageStorySaved(newStory.name))),
-                );
-                Navigator.of(context).pop();
-              }
-            },
-            child: Text(AppLocalizations.of(context)!.save),
-          ),
-        ],
-      );
-    },
-  );
-}
+                  imageStoriesBox.add(newStory);
+
+                  await widget.analytics.logEvent(
+                    name: 'save_image_story',
+                    parameters: {
+                      'story_name': name,
+                      'image_count': newStory.images.length,
+                    },
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                        content: Text(AppLocalizations.of(context)!
+                            .imageStorySaved(newStory.name))),
+                  );
+                  Navigator.of(context).pop();
+                }
+              },
+              child: Text(AppLocalizations.of(context)!.save),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   // Siirtyminen ImageViewerPage:lle
   void _navigateToImageViewer() {
     if (_selectedImages.isEmpty) return;
+
+    widget.analytics.logEvent(
+      name: 'view_image_story',
+      parameters: {
+        'image_count': _selectedImages.length,
+        'source': 'home_page',
+      },
+    );
 
     Navigator.push(
       context,
@@ -219,22 +253,6 @@ class _HomePageState extends State<HomePage> {
         builder: (_) => ImageViewerPage(images: _selectedImages),
       ),
     );
-  }
-
-  // Navigoi vasemmalle kuvajonossa
-  void _scrollLeft() {
-    setState(() {
-      _currentStartIndex = (_currentStartIndex - 1)
-          .clamp(0, max(0, _selectedImages.length - _maxVisibleImages));
-    });
-  }
-
-  // Navigoi oikealle kuvajonossa
-  void _scrollRight() {
-    setState(() {
-      _currentStartIndex = (_currentStartIndex + 1)
-          .clamp(0, max(0, _selectedImages.length - _maxVisibleImages));
-    });
   }
 
   // Päivitä hakukenttä tyhjennyksen jälkeen
@@ -248,8 +266,8 @@ class _HomePageState extends State<HomePage> {
   // Metodi, jota kutsutaan kun hakukenttä valitsee kaiken tekstin
   void _onSearchFieldTap() {
     if (_shouldSelectAll) {
-      _searchController.selection =
-          TextSelection(baseOffset: 0, extentOffset: _searchController.text.length);
+      _searchController.selection = TextSelection(
+          baseOffset: 0, extentOffset: _searchController.text.length);
       setState(() {
         _shouldSelectAll = false;
       });
@@ -270,7 +288,6 @@ class _HomePageState extends State<HomePage> {
       });
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -330,6 +347,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             icon: const Icon(Icons.info),
             onPressed: () {
+              widget.analytics.logEvent(name: 'view_info_page'); 
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -372,7 +390,8 @@ class _HomePageState extends State<HomePage> {
                   icon: Stack(
                     children: [
                       const Icon(Icons.filter_list),
-                      if (_selectedCategories.length < 8) // Jos kaikki kategoriat eivät ole valittuina
+                      if (_selectedCategories.length <
+                          8) // Jos kaikki kategoriat eivät ole valittuina
                         Positioned(
                           right: 0,
                           top: 0,
