@@ -11,6 +11,7 @@
 .env
 Appicons.zip
 aider*
+/lib/firebase_options.dart
 
 # IntelliJ related
 *.iml
