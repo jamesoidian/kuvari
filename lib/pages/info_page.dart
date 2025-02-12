@@ -70,15 +70,19 @@ class InfoPage extends StatelessWidget {
                 const Icon(Icons.link,
                     color: Colors.blue), // Ikoni ei alleviivattu
                 const SizedBox(width: 6),
-                GestureDetector(
-                  onTap: () => _launchURL(
-                      'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fi'),
-                  child: Text(
-                    AppLocalizations.of(context)!.licenseLinkLabel,
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline),
+                Flexible(
+                  child: GestureDetector(
+                    onTap: () => _launchURL(
+                        'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fi'),
+                    child: Text(
+                      AppLocalizations.of(context)!.licenseLinkLabel,
+                      softWrap: true,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline),
+                    ),
                   ),
                 ),
               ],
