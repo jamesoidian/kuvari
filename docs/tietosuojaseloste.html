@@ -9,60 +9,69 @@
 </head>
 
 <body>
-    <h1 id="tietosuojaseloste-kuvari">Tietosuojaseloste – Kuvari</h1>
-    <p><strong>Viimeksi päivitetty:</strong> <em>12.02.2025</em></p>
-    <h2 id="1-yleist-">1. Yleistä</h2>
-    <p>Kuvari-sovellus on mobiilisovellus, joka mahdollistaa Papunetin kuvapankin kuvien hakemisen ja järjestämisen
-        kommunikaation tueksi. Tämä tietosuojaseloste kuvaa, miten sovellus käsittelee käyttäjätietoja ja analytiikkaa.
-    </p>
-    <h2 id="2-ker-tt-v-t-tiedot">2. Kerättävät tiedot</h2>
-    <p>Kuvari-sovellus <strong>ei kerää, tallenna tai jaa mitään henkilötietoja</strong>. Sovellus ei vaadi
-        rekisteröitymistä, käyttäjätunnuksia tai salasanoja, eikä se tallenna mitään käyttäjän syöttämiä hakusanoja tai
-        valitsemia kuvia.</p>
-    <h2 id="3-miten-sovellus-k-ytt-internet-yhteytt-">3. Miten sovellus käyttää Internet-yhteyttä?</h2>
-    <p>Sovellus käyttää Internet-yhteyttä vain seuraaviin tarkoituksiin:</p>
-    <ul>
-        <li>Lähettääkseen käyttäjän antaman hakusanan <strong>Papunetin kuvapankin hakuun</strong>
-            (<code>https://kuha.papunet.net</code>).</li>
-        <li>Hakutulokset näytetään sovelluksessa, mutta mitään käyttäjän toimintoja ei tallenneta tai jaeta eteenpäin.
-        </li>
-        <li>Firebase-palvelun kautta seuratakseen sovelluksen käyttötilastoja ja kaatumisia.</li>
-    </ul>
-    <h2 id="4-analytiikka-ja-virheraportointi">4. Analytiikka ja virheraportointi</h2>
-    <p>Kuvari-sovellus käyttää <strong>Google Firebase Analyticsia ja Firebase Crashlyticsia</strong> sovelluksen
-        kehittämiseksi ja virheiden korjaamiseksi. Näiden avulla kerätään <strong>anonyymiä tietoa</strong> seuraavista
-        asioista:</p>
-    <ul>
-        <li><strong>Sovelluksen kaatumiset ja virhetilanteet</strong> (Crashlytics).</li>
-        <li><strong>Sovelluksen eri toimintojen käyttö (Firebase Analytics):</strong>
-            <ul>
-                <li>Sovelluksen avaus ja käyttöaktiivisuus.</li>
-                <li>Hakutoiminnon käyttö (mutta ei hakusanoja).</li>
-                <li>Kuvajonojen tallennusten määrä (mutta ei kuvia tai nimiä).</li>
-                <li>Kuvajonojen katseluiden määrä.</li>
-            </ul>
-        </li>
-    </ul>
-    <p>📌 <strong>Tärkeitä huomioita:</strong></p>
-    <ul>
-        <li><strong>Sovellus ei tallenna käyttäjän hakusanoja, valittuja kuvia tai muita sisältötietoja.</strong></li>
-        <li><strong>Firebase Analytics ei kerää mitään henkilökohtaisesti tunnistettavia tietoja.</strong></li>
-        <li><strong>Tiedot ovat anonyymejä, eikä niitä voida yhdistää yksittäiseen käyttäjään.</strong></li>
-    </ul>
-    <h2 id="5-kolmansien-osapuolten-palvelut">5. Kolmansien osapuolten palvelut</h2>
-    <p>Kuvari-sovellus käyttää seuraavia kolmannen osapuolen palveluita:</p>
-    <ul>
-        <li><strong>Google Firebase Analytics</strong> (käytön analysointiin, ilman käyttäjätietoja).</li>
-        <li><strong>Google Firebase Crashlytics</strong> (kaatumisten ja virheiden seurantaan).</li>
-    </ul>
-    <p>Nämä palvelut eivät kerää mitään tunnistettavia henkilökohtaisia tietoja, eivätkä ne tallenna yksittäisiä
-        hakusanoja tai kuvajonojen sisältöä.</p>
-    <h2 id="6-oikeutesi">6. Oikeutesi</h2>
-    <p>Koska Kuvari-sovellus ei käsittele henkilötietoja, käyttäjillä ei ole tarpeita pyytää tietojen poistamista tai
-        muokkaamista.</p>
-    <h2 id="7-yhteystiedot">7. Yhteystiedot</h2>
-    <p>Jos sinulla on kysyttävää Kuvari-sovelluksen tietosuojakäytännöistä, voit ottaa yhteyttä:
-        📧 <strong>snellmandev@gmail.com</strong></p>
+    <div class="container">
+        <h1 id="tietosuojaseloste-kuvari">Tietosuojaseloste – Kuvari</h1>
+        <p><strong>Viimeksi päivitetty:</strong> <em>12.02.2025</em></p>
+        <h2 id="1-yleist-">1. Yleistä</h2>
+        <p>Kuvari-sovellus on mobiilisovellus, joka mahdollistaa Papunetin kuvapankin kuvien hakemisen ja järjestämisen
+            kommunikaation tueksi. Tämä tietosuojaseloste kuvaa, miten sovellus käsittelee käyttäjätietoja ja
+            analytiikkaa.
+        </p>
+        <h2 id="2-ker-tt-v-t-tiedot">2. Kerättävät tiedot</h2>
+        <p>Kuvari-sovellus <strong>ei kerää, tallenna tai jaa mitään henkilötietoja</strong>. Sovellus ei vaadi
+            rekisteröitymistä, käyttäjätunnuksia tai salasanoja, eikä se tallenna mitään käyttäjän syöttämiä hakusanoja
+            tai
+            valitsemia kuvia.</p>
+        <h2 id="3-miten-sovellus-k-ytt-internet-yhteytt-">3. Miten sovellus käyttää Internet-yhteyttä?</h2>
+        <p>Sovellus käyttää Internet-yhteyttä vain seuraaviin tarkoituksiin:</p>
+        <ul>
+            <li>Lähettääkseen käyttäjän antaman hakusanan <strong>Papunetin kuvapankin hakuun</strong>
+                (<code>https://kuha.papunet.net</code>).</li>
+            <li>Hakutulokset näytetään sovelluksessa, mutta mitään käyttäjän toimintoja ei tallenneta tai jaeta
+                eteenpäin.
+            </li>
+            <li>Firebase-palvelun kautta seuratakseen sovelluksen käyttötilastoja ja kaatumisia.</li>
+        </ul>
+        <h2 id="4-analytiikka-ja-virheraportointi">4. Analytiikka ja virheraportointi</h2>
+        <p>Kuvari-sovellus käyttää <strong>Google Firebase Analyticsia ja Firebase Crashlyticsia</strong> sovelluksen
+            kehittämiseksi ja virheiden korjaamiseksi. Näiden avulla kerätään <strong>anonyymiä tietoa</strong>
+            seuraavista
+            asioista:</p>
+        <ul>
+            <li><strong>Sovelluksen kaatumiset ja virhetilanteet</strong> (Crashlytics).</li>
+            <li><strong>Sovelluksen eri toimintojen käyttö (Firebase Analytics):</strong>
+                <ul>
+                    <li>Sovelluksen avaus ja käyttöaktiivisuus.</li>
+                    <li>Hakutoiminnon käyttö (mutta ei hakusanoja).</li>
+                    <li>Kuvajonojen tallennusten määrä (mutta ei kuvia tai nimiä).</li>
+                    <li>Kuvajonojen katseluiden määrä.</li>
+                </ul>
+            </li>
+        </ul>
+        <p>📌 <strong>Tärkeitä huomioita:</strong></p>
+        <ul>
+            <li><strong>Sovellus ei tallenna käyttäjän hakusanoja, valittuja kuvia tai muita sisältötietoja.</strong>
+            </li>
+            <li><strong>Firebase Analytics ei kerää mitään henkilökohtaisesti tunnistettavia tietoja.</strong></li>
+            <li><strong>Tiedot ovat anonyymejä, eikä niitä voida yhdistää yksittäiseen käyttäjään.</strong></li>
+        </ul>
+        <h2 id="5-kolmansien-osapuolten-palvelut">5. Kolmansien osapuolten palvelut</h2>
+        <p>Kuvari-sovellus käyttää seuraavia kolmannen osapuolen palveluita:</p>
+        <ul>
+            <li><strong>Google Firebase Analytics</strong> (käytön analysointiin, ilman käyttäjätietoja).</li>
+            <li><strong>Google Firebase Crashlytics</strong> (kaatumisten ja virheiden seurantaan).</li>
+        </ul>
+        <p>Nämä palvelut eivät kerää mitään tunnistettavia henkilökohtaisia tietoja, eivätkä ne tallenna yksittäisiä
+            hakusanoja tai kuvajonojen sisältöä.</p>
+        <h2 id="6-oikeutesi">6. Oikeutesi</h2>
+        <p>Koska Kuvari-sovellus ei käsittele henkilötietoja, käyttäjillä ei ole tarpeita pyytää tietojen poistamista
+            tai
+            muokkaamista.</p>
+        <h2 id="7-yhteystiedot">7. Yhteystiedot</h2>
+        <p>Jos sinulla on kysyttävää Kuvari-sovelluksen tietosuojakäytännöistä, voit ottaa yhteyttä:
+            📧 <strong>snellmandev@gmail.com</strong></p>
+        <p><a href="index.html">⬅ Palaa etusivulle</a></p>
+    </div>
 </body>
 
 </html>
