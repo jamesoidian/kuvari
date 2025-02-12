@@ -80,10 +80,7 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
                 scrollDirection: Axis.horizontal,
                 onReorder: widget.onReorder,
                 children: [
-                  for (int i = widget.currentStartIndex; 
-                       i < (widget.currentStartIndex + widget.maxVisibleImages)
-                           .clamp(0, widget.selectedImages.length); 
-                       i++)
+                  for (int i = 0; i < widget.selectedImages.length; i++)
                     GestureDetector(
                       key: ValueKey(widget.selectedImages[i]),
                       onTap: () => widget.onRemove(i),
