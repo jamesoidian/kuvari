@@ -1,44 +1,45 @@
-# Integritetspolicy – Kuvari
+# Privacy Policy – Kuvari
 
-**Senast uppdaterad:** *12.02.2025*
+**Last updated:** *(add date here)*
 
-## 1. Allmänt
-Kuvari är en mobilapplikation som möjliggör sökning och organisering av bilder från Papunets bildbank som stöd för kommunikation. Denna integritetspolicy beskriver hur applikationen hanterar användardata och analys.
+## 1. General Information
+Kuvari is a mobile application that enables searching and organizing images from the Papunet image bank to support communication. This privacy policy describes how the application handles user data and analytics.
 
-## 2. Insamlad information
-Kuvari-appen **samlar inte in, lagrar eller delar någon personlig information**. Appen kräver ingen registrering, användarnamn eller lösenord, och den sparar inte heller de sökord eller bilder som användaren väljer.
+## 2. Collected Information
+The Kuvari app **does not collect, store, or share any personal information**. The app does not require registration, usernames, or passwords, and it does not store search terms or selected images.
 
-## 3. Hur appen använder internetanslutning
-Appen använder internet endast för följande ändamål:
-- För att skicka det sökord som användaren anger till **Papunets bildbank** (`https://kuha.papunet.net`).
-- Sökresultaten visas i appen, men inga användaruppgifter lagras eller delas vidare.
-- För att spåra användningsstatistik och krascher via Firebase.
+## 3. How the App Uses Internet Connection
+The app uses the internet only for the following purposes:
+- To send the search term entered by the user to **Papunet’s image bank** (`https://kuha.papunet.net`).
+- Search results are displayed in the app, but no user data is stored or shared.
+- To track usage statistics and crashes via Firebase.
 
-## 4. Analys och felrapportering
-Kuvari använder **Google Firebase Analytics och Firebase Crashlytics** för att förbättra applikationen och åtgärda fel. Genom dessa tjänster samlas **anonym information** om:
+## 4. Analytics and Error Reporting
+Kuvari uses **Google Firebase Analytics and Firebase Crashlytics** to improve the application and fix errors. These services collect **anonymous information** about:
 
-- **Appens krascher och fel (Crashlytics).**
-- **Användning av olika funktioner i appen (Firebase Analytics):**
-  - Appens öppningar och användningsfrekvens.
-  - Användning av sökfunktionen (men inte de sökord som används).
-  - Antal sparade bildsekvenser (men inte deras innehåll eller namn).
-  - Antal visningar av sparade bildsekvenser.
+- **App crashes and errors (Crashlytics).**
+- **Usage of different app functions (Firebase Analytics):**
+  - App openings and usage frequency.
+  - Use of the search function (but not search terms).
+  - Number of saved image sequences (but not their content or names).
+  - Number of views of saved image sequences.
 
-📌 **Viktiga punkter:**
-- **Appen sparar inte användarens sökord, valda bilder eller annat innehåll.**
-- **Firebase Analytics samlar inte in någon personligt identifierbar information.**
-- **Data är anonym och kan inte kopplas till en enskild användare.**
+📌 **Important Notes:**
+- **The app does not store user search terms, selected images, or other content.**
+- **Firebase Analytics does not collect any personally identifiable information.**
+- **Data is anonymous and cannot be linked to an individual user.**
 
-## 5. Tjänster från tredje part
-Kuvari-appen använder följande tjänster från tredje part:
-- **Google Firebase Analytics** (för användningsanalys utan användardata).
-- **Google Firebase Crashlytics** (för att övervaka krascher och fel).
+## 5. Third-Party Services
+The Kuvari app uses the following third-party services:
+- **Google Firebase Analytics** (for usage analytics without user data).
+- **Google Firebase Crashlytics** (for monitoring crashes and errors).
 
-Dessa tjänster samlar inte in någon personligt identifierbar information, och de lagrar inte individuella sökord eller innehållet i bildsekvenser.
+These services do not collect personally identifiable information and do not store individual search terms or the content of image sequences.
 
-## 6. Dina rättigheter
-Eftersom Kuvari-appen inte hanterar personuppgifter, finns det ingen anledning för användare att begära borttagning eller ändring av data.
+## 6. Your Rights
+Since the Kuvari app does not process personal data, there is no need for users to request the deletion or modification of data.
 
-## 7. Kontaktinformation
-Om du har frågor om Kuvari-appens integritetspolicy, vänligen kontakta oss:
-📧 **snellmandev@gmail.com**
+## 7. Contact Information
+If you have any questions regarding Kuvari's privacy policy, you can contact us:
+📧 **(add email address here)**
+
