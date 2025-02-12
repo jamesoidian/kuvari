@@ -16,7 +16,7 @@ class InfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Tietoa sovelluksesta')),
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.infoPageTitle)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -52,7 +52,7 @@ class InfoPage extends StatelessWidget {
                 GestureDetector(
                   onTap: () => _launchURL('https://www.rinnekodit.fi/'),
                   child: const Text(
-                    'Rinnekodit',
+                    'Rinnekodit Oy',
                     style: TextStyle(
                         fontSize: 16,
                         color: Colors.blue,
