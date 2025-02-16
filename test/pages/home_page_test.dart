@@ -15,12 +15,15 @@ import 'package:kuvari_app/widgets/selected_images_carousel.dart';
 import 'package:kuvari_app/widgets/kuvari_search_bar.dart';
 import 'home_page_test.mocks.dart';
 import 'dart:convert';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:kuvari_app/widgets/home_search_section.dart';
 
 // Määrittele mock-objekti
 @GenerateMocks([KuvariService])
-void main() {
+Future<void> main() async {
+  TestWidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   group('HomePage Widget Tests', () {
     late MockKuvariService mockKuvariService;
 
