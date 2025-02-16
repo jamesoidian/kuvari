@@ -12,6 +12,7 @@ import 'package:kuvari_app/pages/image_viewer_page.dart';
 import 'package:kuvari_app/pages/saved_image_stories_page.dart';
 import 'package:kuvari_app/pages/info_page.dart';
 import 'package:kuvari_app/widgets/kuvari_search_bar.dart';
+import 'package:kuvari_app/widgets/home_search_section.dart';
 import 'package:kuvari_app/widgets/selected_images_carousel.dart';
 import 'package:kuvari_app/widgets/image_grid.dart';
 import 'package:kuvari_app/widgets/category_selection_dialog.dart';
@@ -377,40 +378,13 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 8),
 
             // Hakukenttä
-            Row(
-              children: [
-                Expanded(
-                  child: KuvariSearchBar(
-                    controller: _searchController,
-                    onSearch: _search,
-                    onClear: _clearSearch,
-                    onTap: _onSearchFieldTap,
-                  ),
-                ),
-                IconButton(
-                  icon: Stack(
-                    children: [
-                      const Icon(Icons.filter_list),
-                      if (_selectedCategories.length <
-                          8) // Jos kaikki kategoriat eivät ole valittuina
-                        Positioned(
-                          right: 0,
-                          top: 0,
-                          child: Container(
-                            width: 12,
-                            height: 12,
-                            decoration: const BoxDecoration(
-                              color: Colors.red,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                        ),
-                    ],
-                  ),
-                  onPressed: _selectCategories,
-                  tooltip: AppLocalizations.of(context)!.selectCategories,
-                ),
-              ],
+            HomeSearchSection(
+              controller: _searchController,
+              onSearch: _search,
+              onClear: _clearSearch,
+              onTap: _onSearchFieldTap,
+              onSelectCategories: _selectCategories,
+              showFilterBadge: _selectedCategories.length < 8,
             ),
             const SizedBox(height: 8),
 
