@@ -214,6 +214,7 @@ Future<void> main() async {
       // Voit tarkistaa valittujen kuvien määrän
       // Tämä riippuu SelectedImagesCarouselin toteutuksesta
       // Tässä esimerkissä emme tiedä tarkkaa rakennetta, joten tämä on yleinen tarkastus
+    });
 
     testWidgets('Displays HomeSearchSection widget', (WidgetTester tester) async {
       await tester.pumpWidget(
@@ -229,25 +230,11 @@ Future<void> main() async {
           home: HomePage(
             kuvariService: mockKuvariService,
             setLocale: (_) {},
-            analytics: FirebaseAnalytics.instance,
+            analytics: FakeFirebaseAnalytics(),
           ),
         ),
       );
       expect(find.byType(HomeSearchSection), findsOneWidget);
-    });
-      // Voit lisätä tarkempia tarkastuksia riippuen siitä, miten SelectedImagesCarousel toimii
-
-      // Poista valittu kuva
-      // Tämä riippuu siitä, miten poisto toimii UI:ssa, esimerkiksi tappamalla poistokuvaketta
-      // Tässä oletetaan, että SelectedImagesCarousel sisältää poistokuvakkeen (esim. IconButton)
-      // Jos SelectedImagesCarousel sisältää esimerkiksi X-ikonin jokaiselle kuvalle:
-      // await tester.tap(find.byIcon(Icons.close).first);
-      // await tester.pump();
-
-      // Voit lisätä tarkastuksia, että kuva on poistettu
-      // expect(find.byType(SelectedImagesCarousel), findsNothing);
-      // tai tarkista valittujen kuvien määrä
-      // Tämä riippuu siitä, miten SelectedImagesCarousel päivittää UI:ta
     });
   });
 }
