@@ -45,7 +45,7 @@ void main() {
         ),
       );
 
-      await tester.pumpAndSettle();
+      await tester.pump(const Duration(milliseconds: 100));
 
       expect(find.text('Kuvatarina 1'), findsOneWidget);
     });
@@ -67,7 +67,7 @@ void main() {
         ),
       );
 
-      await tester.pumpAndSettle();
+      await tester.pump(const Duration(milliseconds: 100));
 
       final context = tester.element(find.byType(SavedImageStoriesPage));
       final noStoriesText = AppLocalizations.of(context)!.noSavedImageStories;
