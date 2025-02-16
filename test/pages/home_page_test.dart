@@ -15,6 +15,8 @@ import 'package:kuvari_app/widgets/selected_images_carousel.dart';
 import 'package:kuvari_app/widgets/kuvari_search_bar.dart';
 import 'home_page_test.mocks.dart';
 import 'dart:convert';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:kuvari_app/widgets/home_search_section.dart';
 
 // Määrittele mock-objekti
 @GenerateMocks([KuvariService])
@@ -87,6 +89,7 @@ void main() {
           home: HomePage(
             kuvariService: mockKuvariService,
             setLocale: (_) {}, // Empty function for testing
+            analytics: FirebaseAnalytics.instance,
           ),
         ),
       );
@@ -123,6 +126,7 @@ void main() {
           home: HomePage(
             kuvariService: mockKuvariService,
             setLocale: (_) {}, // Empty function for testing
+            analytics: FirebaseAnalytics.instance,
           ),
         ),
       );
@@ -177,6 +181,7 @@ void main() {
           home: HomePage(
             kuvariService: mockKuvariService,
             setLocale: (_) {}, // Empty function for testing
+            analytics: FirebaseAnalytics.instance,
           ),
         ),
       );
