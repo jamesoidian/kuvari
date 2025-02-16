@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:kuvari_app/models/image_story.dart';
@@ -26,8 +27,16 @@ class FakeHiveBox<T> extends Fake implements Box<T> {
   }
 
   @override
-  Future<void> clear() async {
+  Future<int> clear() async {
     _values.clear();
+    return 0;
+  }
+
+  // Override the watch method used by Hive.
+  @override
+  Stream<BoxEvent> watch({Object? key, bool fireImmediately = false}) {
+    // Return an empty stream, since no events must be fired during tests.
+    return const Stream<BoxEvent>.empty();
   }
 }
 
@@ -66,7 +75,8 @@ void main() {
       expect(find.text('Kuvatarina 1'), findsOneWidget);
     });
 
-    testWidgets("Shows message when no saved image stories are available", (tester) async {
+    testWidgets("Shows message when no saved image stories are available",
+        (tester) async {
       await box.clear();
 
       await tester.pumpWidget(
