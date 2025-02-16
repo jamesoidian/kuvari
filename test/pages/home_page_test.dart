@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:fake_async/fake_async.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
@@ -20,10 +21,16 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:kuvari_app/widgets/home_search_section.dart';
 
 // Määrittele mock-objekti
+class FakeFirebaseAnalytics extends Fake implements FirebaseAnalytics {
+  @override
+  Future<void> logEvent({required String name, Map<String, dynamic>? parameters}) async {
+    // Do nothing in tests
+  }
+}
+
 @GenerateMocks([KuvariService])
 Future<void> main() async {
   TestWidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   group('HomePage Widget Tests', () {
     late MockKuvariService mockKuvariService;
 
@@ -92,7 +99,7 @@ Future<void> main() async {
           home: HomePage(
             kuvariService: mockKuvariService,
             setLocale: (_) {}, // Empty function for testing
-            analytics: FirebaseAnalytics.instance,
+            analytics: FakeFirebaseAnalytics(),
           ),
         ),
       );
@@ -129,7 +136,7 @@ Future<void> main() async {
           home: HomePage(
             kuvariService: mockKuvariService,
             setLocale: (_) {}, // Empty function for testing
-            analytics: FirebaseAnalytics.instance,
+            analytics: FakeFirebaseAnalytics(),
           ),
         ),
       );
@@ -184,7 +191,7 @@ Future<void> main() async {
           home: HomePage(
             kuvariService: mockKuvariService,
             setLocale: (_) {}, // Empty function for testing
-            analytics: FirebaseAnalytics.instance,
+            analytics: FakeFirebaseAnalytics(),
           ),
         ),
       );
