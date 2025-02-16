@@ -199,6 +199,27 @@ void main() {
       // Voit tarkistaa valittujen kuvien määrän
       // Tämä riippuu SelectedImagesCarouselin toteutuksesta
       // Tässä esimerkissä emme tiedä tarkkaa rakennetta, joten tämä on yleinen tarkastus
+
+    testWidgets('Displays HomeSearchSection widget', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: const Locale('fi'),
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [Locale('fi'), Locale('sv')],
+          home: HomePage(
+            kuvariService: mockKuvariService,
+            setLocale: (_) {},
+            analytics: FirebaseAnalytics.instance,
+          ),
+        ),
+      );
+      expect(find.byType(HomeSearchSection), findsOneWidget);
+    });
       // Voit lisätä tarkempia tarkastuksia riippuen siitä, miten SelectedImagesCarousel toimii
 
       // Poista valittu kuva
