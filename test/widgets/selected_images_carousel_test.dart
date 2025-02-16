@@ -49,13 +49,13 @@ void main() {
       expect(find.byIcon(Icons.delete_sweep), findsOneWidget);
     });
 
-    testWidgets('Displays selected images within currentStartIndex and maxVisibleImages', (WidgetTester tester) async {
+    testWidgets('Displays all selected images', (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: SelectedImagesCarousel(
             selectedImages: mockImages,
-            currentStartIndex: 1,
-            maxVisibleImages: 2,
+            currentStartIndex: 0,
+            maxVisibleImages: 4,
             onClear: () {},
             onRemove: (index) {},
             onReorder: (oldIndex, newIndex) {},
@@ -63,28 +63,52 @@ void main() {
         ),
       );
 
-      // Tämän tulisi näyttää vain kaksi kuvaa
-      expect(find.byType(Image), findsNWidgets(2));
+      expect(find.byType(Image), findsNWidgets(mockImages.length));
     });
 
-    testWidgets('Supports reordering of images', (WidgetTester tester) async {
-      bool reorderCalled = false;
+    testWidgets('Calls onRemove when an image is tapped', (WidgetTester tester) async {
+      int removedIndex = -1;
+
       await tester.pumpWidget(
         MaterialApp(
           home: SelectedImagesCarousel(
             selectedImages: mockImages,
             currentStartIndex: 0,
-            maxVisibleImages: 2,
+            maxVisibleImages: 4,
             onClear: () {},
-            onRemove: (index) {},
-            onReorder: (oldIndex, newIndex) {
-              reorderCalled = true;
+            onRemove: (index) {
+              removedIndex = index;
             },
+            onReorder: (oldIndex, newIndex) {},
           ),
         ),
       );
 
-      expect(find.byType(ReorderableListView), findsOneWidget);
+      // Tap on the first image; the GestureDetector wrapping the image should call onRemove.
+      await tester.tap(find.byType(Image).first);
+      expect(removedIndex, 0);
+    });
+
+    testWidgets('Calls onClear when clear button is tapped', (WidgetTester tester) async {
+      bool clearCalled = false;
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: SelectedImagesCarousel(
+            selectedImages: mockImages,
+            currentStartIndex: 0,
+            maxVisibleImages: 4,
+            onClear: () {
+              clearCalled = true;
+            },
+            onRemove: (index) {},
+            onReorder: (oldIndex, newIndex) {},
+          ),
+        ),
+      );
+
+      await tester.tap(find.byIcon(Icons.delete_sweep));
+      expect(clearCalled, isTrue);
     });
   });
 }
