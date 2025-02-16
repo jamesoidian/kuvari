@@ -10,14 +10,17 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 class SavedImageStoriesPage extends StatefulWidget {
-  const SavedImageStoriesPage({super.key});
+  final Box<ImageStory>? imageStoriesBox;
+
+  const SavedImageStoriesPage({super.key, this.imageStoriesBox});
 
   @override
   State<SavedImageStoriesPage> createState() => _SavedImageStoriesPageState();
 }
 
 class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
-  final Box<ImageStory> imageStoriesBox = Hive.box<ImageStory>('imageStories');
+  late final Box<ImageStory> imageStoriesBox = 
+      widget.imageStoriesBox ?? Hive.box<ImageStory>('imageStories');
   final Map<String, int> _currentStartIndices = {};
   int _maxVisibleImages = 1;
 
