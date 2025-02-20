@@ -97,6 +97,14 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
                       icon: Stack(
                         alignment: Alignment.center,
                         children: [
+                          Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.teal,
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
                           Icon(
                             Icons.play_arrow,
                             color: Colors.white,
