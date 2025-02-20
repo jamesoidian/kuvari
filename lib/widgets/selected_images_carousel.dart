@@ -41,6 +41,12 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
   }
 
   @override
+  void didUpdateWidget(covariant SelectedImagesCarousel oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    WidgetsBinding.instance.addPostFrameCallback((_) => _updateScrollButtons());
+  }
+
+  @override
   void dispose() {
     _scrollController.dispose();
     super.dispose();
@@ -54,7 +60,8 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
     if (!mounted) return;
     setState(() {
       _canScrollLeft = _scrollController.hasClients && _scrollController.offset > 0;
-      _canScrollRight = _scrollController.hasClients && 
+      _canScrollRight = _scrollController.hasClients &&
+          _scrollController.position.maxScrollExtent > 0 &&
           _scrollController.offset < _scrollController.position.maxScrollExtent;
     });
   }
