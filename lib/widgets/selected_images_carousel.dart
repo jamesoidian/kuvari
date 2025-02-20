@@ -59,7 +59,8 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
   void _updateScrollButtons() {
     if (!mounted) return;
     setState(() {
-      _canScrollLeft = _scrollController.hasClients && _scrollController.offset > 0;
+      _canScrollLeft =
+          _scrollController.hasClients && _scrollController.offset > 0;
       _canScrollRight = _scrollController.hasClients &&
           _scrollController.position.maxScrollExtent > 0 &&
           _scrollController.offset < _scrollController.position.maxScrollExtent;
@@ -79,7 +80,7 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
         children: [
           // Kuvajono
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40.0),
+            padding: EdgeInsets.only(right: widget.showClearButton ? 40.0 : 0.0), 
             child: SizedBox(
               height: 80,
               child: ReorderableListView(
@@ -102,12 +103,16 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
-                                loadingBuilder: (context, child, loadingProgress) {
+                                loadingBuilder:
+                                    (context, child, loadingProgress) {
                                   if (loadingProgress == null) return child;
-                                  return const Center(child: CircularProgressIndicator(strokeWidth: 2));
+                                  return const Center(
+                                      child: CircularProgressIndicator(
+                                          strokeWidth: 2));
                                 },
                                 errorBuilder: (context, error, stackTrace) {
-                                  return const Icon(Icons.broken_image, size: 60);
+                                  return const Icon(Icons.broken_image,
+                                      size: 60);
                                 },
                               ),
                             ),
@@ -140,16 +145,19 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
               left: 0,
               top: 0,
               bottom: 0,
-              child: Container(
-                width: 40,
-                color: Colors.black26,
-                alignment: Alignment.center,
-                child: const Icon(Icons.arrow_back_ios, color: Colors.white),
+              child: Opacity(
+                opacity: 0.8,
+                child: Container(
+                  width: 40,
+                  color: Colors.black26,
+                  alignment: Alignment.center,
+                  child: const Icon(Icons.arrow_back_ios, color: Colors.white),
+                ),
               ),
             ),
           if (_canScrollRight)
             Positioned(
-              right: 40,
+              right: widget.showClearButton ? 40 : 0,
               top: 0,
               bottom: 0,
               child: Container(
