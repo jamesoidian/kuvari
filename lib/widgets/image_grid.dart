@@ -18,11 +18,14 @@ class ImageGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final orientation = MediaQuery.of(context).orientation;
+    final crossAxisCount = orientation == Orientation.landscape ? 4 : 2;
+
     return images.isEmpty
         ? Center(child: Text(AppLocalizations.of(context)!.noResults))
         : GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, // kaksi saraketta rinnakkain
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: crossAxisCount,
               childAspectRatio: 0.8,
             ),
             itemCount: images.length,
