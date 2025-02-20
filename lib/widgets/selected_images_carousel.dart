@@ -80,7 +80,8 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
         children: [
           // Kuvajono
           Padding(
-            padding: EdgeInsets.only(right: widget.showClearButton ? 40.0 : 0.0), 
+            padding:
+                EdgeInsets.only(right: widget.showClearButton ? 40.0 : 0.0),
             child: SizedBox(
               height: 80,
               child: ReorderableListView(
@@ -91,7 +92,6 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
                   for (int i = 0; i < widget.selectedImages.length; i++)
                     GestureDetector(
                       key: ValueKey(widget.selectedImages[i]),
-                      onTap: () => widget.onRemove(i),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 4.0),
                         child: Stack(
@@ -119,15 +119,18 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
                             Positioned(
                               right: 0,
                               top: 0,
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                  color: Colors.black54,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  Icons.close,
-                                  color: Colors.white,
-                                  size: 16,
+                              child: GestureDetector(
+                                onTap: () => widget.onRemove(i),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    color: Colors.black54,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(
+                                    Icons.close,
+                                    color: Colors.white,
+                                    size: 16,
+                                  ),
                                 ),
                               ),
                             ),
@@ -146,7 +149,7 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
               top: 0,
               bottom: 0,
               child: Opacity(
-                opacity: 0.8,
+                opacity: 0.9,
                 child: Container(
                   width: 40,
                   color: Colors.black26,
