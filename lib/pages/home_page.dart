@@ -227,6 +227,12 @@ class _HomePageState extends State<HomePage> {
                         content: Text(AppLocalizations.of(context)!
                             .imageStorySaved(newStory.name))),
                   );
+                  
+                  setState(() {
+                    _selectedImages.clear();
+                    _currentStartIndex = 0;
+                  });
+                  
                   Navigator.of(context).pop();
                 }
               },
