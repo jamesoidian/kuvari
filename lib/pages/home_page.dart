@@ -294,7 +294,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     _maxVisibleImages = calculateMaxVisibleImages(context);
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: () async {
+        // If there are selected images, block the pop event so the list isn't cleared.
+        if (_selectedImages.isNotEmpty) {
+          // Optionally, you could show a confirmation dialog here if you want to allow exit.
+          return false; // Prevents the back navigation.
+        }
+        return true; // Allows the back navigation if no images are selected.
+      },
+      child: Scaffold(
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.only(left: 8.0),
@@ -426,6 +435,7 @@ class _HomePageState extends State<HomePage> {
               ),
             )
           : null,
+      ),
     );
   }
 }
