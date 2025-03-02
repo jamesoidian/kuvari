@@ -401,29 +401,31 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _navigateToImageViewer,
-        tooltip: AppLocalizations.of(context)!.viewImageStory,
-        backgroundColor: Colors.teal, // FABin taustaväri
-        foregroundColor: Colors.white, // Ikonin oletusväri
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            // Ulompi ikoni toimii borderina
-            Icon(
-              Icons.play_arrow,
-              color: Colors.white, // Borderin väri
-              size: 30, // Suurempi koko borderille
-            ),
-            // Sisempi ikoni
-            Icon(
-              Icons.play_arrow,
-              color: Colors.teal, // Ikonin väri
-              size: 24, // Pienempi koko ikonille
-            ),
-          ],
-        ),
-      ),
+      floatingActionButton: _selectedImages.isNotEmpty
+          ? FloatingActionButton(
+              onPressed: _navigateToImageViewer,
+              tooltip: AppLocalizations.of(context)!.viewImageStory,
+              backgroundColor: Colors.teal, // FABin taustaväri
+              foregroundColor: Colors.white, // Ikonin oletusväri
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  // Ulompi ikoni toimii borderina
+                  Icon(
+                    Icons.play_arrow,
+                    color: Colors.white, // Borderin väri
+                    size: 30, // Suurempi koko borderille
+                  ),
+                  // Sisempi ikoni
+                  Icon(
+                    Icons.play_arrow,
+                    color: Colors.teal, // Ikonin väri
+                    size: 24, // Pienempi koko ikonille
+                  ),
+                ],
+              ),
+            )
+          : null,
     );
   }
 }
