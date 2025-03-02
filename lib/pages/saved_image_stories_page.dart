@@ -53,8 +53,18 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
               child: Text(AppLocalizations.of(context)!.noSavedImageStories),
             );
           }
-
-          return ListView.builder(
+ return Column(                                                                                                                             
+   crossAxisAlignment: CrossAxisAlignment.start,                                                                                            
+   children: [                                                                                                                              
+     Padding(                                                                                                                               
+       padding: const EdgeInsets.all(8.0),                                                                                                  
+       child: Text(                                                                                                                         
+         AppLocalizations.of(context)!.deleteInfoLabel,                                                                                     
+         style: TextStyle(fontSize: 14, color: Colors.grey[600]),                                                                           
+       ),                                                                                                                                   
+     ),                                                                                                                                     
+     Expanded(   
+          child: ListView.builder(
             itemCount: stories.length,
             itemBuilder: (context, index) {
               final ImageStory story = stories[index];
@@ -143,6 +153,7 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
               );
             },
           );
+     );
         },
       ),
     );
