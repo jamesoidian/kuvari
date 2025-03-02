@@ -121,6 +121,7 @@ class _HomePageState extends State<HomePage> {
         _currentStartIndex = max(0, _selectedImages.length - _maxVisibleImages);
       }
       _shouldSelectAll = true;
+      _searchController.clear(); // Clears the search field upon selection.
     });
   }
 
