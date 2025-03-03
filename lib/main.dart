@@ -84,7 +84,7 @@ class _KuvariAppState extends State<KuvariApp> {
 
     return MaterialApp(
       navigatorObservers: [observer],
-      onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
+      onGenerateTitle: (context) => "KUVARI",
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
