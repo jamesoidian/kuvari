@@ -31,7 +31,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       leadingWidth: 80.0,
       title: Text(
-        AppLocalizations.of(context)!.appTitle,
+        "KUVARI",
         style: const TextStyle(fontWeight: FontWeight.bold),
       ),
       centerTitle: true,

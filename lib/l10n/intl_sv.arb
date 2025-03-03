@@ -1,6 +1,5 @@
 {
   "@@locale": "sv",
-  "appTitle": "Kuvari",
   "searchHint": "Sök bilder med sökordet t.ex. leende",
   "noResults": "Inga sökresultat",
   "infoPageTitle": "Om applikationen",
@@ -61,5 +60,5 @@
   "yes": "Ja",
   "showImages": "Visa bilder",
   "noSavedStories": "Du har inga sparade bildberättelser.",
-   "deleteInfoLabel": "Radera raden genom att svepa åt höger"    
+   "deleteInfoLabel": "Radera raden genom att svepa åt vänster"    
 }
