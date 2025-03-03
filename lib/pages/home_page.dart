@@ -9,14 +9,11 @@ import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/services/kuvari_service.dart';
 import 'package:kuvari_app/pages/image_viewer_page.dart';
-import 'package:kuvari_app/pages/saved_image_stories_page.dart';
-import 'package:kuvari_app/pages/info_page.dart';
-import 'package:kuvari_app/widgets/kuvari_search_bar.dart';
+import 'package:kuvari_app/widgets/home_app_bar.dart';
 import 'package:kuvari_app/widgets/home_search_section.dart';
 import 'package:kuvari_app/widgets/selected_images_carousel.dart';
 import 'package:kuvari_app/widgets/image_grid.dart';
 import 'package:kuvari_app/widgets/category_selection_dialog.dart';
-import 'package:kuvari_app/widgets/language_selector.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
@@ -221,18 +218,18 @@ class _HomePageState extends State<HomePage> {
                       'image_count': newStory.images.length,
                     },
                   );
-                  
+
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                         content: Text(AppLocalizations.of(context)!
                             .imageStorySaved(newStory.name))),
                   );
-                  
+
                   setState(() {
                     _selectedImages.clear();
                     _currentStartIndex = 0;
                   });
-                  
+
                   Navigator.of(context).pop();
                 }
               },
@@ -311,137 +308,77 @@ class _HomePageState extends State<HomePage> {
         return true; // Allows the back navigation if no images are selected.
       },
       child: Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 8.0),
-          child: LanguageSelector(
-            currentLocale: Localizations.localeOf(context),
-            onLocaleChange: widget.setLocale,
-          ),
+        appBar: HomeAppBar(
+          selectedImages: _selectedImages,
+          onSave: _saveImageStory,
+          setLocale: widget.setLocale,
+          analytics: widget.analytics,
         ),
-        leadingWidth: 80.0,
-        title: Text(
-          AppLocalizations.of(context)!.appTitle,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.teal,
-        foregroundColor: Colors.white,
-        shadowColor: Colors.tealAccent, // Varjon väri
-        elevation: 6.0, // Varjon korkeus
-        surfaceTintColor: Colors.teal.shade700, // Material 3 pinnansävy
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(16.0),
-          ),
-        ), // Pyöristetyt reunat
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.teal, Colors.teal.shade700],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        ), // Gradient taustalle
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.save),
-            onPressed: _selectedImages.isNotEmpty ? _saveImageStory : null,
-            tooltip: AppLocalizations.of(context)!.saveImageStory,
-          ),
-          IconButton(
-            icon: const Icon(Icons.list),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => const SavedImageStoriesPage(),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              // Kuvajono valituista kuvista ja tyhjennysikoni
+              if (_selectedImages.isNotEmpty)
+                SelectedImagesCarousel(
+                  selectedImages: _selectedImages,
+                  currentStartIndex: _currentStartIndex,
+                  maxVisibleImages: _maxVisibleImages,
+                  onClear: _clearSelectedImages,
+                  onRemove: _removeSelectedImage,
+                  onReorder: _onReorderSelectedImages,
                 ),
-              );
-            },
-            tooltip: AppLocalizations.of(context)!.savedImageStories,
-          ),
-          IconButton(
-            icon: const Icon(Icons.info),
-            onPressed: () {
-              widget.analytics.logEvent(name: 'view_info_page'); 
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => const InfoPage(),
-                ),
-              );
-            },
-            tooltip: AppLocalizations.of(context)!.info,
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            // Kuvajono valituista kuvista ja tyhjennysikoni
-            if (_selectedImages.isNotEmpty)
-              SelectedImagesCarousel(
-                selectedImages: _selectedImages,
-                currentStartIndex: _currentStartIndex,
-                maxVisibleImages: _maxVisibleImages,
-                onClear: _clearSelectedImages,
-                onRemove: _removeSelectedImage,
-                onReorder: _onReorderSelectedImages,
+              const SizedBox(height: 8),
+
+              // Hakukenttä
+              HomeSearchSection(
+                controller: _searchController,
+                onSearch: _search,
+                onClear: _clearSearch,
+                onTap: _onSearchFieldTap,
+                onSelectCategories: _selectCategories,
+                showFilterBadge: _selectedCategories.length < 8,
               ),
-            const SizedBox(height: 8),
+              const SizedBox(height: 8),
 
-            // Hakukenttä
-            HomeSearchSection(
-              controller: _searchController,
-              onSearch: _search,
-              onClear: _clearSearch,
-              onTap: _onSearchFieldTap,
-              onSelectCategories: _selectCategories,
-              showFilterBadge: _selectedCategories.length < 8,
-            ),
-            const SizedBox(height: 8),
-
-            // Ladataan tai näytetään hakutulokset
-            Expanded(
-              child: _isLoading
-                  ? const Center(child: CircularProgressIndicator())
-                  : ImageGrid(
-                      images: _images,
-                      selectedImages: _selectedImages,
-                      onSelect: _selectImage,
+              // Ladataan tai näytetään hakutulokset
+              Expanded(
+                child: _isLoading
+                    ? const Center(child: CircularProgressIndicator())
+                    : ImageGrid(
+                        images: _images,
+                        selectedImages: _selectedImages,
+                        onSelect: _selectImage,
+                      ),
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: _selectedImages.isNotEmpty
+            ? FloatingActionButton(
+                onPressed: _navigateToImageViewer,
+                tooltip: AppLocalizations.of(context)!.viewImageStory,
+                backgroundColor: Colors.teal, // FABin taustaväri
+                foregroundColor: Colors.white, // Ikonin oletusväri
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    // Ulompi ikoni toimii borderina
+                    Icon(
+                      Icons.play_arrow,
+                      color: Colors.white, // Borderin väri
+                      size: 30, // Suurempi koko borderille
                     ),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: _selectedImages.isNotEmpty
-          ? FloatingActionButton(
-              onPressed: _navigateToImageViewer,
-              tooltip: AppLocalizations.of(context)!.viewImageStory,
-              backgroundColor: Colors.teal, // FABin taustaväri
-              foregroundColor: Colors.white, // Ikonin oletusväri
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  // Ulompi ikoni toimii borderina
-                  Icon(
-                    Icons.play_arrow,
-                    color: Colors.white, // Borderin väri
-                    size: 30, // Suurempi koko borderille
-                  ),
-                  // Sisempi ikoni
-                  Icon(
-                    Icons.play_arrow,
-                    color: Colors.teal, // Ikonin väri
-                    size: 24, // Pienempi koko ikonille
-                  ),
-                ],
-              ),
-            )
-          : null,
+                    // Sisempi ikoni
+                    Icon(
+                      Icons.play_arrow,
+                      color: Colors.teal, // Ikonin väri
+                      size: 24, // Pienempi koko ikonille
+                    ),
+                  ],
+                ),
+              )
+            : null,
       ),
     );
   }
