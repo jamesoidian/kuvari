@@ -56,7 +56,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.save),
+          icon: const Icon(Icons.save_as),
           onPressed: selectedImages.isNotEmpty ? onSave : null,
           tooltip: AppLocalizations.of(context)!.saveImageStory,
         ),
