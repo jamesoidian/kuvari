@@ -19,7 +19,7 @@ class SavedImageStoriesPage extends StatefulWidget {
 }
 
 class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
-  late final Box<ImageStory> imageStoriesBox = 
+  late final Box<ImageStory> imageStoriesBox =
       widget.imageStoriesBox ?? Hive.box<ImageStory>('imageStories');
   final Map<String, int> _currentStartIndices = {};
   int _maxVisibleImages = 1;
@@ -53,107 +53,111 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
               child: Text(AppLocalizations.of(context)!.noSavedImageStories),
             );
           }
- return Column(                                                                                                                             
-   crossAxisAlignment: CrossAxisAlignment.start,                                                                                            
-   children: [                                                                                                                              
-     Padding(                                                                                                                               
-       padding: const EdgeInsets.all(8.0),                                                                                                  
-       child: Text(                                                                                                                         
-         AppLocalizations.of(context)!.deleteInfoLabel,                                                                                     
-         style: TextStyle(fontSize: 14, color: Colors.grey[600]),                                                                           
-       ),                                                                                                                                   
-     ),                                                                                                                                     
-     Expanded(   
-          child: ListView.builder(
-            itemCount: stories.length,
-            itemBuilder: (context, index) {
-              final ImageStory story = stories[index];
-
-              return Dismissible(
-                key: Key(story.id),
-                direction: DismissDirection.endToStart,
-                background: Container(
-                  color: Colors.red,
-                  alignment: Alignment.centerRight,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: const Icon(
-                    Icons.delete,
-                    color: Colors.white,
-                    size: 30,
-                  ),
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  AppLocalizations.of(context)!.deleteInfoLabel,
+                  style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                 ),
-                onDismissed: (direction) {
-                  story.delete();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                        content: Text(AppLocalizations.of(context)!
-                            .imageStoryDeleted(story.name))),
-                  );
-                },
-                child: Card(
-                  margin: const EdgeInsets.all(8.0),
-                  child: ListTile(
-                    title: Text(story.name),
-                    subtitle: SelectedImagesCarousel(
-                      selectedImages: story.images,
-                      currentStartIndex: _currentStartIndices[story.id] ?? 0,
-                      maxVisibleImages: _maxVisibleImages,
-                      onClear: () {},
-                      onRemove: (i) {},
-                      showClearButton: false,
-                      onReorder: (int oldIndex, int newIndex) {},
-                    ),
-                    trailing: IconButton(
-                      icon: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              color: Colors.teal,
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                          Icon(
-                            Icons.play_arrow,
-                            color: Colors.white,
-                            size: 30,
-                          ),
-                          Icon(
-                            Icons.play_arrow,
-                            color: Colors.teal,
-                            size: 24,
-                          ),
-                        ],
-                      ),
-                      onPressed: () {
-                        final analytics = FirebaseAnalytics.instance;
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: stories.length,
+                  itemBuilder: (context, index) {
+                    final ImageStory story = stories[index];
 
-                        // Kirjaa katselutapahtuma
-                        analytics.logEvent(
-                          name: 'view_image_story',
-                          parameters: {
-                            'image_count': story.images.length,
-                            'source': 'saved_stories',
-                          },
-                        );
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) =>
-                                ImageViewerPage(images: story.images),
-                          ),
+                    return Dismissible(
+                      key: Key(story.id),
+                      direction: DismissDirection.endToStart,
+                      background: Container(
+                        color: Colors.red,
+                        alignment: Alignment.centerRight,
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: const Icon(
+                          Icons.delete,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                      ),
+                      onDismissed: (direction) {
+                        story.delete();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                              content: Text(AppLocalizations.of(context)!
+                                  .imageStoryDeleted(story.name))),
                         );
                       },
-                      tooltip: AppLocalizations.of(context)!.viewImageStory,
-                    ),
-                  ),
+                      child: Card(
+                        margin: const EdgeInsets.all(8.0),
+                        child: ListTile(
+                          title: Text(story.name),
+                          subtitle: SelectedImagesCarousel(
+                            selectedImages: story.images,
+                            currentStartIndex:
+                                _currentStartIndices[story.id] ?? 0,
+                            maxVisibleImages: _maxVisibleImages,
+                            onClear: () {},
+                            onRemove: (i) {},
+                            showClearButton: false,
+                            onReorder: (int oldIndex, int newIndex) {},
+                          ),
+                          trailing: IconButton(
+                            icon: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                    color: Colors.teal,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.play_arrow,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                                Icon(
+                                  Icons.play_arrow,
+                                  color: Colors.teal,
+                                  size: 24,
+                                ),
+                              ],
+                            ),
+                            onPressed: () {
+                              final analytics = FirebaseAnalytics.instance;
+
+                              // Kirjaa katselutapahtuma
+                              analytics.logEvent(
+                                name: 'view_image_story',
+                                parameters: {
+                                  'image_count': story.images.length,
+                                  'source': 'saved_stories',
+                                },
+                              );
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) =>
+                                      ImageViewerPage(images: story.images),
+                                ),
+                              );
+                            },
+                            tooltip:
+                                AppLocalizations.of(context)!.viewImageStory,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
-              );
-            },
+              ),
+            ],
           );
-     );
         },
       ),
     );
