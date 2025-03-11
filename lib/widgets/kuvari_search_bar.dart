@@ -74,7 +74,15 @@ class _KuvariSearchBarState extends State<KuvariSearchBar> {
         const SizedBox(width: 8),
         ElevatedButton(
           onPressed: widget.onSearch,
-          child: const Icon(Icons.search),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.teal,
+            foregroundColor: Colors.white,
+            shadowColor: Colors.tealAccent,
+          ),
+          child: const Icon(
+            Icons.search_outlined,
+            color: Colors.white,
+          ),
         ),
       ],
     );
