@@ -63,6 +63,6 @@ Kuvari on mobiilisovellus **Papunetin kuvapankin kuvien järjestämiseen ja näy
 
 ## Lisenssi
 
-Tämä projekti on lisensoitu **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)** -lisenssillä.\
+Tämä projekti on lisensoitu **MIT License (MIT))** -lisenssillä.\
 Katso lisätiedot tiedostosta [LICENSE](LICENSE).
 
