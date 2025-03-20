@@ -27,7 +27,7 @@ Kuvari is a mobile application for organizing and displaying images i.e. social 
 
 ## License
 
-This project is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)**.\
+This project is licensed under the **MIT License (MIT)**.\
 See the [LICENSE](LICENSE) file for details.
 
 ---
