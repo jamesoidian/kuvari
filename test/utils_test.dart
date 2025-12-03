@@ -6,12 +6,12 @@ void main() {
   group('calculateMaxVisibleImages Tests', () {
     testWidgets('returns correct value for small screen', (WidgetTester tester) async {
       // Set small screen size
-      tester.binding.window.physicalSizeTestValue = const Size(320, 568);
-      tester.binding.window.devicePixelRatioTestValue = 1.0;
+      tester.view.physicalSize = const Size(320, 568);
+      tester.view.devicePixelRatio = 1.0;
 
       addTearDown(() {
-        tester.binding.window.clearPhysicalSizeTestValue();
-        tester.binding.window.clearDevicePixelRatioTestValue();
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
       });
 
       BuildContext? testContext;
@@ -33,12 +33,12 @@ void main() {
 
     testWidgets('returns correct value for large screen', (WidgetTester tester) async {
       // Set large screen size
-      tester.binding.window.physicalSizeTestValue = const Size(1024, 768);
-      tester.binding.window.devicePixelRatioTestValue = 1.0;
+      tester.view.physicalSize = const Size(1024, 768);
+      tester.view.devicePixelRatio = 1.0;
 
       addTearDown(() {
-        tester.binding.window.clearPhysicalSizeTestValue();
-        tester.binding.window.clearDevicePixelRatioTestValue();
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
       });
 
       BuildContext? testContext;
@@ -60,12 +60,12 @@ void main() {
 
     testWidgets('never returns less than 1', (WidgetTester tester) async {
       // Set tiny screen size
-      tester.binding.window.physicalSizeTestValue = const Size(100, 100);
-      tester.binding.window.devicePixelRatioTestValue = 1.0;
+      tester.view.physicalSize = const Size(100, 100);
+      tester.view.devicePixelRatio = 1.0;
 
       addTearDown(() {
-        tester.binding.window.clearPhysicalSizeTestValue();
-        tester.binding.window.clearDevicePixelRatioTestValue();
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
       });
 
       BuildContext? testContext;
@@ -87,12 +87,12 @@ void main() {
 
     testWidgets('handles custom parameters correctly', (WidgetTester tester) async {
       // Set medium screen size
-      tester.binding.window.physicalSizeTestValue = const Size(600, 800);
-      tester.binding.window.devicePixelRatioTestValue = 1.0;
+      tester.view.physicalSize = const Size(600, 800);
+      tester.view.devicePixelRatio = 1.0;
 
       addTearDown(() {
-        tester.binding.window.clearPhysicalSizeTestValue();
-        tester.binding.window.clearDevicePixelRatioTestValue();
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
       });
 
       BuildContext? testContext;

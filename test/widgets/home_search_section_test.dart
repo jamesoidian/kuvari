@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kuvari_app/widgets/home_search_section.dart';
 import 'package:kuvari_app/widgets/kuvari_search_bar.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {

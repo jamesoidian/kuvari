@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-import 'package:uuid/uuid.dart';
+
 part of 'kuvari_image.dart';
 
 // **************************************************************************

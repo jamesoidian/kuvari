@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/pages/saved_image_stories_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:kuvari_app/l10n/app_localizations.dart';
 
 class FakeHiveBox<T> extends Fake implements Box<T> {
   final List<T> _values = [];
@@ -14,11 +14,7 @@ class FakeHiveBox<T> extends Fake implements Box<T> {
   @override
   Iterable<T> get values => _values;
 
-  @override
-  ValueListenable<Box<T>> listenable({Object? key}) {
-    // Return a fixed notifier that never fires notifications.
-    return ValueNotifier<Box<T>>(this);
-  }
+
 
   @override
   Future<int> add(T value) async {

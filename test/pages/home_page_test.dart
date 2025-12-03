@@ -7,7 +7,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:fake_async/fake_async.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/pages/home_page.dart';
 import 'package:kuvari_app/services/kuvari_service.dart';
@@ -54,7 +54,7 @@ Future<void> main() async {
 
       // Syötä hakusana ja aloita haku
       await tester.enterText(find.byType(TextField), 'test');
-      await tester.tap(find.byIcon(Icons.search));
+      await tester.tap(find.byIcon(Icons.search_outlined));
       await tester.pump(); // Aloita async toiminta
 
       // Tarkista, että CircularProgressIndicator näkyy
@@ -107,7 +107,7 @@ Future<void> main() async {
 
       // Syötä hakusana ja aloita haku
       await tester.enterText(find.byType(TextField), 'test');
-      await tester.tap(find.byIcon(Icons.search));
+      await tester.tap(find.byIcon(Icons.search_outlined));
       await tester.pump(); // Aloita async toiminta
       await tester.pump(const Duration(seconds: 2)); // Odota async toiminta
 
@@ -144,7 +144,7 @@ Future<void> main() async {
 
       // Syötä hakusana ja aloita haku
       await tester.enterText(find.byType(TextField), 'test');
-      await tester.tap(find.byIcon(Icons.search));
+      await tester.tap(find.byIcon(Icons.search_outlined));
       await tester.pump(); // Aloita async toiminta
       await tester.pump(const Duration(seconds: 2)); // Odota async toiminta
 
@@ -199,7 +199,7 @@ Future<void> main() async {
 
       // Syötä hakusana ja aloita haku
       await tester.enterText(find.byType(TextField), 'test');
-      await tester.tap(find.byIcon(Icons.search));
+      await tester.tap(find.byIcon(Icons.search_outlined));
       await tester.pump(); // Aloita async toiminta
       await tester.pump(const Duration(seconds: 2)); // Odota async toiminta
 

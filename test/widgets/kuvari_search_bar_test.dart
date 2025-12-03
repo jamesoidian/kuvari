@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:kuvari_app/widgets/kuvari_search_bar.dart';
 
 void main() {
   group('KuvariSearchBar Widget Tests', () {
     testWidgets('Displays clear button when text is entered and calls onClear when pressed', (WidgetTester tester) async {
       final controller = TextEditingController();
-      bool onSearchCalled = false;
+
       bool onClearCalled = false;
 
       await tester.pumpWidget(
@@ -27,7 +27,7 @@ void main() {
           home: Scaffold(
             body: KuvariSearchBar(
               controller: controller,
-              onSearch: () { onSearchCalled = true; },
+              onSearch: () {},
               onClear: () { 
                 onClearCalled = true; 
                 controller.clear(); // Tyhjennä tekstikenttä

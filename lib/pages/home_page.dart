@@ -14,7 +14,7 @@ import 'package:kuvari_app/widgets/home_search_section.dart';
 import 'package:kuvari_app/widgets/selected_images_carousel.dart';
 import 'package:kuvari_app/widgets/image_grid.dart';
 import 'package:kuvari_app/widgets/category_selection_dialog.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 class HomePage extends StatefulWidget {
@@ -298,15 +298,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     _maxVisibleImages = calculateMaxVisibleImages(context);
-    return WillPopScope(
-      onWillPop: () async {
-        // If there are selected images, block the pop event so the list isn't cleared.
-        if (_selectedImages.isNotEmpty) {
-          // Optionally, you could show a confirmation dialog here if you want to allow exit.
-          return false; // Prevents the back navigation.
-        }
-        return true; // Allows the back navigation if no images are selected.
-      },
+    return PopScope(
+      canPop: _selectedImages.isEmpty,
       child: Scaffold(
         appBar: HomeAppBar(
           selectedImages: _selectedImages,

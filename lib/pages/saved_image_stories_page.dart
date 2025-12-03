@@ -6,7 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/pages/image_viewer_page.dart';
 import 'package:kuvari_app/widgets/selected_images_carousel.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 class SavedImageStoriesPage extends StatefulWidget {
