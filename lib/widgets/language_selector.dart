@@ -26,6 +26,10 @@ class LanguageSelector extends StatelessWidget {
           value: Locale('sv'),
           child: Text('SE', style: TextStyle(color: Colors.white)),
         ),
+        DropdownMenuItem(
+          value: Locale('en'),
+          child: Text('EN', style: TextStyle(color: Colors.white)),
+        ),
       ],
       onChanged: (Locale? locale) {
         if (locale != null) {

@@ -4,12 +4,18 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:kuvari_app/models/kuvari_image.dart';
 
+import 'package:cloud_functions/cloud_functions.dart';
+
 class KuvariService {
   final http.Client client;
 
   KuvariService({http.Client? client}) : client = client ?? http.Client();
 
   Future<List<KuvariImage>> searchImages(String query, List<String> categories, String languageCode) async {
+    if (languageCode == 'en') {
+      return _searchOpenSymbols(query);
+    }
+
     final categoriesString = categories.isEmpty ? 'all' : categories.join('-');
 
     // Muunnetaan 'sv' -> 'se', jos tarpeen
@@ -31,6 +37,19 @@ class KuvariService {
     } else {
       // Heitetään virhe, jos statuskoodi ei ole 200
       throw Exception('Failed to fetch images');
+    }
+  }
+
+  Future<List<KuvariImage>> _searchOpenSymbols(String query) async {
+    try {
+      final result = await FirebaseFunctions.instance
+          .httpsCallable('searchOpenSymbols')
+          .call({'query': query});
+
+      final List<dynamic> data = result.data;
+      return data.map((json) => KuvariImage.fromJson(json)).toList();
+    } catch (e) {
+      throw Exception('Failed to fetch images from OpenSymbols: $e');
     }
   }
 }
