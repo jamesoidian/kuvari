@@ -51,7 +51,7 @@ exports.searchOpenSymbols = onCall({ secrets: [openSymbolsSecret] }, async (requ
 
     try {
         const token = await getAccessToken();
-        const response = await axios.get("https://www.opensymbols.org/api/v2/search", {
+        const response = await axios.get("https://www.opensymbols.org/api/v2/symbols", {
             params: {
                 q: query,
                 access_token: token,

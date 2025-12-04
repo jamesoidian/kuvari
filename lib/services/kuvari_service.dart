@@ -47,7 +47,7 @@ class KuvariService {
           .call({'query': query});
 
       final List<dynamic> data = result.data;
-      return data.map((json) => KuvariImage.fromJson(json)).toList();
+      return data.map((json) => KuvariImage.fromJson(Map<String, dynamic>.from(json as Map))).toList();
     } catch (e) {
       throw Exception('Failed to fetch images from OpenSymbols: $e');
     }
