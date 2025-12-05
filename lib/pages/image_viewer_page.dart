@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kuvari_app/widgets/kuvari_image_display.dart';
 
 class ImageViewerPage extends StatefulWidget {
   final List<KuvariImage> images;
@@ -78,27 +78,6 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
     return true;
   }
 
-  Widget _buildImage(KuvariImage img) {
-    if (img.url.toLowerCase().endsWith('.svg')) {
-      return SvgPicture.network(
-        img.url,
-        fit: BoxFit.contain,
-        placeholderBuilder: (BuildContext context) => const Center(child: CircularProgressIndicator(strokeWidth: 2)),
-      );
-    }
-    return Image.network(
-      img.url,
-      fit: BoxFit.contain,
-      loadingBuilder: (context, child, loadingProgress) {
-        if (loadingProgress == null) return child;
-        return const Center(child: CircularProgressIndicator(strokeWidth: 2));
-      },
-      errorBuilder: (context, error, stackTrace) {
-        return const Icon(Icons.broken_image, size: 100);
-      },
-    );
-  }
-
   Widget _buildPortraitView() {
     return Column(
       children: [
@@ -115,7 +94,11 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Expanded(
-                        child: _buildImage(img),
+                        child: KuvariImageDisplay(
+                          url: img.url,
+                          fit: BoxFit.contain,
+                          errorWidget: const Icon(Icons.broken_image, size: 100),
+                        ),
                       ),
                       const SizedBox(height: 10),
                       Text(
@@ -152,7 +135,11 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
                   width: screenHeight * 0.8,
                   margin: const EdgeInsets.all(8.0),
                   child: InteractiveViewer(
-                    child: _buildImage(img),
+                    child: KuvariImageDisplay(
+                      url: img.url,
+                      fit: BoxFit.contain,
+                      errorWidget: const Icon(Icons.broken_image, size: 100),
+                    ),
                   ),
                 );
               }).toList(),

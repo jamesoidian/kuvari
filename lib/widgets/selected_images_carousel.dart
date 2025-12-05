@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/l10n/app_localizations.dart';
+import 'package:kuvari_app/widgets/kuvari_image_display.dart';
 
 class SelectedImagesCarousel extends StatefulWidget {
   final List<KuvariImage> selectedImages;
@@ -99,22 +100,12 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
-                                child: Image.network(
-                                  widget.selectedImages[i].thumb,
+                                child: KuvariImageDisplay(
+                                  url: widget.selectedImages[i].thumb,
                                   width: 60,
                                   height: 60,
                                   fit: BoxFit.cover,
-                                  loadingBuilder:
-                                      (context, child, loadingProgress) {
-                                    if (loadingProgress == null) return child;
-                                    return const Center(
-                                        child: CircularProgressIndicator(
-                                            strokeWidth: 2));
-                                  },
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return const Icon(Icons.broken_image,
-                                        size: 60);
-                                  },
+                                  errorWidget: const Icon(Icons.broken_image, size: 60),
                                 ),
                               ),
                               if (widget.showClearButton)

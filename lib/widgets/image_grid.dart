@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
+import 'package:kuvari_app/widgets/kuvari_image_display.dart';
 
 class ImageGrid extends StatelessWidget {
   final List<KuvariImage> images;
@@ -41,16 +42,10 @@ class ImageGrid extends StatelessWidget {
                       child: Column(
                         children: [
                           Expanded(
-                            child: Image.network(
-                              img.thumb,
+                            child: KuvariImageDisplay(
+                              url: img.thumb,
                               fit: BoxFit.cover,
-                              loadingBuilder: (context, child, loadingProgress) {
-                                if (loadingProgress == null) return child;
-                                return const Center(child: CircularProgressIndicator(strokeWidth: 2));
-                              },
-                              errorBuilder: (context, error, stackTrace) {
-                                return const Icon(Icons.broken_image);
-                              },
+                              errorWidget: const Icon(Icons.broken_image),
                             ),
                           ),
                           Padding(
