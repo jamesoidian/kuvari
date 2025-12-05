@@ -34,12 +34,20 @@ class KuvariImage {
 
   // Tehdään tehtaan konstruktori, joka luo olion JSONista.
   factory KuvariImage.fromJson(Map<String, dynamic> json) {
+    dynamic uidData = json['uid'];
+    int parsedUid = 0;
+    if (uidData is int) {
+      parsedUid = uidData;
+    } else if (uidData is String) {
+      parsedUid = int.tryParse(uidData) ?? 0;
+    }
+
     return KuvariImage(
       author: json['author'] ?? '',
       name: json['name'] ?? '',
       thumb: json['thumb'] ?? '',
       url: json['url'] ?? '',
-      uid: json['uid'] ?? 0,
+      uid: parsedUid,
       uuid: const Uuid().v4(),
     );
   }
