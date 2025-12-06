@@ -44,6 +44,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get selectedImages => 'Valda bilder';
 
   @override
+  String get openSymbolsCategoryError => 'OpenSymbols stöder inte kategorival.';
+
+  @override
   String get noSelectedImages => 'Inga valda bilder.';
 
   @override

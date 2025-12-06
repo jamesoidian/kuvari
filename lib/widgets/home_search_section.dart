@@ -8,6 +8,7 @@ class HomeSearchSection extends StatelessWidget {
   final VoidCallback onClear;
   final VoidCallback onTap;
   final VoidCallback onSelectCategories;
+  final bool showFilterBadge;
   final bool isCategoryEnabled;
 
   const HomeSearchSection({

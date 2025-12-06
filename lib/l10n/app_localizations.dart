@@ -166,6 +166,12 @@ abstract class AppLocalizations {
   /// **'Valitut kuvat'**
   String get selectedImages;
 
+  /// No description provided for @openSymbolsCategoryError.
+  ///
+  /// In fi, this message translates to:
+  /// **'OpenSymbols ei tue kategorioiden valintaa.'**
+  String get openSymbolsCategoryError;
+
   /// No description provided for @noSelectedImages.
   ///
   /// In fi, this message translates to:

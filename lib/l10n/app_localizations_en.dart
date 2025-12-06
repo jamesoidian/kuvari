@@ -44,6 +44,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectedImages => 'Selected images';
 
   @override
+  String get openSymbolsCategoryError =>
+      'OpenSymbols does not support category selection.';
+
+  @override
   String get noSelectedImages => 'No selected images.';
 
   @override

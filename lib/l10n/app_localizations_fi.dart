@@ -44,6 +44,10 @@ class AppLocalizationsFi extends AppLocalizations {
   String get selectedImages => 'Valitut kuvat';
 
   @override
+  String get openSymbolsCategoryError =>
+      'OpenSymbols ei tue kategorioiden valintaa.';
+
+  @override
   String get noSelectedImages => 'Ei valittuja kuvia.';
 
   @override
