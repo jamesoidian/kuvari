@@ -97,6 +97,8 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
                         child: KuvariImageDisplay(
                           url: img.url,
                           fit: BoxFit.contain,
+                          width: double.infinity,
+                          height: double.infinity,
                           errorWidget: const Icon(Icons.broken_image, size: 100),
                         ),
                       ),
@@ -135,10 +137,29 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
                   width: screenHeight * 0.8,
                   margin: const EdgeInsets.all(8.0),
                   child: InteractiveViewer(
-                    child: KuvariImageDisplay(
-                      url: img.url,
-                      fit: BoxFit.contain,
-                      errorWidget: const Icon(Icons.broken_image, size: 100),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: KuvariImageDisplay(
+                            url: img.url,
+                            fit: BoxFit.contain,
+                            width: double.infinity,
+                            height: double.infinity,
+                            errorWidget: const Icon(Icons.broken_image, size: 100),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          '${img.name}\n${img.author}',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 10),
+                      ],
                     ),
                   ),
                 );
