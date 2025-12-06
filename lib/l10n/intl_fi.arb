@@ -11,6 +11,7 @@
   "licenseLinkLabel": "NIMEÄ-EIKAUPALLINEN-JAASAMOIN 4.0",
   "searchError": "Virhe haussa:",
   "selectedImages": "Valitut kuvat",
+  "openSymbolsCategoryError": "OpenSymbols ei tue kategorioiden valintaa.",
   "noSelectedImages": "Ei valittuja kuvia.",
   "clear": "Tyhjennä",
   "saveImageStory": "Tallenna kuvajono",

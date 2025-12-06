@@ -11,6 +11,7 @@
   "licenseLinkLabel": "ERKÄNNANDE-ICKEKOMMERSIELL-DELALIKA 4.0",
   "searchError": "Fel vid sökning:",
   "selectedImages": "Valda bilder",
+  "openSymbolsCategoryError": "OpenSymbols stöder inte kategorival.",
   "noSelectedImages": "Inga valda bilder.",
   "clear": "Rensa",
   "saveImageStory": "Spara bildsekvens",

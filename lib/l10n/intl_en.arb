@@ -11,6 +11,7 @@
   "licenseLinkLabel": "ATTRIBUTION-NONCOMMERCIAL-SHAREALIKE 4.0",
   "searchError": "Error in search:",
   "selectedImages": "Selected images",
+  "openSymbolsCategoryError": "OpenSymbols does not support category selection.",
   "noSelectedImages": "No selected images.",
   "clear": "Clear",
   "saveImageStory": "Save image story",

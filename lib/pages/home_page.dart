@@ -281,6 +281,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _selectCategories() async {
+    final languageCode = Localizations.localeOf(context).languageCode;
+    if (languageCode == 'en') {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+            content:
+                Text(AppLocalizations.of(context)!.openSymbolsCategoryError)),
+      );
+      return;
+    }
+
     final selected = await showDialog<List<String>>(
       context: context,
       builder: (BuildContext context) {
@@ -298,6 +308,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     _maxVisibleImages = calculateMaxVisibleImages(context);
+    final isCategoryEnabled =
+        Localizations.localeOf(context).languageCode != 'en';
+
     return PopScope(
       canPop: _selectedImages.isEmpty,
       child: Scaffold(
@@ -331,6 +344,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: _onSearchFieldTap,
                 onSelectCategories: _selectCategories,
                 showFilterBadge: _selectedCategories.length < 8,
+                isCategoryEnabled: isCategoryEnabled,
               ),
               const SizedBox(height: 8),
 

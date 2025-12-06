@@ -8,7 +8,7 @@ class HomeSearchSection extends StatelessWidget {
   final VoidCallback onClear;
   final VoidCallback onTap;
   final VoidCallback onSelectCategories;
-  final bool showFilterBadge;
+  final bool isCategoryEnabled;
 
   const HomeSearchSection({
     Key? key,
@@ -18,6 +18,7 @@ class HomeSearchSection extends StatelessWidget {
     required this.onTap,
     required this.onSelectCategories,
     required this.showFilterBadge,
+    this.isCategoryEnabled = true,
   }) : super(key: key);
 
   @override
@@ -35,8 +36,11 @@ class HomeSearchSection extends StatelessWidget {
         IconButton(
           icon: Stack(
             children: [
-              const Icon(Icons.filter_list),
-              if (showFilterBadge)
+              Icon(
+                Icons.filter_list,
+                color: isCategoryEnabled ? null : Colors.grey,
+              ),
+              if (showFilterBadge && isCategoryEnabled)
                 Positioned(
                   right: 0,
                   top: 0,
