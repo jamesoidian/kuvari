@@ -41,6 +41,11 @@ class InfoPage extends StatelessWidget {
                         decoration: TextDecoration.underline),
                   ),
                 ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Row(
+              children: [
                 const Icon(Icons.link,
                     color: Colors.blue), // Ikoni ei alleviivattu
                 const SizedBox(width: 6),
