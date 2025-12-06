@@ -19,17 +19,20 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get infoPageParagraph1 =>
-      'Tämä sovellus on syntynyt yhden yksityishenkilön vapaaehtoistyönä. Sovellus käyttää Papunetin kuvapankkia ja se on kehitetty epäkaupallisiin tarkoituksiin, erityisesti vaihtoehtoisen kommunikoinnin tueksi. Inspiraatio sovelluksen kehittämiseen on peräisin Rinnekotien asumisyksiköstä käytännön arjen tarpeista.';
+      'Tämä sovellus on syntynyt yhden yksityishenkilön vapaaehtoistyönä. Sovellus käyttää sekä Papunetin että OpenSymbols kuvapankkia ja se on kehitetty epäkaupallisiin tarkoituksiin, erityisesti vaihtoehtoisen kommunikoinnin tueksi. Inspiraatio sovelluksen kehittämiseen on peräisin Rinnekotien asumisyksiköstä käytännön arjen tarpeista.';
 
   @override
   String get papunetLinkLabel => 'Papunetin kuvapankki';
+
+  @override
+  String get openSymbolsLinkLabel => 'OpenSymbols';
 
   @override
   String get rinnekoditLinkLabel => 'Rinnekodit';
 
   @override
   String get infoPageParagraph2 =>
-      'Papunetin kuvapankin kuvat on lisensoitu Nimeä-EiKaupallinen-JaaSamoin-lisenssillä (Creative Commons). Lisenssi kieltää kuvien käytön kaupallisiin tarkoituksiin.';
+      'Papunetin kuvapankin kuvat on lisensoitu Nimeä-EiKaupallinen-JaaSamoin-lisenssillä (Creative Commons). OpenSymbols on kokoelma avoimesti lisensoituja kuvasymboleita, joita voidaan käyttää puhetta tukevassa ja korvaavassa kommunikoinnissa.';
 
   @override
   String get licenseLinkLabel => 'NIMEÄ-EIKAUPALLINEN-JAASAMOIN 4.0';

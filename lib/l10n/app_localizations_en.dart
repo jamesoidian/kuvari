@@ -19,17 +19,20 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get infoPageParagraph1 =>
-      'This application was created by a private individual as voluntary work. The application uses the Papunet image bank and has been developed for non-commercial purposes, especially to support alternative communication. The inspiration for developing the application comes from the practical everyday needs of Rinnekodit housing units.';
+      'This application was created by a private individual as voluntary work. The application uses the Papunet image bank and OpenSymbols and has been developed for non-commercial purposes, especially to support alternative communication. The inspiration for developing the application comes from the practical everyday needs of Rinnekodit housing units.';
 
   @override
   String get papunetLinkLabel => 'Papunet Image Bank';
+
+  @override
+  String get openSymbolsLinkLabel => 'OpenSymbols';
 
   @override
   String get rinnekoditLinkLabel => 'Rinnekodit';
 
   @override
   String get infoPageParagraph2 =>
-      'The images in the Papunet image bank are licensed under the Attribution-NonCommercial-ShareAlike license (Creative Commons). The license prohibits the use of images for commercial purposes.';
+      'The images in the Papunet image bank are licensed under the Attribution-NonCommercial-ShareAlike license (Creative Commons). The license prohibits the use of images for commercial purposes. OpenSymbols is a collection of open-licensed picture symbols that can be used for augmentative communication.';
 
   @override
   String get licenseLinkLabel => 'ATTRIBUTION-NONCOMMERCIAL-SHAREALIKE 4.0';

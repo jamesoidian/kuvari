@@ -41,6 +41,20 @@ class InfoPage extends StatelessWidget {
                         decoration: TextDecoration.underline),
                   ),
                 ),
+                const Icon(Icons.link,
+                    color: Colors.blue), // Ikoni ei alleviivattu
+                const SizedBox(width: 6),
+                GestureDetector(
+                  onTap: () => _launchURL(
+                      'https://www.opensymbols.org/'),
+                  child: const Text(
+                    'OpenSymbols',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline),
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 8),

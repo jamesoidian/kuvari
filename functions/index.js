@@ -78,7 +78,7 @@ exports.searchOpenSymbols = onCall({ secrets: [openSymbolsSecret] }, async (requ
             url: item.image_url,
             thumb: item.image_url, // OpenSymbols might not provide a separate thumbnail
             name: item.name,
-            author: item.author + " / " + item.repo_key || "OpenSymbols",
+            author: item.repo_key + " / " + item.license,
             uid: item.id ? item.id : null
         }));
 

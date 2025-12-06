@@ -121,7 +121,7 @@ abstract class AppLocalizations {
   /// No description provided for @infoPageParagraph1.
   ///
   /// In fi, this message translates to:
-  /// **'Tämä sovellus on syntynyt yhden yksityishenkilön vapaaehtoistyönä. Sovellus käyttää Papunetin kuvapankkia ja se on kehitetty epäkaupallisiin tarkoituksiin, erityisesti vaihtoehtoisen kommunikoinnin tueksi. Inspiraatio sovelluksen kehittämiseen on peräisin Rinnekotien asumisyksiköstä käytännön arjen tarpeista.'**
+  /// **'Tämä sovellus on syntynyt yhden yksityishenkilön vapaaehtoistyönä. Sovellus käyttää sekä Papunetin että OpenSymbols kuvapankkia ja se on kehitetty epäkaupallisiin tarkoituksiin, erityisesti vaihtoehtoisen kommunikoinnin tueksi. Inspiraatio sovelluksen kehittämiseen on peräisin Rinnekotien asumisyksiköstä käytännön arjen tarpeista.'**
   String get infoPageParagraph1;
 
   /// No description provided for @papunetLinkLabel.
@@ -129,6 +129,12 @@ abstract class AppLocalizations {
   /// In fi, this message translates to:
   /// **'Papunetin kuvapankki'**
   String get papunetLinkLabel;
+
+  /// No description provided for @openSymbolsLinkLabel.
+  ///
+  /// In fi, this message translates to:
+  /// **'OpenSymbols'**
+  String get openSymbolsLinkLabel;
 
   /// No description provided for @rinnekoditLinkLabel.
   ///
@@ -139,7 +145,7 @@ abstract class AppLocalizations {
   /// No description provided for @infoPageParagraph2.
   ///
   /// In fi, this message translates to:
-  /// **'Papunetin kuvapankin kuvat on lisensoitu Nimeä-EiKaupallinen-JaaSamoin-lisenssillä (Creative Commons). Lisenssi kieltää kuvien käytön kaupallisiin tarkoituksiin.'**
+  /// **'Papunetin kuvapankin kuvat on lisensoitu Nimeä-EiKaupallinen-JaaSamoin-lisenssillä (Creative Commons). OpenSymbols on kokoelma avoimesti lisensoituja kuvasymboleita, joita voidaan käyttää puhetta tukevassa ja korvaavassa kommunikoinnissa.'**
   String get infoPageParagraph2;
 
   /// No description provided for @licenseLinkLabel.
