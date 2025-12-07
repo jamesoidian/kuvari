@@ -1,5 +1,14 @@
 package io.github.jamesoidian.kuvari
 
-import io.flutter.embedding.android.FlutterActivity
+import io.flutter.embedding.android.FlutterFragmentActivity
 
-class MainActivity: FlutterActivity()
+import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
+
+class MainActivity: FlutterFragmentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
+        super.onCreate(savedInstanceState)
+    }
+}
+

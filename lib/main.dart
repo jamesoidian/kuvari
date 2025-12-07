@@ -2,6 +2,7 @@
 
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -17,7 +18,8 @@ import 'firebase_options.dart';
  void main() {                                                                                                                              
    runZonedGuarded<Future<void>>(() async {                                                                                                 
      // Varmistetaan, että WidgetsBinding on alustettu tässä zonessa                                                                        
-     WidgetsFlutterBinding.ensureInitialized();                                                                                             
+     WidgetsFlutterBinding.ensureInitialized();
+     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
                                                                                                                                             
      // Alustetaan Firebase                                                                                                                 
      await Firebase.initializeApp(                                                                                                          
