@@ -33,10 +33,12 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
   final ScrollController _scrollController = ScrollController();
   bool _canScrollLeft = false;
   bool _canScrollRight = false;
+  late int _previousItemCount;
 
   @override
   void initState() {
     super.initState();
+    _previousItemCount = widget.selectedImages.length;
     _scrollController.addListener(_scrollListener);
     WidgetsBinding.instance.addPostFrameCallback((_) => _updateScrollButtons());
   }
@@ -44,7 +46,21 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
   @override
   void didUpdateWidget(covariant SelectedImagesCarousel oldWidget) {
     super.didUpdateWidget(oldWidget);
-    WidgetsBinding.instance.addPostFrameCallback((_) => _updateScrollButtons());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _updateScrollButtons();
+      if (widget.selectedImages.length > _previousItemCount) {
+        Future.delayed(const Duration(milliseconds: 100), () {
+          if (_scrollController.hasClients) {
+            _scrollController.animateTo(
+              _scrollController.position.maxScrollExtent,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeOut,
+            );
+          }
+        });
+      }
+      _previousItemCount = widget.selectedImages.length;
+    });
   }
 
   @override
