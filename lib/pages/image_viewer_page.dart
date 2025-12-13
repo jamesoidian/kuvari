@@ -223,9 +223,11 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
           ),
         ],
       ),
-      body: orientation == Orientation.portrait
-          ? _buildPortraitView()
-          : _buildLandscapeView(),
+      body: SafeArea(
+        child: orientation == Orientation.portrait
+            ? _buildPortraitView()
+            : _buildLandscapeView(),
+      ),
     );
   }
 }
