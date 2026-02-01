@@ -33,7 +33,8 @@ aider*
 /build/
 /functions/node_modules/
 
-# Android related
+/android/app/google-services.json
+/ios/Runner/GoogleService-Info.plist
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
 **/android/captures/
