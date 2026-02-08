@@ -104,11 +104,22 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        '${img.name}\n${img.author}',
+                        img.name,
                         style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
                         ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        img.author,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey[700],
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 10),
                     ],
@@ -151,10 +162,20 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          '${img.name}\n${img.author}',
+                          img.name,
                           style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          img.author,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.grey[700],
                           ),
                           textAlign: TextAlign.center,
                         ),
