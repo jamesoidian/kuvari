@@ -6,10 +6,12 @@
 Enhance Kuvari's image story management by introducing a flexible organization system using hierarchical tags (or folders) to allow users to categorize their communication boards for easier retrieval.
 
 ## Goals
-1. **Hierarchical Organization**: Implement a system supporting at least two levels of nesting (e.g., Category -> Sub-category).
-2. **Flexible Tagging**: Allow stories to be associated with one or more tags (flexible organization).
+1. **Hierarchical Organization**: (Deprecated) Switched to flat tags for simplicity.
+2. **Flexible Tagging**: Allow stories to be associated with one or more tags.
 3. **Intuitive Management**: Provide a long-press interaction on stories to manage their tags.
-4. **Local Persistence**: Ensure all organization data is stored locally using Hive, consistent with existing storage.
+4. **Local Persistence**: Ensure all organization data is stored locally using Hive.
+5. **Tag Lifecycle Management**: Allow users to edit tag names and delete tags from the system.
+6. **Optimized Tag UI**: Ensure the tag selection and filter list is scrollable and accessible.
 
 ## Non-Goals (Out of Scope)
 - **Cloud Sync**: Firebase synchronization is not required for this phase.

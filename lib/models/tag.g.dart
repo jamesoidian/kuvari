@@ -1,41 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'image_story.dart';
+part of 'tag.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ImageStoryAdapter extends TypeAdapter<ImageStory> {
+class TagAdapter extends TypeAdapter<Tag> {
   @override
-  final int typeId = 0;
+  final int typeId = 2;
 
   @override
-  ImageStory read(BinaryReader reader) {
+  Tag read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return ImageStory(
-      id: fields[0] as String,
+    return Tag(
       name: fields[1] as String,
-      images: (fields[2] as List).cast<KuvariImage>(),
-      tagIds: (fields[3] as List?)?.cast<String>(),
+      id: fields[0] as String?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, ImageStory obj) {
+  void write(BinaryWriter writer, Tag obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(2)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.name)
-      ..writeByte(2)
-      ..write(obj.images)
-      ..writeByte(3)
-      ..write(obj.tagIds);
+      ..write(obj.name);
   }
 
   @override
@@ -44,7 +38,7 @@ class ImageStoryAdapter extends TypeAdapter<ImageStory> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ImageStoryAdapter &&
+      other is TagAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

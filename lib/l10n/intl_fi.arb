@@ -62,5 +62,18 @@
   "yes": "Kyllä",
   "showImages": "Näytä kuvat",
   "noSavedStories": "Sinulla ei ole tallennettuja kuvatarinoita.",
-   "deleteInfoLabel": "Poista jono pyyhkäisemällä vasemmalle"  
+   "deleteInfoLabel": "Poista jono pyyhkäisemällä vasemmalle",
+  "manageTags": "Hallitse avainsanoja",
+  "addTag": "Lisää avainsana",
+  "searchTags": "Hae avainsanoja...",
+  "tagName": "Avainsanan nimi",
+  "createTag": "Luo avainsana",
+  "filterByTags": "Suodata avainsanoilla",
+  "searchStories": "Hae tarinoita...",
+  "none": "Ei mitään",
+  "editTag": "Muokkaa avainsanaa",
+  "deleteTag": "Poista avainsana",
+  "tagInUseWarning": "Tämä avainsana on käytössä {count} tarinassa. Poistetaanko silti?",
+  "unused": "Ei käytössä",
+  "tagInfoLabel": "Lisää avainsanoja painamalla kuvajonoa pitkään"
 }

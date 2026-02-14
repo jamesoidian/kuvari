@@ -62,5 +62,18 @@
   "yes": "Ja",
   "showImages": "Visa bilder",
   "noSavedStories": "Du har inga sparade bildberättelser.",
-   "deleteInfoLabel": "Radera raden genom att svepa åt vänster"    
+   "deleteInfoLabel": "Radera raden genom att svepa åt vänster",
+  "manageTags": "Hantera taggar",
+  "addTag": "Lägg till tagg",
+  "searchTags": "Sök taggar...",
+  "tagName": "Taggnamn",
+  "createTag": "Skapa tagg",
+  "filterByTags": "Filtrera efter taggar",
+  "searchStories": "Sök berättelser...",
+  "none": "Ingen",
+  "editTag": "Redigera tagg",
+  "deleteTag": "Radera tagg",
+  "tagInUseWarning": "Denna tagg används i {count} berättelser. Radera ändå?",
+  "unused": "Oanvänd",
+  "tagInfoLabel": "Lägg till taggar genom att trycka länge på en bildberättelse"
 }

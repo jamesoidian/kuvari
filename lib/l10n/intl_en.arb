@@ -62,5 +62,18 @@
   "yes": "Yes",
   "showImages": "Show images",
   "noSavedStories": "You have no saved image stories.",
-  "deleteInfoLabel": "Delete row by swiping left"
+  "deleteInfoLabel": "Delete row by swiping left",
+  "manageTags": "Manage Tags",
+  "addTag": "Add Tag",
+  "searchTags": "Search tags...",
+  "tagName": "Tag Name",
+  "createTag": "Create Tag",
+  "filterByTags": "Filter by tags",
+  "searchStories": "Search stories...",
+  "none": "None",
+  "editTag": "Edit Tag",
+  "deleteTag": "Delete Tag",
+  "tagInUseWarning": "This tag is used in {count} stories. Delete anyway?",
+  "unused": "Unused",
+  "tagInfoLabel": "Add tags by long-pressing an image story"
 }
