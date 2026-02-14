@@ -5,11 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kuvari_app/l10n/app_localizations.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:kuvari_app/models/image_story.dart';
-import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/pages/home_page.dart';
 import 'package:kuvari_app/services/kuvari_service.dart';
+import 'package:kuvari_app/services/storage_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -30,15 +28,8 @@ import 'firebase_options.dart';
      FlutterError.onError =                                                                                                                 
          FirebaseCrashlytics.instance.recordFlutterFatalError;                                                                              
                                                                                                                                             
-     // Alustetaan Hive                                                                                                                     
-     await Hive.initFlutter();                                                                                                              
-                                                                                                                                            
-     // Rekisteröidään Hive-adapterit ennen kuin avataan laatikot                                                                           
-     Hive.registerAdapter(ImageStoryAdapter());                                                                                             
-     Hive.registerAdapter(KuvariImageAdapter());                                                                                            
-                                                                                                                                            
-     // Avataan Hive-laatikot                                                                                                               
-     await Hive.openBox<ImageStory>('imageStories');                                                                                        
+     // Alustetaan tallennustila (Hive, adapterit, laatikot)
+     await StorageService.init();
                                                                                                                                             
      // Alustetaan Firebase Analytics                                                                                                       
      final analytics = FirebaseAnalytics.instance;                                                                                          

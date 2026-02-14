@@ -16,6 +16,7 @@ import 'package:kuvari_app/widgets/image_grid.dart';
 import 'package:kuvari_app/widgets/category_selection_dialog.dart';
 import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:kuvari_app/services/storage_constants.dart';
 
 class HomePage extends StatefulWidget {
   final KuvariService kuvariService;
@@ -182,7 +183,7 @@ class _HomePageState extends State<HomePage> {
 
     final storyNameController = TextEditingController();
     final Box<ImageStory> imageStoriesBox =
-        Hive.box<ImageStory>('imageStories');
+        Hive.box<ImageStory>(StorageConstants.imageStoriesBox);
 
     await showDialog(
       context: context,

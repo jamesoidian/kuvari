@@ -12,7 +12,7 @@ class HomeSearchSection extends StatelessWidget {
   final bool isCategoryEnabled;
 
   const HomeSearchSection({
-    Key? key,
+    super.key,
     required this.controller,
     required this.onSearch,
     required this.onClear,
@@ -20,7 +20,7 @@ class HomeSearchSection extends StatelessWidget {
     required this.onSelectCategories,
     required this.showFilterBadge,
     this.isCategoryEnabled = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

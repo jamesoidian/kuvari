@@ -405,6 +405,84 @@ abstract class AppLocalizations {
   /// In fi, this message translates to:
   /// **'Poista jono pyyhkäisemällä vasemmalle'**
   String get deleteInfoLabel;
+
+  /// No description provided for @manageTags.
+  ///
+  /// In fi, this message translates to:
+  /// **'Hallitse avainsanoja'**
+  String get manageTags;
+
+  /// No description provided for @addTag.
+  ///
+  /// In fi, this message translates to:
+  /// **'Lisää avainsana'**
+  String get addTag;
+
+  /// No description provided for @searchTags.
+  ///
+  /// In fi, this message translates to:
+  /// **'Hae avainsanoja...'**
+  String get searchTags;
+
+  /// No description provided for @tagName.
+  ///
+  /// In fi, this message translates to:
+  /// **'Avainsanan nimi'**
+  String get tagName;
+
+  /// No description provided for @createTag.
+  ///
+  /// In fi, this message translates to:
+  /// **'Luo avainsana'**
+  String get createTag;
+
+  /// No description provided for @filterByTags.
+  ///
+  /// In fi, this message translates to:
+  /// **'Suodata avainsanoilla'**
+  String get filterByTags;
+
+  /// No description provided for @searchStories.
+  ///
+  /// In fi, this message translates to:
+  /// **'Hae tarinoita...'**
+  String get searchStories;
+
+  /// No description provided for @none.
+  ///
+  /// In fi, this message translates to:
+  /// **'Ei mitään'**
+  String get none;
+
+  /// No description provided for @editTag.
+  ///
+  /// In fi, this message translates to:
+  /// **'Muokkaa avainsanaa'**
+  String get editTag;
+
+  /// No description provided for @deleteTag.
+  ///
+  /// In fi, this message translates to:
+  /// **'Poista avainsana'**
+  String get deleteTag;
+
+  /// No description provided for @tagInUseWarning.
+  ///
+  /// In fi, this message translates to:
+  /// **'Tämä avainsana on käytössä {count} tarinassa. Poistetaanko silti?'**
+  String tagInUseWarning(Object count);
+
+  /// No description provided for @unused.
+  ///
+  /// In fi, this message translates to:
+  /// **'Ei käytössä'**
+  String get unused;
+
+  /// No description provided for @tagInfoLabel.
+  ///
+  /// In fi, this message translates to:
+  /// **'Lisää avainsanoja painamalla kuvajonoa pitkään'**
+  String get tagInfoLabel;
 }
 
 class _AppLocalizationsDelegate

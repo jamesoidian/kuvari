@@ -16,9 +16,13 @@ class ImageStory extends HiveObject {
   @HiveField(2)
   final List<KuvariImage> images;
 
+  @HiveField(3)
+  final List<String> tagIds;
+
   ImageStory({
     required this.id,
     required this.name,
     required this.images,
-  });
+    List<String>? tagIds,
+  }) : tagIds = tagIds ?? [];
 }

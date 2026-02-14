@@ -167,4 +167,46 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get deleteInfoLabel => 'Radera raden genom att svepa åt vänster';
+
+  @override
+  String get manageTags => 'Hantera taggar';
+
+  @override
+  String get addTag => 'Lägg till tagg';
+
+  @override
+  String get searchTags => 'Sök taggar...';
+
+  @override
+  String get tagName => 'Taggnamn';
+
+  @override
+  String get createTag => 'Skapa tagg';
+
+  @override
+  String get filterByTags => 'Filtrera efter taggar';
+
+  @override
+  String get searchStories => 'Sök berättelser...';
+
+  @override
+  String get none => 'Ingen';
+
+  @override
+  String get editTag => 'Redigera tagg';
+
+  @override
+  String get deleteTag => 'Radera tagg';
+
+  @override
+  String tagInUseWarning(Object count) {
+    return 'Denna tagg används i $count berättelser. Radera ändå?';
+  }
+
+  @override
+  String get unused => 'Oanvänd';
+
+  @override
+  String get tagInfoLabel =>
+      'Lägg till taggar genom att trycka länge på en bildberättelse';
 }

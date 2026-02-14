@@ -1,13 +1,14 @@
 # ROADMAP.md
 
-> **Current Phase**: 4
-> **Milestone**: v1.0 - Organization & Categorization
+> **Current Phase**: 1
+> **Milestone**: v1.2.2 - Tag Editing & Removal
 
-## Must-Haves (from SPEC)
-- [x] Hierarchical tag support 
 - [x] Tag assignment via long-press
 - [x] Filtering/Browsing by tag
 - [x] Persistence in Hive
+- [ ] Ability to delete tags from the system
+- [ ] Ability to edit tag names
+- [ ] Scrollable tag selection/filter UI
 
 ## Phases
 
@@ -34,7 +35,23 @@
 - [x] Implement filtering logic.
 
 ### Phase 4: Polish & Validation
-**Status**: ⬜ Not Started
+**Status**: ✅ Completed
 **Objective**: Final testing and UX refinements.
 **Requirements**: REQ-07
-- Verify persistence, deletion safety, and UI responsiveness.
+- [x] Verify persistence, deletion safety, and UI responsiveness.
+
+## Milestone v1.2.2: Tag Editing & Removal
+
+### Phase 1: Tag Deletion & Editing Logic
+**Status**: ⬜ Not Started
+**Objective**: Implement the business logic for renaming and removing tags from Hive.
+- Ensure stories are updated (or tags removed from their lists) when a tag is deleted.
+
+### Phase 2: Tag Management UI Refinement
+**Status**: ⬜ Not Started
+**Objective**: Add Edit and Delete actions to the Tag Management Dialog.
+- Implement confirmation dialogs for deletion.
+
+### Phase 3: Scrollable Tag List UI
+**Status**: ⬜ Not Started
+**Objective**: Refine the tag list in `SavedImageStoriesPage` to be scrollable and user-friendly.

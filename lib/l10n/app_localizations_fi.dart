@@ -168,4 +168,45 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get deleteInfoLabel => 'Poista jono pyyhkäisemällä vasemmalle';
+
+  @override
+  String get manageTags => 'Hallitse avainsanoja';
+
+  @override
+  String get addTag => 'Lisää avainsana';
+
+  @override
+  String get searchTags => 'Hae avainsanoja...';
+
+  @override
+  String get tagName => 'Avainsanan nimi';
+
+  @override
+  String get createTag => 'Luo avainsana';
+
+  @override
+  String get filterByTags => 'Suodata avainsanoilla';
+
+  @override
+  String get searchStories => 'Hae tarinoita...';
+
+  @override
+  String get none => 'Ei mitään';
+
+  @override
+  String get editTag => 'Muokkaa avainsanaa';
+
+  @override
+  String get deleteTag => 'Poista avainsana';
+
+  @override
+  String tagInUseWarning(Object count) {
+    return 'Tämä avainsana on käytössä $count tarinassa. Poistetaanko silti?';
+  }
+
+  @override
+  String get unused => 'Ei käytössä';
+
+  @override
+  String get tagInfoLabel => 'Lisää avainsanoja painamalla kuvajonoa pitkään';
 }

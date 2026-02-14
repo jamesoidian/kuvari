@@ -168,4 +168,45 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get deleteInfoLabel => 'Delete row by swiping left';
+
+  @override
+  String get manageTags => 'Manage Tags';
+
+  @override
+  String get addTag => 'Add Tag';
+
+  @override
+  String get searchTags => 'Search tags...';
+
+  @override
+  String get tagName => 'Tag Name';
+
+  @override
+  String get createTag => 'Create Tag';
+
+  @override
+  String get filterByTags => 'Filter by tags';
+
+  @override
+  String get searchStories => 'Search stories...';
+
+  @override
+  String get none => 'None';
+
+  @override
+  String get editTag => 'Edit Tag';
+
+  @override
+  String get deleteTag => 'Delete Tag';
+
+  @override
+  String tagInUseWarning(Object count) {
+    return 'This tag is used in $count stories. Delete anyway?';
+  }
+
+  @override
+  String get unused => 'Unused';
+
+  @override
+  String get tagInfoLabel => 'Add tags by long-pressing an image story';
 }
