@@ -12,6 +12,7 @@
 Appicons.zip
 aider*
 /lib/firebase_options.dart
+screenshots/
 
 # IntelliJ related
 *.iml
