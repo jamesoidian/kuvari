@@ -1,37 +1,37 @@
 # ROADMAP.md
 
-> **Current Phase**: Not started
+> **Current Phase**: 4
 > **Milestone**: v1.0 - Organization & Categorization
 
 ## Must-Haves (from SPEC)
-- [ ] Hierarchical tag support (2 levels)
-- [ ] Tag assignment via long-press
-- [ ] Filtering/Browsing by tag
-- [ ] Persistence in Hive
+- [x] Hierarchical tag support 
+- [x] Tag assignment via long-press
+- [x] Filtering/Browsing by tag
+- [x] Persistence in Hive
 
 ## Phases
 
 ### Phase 1: Data Model & Persistence
-**Status**: ⬜ Not Started
+**Status**: ✅ Completed
 **Objective**: Update models to support tags and hierarchy.
 **Requirements**: REQ-01, REQ-02, REQ-06
-- Define `Tag` model.
-- Update `ImageStory` model to include `tagIds`.
-- Register new Hive adapters and migration logic if needed.
+- [x] Define `Tag` model.
+- [x] Update `ImageStory` model to include `tagIds`.
+- [x] Register new Hive adapters and migration logic if needed.
 
 ### Phase 2: Tag Management UI
-**Status**: ⬜ Not Started
+**Status**: ✅ Completed
 **Objective**: Implement the UI for creating and assigning tags.
 **Requirements**: REQ-03, REQ-04
-- Long-press interaction on `SavedImageStoriesPage`.
-- Tag creation/selection modal with search.
+- [x] Long-press interaction on `SavedImageStoriesPage`.
+- [x] Tag creation/selection modal with search.
 
 ### Phase 3: Organization & Filtering UI
-**Status**: ⬜ Not Started
+**Status**: ✅ Completed
 **Objective**: Allow users to browse and filter stories by tags.
 **Requirements**: REQ-05
-- Update saved stories view to show categories/folders.
-- Implement filtering logic.
+- [x] Update saved stories view to show categories/folders.
+- [x] Implement filtering logic.
 
 ### Phase 4: Polish & Validation
 **Status**: ⬜ Not Started

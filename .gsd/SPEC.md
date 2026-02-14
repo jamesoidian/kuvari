@@ -1,6 +1,6 @@
 # SPEC.md — Project Specification
 
-> **Status**: `PROPOSED`
+> **Status**: `FINALIZED`
 
 ## Vision
 Enhance Kuvari's image story management by introducing a flexible organization system using hierarchical tags (or folders) to allow users to categorize their communication boards for easier retrieval.
@@ -23,7 +23,6 @@ Enhance Kuvari's image story management by introducing a flexible organization s
 ## Constraints
 - **Framework**: Flutter.
 - **Database**: Hive (already in use for `ImageStory`).
-- **Nesting**: Max 2 levels.
 
 ## Success Criteria
 - [ ] Users can create new tags/folders.
