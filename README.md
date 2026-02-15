@@ -8,6 +8,7 @@ Kuvari is a mobile application for organizing and displaying images i.e. social 
 - 📌 **Select images** to create an ordered sequence.
 - 🎭 **Interactive viewing mode** to display images one by one.
 - 💾 **Save and load image sequences** for later use.
+- 🏷️ **Tag and search** through saved image stories
 
 ## Installation
 
