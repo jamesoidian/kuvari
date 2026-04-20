@@ -18,7 +18,8 @@
     "firebase-functions": "^7.0.1"
   },
   "overrides": {
-    "fast-xml-parser": "5.3.7",
+    "fast-xml-parser": "^5.5.7",
+    "@tootallnate/once": "^3.0.1",
     "qs": "6.14.2"
   },
   "private": true
