@@ -1,20 +1,15 @@
 # State
 
-> Last Updated: 2026-02-14
+> Last Updated: 2026-05-28
 
 ## Current Position
-- **Status**: Completed
-- **Current Milestone**: v1.3.0
-- **Current Phase**: Done
+- **Milestone**: Text-to-Speech
+- **Phase**: Not started
+- **Status**: Milestone planned
 
 ## Last Session Summary
-Successfully completed the v1.3.0 stabilization milestone:
-- Upgraded all dependencies to latest major versions.
-- Flattened the `Tag` model and updated UI.
-- Stabilized the test suite (42/42 passing).
-- Verified production build (APK).
+Planned new Text-to-Speech milestone.
 
 ## active_context
-- Tags and Filtering functionality is implemented and localized.
-- SPEC.md and ROADMAP.md updated.
-- Starting Phase 4 for final validation and cleanup.
+- Need to implement TTS feature to read out image words.
+- Next step is to run `/plan 1` for Phase 1.
