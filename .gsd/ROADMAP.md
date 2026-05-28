@@ -4,15 +4,15 @@
 > **Goal**: Adding text-to-speech (TTS) to Kuvari so that users can tap an icon to hear the image's word
 
 ## Must-Haves
-- [ ] Add TTS Package
-- [ ] Ensure Configuration
+- [x] Add TTS Package
+- [x] Ensure Configuration
 - [ ] Create TTS Service
 - [ ] Update UI
 
 ## Phases
 
 ### Phase 1: Setup & Configuration
-**Status**: ⬜ Not Started
+**Status**: ✅ Complete
 **Objective**: Add the `flutter_tts` package and update platform configurations.
 
 ### Phase 2: Service Layer
