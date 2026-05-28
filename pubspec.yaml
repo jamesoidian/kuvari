@@ -47,6 +47,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   cloud_functions: ^6.0.4
   flutter_svg: ^2.2.3
+  flutter_tts: ^4.2.5
 
   
 
