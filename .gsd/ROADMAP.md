@@ -6,7 +6,7 @@
 ## Must-Haves
 - [x] Add TTS Package
 - [x] Ensure Configuration
-- [ ] Create TTS Service
+- [x] Create TTS Service
 - [ ] Update UI
 
 ## Phases
@@ -16,7 +16,7 @@
 **Objective**: Add the `flutter_tts` package and update platform configurations.
 
 ### Phase 2: Service Layer
-**Status**: ⬜ Not Started
+**Status**: ✅ Complete
 **Objective**: Create a `TtsService` to initialize TTS and handle language selection.
 
 ### Phase 3: UI Integration
