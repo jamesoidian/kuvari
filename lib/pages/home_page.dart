@@ -17,6 +17,7 @@ import 'package:kuvari_app/widgets/category_selection_dialog.dart';
 import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:kuvari_app/services/storage_constants.dart';
+import 'package:kuvari_app/services/tts_service.dart';
 
 class HomePage extends StatefulWidget {
   final KuvariService kuvariService;
@@ -36,6 +37,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final TextEditingController _searchController = TextEditingController();
+  final TtsService _ttsService = TtsService();
   List<KuvariImage> _images = [];
   List<KuvariImage> _selectedImages = [];
 
@@ -357,6 +359,7 @@ class _HomePageState extends State<HomePage> {
                         images: _images,
                         selectedImages: _selectedImages,
                         onSelect: _selectImage,
+                        ttsService: _ttsService,
                       ),
               ),
             ],

@@ -4,17 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/widgets/kuvari_image_display.dart';
+import 'package:kuvari_app/services/tts_service.dart';
 
 class ImageGrid extends StatelessWidget {
   final List<KuvariImage> images;
   final List<KuvariImage> selectedImages;
   final Function(KuvariImage) onSelect;
+  final TtsService ttsService;
 
   const ImageGrid({
     super.key,
     required this.images,
     required this.selectedImages,
     required this.onSelect,
+    required this.ttsService,
   });
 
   @override
@@ -50,14 +53,28 @@ class ImageGrid extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Text(
-                              img.name,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              overflow: TextOverflow.ellipsis,
+                            padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    img.name,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.volume_up, size: 20, color: Colors.teal),
+                                  padding: EdgeInsets.zero,
+                                  constraints: const BoxConstraints(),
+                                  onPressed: () {
+                                    ttsService.speak(img.name, Localizations.localeOf(context).languageCode);
+                                  },
+                                ),
+                              ],
                             ),
                           ),
                         ],
