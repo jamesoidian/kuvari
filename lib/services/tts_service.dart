@@ -1,4 +1,5 @@
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:flutter/foundation.dart';
 
 class TtsService {
   final FlutterTts flutterTts = FlutterTts();
@@ -19,7 +20,11 @@ class TtsService {
         break;
     }
 
-    await flutterTts.setLanguage(locale);
-    await flutterTts.speak(text);
+    try {
+      await flutterTts.setLanguage(locale);
+      await flutterTts.speak(text);
+    } catch (e) {
+      debugPrint('TTS Error: $e');
+    }
   }
 }
