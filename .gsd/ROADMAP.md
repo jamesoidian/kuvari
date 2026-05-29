@@ -7,7 +7,7 @@
 - [x] Add TTS Package
 - [x] Ensure Configuration
 - [x] Create TTS Service
-- [ ] Update UI
+- [x] Update UI
 
 ## Phases
 
@@ -20,7 +20,7 @@
 **Objective**: Create a `TtsService` to initialize TTS and handle language selection.
 
 ### Phase 3: UI Integration
-**Status**: ⬜ Not Started
+**Status**: ✅ Complete
 **Objective**: Add a speaker icon button to image cards and connect it to the TTS service.
 
 ### Phase 4: Testing & Polish
