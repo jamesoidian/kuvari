@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/widgets/kuvari_image_display.dart';
+import 'package:kuvari_app/services/tts_service.dart';
 
 class ImageViewerPage extends StatefulWidget {
   final List<KuvariImage> images;
@@ -20,6 +21,7 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
   int _currentPage = 0;
   bool _showLeftIndicator = false;
   bool _showRightIndicator = false;
+  final TtsService _ttsService = TtsService();
 
   @override
   void initState() {
@@ -103,13 +105,26 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Text(
-                        img.name,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              img.name,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.volume_up, size: 28, color: Colors.teal),
+                            onPressed: () {
+                              _ttsService.speak(img.name, Localizations.localeOf(context).languageCode);
+                            },
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 4),
                       Text(
@@ -161,13 +176,26 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
                           ),
                         ),
                         const SizedBox(height: 10),
-                        Text(
-                          img.name,
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Flexible(
+                              child: Text(
+                                img.name,
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.volume_up, size: 28, color: Colors.teal),
+                              onPressed: () {
+                                _ttsService.speak(img.name, Localizations.localeOf(context).languageCode);
+                              },
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 4),
                         Text(
