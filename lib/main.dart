@@ -42,7 +42,12 @@ import 'firebase_options.dart';
      ));                                                                                                                                    
    }, (error, stackTrace) {                                                                                                                 
      // Käsitellään virheet Crashlyticsin avulla                                                                                            
-     FirebaseCrashlytics.instance.recordError(error, stackTrace);                                                                           
+     try {
+       FirebaseCrashlytics.instance.recordError(error, stackTrace);                                                                           
+     } catch (e) {
+       debugPrint('Crashlytics not initialized. Original error: $error');
+       debugPrint('Stack trace: $stackTrace');
+     }
    });                                                                                                                                      
  }  
 

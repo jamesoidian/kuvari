@@ -1,30 +1,39 @@
 # ROADMAP.md
 
-> **Current Milestone**: Text-to-Speech
-> **Goal**: Adding text-to-speech (TTS) to Kuvari so that users can tap an icon to hear the image's word
+> **Current Milestone**: None
+> **Goal**: TBD
 
 ## Must-Haves
+- [ ] TBD
+
+## Phases
+
+---
+
+## Past Milestone: Text-to-Speech
+**Status**: ✅ Completed
+
 - [x] Add TTS Package
 - [x] Ensure Configuration
 - [x] Create TTS Service
 - [x] Update UI
-
-## Phases
+- [x] Verify Playback
+- [x] Handle Edge Cases
 
 ### Phase 1: Setup & Configuration
-**Status**: ✅ Complete
+**Status**: ✅ Completed
 **Objective**: Add the `flutter_tts` package and update platform configurations.
 
 ### Phase 2: Service Layer
-**Status**: ✅ Complete
+**Status**: ✅ Completed
 **Objective**: Create a `TtsService` to initialize TTS and handle language selection.
 
 ### Phase 3: UI Integration
-**Status**: ✅ Complete
+**Status**: ✅ Completed
 **Objective**: Add a speaker icon button to image cards and connect it to the TTS service.
 
 ### Phase 4: Testing & Polish
-**Status**: ⬜ Not Started
+**Status**: ✅ Completed
 **Objective**: Verify TTS playback across supported languages and handle edge cases.
 
 ---
