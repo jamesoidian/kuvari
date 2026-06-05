@@ -6,6 +6,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/widgets/image_grid.dart';
+import 'package:kuvari_app/services/tts_service.dart';
+import 'package:mockito/mockito.dart';
+
+class FakeTtsService extends Fake implements TtsService {
+  @override
+  Future<void> speak(String text, String languageCode) async {}
+}
 
 void main() {
   group('ImageGrid Widget Tests', () {
@@ -13,6 +20,7 @@ void main() {
     late List<KuvariImage> selectedImages;
     late bool onSelectCalled;
     late KuvariImage selectedImage;
+    late FakeTtsService fakeTtsService;
 
     setUp(() {
       images = [
@@ -34,6 +42,7 @@ void main() {
       selectedImages = [];
       onSelectCalled = false;
       selectedImage = images[0];
+      fakeTtsService = FakeTtsService();
     });
 
     testWidgets('Displays message when images list is empty', (WidgetTester tester) async {
@@ -53,6 +62,7 @@ void main() {
           home: ImageGrid(
             images: [],
             selectedImages: selectedImages,
+            ttsService: fakeTtsService,
             onSelect: (image) { onSelectCalled = true; },
           ),
         ),
@@ -70,6 +80,7 @@ void main() {
           home: ImageGrid(
             images: images,
             selectedImages: selectedImages,
+            ttsService: fakeTtsService,
             onSelect: (image) { onSelectCalled = true; },
           ),
         ),
@@ -87,6 +98,7 @@ void main() {
           home: ImageGrid(
             images: images,
             selectedImages: selectedImages,
+            ttsService: fakeTtsService,
             onSelect: (image) {
               onSelectCalled = true;
               selectedImage = image;
@@ -111,6 +123,7 @@ void main() {
           home: ImageGrid(
             images: images,
             selectedImages: selectedImages,
+            ttsService: fakeTtsService,
             onSelect: (image) { onSelectCalled = true; },
           ),
         ),
