@@ -17,7 +17,7 @@ import 'package:kuvari_app/widgets/home_search_section.dart';
 // Määrittele mock-objekti
 class FakeFirebaseAnalytics extends Fake implements FirebaseAnalytics {
   @override
-  Future<void> logEvent({AnalyticsCallOptions? callOptions, required String name, Map<String, Object>? parameters}) async {
+  Future<void> logEvent({AnalyticsCallOptions? callOptions, required String name, Map<String, Object>? parameters, List<AnalyticsEventItem>? items}) async {
     // Do nothing in tests
   }
 }
