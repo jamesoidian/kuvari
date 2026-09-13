@@ -29,15 +29,19 @@ Focusing on expert feedback from Papunet: improving initial discovery and guidan
 - ✓ Tagging and organizing saved stories with tag management — v1.3
 - ✓ Text-to-Speech (TTS) voice synthesis for symbols across FI, SV, EN — v1.4
 - ✓ Modernized build toolchain (KGP 2.2.21, Swift Package Manager) — v1.4
+- ✓ **TERM-01**: Rename "Category" / "Kategoria" to "Image Type" / "Kuvatyyppi" in all UI texts and localization files — Phase 1
+- ✓ **IMG-01**: Improve image search result quality and sharpness on high-DPI Retina screens — Phase 1
+- ✓ **JONO-01**: Always display the selected images collection area on the home screen with a clear, helpful empty state — Phase 2
+- ✓ **JONO-02**: Add a prominent, intuitive action button to open the image viewer directly from the collection area — Phase 2
+- ✓ **GUIDE-01**: Upgrade InfoPage to include practical guidance and examples for AAC communication routines — Phase 3
+- ✓ **GUIDE-02**: Structure InfoPage into Quick Start, Practical Use Cases, and Attributions — Phase 3
+- ✓ **TTS-01**: Implement native iOS speech channel using `AVSpeechSynthesizer` with language, rate, pitch, and silent mode playback — Phase 4
+- ✓ **TTS-02**: Implement native Android speech channel using `TextToSpeech` with immediate interruption and lifecycle handling — Phase 4
+- ✓ **TTS-03**: Refactor `TtsService` to communicate directly over `io.github.jamesoidian.kuvari/tts` and remove `flutter_tts` dependency — Phase 4
 
 ### Active
 
-- [ ] **TERM-01**: Rename "Category" / "Kategoria" to "Image Type" / "Kuvatyyppi" in all UI texts and localization files.
-- [ ] **IMG-01**: Improve image search result quality and sharpness on high-DPI Retina screens.
-- [ ] **JONO-01**: Always display the selected images collection area on the home screen with a clear, helpful empty state.
-- [ ] **JONO-02**: Add a prominent, intuitive action button to open the image viewer directly from the collection area.
-- [ ] **VIEW-01**: Support side-by-side comparison / image pair display in ImageViewerPage for AAC choice-making situations.
-- [ ] **GUIDE-01**: Upgrade InfoPage to include practical guidance and examples for AAC communication routines.
+*(All requirements for Milestone v1.5.0 completed)*
 
 ### Out of Scope
 
@@ -47,7 +51,7 @@ Focusing on expert feedback from Papunet: improving initial discovery and guidan
 
 ## Context
 
-Feedback from a Papunet specialist highlighted that first-time users struggled to understand where selected images go and how to enter the viewer. Furthermore, the term "kategoria" caused confusion with topic-based categorization, and low-res thumbnails appeared blurry on phone screens. Additionally, two-choice selection is a foundational AAC interaction pattern that was difficult in single-image portrait view.
+Feedback from a Papunet specialist highlighted that first-time users struggled to understand where selected images go and how to enter the viewer. Furthermore, the term "kategoria" caused confusion with topic-based categorization, and low-res thumbnails appeared blurry on phone screens. All four phases of Milestone v1.5.0 addressed these points along with replacing the legacy `flutter_tts` plugin with robust native iOS and Android speech synthesis.
 
 ## Constraints
 
@@ -63,9 +67,10 @@ Feedback from a Papunet specialist highlighted that first-time users struggled t
 |----------|-----------|---------|
 | Flat tags over hierarchical folders | Simpler for caregivers to manage; covers 90% of use cases | ✓ Good |
 | Papunet direct HTTP + OpenSymbols via Cloud Function | Keep OpenSymbols secret key secure on server while keeping Papunet fast and direct | ✓ Good |
-| Rename categories to image types | Aligns with standard AAC nomenclature (Arasaac, Sclera, photos are styles, not topics) | Pending |
-| Empty state collection queue | Teaches app concept immediately on launch | Pending |
-| Side-by-side choice mode in viewer | Critical AAC use case: choosing between 2 options | Pending |
+| Rename categories to image types | Aligns with standard AAC nomenclature (Arasaac, Sclera, photos are styles, not topics) | ✓ Good |
+| Empty state collection queue | Teaches app concept immediately on launch | ✓ Good |
+| Structured AAC InfoPage | Practical everyday AAC communication scenarios with step-by-step guidance | ✓ Good |
+| Native iOS & Android TTS MethodChannel | Replaced buggy flutter_tts, supports iOS silent mode playback and instant interruption | ✓ Good |
 
 ## Evolution
 

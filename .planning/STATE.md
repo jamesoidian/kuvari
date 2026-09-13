@@ -2,15 +2,15 @@
 gsd_state_version: "1.0"
 milestone: v1.5.0
 milestone_name: UX & AAC Communication Enhancements
-status: ready_to_discuss
-last_updated: "2026-09-13T16:17:35.986Z"
-state_head: e2051f4223a2fbb6354fa23edd095a3ffb8bdef0
+status: complete
+last_updated: "2026-09-13T19:36:00.000Z"
+state_head: 64dd401
 progress:
   total_phases: 4
-  completed_phases: 1
+  completed_phases: 4
   total_plans: 6
   completed_plans: 6
-  percent: 25
+  percent: 100
 current_phase: 4
 current_phase_name: native-text-to-speech-ios-android
 ---
@@ -23,26 +23,33 @@ current_phase_name: native-text-to-speech-ios-android
 
 - **Milestone**: v1.5.0 — UX & AAC Communication Enhancements
 - **Phase**: Phase 4: Native Text-to-Speech (iOS & Android)
-- **Status**: Phase 3 complete; ready for Phase 4
-- **Last activity**: 2026-09-13 — Completed Phase 3: Practical AAC Guidance & Info (`GUIDE-01`, `GUIDE-02`)
+- **Status**: Milestone complete — all 4 phases finished and verified
+- **Last activity**: 2026-09-13 — Completed Phase 4 UAT verification (4 passed, 0 issues)
 
-## Last Session Summary
+## Milestone v1.5.0 Summary
 
-- Completed Phase 1: Terminology & Search Sharpness (`TERM-01`, `IMG-01`).
-- Completed Phase 2: Home Guidance & Collection Queue (`JONO-01`, `JONO-02`).
-- Completed Phase 3: Practical AAC Guidance & Info (`GUIDE-01`, `GUIDE-02`):
-  - Defined 15 localized strings across Finnish, Swedish, and English for Quick Start, Practical Situations, and Attributions.
-  - Refactored `InfoPage` into a responsive, scrollable `ListView` with three Material 3 `Card` sections.
-  - Implemented concrete AAC scenarios (Choice-Making, Daily Routines & Sequences, Pointing & Speech Modeling).
-  - Preserved external URL launching with dependency-injected `urlLauncher` for isolated testing.
-  - Verified with 56 unit and widget tests passing across all supported locales (0 analyzer warnings).
+- **Phase 1: Terminology & Search Sharpness** (`TERM-01`, `IMG-01`):
+  - Renamed "Category" to "Image Type" across FI, SV, EN.
+  - Enabled high-resolution images in search grid for crisp Retina display rendering.
+- **Phase 2: Home Guidance & Collection Queue** (`JONO-01`, `JONO-02`):
+  - Added instructive empty state placeholder for the collection queue.
+  - Added dynamic extended FAB displaying image count to launch story viewer.
+- **Phase 3: Practical AAC Guidance & Info** (`GUIDE-01`, `GUIDE-02`):
+  - Expanded InfoPage with 3 structured Material 3 sections: Quick Start, Practical AAC Scenarios (Choice-Making, Routines, Pointing & Modeling), and Attributions.
+- **Phase 4: Native Text-to-Speech (iOS & Android)** (`TTS-01`, `TTS-02`, `TTS-03`):
+  - Implemented native iOS `AVSpeechSynthesizer` with silent mode playback support and instant speech interruption.
+  - Implemented native Android `TextToSpeech` with `QUEUE_FLUSH` interruption and lifecycle handling.
+  - Refactored `TtsService` to communicate over `io.github.jamesoidian.kuvari/tts` MethodChannel.
+  - Removed `flutter_tts` package and build dependencies completely.
+  - Verified with 4/4 UAT manual tests passed.
 
 ## Accumulated Context
 
-### Roadmap Evolution
+### Key Decisions
 
-- Phase 4: Native Text-to-Speech (iOS & Android) — replace `flutter_tts` dependency with native iOS `AVSpeechSynthesizer` and Android `android.speech.tts.TextToSpeech`.
+- Native iOS & Android TTS via MethodChannel replaces third-party plugin issues with swift/kotlin compatibility.
+- AAC speech synthesis interrupts active utterances immediately on symbol selection to support fast non-verbal communication.
 
 ## Next Steps
 
-1. Discuss or Plan Phase 4 (Native Text-to-Speech): `/gsd-discuss-phase 4` or `/gsd-plan-phase 4`
+1. Complete Milestone: `/gsd-complete-milestone v1.5.0`
