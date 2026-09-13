@@ -29,9 +29,33 @@ void main() {
       // Verify all categories are displayed
       expect(find.byType(CheckboxListTile), findsNWidgets(8));
 
+      // Verify dialog title
+      expect(find.text('Valitse kuvatyypit'), findsOneWidget);
+
       // Verify initial selections
       expect(tester.widget<CheckboxListTile>(find.byType(CheckboxListTile).at(0)).value, isTrue);
       expect(tester.widget<CheckboxListTile>(find.byType(CheckboxListTile).at(1)).value, isTrue);
+    });
+
+    testWidgets('displays dialog title matching selectCategories in Finnish and Swedish', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          locale: Locale('fi'),
+          localizationsDelegates: [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: [
+            Locale('fi'),
+            Locale('sv'),
+          ],
+          home: CategorySelectionDialog(selectedCategories: ['arasaac']),
+        ),
+      );
+
+      expect(find.text('Valitse kuvatyypit'), findsOneWidget);
     });
 
     testWidgets('prevents deselecting last category', (WidgetTester tester) async {

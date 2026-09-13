@@ -6,8 +6,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/widgets/image_grid.dart';
+import 'package:kuvari_app/widgets/kuvari_image_display.dart';
 import 'package:kuvari_app/services/tts_service.dart';
-import 'package:mockito/mockito.dart';
 
 class FakeTtsService extends Fake implements TtsService {
   @override
@@ -90,6 +90,24 @@ void main() {
       expect(find.byType(Card), findsNWidgets(2));
       expect(find.text('Sunset'), findsOneWidget);
       expect(find.text('Mountain'), findsOneWidget);
+    });
+
+    testWidgets('Renders KuvariImageDisplay with high-resolution img.url', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: ImageGrid(
+            images: images,
+            selectedImages: selectedImages,
+            ttsService: fakeTtsService,
+            onSelect: (image) {},
+          ),
+        ),
+      );
+
+      final imageDisplays = tester.widgetList<KuvariImageDisplay>(find.byType(KuvariImageDisplay)).toList();
+      expect(imageDisplays.length, equals(2));
+      expect(imageDisplays[0].url, equals(images[0].url));
+      expect(imageDisplays[1].url, equals(images[1].url));
     });
 
     testWidgets('Calls onSelect when an image is tapped', (WidgetTester tester) async {
