@@ -44,7 +44,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get selectedImages => 'Valda bilder';
 
   @override
-  String get openSymbolsCategoryError => 'OpenSymbols stöder inte kategorival.';
+  String get openSymbolsCategoryError =>
+      'OpenSymbols stöder inte val av bildtyp.';
 
   @override
   String get noSelectedImages => 'Inga valda bilder.';
@@ -65,7 +66,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get language => 'Språk';
 
   @override
-  String get categories => 'Välj kategorier';
+  String get categories => 'Bildtyper';
 
   @override
   String get cancel => 'Avbryt';
@@ -86,7 +87,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get search => 'Sök';
 
   @override
-  String get selectCategories => 'Välj kategorier';
+  String get selectCategories => 'Välj bildtyper';
 
   @override
   String get error => 'Fel';

@@ -45,7 +45,7 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get openSymbolsCategoryError =>
-      'OpenSymbols ei tue kategorioiden valintaa.';
+      'OpenSymbols ei tue kuvatyypin valintaa.';
 
   @override
   String get noSelectedImages => 'Ei valittuja kuvia.';
@@ -66,7 +66,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get language => 'Kieli';
 
   @override
-  String get categories => 'Valitse kategoriat';
+  String get categories => 'Kuvatyypit';
 
   @override
   String get cancel => 'Peruuta';
@@ -87,7 +87,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get search => 'Hae';
 
   @override
-  String get selectCategories => 'Valitse kategoriat';
+  String get selectCategories => 'Valitse kuvatyypit';
 
   @override
   String get error => 'Virhe';

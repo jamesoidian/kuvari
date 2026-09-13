@@ -169,7 +169,7 @@ abstract class AppLocalizations {
   /// No description provided for @openSymbolsCategoryError.
   ///
   /// In fi, this message translates to:
-  /// **'OpenSymbols ei tue kategorioiden valintaa.'**
+  /// **'OpenSymbols ei tue kuvatyypin valintaa.'**
   String get openSymbolsCategoryError;
 
   /// No description provided for @noSelectedImages.
@@ -211,7 +211,7 @@ abstract class AppLocalizations {
   /// No description provided for @categories.
   ///
   /// In fi, this message translates to:
-  /// **'Valitse kategoriat'**
+  /// **'Kuvatyypit'**
   String get categories;
 
   /// No description provided for @cancel.
@@ -253,7 +253,7 @@ abstract class AppLocalizations {
   /// No description provided for @selectCategories.
   ///
   /// In fi, this message translates to:
-  /// **'Valitse kategoriat'**
+  /// **'Valitse kuvatyypit'**
   String get selectCategories;
 
   /// No description provided for @error.

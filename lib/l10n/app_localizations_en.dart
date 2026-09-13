@@ -45,7 +45,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get openSymbolsCategoryError =>
-      'OpenSymbols does not support category selection.';
+      'OpenSymbols does not support image type selection.';
 
   @override
   String get noSelectedImages => 'No selected images.';
@@ -66,7 +66,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get language => 'Language';
 
   @override
-  String get categories => 'Select categories';
+  String get categories => 'Image types';
 
   @override
   String get cancel => 'Cancel';
@@ -87,7 +87,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get search => 'Search';
 
   @override
-  String get selectCategories => 'Select categories';
+  String get selectCategories => 'Select image types';
 
   @override
   String get error => 'Error';
