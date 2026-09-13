@@ -46,7 +46,7 @@ class ImageGrid extends StatelessWidget {
                         children: [
                           Expanded(
                             child: KuvariImageDisplay(
-                              url: img.thumb,
+                              url: img.url,
                               fit: BoxFit.cover,
                               width: double.infinity,
                               errorWidget: const Icon(Icons.broken_image),
