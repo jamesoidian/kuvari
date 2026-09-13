@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "appliedAt": "2026-09-13T06:53:19.509Z",
+  "appliedMigrationIds": [
+    "2026-05-11-first-time-baseline-scan"
+  ],
+  "actions": [
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "record-baseline",
+      "relPath": "agents/gsd-debugger.md",
+      "reason": "known installer-generated agent included in first-time migration baseline",
+      "classification": "unknown",
+      "originalHash": null,
+      "currentHash": "2f977ebd570d58d8045d5c7b133092dcf2943cff61a1bd1866d31e04d2341498",
+      "status": "recorded"
+    },
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "record-baseline",
+      "relPath": "agents/gsd-executor.md",
+      "reason": "known installer-generated agent included in first-time migration baseline",
+      "classification": "unknown",
+      "originalHash": null,
+      "currentHash": "e4ce79680318a65e630979a197cc50b73ef5e7350eb7973dfe1dfafb293cfdc3",
+      "status": "recorded"
+    },
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "record-baseline",
+      "relPath": "agents/gsd-planner.md",
+      "reason": "known installer-generated agent included in first-time migration baseline",
+      "classification": "unknown",
+      "originalHash": null,
+      "currentHash": "d871ff72f8c195394e14d7581e69f2ba7bbf465fa848d8becdabb525aa6e3bdc",
+      "status": "recorded"
+    },
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "record-baseline",
+      "relPath": "agents/gsd-verifier.md",
+      "reason": "known installer-generated agent included in first-time migration baseline",
+      "classification": "unknown",
+      "originalHash": null,
+      "currentHash": "ede2a215a3e15006fab2d5d84f58ecd5a1071b90f620efc8b0526f18a6b0c1fe",
+      "status": "recorded"
+    },
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "baseline-preserve-user",
+      "relPath": "skills/codebase-mapper/SKILL.md",
+      "reason": "known user-owned artifact preserved by first-time migration baseline",
+      "classification": "user-owned",
+      "originalHash": null,
+      "currentHash": null,
+      "status": "preserved"
+    },
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "baseline-preserve-user",
+      "relPath": "skills/context-compressor/SKILL.md",
+      "reason": "known user-owned artifact preserved by first-time migration baseline",
+      "classification": "user-owned",
+      "originalHash": null,
+      "currentHash": null,
+      "status": "preserved"
+    },
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "baseline-preserve-user",
+      "relPath": "skills/context-fetch/SKILL.md",
+      "reason": "known user-owned artifact preserved by first-time migration baseline",
+      "classification": "user-owned",
+      "originalHash": null,
+      "currentHash": null,
+      "status": "preserved"
+    },
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "baseline-preserve-user",
+      "relPath": "skills/context-health-monitor/SKILL.md",
+      "reason": "known user-owned artifact preserved by first-time migration baseline",
+      "classification": "user-owned",
+      "originalHash": null,
+      "currentHash": null,
+      "status": "preserved"
+    },
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "baseline-preserve-user",
+      "relPath": "skills/debugger/SKILL.md",
+      "reason": "known user-owned artifact preserved by first-time migration baseline",
+      "classification": "user-owned",
+      "originalHash": null,
+      "currentHash": null,
+      "status": "preserved"
+    },
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "baseline-preserve-user",
+      "relPath": "skills/empirical-validation/SKILL.md",
+      "reason": "known user-owned artifact preserved by first-time migration baseline",
+      "classification": "user-owned",
+      "originalHash": null,
+      "currentHash": null,
+      "status": "preserved"
+    },
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "baseline-preserve-user",
+      "relPath": "skills/executor/SKILL.md",
+      "reason": "known user-owned artifact preserved by first-time migration baseline",
+      "classification": "user-owned",
+      "originalHash": null,
+      "currentHash": null,
+      "status": "preserved"
+    },
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "baseline-preserve-user",
+      "relPath": "skills/plan-checker/SKILL.md",
+      "reason": "known user-owned artifact preserved by first-time migration baseline",
+      "classification": "user-owned",
+      "originalHash": null,
+      "currentHash": null,
+      "status": "preserved"
+    },
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "baseline-preserve-user",
+      "relPath": "skills/planner/SKILL.md",
+      "reason": "known user-owned artifact preserved by first-time migration baseline",
+      "classification": "user-owned",
+      "originalHash": null,
+      "currentHash": null,
+      "status": "preserved"
+    },
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "baseline-preserve-user",
+      "relPath": "skills/subagent-delegation/SKILL.md",
+      "reason": "known user-owned artifact preserved by first-time migration baseline",
+      "classification": "user-owned",
+      "originalHash": null,
+      "currentHash": null,
+      "status": "preserved"
+    },
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "baseline-preserve-user",
+      "relPath": "skills/token-budget/SKILL.md",
+      "reason": "known user-owned artifact preserved by first-time migration baseline",
+      "classification": "user-owned",
+      "originalHash": null,
+      "currentHash": null,
+      "status": "preserved"
+    },
+    {
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "type": "baseline-preserve-user",
+      "relPath": "skills/verifier/SKILL.md",
+      "reason": "known user-owned artifact preserved by first-time migration baseline",
+      "classification": "user-owned",
+      "originalHash": null,
+      "currentHash": null,
+      "status": "preserved"
+    },
+    {
+      "type": "backup-and-remove",
+      "migrationId": "2026-05-11-first-time-baseline-scan",
+      "migrationChecksum": "sha256:4ec58d35b30dbf39cc56e3972146086d8d31861ecd800cf0b37a7aa94fe74c2a",
+      "relPath": "agents/gsd-researcher.md",
+      "reason": "GSD-looking file is not proven manifest-managed and needs explicit user choice",
+      "classification": "stale-gsd-looking",
+      "originalHash": null,
+      "currentHash": "ba7181dfe065cecb4203a2c4fc5c4af69a4123244fc3bbc9502c13b1df490a84",
+      "requestedType": "prompt-user",
+      "backupRelPath": "gsd-migration-journal/2026-09-13T06-53-19-509Z-391af6a99233c22b-backups/agents/gsd-researcher.md",
+      "rollbackRelPath": "gsd-migration-journal/2026-09-13T06-53-19-509Z-391af6a99233c22b-rollback/agents/gsd-researcher.md",
+      "status": "removed"
+    }
+  ]
+}
