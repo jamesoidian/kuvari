@@ -8,6 +8,7 @@ class KuvariSearchBar extends StatefulWidget {
   final VoidCallback onSearch;
   final VoidCallback onClear;
   final VoidCallback onTap; // Lisätään taputuskäsittelijä
+  final FocusNode? focusNode;
 
   const KuvariSearchBar({
     super.key,
@@ -15,6 +16,7 @@ class KuvariSearchBar extends StatefulWidget {
     required this.onSearch,
     required this.onClear,
     required this.onTap, // Lisätään taputuskäsittelijä
+    this.focusNode,
   });
 
   @override
@@ -22,23 +24,45 @@ class KuvariSearchBar extends StatefulWidget {
 }
 
 class _KuvariSearchBarState extends State<KuvariSearchBar> {
-  late FocusNode _focusNode;
+  FocusNode? _internalFocusNode;
+
+  FocusNode get _effectiveFocusNode => widget.focusNode ?? _internalFocusNode!;
 
   @override
   void initState() {
     super.initState();
-    _focusNode = FocusNode();
+    if (widget.focusNode == null) {
+      _internalFocusNode = FocusNode();
+    }
 
-    _focusNode.addListener(() {
-      if (_focusNode.hasFocus) {
-        widget.onTap(); // Kutsutaan taputuskäsittelijää kun kenttä saa fokuksen
+    _effectiveFocusNode.addListener(_handleFocusChange);
+  }
+
+  void _handleFocusChange() {
+    if (_effectiveFocusNode.hasFocus) {
+      widget.onTap(); // Kutsutaan taputuskäsittelijää kun kenttä saa fokuksen
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant KuvariSearchBar oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.focusNode != widget.focusNode) {
+      (oldWidget.focusNode ?? _internalFocusNode)?.removeListener(_handleFocusChange);
+      if (widget.focusNode != null) {
+        _internalFocusNode?.dispose();
+        _internalFocusNode = null;
+      } else {
+        _internalFocusNode ??= FocusNode();
       }
-    });
+      _effectiveFocusNode.addListener(_handleFocusChange);
+    }
   }
 
   @override
   void dispose() {
-    _focusNode.dispose();
+    _effectiveFocusNode.removeListener(_handleFocusChange);
+    _internalFocusNode?.dispose();
     super.dispose();
   }
 
@@ -51,7 +75,7 @@ class _KuvariSearchBarState extends State<KuvariSearchBar> {
             valueListenable: widget.controller,
             builder: (context, TextEditingValue value, child) {
               return TextField(
-                focusNode: _focusNode, // Määritetään FocusNode
+                focusNode: _effectiveFocusNode, // Määritetään FocusNode
                 controller: widget.controller,
                 textInputAction: TextInputAction.search,
                 onSubmitted: (_) => widget.onSearch(),

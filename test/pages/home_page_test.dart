@@ -8,23 +8,47 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/pages/home_page.dart';
+import 'package:kuvari_app/pages/image_viewer_page.dart';
 import 'package:kuvari_app/services/kuvari_service.dart';
-import 'package:kuvari_app/widgets/selected_images_carousel.dart';
+import 'package:kuvari_app/widgets/empty_queue_placeholder.dart';
+import 'package:kuvari_app/widgets/home_search_section.dart';
 import 'home_page_test.mocks.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:kuvari_app/widgets/home_search_section.dart';
 
 // Määrittele mock-objekti
 class FakeFirebaseAnalytics extends Fake implements FirebaseAnalytics {
   @override
-  Future<void> logEvent({AnalyticsCallOptions? callOptions, required String name, Map<String, Object>? parameters, List<AnalyticsEventItem>? items}) async {
+  Future<void> logEvent({
+    AnalyticsCallOptions? callOptions,
+    required String name,
+    Map<String, Object>? parameters,
+    List<AnalyticsEventItem>? items,
+  }) async {
     // Do nothing in tests
   }
 }
 
 @GenerateMocks([KuvariService])
-Future<void> main() async {
+void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+
+  final mockImages = [
+    KuvariImage(
+      author: 'John Doe',
+      name: 'Sunset',
+      thumb: 'https://example.com/thumb/sunset.png',
+      url: 'https://example.com/images/sunset.png',
+      uid: 101,
+    ),
+    KuvariImage(
+      author: 'Jane Smith',
+      name: 'Mountain',
+      thumb: 'https://example.com/thumb/mountain.png',
+      url: 'https://example.com/images/mountain.png',
+      uid: 102,
+    ),
+  ];
+
   group('HomePage Widget Tests', () {
     late MockKuvariService mockKuvariService;
 
@@ -32,203 +56,141 @@ Future<void> main() async {
       mockKuvariService = MockKuvariService();
     });
 
- /*    testWidgets('Displays CircularProgressIndicator when loading', (WidgetTester tester) async {
-      // Määritä mock KuvariService palauttamaan odotettava vastaus
-      when(mockKuvariService.searchImages(any)).thenAnswer((_) async {
-        // Simuloidaan viivettä
-        return Future.delayed(const Duration(seconds: 2), () => []);
-      });
-
-      // Luo HomePage käyttäen mock KuvariServicea
-      await tester.pumpWidget(
-        MaterialApp(
-          home: HomePage(KuvariService: mockKuvariService),
+    Widget createHomePage({Locale locale = const Locale('fi')}) {
+      return MaterialApp(
+        locale: locale,
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('fi'),
+          Locale('sv'),
+          Locale('en'),
+        ],
+        home: HomePage(
+          kuvariService: mockKuvariService,
+          setLocale: (_) {},
+          analytics: FakeFirebaseAnalytics(),
         ),
       );
-
-      // Syötä hakusana ja aloita haku
-      await tester.enterText(find.byType(TextField), 'test');
-      await tester.tap(find.byIcon(Icons.search_outlined));
-      await tester.pump(); // Aloita async toiminta
-
-      // Tarkista, että CircularProgressIndicator näkyy
-      expect(find.byType(CircularProgressIndicator), findsOneWidget);
-    }); */
+    }
 
     testWidgets('Displays images after successful search', (WidgetTester tester) async {
-      final mockImages = [
-        KuvariImage(
-          author: 'John Doe',
-          name: 'Sunset',
-          thumb: 'https://example.com/thumb/sunset.png',
-          url: 'https://example.com/images/sunset.png',
-          uid: 101,
-        ),
-        KuvariImage(
-          author: 'Jane Smith',
-          name: 'Mountain',
-          thumb: 'https://example.com/thumb/mountain.png',
-          url: 'https://example.com/images/mountain.png',
-          uid: 102,
-        ),
-      ];
+      when(mockKuvariService.searchImages('test', any, any))
+          .thenAnswer((_) async => mockImages);
 
-      // Määritä mock KuvariService palauttamaan mockImages
-      when(mockKuvariService.searchImages('test', any, any)).thenAnswer((_) async => mockImages);
-
-      // Luo HomePage käyttäen mock KuvariServicea
-      await tester.pumpWidget(
-        MaterialApp(
-          locale: const Locale('fi'),
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('fi'),
-            Locale('sv'),
-          ],
-          home: HomePage(
-            kuvariService: mockKuvariService,
-            setLocale: (_) {}, // Empty function for testing
-            analytics: FakeFirebaseAnalytics(),
-          ),
-        ),
-      );
+      await tester.pumpWidget(createHomePage());
       await tester.pump();
 
-      // Syötä hakusana ja aloita haku
       await tester.enterText(find.byType(TextField), 'test');
       await tester.tap(find.byIcon(Icons.search_outlined));
-      await tester.pump(); // Aloita async toiminta
-      await tester.pump(const Duration(seconds: 2)); // Odota async toiminta
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 2));
 
-      // Tarkista, että kuvat näkyvät
       expect(find.byType(Image), findsNWidgets(2));
     });
 
     testWidgets('Displays error message on failed search', (WidgetTester tester) async {
-      // Määritä mock KuvariService heittämään poikkeus
-      when(mockKuvariService.searchImages('test', any, any)).thenThrow(Exception('Failed to load images'));
+      when(mockKuvariService.searchImages('test', any, any))
+          .thenThrow(Exception('Failed to load images'));
 
-      // Luo HomePage käyttäen mock KuvariServicea
-      await tester.pumpWidget(
-        MaterialApp(
-          locale: const Locale('fi'),
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('fi'),
-            Locale('sv'),
-          ],
-          home: HomePage(
-            kuvariService: mockKuvariService,
-            setLocale: (_) {}, // Empty function for testing
-            analytics: FakeFirebaseAnalytics(),
-          ),
-        ),
-      );
+      await tester.pumpWidget(createHomePage());
       await tester.pump();
 
-      // Syötä hakusana ja aloita haku
       await tester.enterText(find.byType(TextField), 'test');
       await tester.tap(find.byIcon(Icons.search_outlined));
-      await tester.pump(); // Aloita async toiminta
-      await tester.pump(const Duration(seconds: 2)); // Odota async toiminta
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 2));
 
-      // Tarkista, että SnackBar näkyy virheilmoituksen kanssa
       expect(find.byType(SnackBar), findsOneWidget);
       expect(find.text('Virhe haussa: Exception: Failed to load images'), findsOneWidget);
     });
 
-    testWidgets('Can select and remove images', (WidgetTester tester) async {
-      final mockImages = [
-        KuvariImage(
-          author: 'John Doe',
-          name: 'Sunset',
-          thumb: 'https://example.com/thumb/sunset.png',
-          url: 'https://example.com/images/sunset.png',
-          uid: 101,
-        ),
-        KuvariImage(
-          author: 'Jane Smith',
-          name: 'Mountain',
-          thumb: 'https://example.com/thumb/mountain.png',
-          url: 'https://example.com/images/mountain.png',
-          uid: 102,
-        ),
-      ];
-
-      // Määritä mock KuvariService palauttamaan mockImages
-      when(mockKuvariService.searchImages('test', any, any)).thenAnswer((_) async => mockImages);
-
-      // Luo HomePage käyttäen mock KuvariServicea
-      await tester.pumpWidget(
-        MaterialApp(
-          locale: const Locale('fi'),
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('fi'),
-            Locale('sv'),
-          ],
-          home: HomePage(
-            kuvariService: mockKuvariService,
-            setLocale: (_) {}, // Empty function for testing
-            analytics: FakeFirebaseAnalytics(),
-          ),
-        ),
-      );
-      await tester.pump();
-
-      // Syötä hakusana ja aloita haku
-      await tester.enterText(find.byType(TextField), 'test');
-      await tester.tap(find.byIcon(Icons.search_outlined));
-      await tester.pump(); // Aloita async toiminta
-      await tester.pump(const Duration(seconds: 2)); // Odota async toiminta
-
-      // Valitse ensimmäinen kuva
-      await tester.tap(find.byType(Image).first);
-      await tester.pump();
-
-      // Tarkista, että SelectedImagesCarousel näkyy
-      expect(find.byType(SelectedImagesCarousel), findsOneWidget);
-
-      // Oletetaan, että SelectedImagesCarousel näyttää valitut kuvat
-      // Voit tarkistaa valittujen kuvien määrän
-      // Tämä riippuu SelectedImagesCarouselin toteutuksesta
-      // Tässä esimerkissä emme tiedä tarkkaa rakennetta, joten tämä on yleinen tarkastus
+    testWidgets('Displays HomeSearchSection widget', (WidgetTester tester) async {
+      await tester.pumpWidget(createHomePage());
+      expect(find.byType(HomeSearchSection), findsOneWidget);
     });
 
-    testWidgets('Displays HomeSearchSection widget', (WidgetTester tester) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          locale: const Locale('fi'),
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [Locale('fi'), Locale('sv')],
-          home: HomePage(
-            kuvariService: mockKuvariService,
-            setLocale: (_) {},
-            analytics: FakeFirebaseAnalytics(),
-          ),
-        ),
-      );
-      expect(find.byType(HomeSearchSection), findsOneWidget);
+    testWidgets('Empty queue displays placeholder and hides FAB', (WidgetTester tester) async {
+      await tester.pumpWidget(createHomePage());
+      await tester.pump();
+
+      expect(find.byType(EmptyQueuePlaceholder), findsOneWidget);
+      final crossFade = tester.widget<AnimatedCrossFade>(find.byType(AnimatedCrossFade));
+      expect(crossFade.crossFadeState, CrossFadeState.showFirst);
+      expect(find.byType(FloatingActionButton), findsNothing);
+    });
+
+    testWidgets('Tapping EmptyQueuePlaceholder focuses search TextField (D-03)', (WidgetTester tester) async {
+      await tester.pumpWidget(createHomePage());
+      await tester.pump();
+
+      final searchTextField = tester.widget<TextField>(find.byType(TextField));
+      expect(searchTextField.focusNode!.hasFocus, isFalse);
+
+      await tester.tap(find.byType(EmptyQueuePlaceholder));
+      await tester.pump();
+
+      expect(searchTextField.focusNode!.hasFocus, isTrue);
+    });
+
+    testWidgets('Selecting image shows carousel, extended FAB with count, and allows navigation', (WidgetTester tester) async {
+      when(mockKuvariService.searchImages('test', any, any))
+          .thenAnswer((_) async => mockImages);
+
+      await tester.pumpWidget(createHomePage());
+      await tester.pump();
+
+      // Search for images
+      await tester.enterText(find.byType(TextField), 'test');
+      await tester.tap(find.byIcon(Icons.search_outlined));
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 2));
+
+      // Select first image
+      await tester.tap(find.byType(Image).first);
+      await tester.pumpAndSettle();
+
+      // Carousel is shown in crossfade
+      final crossFade = tester.widget<AnimatedCrossFade>(find.byType(AnimatedCrossFade));
+      expect(crossFade.crossFadeState, CrossFadeState.showSecond);
+
+      // Extended FAB appears with dynamic count (D-05, D-07)
+      expect(find.byType(FloatingActionButton), findsOneWidget);
+      expect(find.text('Näytä kuvajono (1)'), findsOneWidget);
+      expect(find.byIcon(Icons.play_arrow), findsOneWidget);
+
+      // Select second image -> count updates to 2
+      await tester.tap(find.byType(Image).last);
+      await tester.pumpAndSettle();
+      expect(find.text('Näytä kuvajono (2)'), findsOneWidget);
+
+      // Tap FAB -> navigates to ImageViewerPage
+      await tester.tap(find.byType(FloatingActionButton));
+      await tester.pumpAndSettle();
+      expect(find.byType(ImageViewerPage), findsOneWidget);
+
+      // Return back to HomePage
+      Navigator.of(tester.element(find.byType(ImageViewerPage))).pop();
+      await tester.pumpAndSettle();
+      expect(find.byType(HomePage), findsOneWidget);
+
+      // Clear the queue via delete_sweep icon
+      await tester.tap(find.byIcon(Icons.delete_sweep));
+      await tester.pumpAndSettle();
+
+      // Confirm dialog opens -> tap "Tyhjennä"
+      expect(find.text('Tyhjennä kuvajono'), findsOneWidget);
+      await tester.tap(find.text('Tyhjennä'));
+      await tester.pumpAndSettle();
+
+      // FAB is hidden and crossfade returns to placeholder (D-08, D-09)
+      expect(find.byType(FloatingActionButton), findsNothing);
+      final crossFadeAfterClear = tester.widget<AnimatedCrossFade>(find.byType(AnimatedCrossFade));
+      expect(crossFadeAfterClear.crossFadeState, CrossFadeState.showFirst);
     });
   });
 }

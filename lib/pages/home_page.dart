@@ -9,6 +9,7 @@ import 'package:kuvari_app/models/kuvari_image.dart';
 import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/services/kuvari_service.dart';
 import 'package:kuvari_app/pages/image_viewer_page.dart';
+import 'package:kuvari_app/widgets/empty_queue_placeholder.dart';
 import 'package:kuvari_app/widgets/home_app_bar.dart';
 import 'package:kuvari_app/widgets/home_search_section.dart';
 import 'package:kuvari_app/widgets/selected_images_carousel.dart';
@@ -37,6 +38,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final TextEditingController _searchController = TextEditingController();
+  final FocusNode _searchFocusNode = FocusNode();
   final TtsService _ttsService = TtsService();
   List<KuvariImage> _images = [];
   List<KuvariImage> _selectedImages = [];
@@ -65,6 +67,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void dispose() {
     _searchController.dispose(); // Varmistetaan, että controllerit suljetaan
+    _searchFocusNode.dispose();
     super.dispose();
   }
 
@@ -327,16 +330,27 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              // Kuvajono valituista kuvista ja tyhjennysikoni
-              if (_selectedImages.isNotEmpty)
-                SelectedImagesCarousel(
+              AnimatedCrossFade(
+                firstChild: EmptyQueuePlaceholder(
+                  onTap: () => _searchFocusNode.requestFocus(),
+                ),
+                secondChild: SelectedImagesCarousel(
                   selectedImages: _selectedImages,
                   currentStartIndex: _currentStartIndex,
                   maxVisibleImages: _maxVisibleImages,
                   onClear: _clearSelectedImages,
                   onRemove: _removeSelectedImage,
                   onReorder: _onReorderSelectedImages,
+                  showClearButton: _selectedImages.isNotEmpty,
                 ),
+                crossFadeState: _selectedImages.isEmpty
+                    ? CrossFadeState.showFirst
+                    : CrossFadeState.showSecond,
+                duration: const Duration(milliseconds: 250),
+                firstCurve: Curves.easeInOut,
+                secondCurve: Curves.easeInOut,
+                sizeCurve: Curves.easeInOut,
+              ),
               const SizedBox(height: 8),
 
               // Hakukenttä
@@ -348,6 +362,7 @@ class _HomePageState extends State<HomePage> {
                 onSelectCategories: _selectCategories,
                 showFilterBadge: _selectedCategories.length < 8,
                 isCategoryEnabled: isCategoryEnabled,
+                focusNode: _searchFocusNode,
               ),
               const SizedBox(height: 8),
 
@@ -366,27 +381,19 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         floatingActionButton: _selectedImages.isNotEmpty
-            ? FloatingActionButton(
+            ? FloatingActionButton.extended(
                 onPressed: _navigateToImageViewer,
                 tooltip: AppLocalizations.of(context)!.viewImageStory,
-                backgroundColor: Colors.teal, // FABin taustaväri
-                foregroundColor: Colors.white, // Ikonin oletusväri
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    // Ulompi ikoni toimii borderina
-                    Icon(
-                      Icons.play_arrow,
-                      color: Colors.white, // Borderin väri
-                      size: 30, // Suurempi koko borderille
-                    ),
-                    // Sisempi ikoni
-                    Icon(
-                      Icons.play_arrow,
-                      color: Colors.teal, // Ikonin väri
-                      size: 24, // Pienempi koko ikonille
-                    ),
-                  ],
+                backgroundColor: Colors.teal,
+                foregroundColor: Colors.white,
+                icon: const Icon(Icons.play_arrow, color: Colors.white),
+                label: Text(
+                  AppLocalizations.of(context)!
+                      .viewImageStoryWithCount(_selectedImages.length),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               )
             : null,

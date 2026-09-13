@@ -10,6 +10,7 @@ class HomeSearchSection extends StatelessWidget {
   final VoidCallback onSelectCategories;
   final bool showFilterBadge;
   final bool isCategoryEnabled;
+  final FocusNode? focusNode;
 
   const HomeSearchSection({
     super.key,
@@ -20,6 +21,7 @@ class HomeSearchSection extends StatelessWidget {
     required this.onSelectCategories,
     required this.showFilterBadge,
     this.isCategoryEnabled = true,
+    this.focusNode,
   });
 
   @override
@@ -32,6 +34,7 @@ class HomeSearchSection extends StatelessWidget {
             onSearch: onSearch,
             onClear: onClear,
             onTap: onTap,
+            focusNode: focusNode,
           ),
         ),
         IconButton(
