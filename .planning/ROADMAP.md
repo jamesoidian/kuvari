@@ -5,16 +5,16 @@
 
 ## Phases
 
-| # | Phase | Goal | Requirements | Success Criteria |
-|---|-------|------|--------------|------------------|
-| 1 | **Terminology & Search Sharpness** | Correct "Category" to "Image Type" across languages and ensure search images render with high clarity. | TERM-01, IMG-01 | 2 criteria |
-| 2 | **Home Guidance & Collection Queue** | Keep collection queue visible with instructive empty state and prominent viewer launch action. | JONO-01, JONO-02 | 2 criteria |
-| 3 | **Viewer Choice Mode (Image Pairs)** | Enable side-by-side comparison in viewer for two-choice AAC interactions. | VIEW-01, VIEW-02 | 2 criteria |
-| 4 | **Practical AAC Guidance & Info** | Expand InfoPage with practical AAC communication examples and structured guides. | GUIDE-01, GUIDE-02 | 2 criteria |
+| # | Phase | Status | Goal | Requirements | Success Criteria |
+|---|-------|--------|------|--------------|------------------|
+| 1 | **Terminology & Search Sharpness** | [x] Complete | Correct "Category" to "Image Type" across languages and ensure search images render with high clarity. | TERM-01, IMG-01 | 2 criteria |
+| 2 | **Home Guidance & Collection Queue** | [ ] Ready | Keep collection queue visible with instructive empty state and prominent viewer launch action. | JONO-01, JONO-02 | 2 criteria |
+| 3 | **Viewer Choice Mode (Image Pairs)** | [ ] Planned | Enable side-by-side comparison in viewer for two-choice AAC interactions. | VIEW-01, VIEW-02 | 2 criteria |
+| 4 | **Practical AAC Guidance & Info** | [ ] Planned | Expand InfoPage with practical AAC communication examples and structured guides. | GUIDE-01, GUIDE-02 | 2 criteria |
 
 ---
 
-### Phase 1: Terminology & Search Sharpness
+### Phase 1: Terminology & Search Sharpness (Completed: 2026-09-13)
 **Goal:** Align UI nomenclature with AAC standards and fix blurry search thumbnails.
 - **Requirements:**
   - `TERM-01`: Rename "Category" / "Kategoria" to "Image Type" / "Kuvatyyppi" in UI dialogs, tooltips, and ARB localization files.

@@ -7,8 +7,8 @@
 
 ### Terminology & Search Quality
 
-- [ ] **TERM-01**: Rename "Category" / "Kategoria" to "Image Type" / "Kuvatyyppi" across all UI labels, dialog headers, tooltips, and localization files (`fi`, `sv`, `en`).
-- [ ] **IMG-01**: Search result image cards render crisp, high-resolution symbols on high-DPI displays without raster blurriness.
+- [x] **TERM-01**: Rename "Category" / "Kategoria" to "Image Type" / "Kuvatyyppi" across all UI labels, dialog headers, tooltips, and localization files (`fi`, `sv`, `en`).
+- [x] **IMG-01**: Search result image cards render crisp, high-resolution symbols on high-DPI displays without raster blurriness.
 
 ### Home Screen Guidance & Collection Queue
 
@@ -41,8 +41,8 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| TERM-01 | Phase 1 | Pending |
-| IMG-01 | Phase 1 | Pending |
+| TERM-01 | Phase 1 | Complete |
+| IMG-01 | Phase 1 | Complete |
 | JONO-01 | Phase 2 | Pending |
 | JONO-02 | Phase 2 | Pending |
 | VIEW-01 | Phase 3 | Pending |
@@ -51,6 +51,7 @@
 | GUIDE-02 | Phase 4 | Pending |
 
 **Coverage:**
+
 - Milestone v1.5.0 requirements: 8 total
 - Mapped to phases: 8
 - Unmapped: 0 ✓
