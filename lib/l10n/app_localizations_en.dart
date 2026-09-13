@@ -234,18 +234,25 @@ class AppLocalizationsEn extends AppLocalizations {
       'Type a keyword (e.g., food, clothing, or emotion) in the search field and select relevant symbols.';
 
   @override
-  String get infoQuickStartStep2Title => '2. Add to queue';
+  String get infoQuickStartStep2Title => '2. Assemble and edit the queue';
 
   @override
   String get infoQuickStartStep2Desc =>
-      'Selected symbols collect in the queue on the home screen to build a message or schedule.';
+      'Selected images collect in the queue on the home screen. You can scroll horizontally, reorder by long-pressing, and remove images with the remove button.';
 
   @override
-  String get infoQuickStartStep3Title => '3. View or listen';
+  String get infoQuickStartStep3Title => '3. View and listen';
 
   @override
   String get infoQuickStartStep3Desc =>
-      'Open the reel by tapping \"View story\" or listen to the spoken word by tapping the speaker icon.';
+      'Open the image sequence in viewer by tapping \"View story\" and listen to words with speech synthesis by tapping the image or speaker icon.';
+
+  @override
+  String get infoQuickStartStep4Title => '4. Save for repeated use';
+
+  @override
+  String get infoQuickStartStep4Desc =>
+      'Save the assembled image sequence as a story using the bookmark icon so the same daily routine or choice board is easy to reuse.';
 
   @override
   String get infoUseCasesTitle => 'Practical Situations';

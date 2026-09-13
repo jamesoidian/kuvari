@@ -106,21 +106,29 @@
   "@infoQuickStartStep1Desc": {
     "description": "Steg 1 beskrivning i snabbguiden"
   },
-  "infoQuickStartStep2Title": "2. Samla i sekvens",
+  "infoQuickStartStep2Title": "2. Bygg och ändra i kön",
   "@infoQuickStartStep2Title": {
     "description": "Steg 2 titel i snabbguiden"
   },
-  "infoQuickStartStep2Desc": "Dina valda bilder samlas i kön på startsidan för att bilda ett meddelande eller ett schema.",
+  "infoQuickStartStep2Desc": "Valda bilder samlas i kön på startsidan. Du kan rulla kön i sidled, ändra ordning genom att trycka länge och ta bort bilder med krysset.",
   "@infoQuickStartStep2Desc": {
     "description": "Steg 2 beskrivning i snabbguiden"
   },
-  "infoQuickStartStep3Title": "3. Visa eller lyssna",
+  "infoQuickStartStep3Title": "3. Visa och lyssna",
   "@infoQuickStartStep3Title": {
     "description": "Steg 3 titel i snabbguiden"
   },
-  "infoQuickStartStep3Desc": "Öppna sekvensen genom att trycka på \"Visa bildsekvens\" eller lyssna på ordet via högtalarikonen.",
+  "infoQuickStartStep3Desc": "Öppna bildsekvensen för visning genom att trycka på \"Visa bildsekvens\" och lyssna på ordet med talsyntes genom att trycka på bilden eller högtalarikonen.",
   "@infoQuickStartStep3Desc": {
     "description": "Steg 3 beskrivning i snabbguiden"
+  },
+  "infoQuickStartStep4Title": "4. Spara för återkommande användning",
+  "@infoQuickStartStep4Title": {
+    "description": "Steg 4 titel i snabbguiden"
+  },
+  "infoQuickStartStep4Desc": "Du kan spara bildsekvensen som en berättelse via bokmärkesikonen så att samma dagsordning eller valkarta är lätt att använda igen.",
+  "@infoQuickStartStep4Desc": {
+    "description": "Steg 4 beskrivning i snabbguiden"
   },
   "infoUseCasesTitle": "Praktiska situationer",
   "@infoUseCasesTitle": {

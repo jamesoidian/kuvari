@@ -234,18 +234,25 @@ class AppLocalizationsFi extends AppLocalizations {
       'Kirjoita hakusana (esim. ruoka, pukeutuminen tai tunne) hakukenttään ja valitse sopivat kuvat.';
 
   @override
-  String get infoQuickStartStep2Title => '2. Kokoa jonoon';
+  String get infoQuickStartStep2Title => '2. Kokoa ja muokkaa jonoa';
 
   @override
   String get infoQuickStartStep2Desc =>
-      'Valitsemasi kuvat kertyvät etusivun jonomuotoiselle alustalle viestiksi tai päiväjärjestykseksi.';
+      'Valitsemasi kuvat kertyvät etusivun jonoon. Voit vierittää jonoa sivusuunnassa, muuttaa järjestystä pitkään painamalla ja poistaa kuvia ruksista.';
 
   @override
-  String get infoQuickStartStep3Title => '3. Näytä tai kuuntele';
+  String get infoQuickStartStep3Title => '3. Näytä ja kuuntele';
 
   @override
   String get infoQuickStartStep3Desc =>
-      'Avaa kuvajono katseluun painamalla \"Näytä kuvajono\" tai kuuntele sana painamalla kaiutinkuvaketta.';
+      'Avaa kuvajono katseluun painamalla \"Näytä kuvajono\" ja kuuntele sana puhesynteesillä napauttamalla kuvaa tai kaiutinkuvaketta.';
+
+  @override
+  String get infoQuickStartStep4Title => '4. Tallenna toistuvaa käyttöä varten';
+
+  @override
+  String get infoQuickStartStep4Desc =>
+      'Voit tallentaa kootun kuvajonon tarinaksi kirjanmerkkikuvakkeesta, jolloin sama päiväjärjestys tai valintataulu on helposti käytettävissä uudelleen.';
 
   @override
   String get infoUseCasesTitle => 'Käytännön tilanteet';

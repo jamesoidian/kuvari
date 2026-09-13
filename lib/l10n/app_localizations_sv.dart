@@ -235,18 +235,25 @@ class AppLocalizationsSv extends AppLocalizations {
       'Skriv ett sökord (t.ex. mat, kläder eller känslor) i sökrutan och välj passande bilder.';
 
   @override
-  String get infoQuickStartStep2Title => '2. Samla i sekvens';
+  String get infoQuickStartStep2Title => '2. Bygg och ändra i kön';
 
   @override
   String get infoQuickStartStep2Desc =>
-      'Dina valda bilder samlas i kön på startsidan för att bilda ett meddelande eller ett schema.';
+      'Valda bilder samlas i kön på startsidan. Du kan rulla kön i sidled, ändra ordning genom att trycka länge och ta bort bilder med krysset.';
 
   @override
-  String get infoQuickStartStep3Title => '3. Visa eller lyssna';
+  String get infoQuickStartStep3Title => '3. Visa och lyssna';
 
   @override
   String get infoQuickStartStep3Desc =>
-      'Öppna sekvensen genom att trycka på \"Visa bildsekvens\" eller lyssna på ordet via högtalarikonen.';
+      'Öppna bildsekvensen för visning genom att trycka på \"Visa bildsekvens\" och lyssna på ordet med talsyntes genom att trycka på bilden eller högtalarikonen.';
+
+  @override
+  String get infoQuickStartStep4Title => '4. Spara för återkommande användning';
+
+  @override
+  String get infoQuickStartStep4Desc =>
+      'Du kan spara bildsekvensen som en berättelse via bokmärkesikonen så att samma dagsordning eller valkarta är lätt att använda igen.';
 
   @override
   String get infoUseCasesTitle => 'Praktiska situationer';

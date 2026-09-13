@@ -523,26 +523,38 @@ abstract class AppLocalizations {
   /// Step 2 title in Quick Start
   ///
   /// In fi, this message translates to:
-  /// **'2. Kokoa jonoon'**
+  /// **'2. Kokoa ja muokkaa jonoa'**
   String get infoQuickStartStep2Title;
 
   /// Step 2 description in Quick Start
   ///
   /// In fi, this message translates to:
-  /// **'Valitsemasi kuvat kertyvät etusivun jonomuotoiselle alustalle viestiksi tai päiväjärjestykseksi.'**
+  /// **'Valitsemasi kuvat kertyvät etusivun jonoon. Voit vierittää jonoa sivusuunnassa, muuttaa järjestystä pitkään painamalla ja poistaa kuvia ruksista.'**
   String get infoQuickStartStep2Desc;
 
   /// Step 3 title in Quick Start
   ///
   /// In fi, this message translates to:
-  /// **'3. Näytä tai kuuntele'**
+  /// **'3. Näytä ja kuuntele'**
   String get infoQuickStartStep3Title;
 
   /// Step 3 description in Quick Start
   ///
   /// In fi, this message translates to:
-  /// **'Avaa kuvajono katseluun painamalla \"Näytä kuvajono\" tai kuuntele sana painamalla kaiutinkuvaketta.'**
+  /// **'Avaa kuvajono katseluun painamalla \"Näytä kuvajono\" ja kuuntele sana puhesynteesillä napauttamalla kuvaa tai kaiutinkuvaketta.'**
   String get infoQuickStartStep3Desc;
+
+  /// Step 4 title in Quick Start
+  ///
+  /// In fi, this message translates to:
+  /// **'4. Tallenna toistuvaa käyttöä varten'**
+  String get infoQuickStartStep4Title;
+
+  /// Step 4 description in Quick Start
+  ///
+  /// In fi, this message translates to:
+  /// **'Voit tallentaa kootun kuvajonon tarinaksi kirjanmerkkikuvakkeesta, jolloin sama päiväjärjestys tai valintataulu on helposti käytettävissä uudelleen.'**
+  String get infoQuickStartStep4Desc;
 
   /// Title of Practical Use Cases section on InfoPage
   ///

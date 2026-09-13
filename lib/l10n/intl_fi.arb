@@ -106,21 +106,29 @@
   "@infoQuickStartStep1Desc": {
     "description": "Step 1 description in Quick Start"
   },
-  "infoQuickStartStep2Title": "2. Kokoa jonoon",
+  "infoQuickStartStep2Title": "2. Kokoa ja muokkaa jonoa",
   "@infoQuickStartStep2Title": {
     "description": "Step 2 title in Quick Start"
   },
-  "infoQuickStartStep2Desc": "Valitsemasi kuvat kertyvät etusivun jonomuotoiselle alustalle viestiksi tai päiväjärjestykseksi.",
+  "infoQuickStartStep2Desc": "Valitsemasi kuvat kertyvät etusivun jonoon. Voit vierittää jonoa sivusuunnassa, muuttaa järjestystä pitkään painamalla ja poistaa kuvia ruksista.",
   "@infoQuickStartStep2Desc": {
     "description": "Step 2 description in Quick Start"
   },
-  "infoQuickStartStep3Title": "3. Näytä tai kuuntele",
+  "infoQuickStartStep3Title": "3. Näytä ja kuuntele",
   "@infoQuickStartStep3Title": {
     "description": "Step 3 title in Quick Start"
   },
-  "infoQuickStartStep3Desc": "Avaa kuvajono katseluun painamalla \"Näytä kuvajono\" tai kuuntele sana painamalla kaiutinkuvaketta.",
+  "infoQuickStartStep3Desc": "Avaa kuvajono katseluun painamalla \"Näytä kuvajono\" ja kuuntele sana puhesynteesillä napauttamalla kuvaa tai kaiutinkuvaketta.",
   "@infoQuickStartStep3Desc": {
     "description": "Step 3 description in Quick Start"
+  },
+  "infoQuickStartStep4Title": "4. Tallenna toistuvaa käyttöä varten",
+  "@infoQuickStartStep4Title": {
+    "description": "Step 4 title in Quick Start"
+  },
+  "infoQuickStartStep4Desc": "Voit tallentaa kootun kuvajonon tarinaksi kirjanmerkkikuvakkeesta, jolloin sama päiväjärjestys tai valintataulu on helposti käytettävissä uudelleen.",
+  "@infoQuickStartStep4Desc": {
+    "description": "Step 4 description in Quick Start"
   },
   "infoUseCasesTitle": "Käytännön tilanteet",
   "@infoUseCasesTitle": {

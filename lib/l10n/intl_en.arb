@@ -106,21 +106,29 @@
   "@infoQuickStartStep1Desc": {
     "description": "Step 1 description in Quick Start"
   },
-  "infoQuickStartStep2Title": "2. Add to queue",
+  "infoQuickStartStep2Title": "2. Assemble and edit the queue",
   "@infoQuickStartStep2Title": {
     "description": "Step 2 title in Quick Start"
   },
-  "infoQuickStartStep2Desc": "Selected symbols collect in the queue on the home screen to build a message or schedule.",
+  "infoQuickStartStep2Desc": "Selected images collect in the queue on the home screen. You can scroll horizontally, reorder by long-pressing, and remove images with the remove button.",
   "@infoQuickStartStep2Desc": {
     "description": "Step 2 description in Quick Start"
   },
-  "infoQuickStartStep3Title": "3. View or listen",
+  "infoQuickStartStep3Title": "3. View and listen",
   "@infoQuickStartStep3Title": {
     "description": "Step 3 title in Quick Start"
   },
-  "infoQuickStartStep3Desc": "Open the reel by tapping \"View story\" or listen to the spoken word by tapping the speaker icon.",
+  "infoQuickStartStep3Desc": "Open the image sequence in viewer by tapping \"View story\" and listen to words with speech synthesis by tapping the image or speaker icon.",
   "@infoQuickStartStep3Desc": {
     "description": "Step 3 description in Quick Start"
+  },
+  "infoQuickStartStep4Title": "4. Save for repeated use",
+  "@infoQuickStartStep4Title": {
+    "description": "Step 4 title in Quick Start"
+  },
+  "infoQuickStartStep4Desc": "Save the assembled image sequence as a story using the bookmark icon so the same daily routine or choice board is easy to reuse.",
+  "@infoQuickStartStep4Desc": {
+    "description": "Step 4 description in Quick Start"
   },
   "infoUseCasesTitle": "Practical Situations",
   "@infoUseCasesTitle": {
