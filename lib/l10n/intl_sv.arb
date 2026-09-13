@@ -75,5 +75,19 @@
   "deleteTag": "Radera tagg",
   "tagInUseWarning": "Denna tagg används i {count} berättelser. Radera ändå?",
   "unused": "Oanvänd",
-  "tagInfoLabel": "Lägg till taggar genom att trycka länge på en bildberättelse"
+  "tagInfoLabel": "Lägg till taggar genom att trycka länge på en bildberättelse",
+  "emptyQueueGuidance": "Dina valda bilder hamnar i denna sekvens. Du kan skapa ett meddelande, en dagsordning eller en valbricka.",
+  "@emptyQueueGuidance": {
+    "description": "Vägledningstext som visas i samlingskön när den är tom"
+  },
+  "viewImageStoryWithCount": "Visa bildsekvens ({count})",
+  "@viewImageStoryWithCount": {
+    "description": "Etikett för utökad FAB som visar antalet valda bilder",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  }
 }

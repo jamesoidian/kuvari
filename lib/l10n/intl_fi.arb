@@ -75,5 +75,19 @@
   "deleteTag": "Poista avainsana",
   "tagInUseWarning": "Tämä avainsana on käytössä {count} tarinassa. Poistetaanko silti?",
   "unused": "Ei käytössä",
-  "tagInfoLabel": "Lisää avainsanoja painamalla kuvajonoa pitkään"
+  "tagInfoLabel": "Lisää avainsanoja painamalla kuvajonoa pitkään",
+  "emptyQueueGuidance": "Valitsemasi kuvat tulevat tähän jonoon. Voit koota viestin, päiväjärjestyksen tai valintataulun.",
+  "@emptyQueueGuidance": {
+    "description": "Guidance text displayed in the collection queue empty state card"
+  },
+  "viewImageStoryWithCount": "Näytä kuvajono ({count})",
+  "@viewImageStoryWithCount": {
+    "description": "Label for the extended FAB showing count of queued images",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  }
 }

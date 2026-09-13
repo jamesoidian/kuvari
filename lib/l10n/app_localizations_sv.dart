@@ -210,4 +210,13 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get tagInfoLabel =>
       'Lägg till taggar genom att trycka länge på en bildberättelse';
+
+  @override
+  String get emptyQueueGuidance =>
+      'Dina valda bilder hamnar i denna sekvens. Du kan skapa ett meddelande, en dagsordning eller en valbricka.';
+
+  @override
+  String viewImageStoryWithCount(int count) {
+    return 'Visa bildsekvens ($count)';
+  }
 }

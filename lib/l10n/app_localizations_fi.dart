@@ -209,4 +209,13 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get tagInfoLabel => 'Lisää avainsanoja painamalla kuvajonoa pitkään';
+
+  @override
+  String get emptyQueueGuidance =>
+      'Valitsemasi kuvat tulevat tähän jonoon. Voit koota viestin, päiväjärjestyksen tai valintataulun.';
+
+  @override
+  String viewImageStoryWithCount(int count) {
+    return 'Näytä kuvajono ($count)';
+  }
 }

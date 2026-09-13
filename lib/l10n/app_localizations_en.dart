@@ -209,4 +209,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tagInfoLabel => 'Add tags by long-pressing an image story';
+
+  @override
+  String get emptyQueueGuidance =>
+      'Your selected images appear in this queue. You can compose a message, daily schedule, or choice board.';
+
+  @override
+  String viewImageStoryWithCount(int count) {
+    return 'View story ($count)';
+  }
 }

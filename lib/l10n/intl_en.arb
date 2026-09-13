@@ -75,5 +75,19 @@
   "deleteTag": "Delete Tag",
   "tagInUseWarning": "This tag is used in {count} stories. Delete anyway?",
   "unused": "Unused",
-  "tagInfoLabel": "Add tags by long-pressing an image story"
+  "tagInfoLabel": "Add tags by long-pressing an image story",
+  "emptyQueueGuidance": "Your selected images appear in this queue. You can compose a message, daily schedule, or choice board.",
+  "@emptyQueueGuidance": {
+    "description": "Guidance text displayed in the collection queue empty state card"
+  },
+  "viewImageStoryWithCount": "View story ({count})",
+  "@viewImageStoryWithCount": {
+    "description": "Label for the extended FAB showing count of queued images",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  }
 }

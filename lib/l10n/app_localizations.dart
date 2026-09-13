@@ -483,6 +483,18 @@ abstract class AppLocalizations {
   /// In fi, this message translates to:
   /// **'Lisää avainsanoja painamalla kuvajonoa pitkään'**
   String get tagInfoLabel;
+
+  /// Guidance text displayed in the collection queue empty state card
+  ///
+  /// In fi, this message translates to:
+  /// **'Valitsemasi kuvat tulevat tähän jonoon. Voit koota viestin, päiväjärjestyksen tai valintataulun.'**
+  String get emptyQueueGuidance;
+
+  /// Label for the extended FAB showing count of queued images
+  ///
+  /// In fi, this message translates to:
+  /// **'Näytä kuvajono ({count})'**
+  String viewImageStoryWithCount(int count);
 }
 
 class _AppLocalizationsDelegate
