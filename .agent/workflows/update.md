@@ -104,10 +104,14 @@ B) No — Cancel
 ```powershell
 # Backup current
 Copy-Item -Recurse ".agent" ".agent.backup"
+Copy-Item -Recurse ".agents" ".agents.backup"
 Copy-Item -Recurse ".gsd/templates" ".gsd/templates.backup"
 
-# Update workflows and skills (preserve user's .gsd docs)
+# Update workflows (preserve user's .gsd docs)
 Copy-Item -Recurse -Force ".gsd-update-temp/.agent/*" ".agent/"
+
+# Update skills (Agent Skills standard)
+Copy-Item -Recurse -Force ".gsd-update-temp/.agents/*" ".agents/"
 
 # Update templates only
 Copy-Item -Recurse -Force ".gsd-update-temp/.gsd/templates/*" ".gsd/templates/"
@@ -115,16 +119,22 @@ Copy-Item -Recurse -Force ".gsd-update-temp/.gsd/templates/*" ".gsd/templates/"
 # Update root files
 Copy-Item -Force ".gsd-update-temp/GSD-STYLE.md" "./"
 Copy-Item -Force ".gsd-update-temp/CHANGELOG.md" "./"
+Copy-Item -Force ".gsd-update-temp/PROJECT_RULES.md" "./"
+Copy-Item -Force ".gsd-update-temp/VERSION" "./"
 ```
 
 **Bash:**
 ```bash
 # Backup current
 cp -r .agent .agent.backup
+cp -r .agents .agents.backup
 cp -r .gsd/templates .gsd/templates.backup
 
-# Update workflows and skills (preserve user's .gsd docs)
+# Update workflows (preserve user's .gsd docs)
 cp -r .gsd-update-temp/.agent/* .agent/
+
+# Update skills (Agent Skills standard)
+cp -r .gsd-update-temp/.agents/* .agents/
 
 # Update templates only
 cp -r .gsd-update-temp/.gsd/templates/* .gsd/templates/
@@ -132,6 +142,8 @@ cp -r .gsd-update-temp/.gsd/templates/* .gsd/templates/
 # Update root files
 cp .gsd-update-temp/GSD-STYLE.md ./
 cp .gsd-update-temp/CHANGELOG.md ./
+cp .gsd-update-temp/PROJECT_RULES.md ./
+cp .gsd-update-temp/VERSION ./
 ```
 
 ---
@@ -142,6 +154,7 @@ cp .gsd-update-temp/CHANGELOG.md ./
 ```powershell
 Remove-Item -Recurse -Force ".gsd-update-temp"
 Remove-Item -Recurse -Force ".agent.backup"
+Remove-Item -Recurse -Force ".agents.backup"
 Remove-Item -Recurse -Force ".gsd/templates.backup"
 ```
 
@@ -149,6 +162,7 @@ Remove-Item -Recurse -Force ".gsd/templates.backup"
 ```bash
 rm -rf .gsd-update-temp
 rm -rf .agent.backup
+rm -rf .agents.backup
 rm -rf .gsd/templates.backup
 ```
 

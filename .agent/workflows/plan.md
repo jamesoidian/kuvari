@@ -21,7 +21,14 @@ Create executable phase prompts (PLAN.md files) for a roadmap phase with integra
 
 **Default flow:** Research (if needed) → Plan → Verify → Done
 
-**Why subagents:** Research and planning burn context fast. Verification uses fresh context. User sees the flow between agents in main context.
+**Why subagents:** Research and planning are the two heaviest context consumers in GSD —
+research reads the codebase, planning reads the spec, roadmap, and research on top of it.
+Both run in `gsd-researcher` / `gsd-planner` subagents so the orchestrator keeps the budget
+it needs to run the rest of the phase. You see the flow between agents; you do not pay for
+their reading.
+
+Requires Antigravity 2.0+ (`invoke_subagent`). Older versions run inline — see
+`.agents/skills/subagent-delegation/SKILL.md`.
 </objective>
 
 <context>
@@ -35,6 +42,9 @@ Create executable phase prompts (PLAN.md files) for a roadmap phase with integra
 **Required files:**
 - `.gsd/SPEC.md` — Must be FINALIZED (Planning Lock)
 - `.gsd/ROADMAP.md` — Must have phases defined
+
+**Delegation protocol:** `.agents/skills/subagent-delegation/SKILL.md`
+**Subagents:** `.agents/agents/gsd-researcher.md`, `.agents/agents/gsd-planner.md`
 </context>
 
 <philosophy>
@@ -84,6 +94,11 @@ Discovery is MANDATORY unless you can prove current context exists.
 - Single known library, confirming syntax/version
 - Low-risk decision (easily changed later)
 - Action: Quick web search, no RESEARCH.md needed
+
+**Level 1.5 — Discovery** (5-15 min)
+- Quick library/option comparison (A vs B)
+- Low-to-medium risk, focused question
+- Action: Create DISCOVERY.md using `.gsd/templates/discovery.md` template
 
 **Level 2 — Standard Research** (15-30 min)
 - Choosing between 2-3 options
@@ -203,9 +218,25 @@ Display banner:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-Perform research based on discovery level (see `<discovery_levels>`).
+**Delegated mode** (`invoke_subagent` available): invoke `gsd-researcher` with workspace mode
+`share`:
 
-Create `$PHASE_DIR/RESEARCH.md` with findings.
+```
+mode: research
+phase: {N}
+level: {1|2|3 from <discovery_levels>}
+questions:
+  - {question 1}
+  - {question 2}
+
+Write findings to .gsd/phases/{phase}/RESEARCH.md.
+Return the compact digest from your Return Contract — nothing else.
+```
+
+Read only the returned digest. The RESEARCH.md itself is for the planner to read, not you.
+
+**Inline mode:** perform research based on discovery level (see `<discovery_levels>`) and
+create `$PHASE_DIR/RESEARCH.md` with findings.
 
 ---
 
@@ -218,9 +249,28 @@ Display banner:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+**Delegated mode** (`invoke_subagent` available): invoke `gsd-planner` with workspace mode
+`inherit`:
+
+```
+phase: {N}
+mode: {standard|gaps}
+research_path: .gsd/phases/{phase}/RESEARCH.md   {omit if none}
+
+Write plans from .gsd/templates/PLAN.md. 2-3 tasks each, wave + depends_on in frontmatter.
+Self-check with plan-checker before returning.
+Return the compact index from your Return Contract — nothing else.
+```
+
+The planner runs its own checker loop, so **skip step 7** when it returns `status: complete`.
+Steps 6a-6c below describe what the planner does; run them yourself only in inline mode.
+
+---
+
 ### 6a. Gather Context
 Load:
 - `.gsd/SPEC.md` — Requirements
+- `.gsd/REQUIREMENTS.md` — Formal requirements tracking (if exists)
 - `.gsd/ROADMAP.md` — Phase description
 - `$PHASE_DIR/RESEARCH.md` — If exists
 - `.gsd/ARCHITECTURE.md` — If exists
@@ -286,8 +336,23 @@ For each plan, verify:
 - [ ] Verify commands are executable
 - [ ] Done criteria are measurable
 - [ ] Context references exist
+- [ ] Tests are meaningful (see Test Quality Rules below)
 
 **If issues found:** Fix and re-verify (max 3 iterations).
+
+### Test Quality Rules
+
+Tests must verify real behavior, not just pass. Reject plans with tests that:
+
+| Anti-pattern | Example | Fix |
+|-------------|---------|-----|
+| **Mock everything** | Mocking the DB then asserting the mock was called | Use real DB or integration test |
+| **Tautological assert** | `assert mock.called` with no behavior check | Assert actual output or side effect |
+| **Always-pass test** | `assert True` or `assert response is not None` | Assert specific expected values |
+| **Testing the framework** | Asserting that Express returns 200 on a stub | Test your logic, not the framework |
+| **No negative cases** | Only testing the happy path | Include at least one failure/edge case |
+
+**Rule:** Every `<verify>` command must test the *actual behavior* of the code, not just that it runs without errors. If a test would still pass with the implementation deleted, it is not a valid test.
 
 ---
 
