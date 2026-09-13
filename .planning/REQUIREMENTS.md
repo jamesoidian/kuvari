@@ -22,9 +22,9 @@
 
 ### Native Text-to-Speech
 
-- [ ] **TTS-01**: Implement native iOS speech channel using `AVSpeechSynthesizer` with language, rate, and pitch control.
-- [ ] **TTS-02**: Implement native Android speech channel using `android.speech.tts.TextToSpeech` with language, rate, and pitch control.
-- [ ] **TTS-03**: Remove `flutter_tts` dependency from `pubspec.yaml` and update Flutter services.
+- [x] **TTS-01**: Implement native iOS speech channel using `AVSpeechSynthesizer` with language, rate, and pitch control.
+- [x] **TTS-02**: Implement native Android speech channel using `android.speech.tts.TextToSpeech` with language, rate, and pitch control.
+- [x] **TTS-03**: Remove `flutter_tts` dependency from `pubspec.yaml` and update Flutter services.
 
 ---
 
@@ -49,9 +49,9 @@
 | JONO-02 | Phase 2 | Complete |
 | GUIDE-01 | Phase 3 | Complete |
 | GUIDE-02 | Phase 3 | Complete |
-| TTS-01 | Phase 4 | Pending |
-| TTS-02 | Phase 4 | Pending |
-| TTS-03 | Phase 4 | Pending |
+| TTS-01 | Phase 4 | Complete |
+| TTS-02 | Phase 4 | Complete |
+| TTS-03 | Phase 4 | Complete |
 
 **Coverage:**
 
