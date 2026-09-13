@@ -5,13 +5,13 @@
 ## Current Position
 
 - **Milestone**: v1.5.0 — UX & AAC Communication Enhancements
-- **Phase**: Not started (defining requirements)
-- **Plan**: —
-- **Status**: Defining requirements
-- **Last activity**: 2026-09-13 — Milestone v1.5.0 started
+- **Phase**: Phase 1: Terminology & Search Sharpness
+- **Plan**: 01-01 (1 plan total)
+- **Status**: Ready for execution
+- **Last activity**: 2026-09-13 — Phase 1 planned (01-01-PLAN.md)
 
 ## Last Session Summary
-Initiated Milestone v1.5.0 based on expert feedback from Papunet. Updated PROJECT.md with active requirements: terminology cleanup (categories -> image types), high-DPI image sharpness, persistent collection queue with empty state guidance, side-by-side choice viewer mode, and practical AAC communication guides on the info page.
+Created execution plan for Phase 1 (`01-01-PLAN.md`) covering `TERM-01` (rename "Kategoria" to "Kuvatyyppi" / "Bildtyp" / "Image type" across ARB files and UI) and `IMG-01` (render crisp full-resolution symbols via `img.url` in `ImageGrid`).
 
 ## Next Steps
-1. /gsd-plan-phase 1
+1. Execute Phase 1: `/gsd-execute-phase 1` (or execute plan `01-01`)
