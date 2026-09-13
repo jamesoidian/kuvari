@@ -2,17 +2,17 @@
 gsd_state_version: "1.0"
 milestone: v1.5.0
 milestone_name: UX & AAC Communication Enhancements
-status: unknown
-last_updated: "2026-09-13T15:19:16.274Z"
-state_head: 837474a95b80b6ef5f0708c67a2ed0a70b371289
+status: ready_to_discuss
+last_updated: "2026-09-13T18:26:00.000Z"
+state_head: 0a453f4
 progress:
   total_phases: 5
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 3
-  completed_plans: 1
-  percent: 20
-current_phase_name: Home Guidance & Collection Queue
-current_phase: 2
+  completed_plans: 3
+  percent: 40
+current_phase_name: Viewer Choice Mode (Image Pairs)
+current_phase: 3
 ---
 
 # State
@@ -22,18 +22,19 @@ current_phase: 2
 ## Current Position
 
 - **Milestone**: v1.5.0 — UX & AAC Communication Enhancements
-- **Phase**: Phase 2: Home Guidance & Collection Queue
-- **Plan**: Context captured (02-CONTEXT.md), ready for planning
-- **Status**: Phase 1 complete, Phase 2 discussed, ready to plan Phase 2
-- **Last activity**: 2026-09-13 — Phase 5 added to roadmap (Native Text-to-Speech)
+- **Phase**: Phase 3: Viewer Choice Mode (Image Pairs)
+- **Status**: Phase 2 complete, ready for Phase 3
+- **Last activity**: 2026-09-13 — Completed Phase 2: Home Guidance & Collection Queue (`JONO-01`, `JONO-02`)
 
 ## Last Session Summary
 
-- Executed and verified Phase 1: Terminology & Search Sharpness (`TERM-01`, `IMG-01`).
-- Captured Phase 2 context and discussion log (`JONO-01`, `JONO-02`).
-- Fixed Android build configuration (removed stale `ndk.dir`, upgraded AGP to 9.0.1 and Kotlin to 2.3.20, fixed release key path). Verified release APK build.
-- Activated `flutterfire_cli` for iOS archiving.
-- Added Phase 5: Native Text-to-Speech (iOS & Android) (`TTS-01`, `TTS-02`, `TTS-03`).
+- Completed Phase 2 (Home Guidance & Collection Queue):
+  - Added localized strings for empty queue guidance and dynamic story count.
+  - Implemented `EmptyQueuePlaceholder` with 90px height, matching carousel dimensions.
+  - Piped search focus from empty placeholder tap down to search input field.
+  - Integrated `AnimatedCrossFade` for seamless transition with zero layout shift.
+  - Implemented `FloatingActionButton.extended` with dynamic image count ("Näytä kuvajono (N)").
+  - Verified with 51 passing unit and widget tests (0 analyzer warnings).
 
 ## Accumulated Context
 
@@ -43,4 +44,4 @@ current_phase: 2
 
 ## Next Steps
 
-1. Plan Phase 2: `/gsd-plan-phase 2`
+1. Discuss or Plan Phase 3 (Viewer Choice Mode): `/gsd-discuss-phase 3` or `/gsd-plan-phase 3`

@@ -8,7 +8,7 @@
 | # | Phase | Status | Goal | Requirements | Success Criteria |
 |---|-------|--------|------|--------------|------------------|
 | 1 | **Terminology & Search Sharpness** | [x] Complete | Correct "Category" to "Image Type" across languages and ensure search images render with high clarity. | TERM-01, IMG-01 | 2 criteria |
-| 2 | **Home Guidance & Collection Queue** | [ ] Ready | Keep collection queue visible with instructive empty state and prominent viewer launch action. | JONO-01, JONO-02 | 2 criteria |
+| 2 | **Home Guidance & Collection Queue** | [x] Complete | Keep collection queue visible with instructive empty state and prominent viewer launch action. | JONO-01, JONO-02 | 2 criteria |
 | 3 | **Viewer Choice Mode (Image Pairs)** | [ ] Planned | Enable side-by-side comparison in viewer for two-choice AAC interactions. | VIEW-01, VIEW-02 | 2 criteria |
 | 4 | **Practical AAC Guidance & Info** | [ ] Planned | Expand InfoPage with practical AAC communication examples and structured guides. | GUIDE-01, GUIDE-02 | 2 criteria |
 | 5 | **Native Text-to-Speech (iOS & Android)** | [ ] Planned | Replace flutter_tts with clean, native iOS and Android text-to-speech platform implementations. | TTS-01, TTS-02, TTS-03 | 2 criteria |
@@ -24,7 +24,7 @@
   1. Filter button and selection dialog display "Kuvatyypit" / "Valitse kuvatyypit" (FI), "Bildtyper" (SV), and "Image types" (EN).
   2. Search symbols in the grid appear sharp and clear on mobile Retina screens.
 
-### Phase 2: Home Guidance & Collection Queue
+### Phase 2: Home Guidance & Collection Queue (Completed: 2026-09-13)
 **Goal:** Provide clear mental model of how images are collected and played.
 - **Requirements:**
   - `JONO-01`: Display collection area on `HomePage` even when empty, using an instructive empty state.
@@ -33,8 +33,8 @@
   1. Empty state tells user: "Valitsemasi kuvat tulevat tähän jonoon. Voit koota viestin, päiväjärjestyksen tai valintataulun."
   2. Action button to view/play the story is clearly visible and accessible when images are added.
 - **Plans:**
-  - [ ] `02-01`: Empty Queue Placeholder & Localization (Wave 1)
-  - [ ] `02-02`: Home Page Queue Integration & Extended FAB (Wave 2, depends on 02-01)
+  - [x] `02-01`: Empty Queue Placeholder & Localization (Wave 1)
+  - [x] `02-02`: Home Page Queue Integration & Extended FAB (Wave 2, depends on 02-01)
 
 ### Phase 3: Viewer Choice Mode (Image Pairs)
 **Goal:** Support two-choice AAC decision making directly in `ImageViewerPage`.
