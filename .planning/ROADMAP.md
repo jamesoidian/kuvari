@@ -1,7 +1,7 @@
 # ROADMAP.md — Milestone v1.5.0: UX & AAC Communication Enhancements
 
 > **Current Milestone**: v1.5.0 — UX & AAC Communication Enhancements  
-> **Goal**: Refine onboarding guidance, terminology, image clarity, AAC choice-making capabilities, and practical communication documentation based on Papunet feedback.
+> **Goal**: Refine onboarding guidance, terminology, image clarity, AAC choice-making capabilities, practical communication documentation, and native speech synthesis based on Papunet feedback.
 
 ## Phases
 
@@ -11,6 +11,7 @@
 | 2 | **Home Guidance & Collection Queue** | [ ] Ready | Keep collection queue visible with instructive empty state and prominent viewer launch action. | JONO-01, JONO-02 | 2 criteria |
 | 3 | **Viewer Choice Mode (Image Pairs)** | [ ] Planned | Enable side-by-side comparison in viewer for two-choice AAC interactions. | VIEW-01, VIEW-02 | 2 criteria |
 | 4 | **Practical AAC Guidance & Info** | [ ] Planned | Expand InfoPage with practical AAC communication examples and structured guides. | GUIDE-01, GUIDE-02 | 2 criteria |
+| 5 | **Native Text-to-Speech (iOS & Android)** | [ ] Planned | Replace flutter_tts with clean, native iOS and Android text-to-speech platform implementations. | TTS-01, TTS-02, TTS-03 | 2 criteria |
 
 ---
 
@@ -49,3 +50,13 @@
 - **Success Criteria:**
   1. `InfoPage` explains concrete AAC communication scenarios with step-by-step tips.
   2. External links to Papunet, OpenSymbols, and Rinnekodit remain clearly accessible alongside licensing info.
+
+### Phase 5: Native Text-to-Speech (iOS & Android)
+**Goal:** Replace `flutter_tts` dependency with native iOS (`AVSpeechSynthesizer`) and Android (`android.speech.tts.TextToSpeech`) platform implementations for cleaner builds and robust speech support.
+- **Requirements:**
+  - `TTS-01`: Implement native iOS speech channel using `AVSpeechSynthesizer` with language, rate, and pitch control.
+  - `TTS-02`: Implement native Android speech channel using `android.speech.tts.TextToSpeech` with language, rate, and pitch control.
+  - `TTS-03`: Remove `flutter_tts` dependency from `pubspec.yaml` and update Flutter services.
+- **Success Criteria:**
+  1. Speech playback works smoothly in Finnish, Swedish, and English on both iOS and Android without `flutter_tts`.
+  2. `flutter_tts` and its third-party build dependencies are completely removed from the project.

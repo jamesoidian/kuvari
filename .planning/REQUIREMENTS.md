@@ -25,6 +25,12 @@
 - [ ] **GUIDE-01**: `InfoPage` provides practical AAC communication guidance, including real-world examples for choice-making, daily routines, and symbol pointing with speech synthesis.
 - [ ] **GUIDE-02**: `InfoPage` organizes content into distinct sections for Quick Start, Practical Use Cases, and Source & License Attributions.
 
+### Native Text-to-Speech
+
+- [ ] **TTS-01**: Implement native iOS speech channel using `AVSpeechSynthesizer` with language, rate, and pitch control.
+- [ ] **TTS-02**: Implement native Android speech channel using `android.speech.tts.TextToSpeech` with language, rate, and pitch control.
+- [ ] **TTS-03**: Remove `flutter_tts` dependency from `pubspec.yaml` and update Flutter services.
+
 ---
 
 ## Out of Scope
@@ -49,12 +55,15 @@
 | VIEW-02 | Phase 3 | Pending |
 | GUIDE-01 | Phase 4 | Pending |
 | GUIDE-02 | Phase 4 | Pending |
+| TTS-01 | Phase 5 | Pending |
+| TTS-02 | Phase 5 | Pending |
+| TTS-03 | Phase 5 | Pending |
 
 **Coverage:**
 
-- Milestone v1.5.0 requirements: 8 total
-- Mapped to phases: 8
+- Milestone v1.5.0 requirements: 11 total
+- Mapped to phases: 11
 - Unmapped: 0 ✓
 
 ---
-*Requirements defined: 2026-09-13 after Papunet feedback analysis*
+*Requirements defined: 2026-09-13 after Papunet feedback analysis and native TTS migration plan*
