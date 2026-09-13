@@ -12,13 +12,8 @@
 
 ### Home Screen Guidance & Collection Queue
 
-- [ ] **JONO-01**: Selected images collection area is always visible on `HomePage` with an instructive empty state that explains how images are collected into a story or board.
-- [ ] **JONO-02**: A clear, prominent play/view action button is directly accessible from the collection area to open `ImageViewerPage` once images are selected.
-
-### Viewer Choice Mode & Playback
-
-- [ ] **VIEW-01**: `ImageViewerPage` supports a side-by-side comparison mode (image pair) to facilitate AAC choice-making interactions.
-- [ ] **VIEW-02**: User can toggle between single-image storytelling view and side-by-side choice mode when viewing stories.
+- [x] **JONO-01**: Selected images collection area is always visible on `HomePage` with an instructive empty state that explains how images are collected into a story or board.
+- [x] **JONO-02**: A clear, prominent play/view action button is directly accessible from the collection area to open `ImageViewerPage` once images are selected.
 
 ### Practical Communication Guides & Info
 
@@ -40,6 +35,7 @@
 | Multi-tier category taxonomy | Symbol databases like Papunet provide styles/sources (Arasaac, Sclera, photos), not nested topic hierarchies. |
 | Complex phrase grammar generation | Kuvari's core value is simple visual sequencing and choice-making, not complex linguistic syntax. |
 | Cloud account sync | Offline-first privacy and speed via Hive is the preferred architecture. |
+| Side-by-side viewer choice mode | Kept viewer focused on single-image and horizontal reel storytelling for v1.5.0; choice boards are constructed on the home collection queue. |
 
 ---
 
@@ -49,20 +45,18 @@
 |-------------|-------|--------|
 | TERM-01 | Phase 1 | Complete |
 | IMG-01 | Phase 1 | Complete |
-| JONO-01 | Phase 2 | Pending |
-| JONO-02 | Phase 2 | Pending |
-| VIEW-01 | Phase 3 | Pending |
-| VIEW-02 | Phase 3 | Pending |
-| GUIDE-01 | Phase 4 | Pending |
-| GUIDE-02 | Phase 4 | Pending |
-| TTS-01 | Phase 5 | Pending |
-| TTS-02 | Phase 5 | Pending |
-| TTS-03 | Phase 5 | Pending |
+| JONO-01 | Phase 2 | Complete |
+| JONO-02 | Phase 2 | Complete |
+| GUIDE-01 | Phase 3 | Pending |
+| GUIDE-02 | Phase 3 | Pending |
+| TTS-01 | Phase 4 | Pending |
+| TTS-02 | Phase 4 | Pending |
+| TTS-03 | Phase 4 | Pending |
 
 **Coverage:**
 
-- Milestone v1.5.0 requirements: 11 total
-- Mapped to phases: 11
+- Milestone v1.5.0 requirements: 9 total
+- Mapped to phases: 9
 - Unmapped: 0 ✓
 
 ---
