@@ -22,7 +22,7 @@ score: 7/7 must-haves verified
 | 3 | Cards use rounded corners, subtle border, teal accent icons (`bolt_outlined`, `forum_outlined`, `info_outline`), and clear typography (D-03) | ✓ VERIFIED | Verified in `lib/pages/info_page.dart:201-204` |
 | 4 | Full localization across Finnish, Swedish, and English with plain-language encouraging tone (D-04) | ✓ VERIFIED | Verified in `lib/l10n/intl_fi.arb`, `intl_sv.arb`, `intl_en.arb` |
 | 5 | Preserves all existing external links (Papunet, OpenSymbols, Rinnekodit, Creative Commons) opened safely via `url_launcher` (D-05) | ✓ VERIFIED | Verified in `lib/pages/info_page.dart:167-189, 320-366` |
-| 6 | Quick Start (Pikaopas) displays 4 structured steps: Searching, Assembling & Editing Queue (scrolling, reordering, deleting), Viewing & Listening ("ja"), and Saving Stories for repeated use (G-03-1) | ✓ VERIFIED | Verified in `lib/pages/info_page.dart:234-254`, `test/pages/info_page_test.dart:57-67` |
+| 6 | Quick Start (Pikaopas) displays 5 structured steps: Searching, Assembling & Editing Queue (scrolling, reordering, deleting), Viewing & Listening ("ja"), Saving Stories from save icon, and Organizing/Searching with Tags (G-03-1) | ✓ VERIFIED | Verified in `lib/pages/info_page.dart:234-259`, `test/pages/info_page_test.dart:57-69` |
 | 7 | All unit and widget tests pass | ✓ VERIFIED | `flutter test` executed successfully: 65/65 tests passed with 0 failures |
 
 **Score:** 7/7 truths verified
@@ -31,11 +31,11 @@ score: 7/7 must-haves verified
 
 | Artifact | Expected | Status | Details |
 |----------|----------|--------|---------|
-| `lib/pages/info_page.dart` | Structured InfoPage with 3 cards and 4 quick start steps | ✓ EXISTS + SUBSTANTIVE | Scrollable ListView with responsive cards and clean hierarchy |
-| `lib/l10n/intl_fi.arb` | Finnish localization keys for all InfoPage sections | ✓ EXISTS + SUBSTANTIVE | Includes steps 1-4, use cases, and attribution links |
+| `lib/pages/info_page.dart` | Structured InfoPage with 3 cards and 5 quick start steps | ✓ EXISTS + SUBSTANTIVE | Scrollable ListView with responsive cards and clean hierarchy |
+| `lib/l10n/intl_fi.arb` | Finnish localization keys for all InfoPage sections | ✓ EXISTS + SUBSTANTIVE | Includes steps 1-5, use cases, and attribution links |
 | `lib/l10n/intl_sv.arb` | Swedish localization keys for all InfoPage sections | ✓ EXISTS + SUBSTANTIVE | Complete translation without missing keys |
 | `lib/l10n/intl_en.arb` | English localization keys for all InfoPage sections | ✓ EXISTS + SUBSTANTIVE | Complete translation without missing keys |
-| `test/pages/info_page_test.dart` | Comprehensive widget test suite | ✓ EXISTS + SUBSTANTIVE | Tests card rendering, 4 quick start steps, use cases, links, and multi-locale |
+| `test/pages/info_page_test.dart` | Comprehensive widget test suite | ✓ EXISTS + SUBSTANTIVE | Tests card rendering, 5 quick start steps, use cases, links, and multi-locale |
 
 **Artifacts:** 5/5 verified
 

@@ -251,6 +251,11 @@ class InfoPage extends StatelessWidget {
                       title: l10n.infoQuickStartStep4Title,
                       description: l10n.infoQuickStartStep4Desc,
                     ),
+                    _buildQuickStartStep(
+                      stepNumber: 5,
+                      title: l10n.infoQuickStartStep5Title,
+                      description: l10n.infoQuickStartStep5Desc,
+                    ),
                   ],
                 ),
               ),

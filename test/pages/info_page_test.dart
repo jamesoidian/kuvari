@@ -54,7 +54,7 @@ void main() {
       expect(find.byIcon(Icons.info_outline), findsOneWidget);
     });
 
-    testWidgets('Displays Quick Start 4-step guidance (GUIDE-02)', (WidgetTester tester) async {
+    testWidgets('Displays Quick Start 5-step guidance (GUIDE-02)', (WidgetTester tester) async {
       configureViewport(tester);
       await tester.pumpWidget(createInfoPage());
       await tester.pumpAndSettle();
@@ -65,6 +65,7 @@ void main() {
       expect(find.text('2. Kokoa ja muokkaa jonoa'), findsOneWidget);
       expect(find.text('3. Näytä ja kuuntele'), findsOneWidget);
       expect(find.text('4. Tallenna toistuvaa käyttöä varten'), findsOneWidget);
+      expect(find.text('5. Järjestele ja hae tägeillä'), findsOneWidget);
     });
 
     testWidgets('Displays all 3 core practical AAC use cases (GUIDE-01)', (WidgetTester tester) async {
@@ -128,6 +129,7 @@ void main() {
       expect(find.text('2. Bygg och ändra i kön'), findsOneWidget);
       expect(find.text('3. Visa och lyssna'), findsOneWidget);
       expect(find.text('4. Spara för återkommande användning'), findsOneWidget);
+      expect(find.text('5. Organisera och sök med taggar'), findsOneWidget);
       expect(find.text('Att göra val'), findsOneWidget);
       expect(find.text('Dagsordning och rutiner'), findsOneWidget);
       expect(find.text('Pekning och talsyntes'), findsOneWidget);
@@ -142,6 +144,7 @@ void main() {
       expect(find.text('2. Assemble and edit the queue'), findsOneWidget);
       expect(find.text('3. View and listen'), findsOneWidget);
       expect(find.text('4. Save for repeated use'), findsOneWidget);
+      expect(find.text('5. Organize and search with tags'), findsOneWidget);
       expect(find.text('Making Choices'), findsOneWidget);
       expect(find.text('Daily Routines & Sequences'), findsOneWidget);
       expect(find.text('Pointing & Speech Modeling'), findsOneWidget);

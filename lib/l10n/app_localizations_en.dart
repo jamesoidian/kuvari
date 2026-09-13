@@ -252,7 +252,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get infoQuickStartStep4Desc =>
-      'Save the assembled image sequence as a story using the bookmark icon so the same daily routine or choice board is easy to reuse.';
+      'Save the assembled image sequence as a story using the save icon so the same daily routine or choice board is easy to reuse.';
+
+  @override
+  String get infoQuickStartStep5Title => '5. Organize and search with tags';
+
+  @override
+  String get infoQuickStartStep5Desc =>
+      'You can add topic tags to saved image sequences (e.g., morning, meals, or play). Find saved stories easily later by searching or filtering by tags.';
 
   @override
   String get infoUseCasesTitle => 'Practical Situations';

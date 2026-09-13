@@ -553,8 +553,20 @@ abstract class AppLocalizations {
   /// Step 4 description in Quick Start
   ///
   /// In fi, this message translates to:
-  /// **'Voit tallentaa kootun kuvajonon tarinaksi kirjanmerkkikuvakkeesta, jolloin sama päiväjärjestys tai valintataulu on helposti käytettävissä uudelleen.'**
+  /// **'Voit tallentaa kootun kuvajonon tarinaksi tallennuskuvakkeesta, jolloin sama päiväjärjestys tai valintataulu on helposti käytettävissä uudelleen.'**
   String get infoQuickStartStep4Desc;
+
+  /// Step 5 title in Quick Start
+  ///
+  /// In fi, this message translates to:
+  /// **'5. Järjestele ja hae tägeillä'**
+  String get infoQuickStartStep5Title;
+
+  /// Step 5 description in Quick Start
+  ///
+  /// In fi, this message translates to:
+  /// **'Voit liittää tallennettuihin kuvajonoihin aihekohtaisia tägejä (esim. aamu, ruokailu tai leikki). Löydät tarinat myöhemmin helposti hakemalla tai suodattamalla tägien mukaan.'**
+  String get infoQuickStartStep5Desc;
 
   /// Title of Practical Use Cases section on InfoPage
   ///

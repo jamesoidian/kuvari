@@ -126,9 +126,17 @@
   "@infoQuickStartStep4Title": {
     "description": "Step 4 title in Quick Start"
   },
-  "infoQuickStartStep4Desc": "Save the assembled image sequence as a story using the bookmark icon so the same daily routine or choice board is easy to reuse.",
+  "infoQuickStartStep4Desc": "Save the assembled image sequence as a story using the save icon so the same daily routine or choice board is easy to reuse.",
   "@infoQuickStartStep4Desc": {
     "description": "Step 4 description in Quick Start"
+  },
+  "infoQuickStartStep5Title": "5. Organize and search with tags",
+  "@infoQuickStartStep5Title": {
+    "description": "Step 5 title in Quick Start"
+  },
+  "infoQuickStartStep5Desc": "You can add topic tags to saved image sequences (e.g., morning, meals, or play). Find saved stories easily later by searching or filtering by tags.",
+  "@infoQuickStartStep5Desc": {
+    "description": "Step 5 description in Quick Start"
   },
   "infoUseCasesTitle": "Practical Situations",
   "@infoUseCasesTitle": {

@@ -252,7 +252,14 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get infoQuickStartStep4Desc =>
-      'Voit tallentaa kootun kuvajonon tarinaksi kirjanmerkkikuvakkeesta, jolloin sama päiväjärjestys tai valintataulu on helposti käytettävissä uudelleen.';
+      'Voit tallentaa kootun kuvajonon tarinaksi tallennuskuvakkeesta, jolloin sama päiväjärjestys tai valintataulu on helposti käytettävissä uudelleen.';
+
+  @override
+  String get infoQuickStartStep5Title => '5. Järjestele ja hae tägeillä';
+
+  @override
+  String get infoQuickStartStep5Desc =>
+      'Voit liittää tallennettuihin kuvajonoihin aihekohtaisia tägejä (esim. aamu, ruokailu tai leikki). Löydät tarinat myöhemmin helposti hakemalla tai suodattamalla tägien mukaan.';
 
   @override
   String get infoUseCasesTitle => 'Käytännön tilanteet';

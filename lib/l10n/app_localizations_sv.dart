@@ -253,7 +253,14 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get infoQuickStartStep4Desc =>
-      'Du kan spara bildsekvensen som en berättelse via bokmärkesikonen så att samma dagsordning eller valkarta är lätt att använda igen.';
+      'Du kan spara bildsekvensen som en berättelse via spara-ikonen så att samma dagsordning eller valkarta är lätt att använda igen.';
+
+  @override
+  String get infoQuickStartStep5Title => '5. Organisera och sök med taggar';
+
+  @override
+  String get infoQuickStartStep5Desc =>
+      'Du kan koppla ämnesspecifika taggar till sparade bildsekvenser (t.ex. morgon, måltid eller lek). Du hittar enkelt berättelserna senare genom att söka eller filtrera med taggar.';
 
   @override
   String get infoUseCasesTitle => 'Praktiska situationer';

@@ -126,9 +126,17 @@
   "@infoQuickStartStep4Title": {
     "description": "Steg 4 titel i snabbguiden"
   },
-  "infoQuickStartStep4Desc": "Du kan spara bildsekvensen som en berättelse via bokmärkesikonen så att samma dagsordning eller valkarta är lätt att använda igen.",
+  "infoQuickStartStep4Desc": "Du kan spara bildsekvensen som en berättelse via spara-ikonen så att samma dagsordning eller valkarta är lätt att använda igen.",
   "@infoQuickStartStep4Desc": {
     "description": "Steg 4 beskrivning i snabbguiden"
+  },
+  "infoQuickStartStep5Title": "5. Organisera och sök med taggar",
+  "@infoQuickStartStep5Title": {
+    "description": "Steg 5 titel i snabbguiden"
+  },
+  "infoQuickStartStep5Desc": "Du kan koppla ämnesspecifika taggar till sparade bildsekvenser (t.ex. morgon, måltid eller lek). Du hittar enkelt berättelserna senare genom att söka eller filtrera med taggar.",
+  "@infoQuickStartStep5Desc": {
+    "description": "Steg 5 beskrivning i snabbguiden"
   },
   "infoUseCasesTitle": "Praktiska situationer",
   "@infoUseCasesTitle": {
