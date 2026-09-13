@@ -49,6 +49,8 @@
 - **Success Criteria:**
   1. `InfoPage` explains concrete AAC communication scenarios with step-by-step tips.
   2. External links to Papunet, OpenSymbols, and Rinnekodit remain clearly accessible alongside licensing info.
+- **Plans:**
+  - [ ] `03-01`: Practical AAC Guidance & Info Page Refactor (Wave 1)
 
 ### Phase 4: Native Text-to-Speech (iOS & Android)
 
