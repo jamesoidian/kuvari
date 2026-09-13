@@ -89,5 +89,73 @@
         "example": "3"
       }
     }
+  },
+  "infoQuickStartTitle": "Snabbguide",
+  "@infoQuickStartTitle": {
+    "description": "Titel för snabbguiden på InfoPage"
+  },
+  "infoQuickStartSubtitle": "Så här kommer du igång med Kuvari i vardagskommunikationen:",
+  "@infoQuickStartSubtitle": {
+    "description": "Underrubrik som förklarar hur man börjar använda Kuvari"
+  },
+  "infoQuickStartStep1Title": "1. Sök bilder",
+  "@infoQuickStartStep1Title": {
+    "description": "Steg 1 titel i snabbguiden"
+  },
+  "infoQuickStartStep1Desc": "Skriv ett sökord (t.ex. mat, kläder eller känslor) i sökrutan och välj passande bilder.",
+  "@infoQuickStartStep1Desc": {
+    "description": "Steg 1 beskrivning i snabbguiden"
+  },
+  "infoQuickStartStep2Title": "2. Samla i sekvens",
+  "@infoQuickStartStep2Title": {
+    "description": "Steg 2 titel i snabbguiden"
+  },
+  "infoQuickStartStep2Desc": "Dina valda bilder samlas i kön på startsidan för att bilda ett meddelande eller ett schema.",
+  "@infoQuickStartStep2Desc": {
+    "description": "Steg 2 beskrivning i snabbguiden"
+  },
+  "infoQuickStartStep3Title": "3. Visa eller lyssna",
+  "@infoQuickStartStep3Title": {
+    "description": "Steg 3 titel i snabbguiden"
+  },
+  "infoQuickStartStep3Desc": "Öppna sekvensen genom att trycka på \"Visa bildsekvens\" eller lyssna på ordet via högtalarikonen.",
+  "@infoQuickStartStep3Desc": {
+    "description": "Steg 3 beskrivning i snabbguiden"
+  },
+  "infoUseCasesTitle": "Praktiska situationer",
+  "@infoUseCasesTitle": {
+    "description": "Titel för praktiska situationer på InfoPage"
+  },
+  "infoUseCasesSubtitle": "Tips för AKK-kommunikation i vardagen:",
+  "@infoUseCasesSubtitle": {
+    "description": "Underrubrik för praktiska situationer"
+  },
+  "infoUseCaseChoiceTitle": "Att göra val",
+  "@infoUseCaseChoiceTitle": {
+    "description": "Titel för valsituationer"
+  },
+  "infoUseCaseChoiceDesc": "Lägg till 2–3 alternativ i sekvensen (t.ex. saft eller vatten, utelek eller spel). Ge kommunikatören gott om tid att peka och bekräfta valet verbalt.",
+  "@infoUseCaseChoiceDesc": {
+    "description": "Beskrivning för valsituationer"
+  },
+  "infoUseCaseRoutineTitle": "Dagsordning och rutiner",
+  "@infoUseCaseRoutineTitle": {
+    "description": "Titel för dagsordning och rutiner"
+  },
+  "infoUseCaseRoutineDesc": "Ordna aktiviteter i kronologisk följd (t.ex. morgonrutin eller övergångar). Förutsägbarhet skapar trygghet och struktur i vardagen.",
+  "@infoUseCaseRoutineDesc": {
+    "description": "Beskrivning för dagsordning och rutiner"
+  },
+  "infoUseCaseSpeechTitle": "Pekning och talsyntes",
+  "@infoUseCaseSpeechTitle": {
+    "description": "Titel för pekning och talsyntes"
+  },
+  "infoUseCaseSpeechDesc": "Tryck på talsyntesknappen samtidigt som du pekar på bilden. Att kombinera bild och talat ord stödjer språkförståelse och inlärning.",
+  "@infoUseCaseSpeechDesc": {
+    "description": "Beskrivning för pekning och talsyntes"
+  },
+  "infoAboutTitle": "Information och källor",
+  "@infoAboutTitle": {
+    "description": "Titel för information och källor på InfoPage"
   }
 }

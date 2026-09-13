@@ -219,4 +219,62 @@ class AppLocalizationsSv extends AppLocalizations {
   String viewImageStoryWithCount(int count) {
     return 'Visa bildsekvens ($count)';
   }
+
+  @override
+  String get infoQuickStartTitle => 'Snabbguide';
+
+  @override
+  String get infoQuickStartSubtitle =>
+      'Så här kommer du igång med Kuvari i vardagskommunikationen:';
+
+  @override
+  String get infoQuickStartStep1Title => '1. Sök bilder';
+
+  @override
+  String get infoQuickStartStep1Desc =>
+      'Skriv ett sökord (t.ex. mat, kläder eller känslor) i sökrutan och välj passande bilder.';
+
+  @override
+  String get infoQuickStartStep2Title => '2. Samla i sekvens';
+
+  @override
+  String get infoQuickStartStep2Desc =>
+      'Dina valda bilder samlas i kön på startsidan för att bilda ett meddelande eller ett schema.';
+
+  @override
+  String get infoQuickStartStep3Title => '3. Visa eller lyssna';
+
+  @override
+  String get infoQuickStartStep3Desc =>
+      'Öppna sekvensen genom att trycka på \"Visa bildsekvens\" eller lyssna på ordet via högtalarikonen.';
+
+  @override
+  String get infoUseCasesTitle => 'Praktiska situationer';
+
+  @override
+  String get infoUseCasesSubtitle => 'Tips för AKK-kommunikation i vardagen:';
+
+  @override
+  String get infoUseCaseChoiceTitle => 'Att göra val';
+
+  @override
+  String get infoUseCaseChoiceDesc =>
+      'Lägg till 2–3 alternativ i sekvensen (t.ex. saft eller vatten, utelek eller spel). Ge kommunikatören gott om tid att peka och bekräfta valet verbalt.';
+
+  @override
+  String get infoUseCaseRoutineTitle => 'Dagsordning och rutiner';
+
+  @override
+  String get infoUseCaseRoutineDesc =>
+      'Ordna aktiviteter i kronologisk följd (t.ex. morgonrutin eller övergångar). Förutsägbarhet skapar trygghet och struktur i vardagen.';
+
+  @override
+  String get infoUseCaseSpeechTitle => 'Pekning och talsyntes';
+
+  @override
+  String get infoUseCaseSpeechDesc =>
+      'Tryck på talsyntesknappen samtidigt som du pekar på bilden. Att kombinera bild och talat ord stödjer språkförståelse och inlärning.';
+
+  @override
+  String get infoAboutTitle => 'Information och källor';
 }

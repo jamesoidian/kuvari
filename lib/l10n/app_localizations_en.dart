@@ -218,4 +218,63 @@ class AppLocalizationsEn extends AppLocalizations {
   String viewImageStoryWithCount(int count) {
     return 'View story ($count)';
   }
+
+  @override
+  String get infoQuickStartTitle => 'Quick Start';
+
+  @override
+  String get infoQuickStartSubtitle =>
+      'How to get started with Kuvari for visual communication:';
+
+  @override
+  String get infoQuickStartStep1Title => '1. Search symbols';
+
+  @override
+  String get infoQuickStartStep1Desc =>
+      'Type a keyword (e.g., food, clothing, or emotion) in the search field and select relevant symbols.';
+
+  @override
+  String get infoQuickStartStep2Title => '2. Add to queue';
+
+  @override
+  String get infoQuickStartStep2Desc =>
+      'Selected symbols collect in the queue on the home screen to build a message or schedule.';
+
+  @override
+  String get infoQuickStartStep3Title => '3. View or listen';
+
+  @override
+  String get infoQuickStartStep3Desc =>
+      'Open the reel by tapping \"View story\" or listen to the spoken word by tapping the speaker icon.';
+
+  @override
+  String get infoUseCasesTitle => 'Practical Situations';
+
+  @override
+  String get infoUseCasesSubtitle =>
+      'AAC communication strategies for everyday interactions:';
+
+  @override
+  String get infoUseCaseChoiceTitle => 'Making Choices';
+
+  @override
+  String get infoUseCaseChoiceDesc =>
+      'Add 2–3 symbols to the queue (e.g., juice or water, outdoor play or game). Give the communicator ample time to point or choose, then verbally confirm.';
+
+  @override
+  String get infoUseCaseRoutineTitle => 'Daily Routines & Sequences';
+
+  @override
+  String get infoUseCaseRoutineDesc =>
+      'Arrange consecutive activities in chronological order (e.g., morning routine, therapy transitions). Predictability provides structure and lowers anxiety.';
+
+  @override
+  String get infoUseCaseSpeechTitle => 'Pointing & Speech Modeling';
+
+  @override
+  String get infoUseCaseSpeechDesc =>
+      'Use the speech button while pointing to the symbol. Pairing spoken words with visual symbols reinforces language modeling and comprehension.';
+
+  @override
+  String get infoAboutTitle => 'About & Attributions';
 }

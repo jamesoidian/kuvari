@@ -89,5 +89,73 @@
         "example": "3"
       }
     }
+  },
+  "infoQuickStartTitle": "Quick Start",
+  "@infoQuickStartTitle": {
+    "description": "Title of the Quick Start card on InfoPage"
+  },
+  "infoQuickStartSubtitle": "How to get started with Kuvari for visual communication:",
+  "@infoQuickStartSubtitle": {
+    "description": "Subtitle explaining how to start using Kuvari"
+  },
+  "infoQuickStartStep1Title": "1. Search symbols",
+  "@infoQuickStartStep1Title": {
+    "description": "Step 1 title in Quick Start"
+  },
+  "infoQuickStartStep1Desc": "Type a keyword (e.g., food, clothing, or emotion) in the search field and select relevant symbols.",
+  "@infoQuickStartStep1Desc": {
+    "description": "Step 1 description in Quick Start"
+  },
+  "infoQuickStartStep2Title": "2. Add to queue",
+  "@infoQuickStartStep2Title": {
+    "description": "Step 2 title in Quick Start"
+  },
+  "infoQuickStartStep2Desc": "Selected symbols collect in the queue on the home screen to build a message or schedule.",
+  "@infoQuickStartStep2Desc": {
+    "description": "Step 2 description in Quick Start"
+  },
+  "infoQuickStartStep3Title": "3. View or listen",
+  "@infoQuickStartStep3Title": {
+    "description": "Step 3 title in Quick Start"
+  },
+  "infoQuickStartStep3Desc": "Open the reel by tapping \"View story\" or listen to the spoken word by tapping the speaker icon.",
+  "@infoQuickStartStep3Desc": {
+    "description": "Step 3 description in Quick Start"
+  },
+  "infoUseCasesTitle": "Practical Situations",
+  "@infoUseCasesTitle": {
+    "description": "Title of Practical Use Cases section on InfoPage"
+  },
+  "infoUseCasesSubtitle": "AAC communication strategies for everyday interactions:",
+  "@infoUseCasesSubtitle": {
+    "description": "Subtitle for Practical Use Cases section"
+  },
+  "infoUseCaseChoiceTitle": "Making Choices",
+  "@infoUseCaseChoiceTitle": {
+    "description": "Title for choice-making use case"
+  },
+  "infoUseCaseChoiceDesc": "Add 2–3 symbols to the queue (e.g., juice or water, outdoor play or game). Give the communicator ample time to point or choose, then verbally confirm.",
+  "@infoUseCaseChoiceDesc": {
+    "description": "Description for choice-making use case"
+  },
+  "infoUseCaseRoutineTitle": "Daily Routines & Sequences",
+  "@infoUseCaseRoutineTitle": {
+    "description": "Title for daily routine and sequences use case"
+  },
+  "infoUseCaseRoutineDesc": "Arrange consecutive activities in chronological order (e.g., morning routine, therapy transitions). Predictability provides structure and lowers anxiety.",
+  "@infoUseCaseRoutineDesc": {
+    "description": "Description for daily routine and sequences use case"
+  },
+  "infoUseCaseSpeechTitle": "Pointing & Speech Modeling",
+  "@infoUseCaseSpeechTitle": {
+    "description": "Title for pointing and speech modeling use case"
+  },
+  "infoUseCaseSpeechDesc": "Use the speech button while pointing to the symbol. Pairing spoken words with visual symbols reinforces language modeling and comprehension.",
+  "@infoUseCaseSpeechDesc": {
+    "description": "Description for pointing and speech modeling use case"
+  },
+  "infoAboutTitle": "About & Attributions",
+  "@infoAboutTitle": {
+    "description": "Title of About & Attributions section on InfoPage"
   }
 }

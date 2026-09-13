@@ -495,6 +495,108 @@ abstract class AppLocalizations {
   /// In fi, this message translates to:
   /// **'Näytä kuvajono ({count})'**
   String viewImageStoryWithCount(int count);
+
+  /// Title of the Quick Start card on InfoPage
+  ///
+  /// In fi, this message translates to:
+  /// **'Pikaopas'**
+  String get infoQuickStartTitle;
+
+  /// Subtitle explaining how to start using Kuvari
+  ///
+  /// In fi, this message translates to:
+  /// **'Näin aloitat Kuvarin käytön arjen kommunikoinnissa:'**
+  String get infoQuickStartSubtitle;
+
+  /// Step 1 title in Quick Start
+  ///
+  /// In fi, this message translates to:
+  /// **'1. Etsi kuvia'**
+  String get infoQuickStartStep1Title;
+
+  /// Step 1 description in Quick Start
+  ///
+  /// In fi, this message translates to:
+  /// **'Kirjoita hakusana (esim. ruoka, pukeutuminen tai tunne) hakukenttään ja valitse sopivat kuvat.'**
+  String get infoQuickStartStep1Desc;
+
+  /// Step 2 title in Quick Start
+  ///
+  /// In fi, this message translates to:
+  /// **'2. Kokoa jonoon'**
+  String get infoQuickStartStep2Title;
+
+  /// Step 2 description in Quick Start
+  ///
+  /// In fi, this message translates to:
+  /// **'Valitsemasi kuvat kertyvät etusivun jonomuotoiselle alustalle viestiksi tai päiväjärjestykseksi.'**
+  String get infoQuickStartStep2Desc;
+
+  /// Step 3 title in Quick Start
+  ///
+  /// In fi, this message translates to:
+  /// **'3. Näytä tai kuuntele'**
+  String get infoQuickStartStep3Title;
+
+  /// Step 3 description in Quick Start
+  ///
+  /// In fi, this message translates to:
+  /// **'Avaa kuvajono katseluun painamalla \"Näytä kuvajono\" tai kuuntele sana painamalla kaiutinkuvaketta.'**
+  String get infoQuickStartStep3Desc;
+
+  /// Title of Practical Use Cases section on InfoPage
+  ///
+  /// In fi, this message translates to:
+  /// **'Käytännön tilanteet'**
+  String get infoUseCasesTitle;
+
+  /// Subtitle for Practical Use Cases section
+  ///
+  /// In fi, this message translates to:
+  /// **'Vinkkejä AAC-kommunikointiin arjen vuorovaikutuksessa:'**
+  String get infoUseCasesSubtitle;
+
+  /// Title for choice-making use case
+  ///
+  /// In fi, this message translates to:
+  /// **'Valinnan tekeminen'**
+  String get infoUseCaseChoiceTitle;
+
+  /// Description for choice-making use case
+  ///
+  /// In fi, this message translates to:
+  /// **'Lisää jonoon 2–3 vaihtoehtoa (esim. mehu tai vesi, ulkoilu tai peli). Anna viestijälle rauhassa aikaa osoittaa haluamaansa kuvaa ja vahvista valinta ääneen.'**
+  String get infoUseCaseChoiceDesc;
+
+  /// Title for daily routine and sequences use case
+  ///
+  /// In fi, this message translates to:
+  /// **'Päiväjärjestys ja toimintaketjut'**
+  String get infoUseCaseRoutineTitle;
+
+  /// Description for daily routine and sequences use case
+  ///
+  /// In fi, this message translates to:
+  /// **'Järjestä peräkkäiset toiminnot aikajärjestykseen (esim. aamutoimet tai siirtymät). Ennakoitavuus vähentää epävarmuutta ja tukee arjen sujuvuutta.'**
+  String get infoUseCaseRoutineDesc;
+
+  /// Title for pointing and speech modeling use case
+  ///
+  /// In fi, this message translates to:
+  /// **'Osoittaminen ja puhesynteesi'**
+  String get infoUseCaseSpeechTitle;
+
+  /// Description for pointing and speech modeling use case
+  ///
+  /// In fi, this message translates to:
+  /// **'Käytä puhepainiketta samalla kun osoitat kuvaa. Kuvan ja puhutun sanan yhdistäminen tukee puheen ymmärtämistä ja sanaston oppimista.'**
+  String get infoUseCaseSpeechDesc;
+
+  /// Title of About & Attributions section on InfoPage
+  ///
+  /// In fi, this message translates to:
+  /// **'Tietoa ja lähteet'**
+  String get infoAboutTitle;
 }
 
 class _AppLocalizationsDelegate

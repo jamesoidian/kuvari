@@ -89,5 +89,73 @@
         "example": "3"
       }
     }
+  },
+  "infoQuickStartTitle": "Pikaopas",
+  "@infoQuickStartTitle": {
+    "description": "Title of the Quick Start card on InfoPage"
+  },
+  "infoQuickStartSubtitle": "Näin aloitat Kuvarin käytön arjen kommunikoinnissa:",
+  "@infoQuickStartSubtitle": {
+    "description": "Subtitle explaining how to start using Kuvari"
+  },
+  "infoQuickStartStep1Title": "1. Etsi kuvia",
+  "@infoQuickStartStep1Title": {
+    "description": "Step 1 title in Quick Start"
+  },
+  "infoQuickStartStep1Desc": "Kirjoita hakusana (esim. ruoka, pukeutuminen tai tunne) hakukenttään ja valitse sopivat kuvat.",
+  "@infoQuickStartStep1Desc": {
+    "description": "Step 1 description in Quick Start"
+  },
+  "infoQuickStartStep2Title": "2. Kokoa jonoon",
+  "@infoQuickStartStep2Title": {
+    "description": "Step 2 title in Quick Start"
+  },
+  "infoQuickStartStep2Desc": "Valitsemasi kuvat kertyvät etusivun jonomuotoiselle alustalle viestiksi tai päiväjärjestykseksi.",
+  "@infoQuickStartStep2Desc": {
+    "description": "Step 2 description in Quick Start"
+  },
+  "infoQuickStartStep3Title": "3. Näytä tai kuuntele",
+  "@infoQuickStartStep3Title": {
+    "description": "Step 3 title in Quick Start"
+  },
+  "infoQuickStartStep3Desc": "Avaa kuvajono katseluun painamalla \"Näytä kuvajono\" tai kuuntele sana painamalla kaiutinkuvaketta.",
+  "@infoQuickStartStep3Desc": {
+    "description": "Step 3 description in Quick Start"
+  },
+  "infoUseCasesTitle": "Käytännön tilanteet",
+  "@infoUseCasesTitle": {
+    "description": "Title of Practical Use Cases section on InfoPage"
+  },
+  "infoUseCasesSubtitle": "Vinkkejä AAC-kommunikointiin arjen vuorovaikutuksessa:",
+  "@infoUseCasesSubtitle": {
+    "description": "Subtitle for Practical Use Cases section"
+  },
+  "infoUseCaseChoiceTitle": "Valinnan tekeminen",
+  "@infoUseCaseChoiceTitle": {
+    "description": "Title for choice-making use case"
+  },
+  "infoUseCaseChoiceDesc": "Lisää jonoon 2–3 vaihtoehtoa (esim. mehu tai vesi, ulkoilu tai peli). Anna viestijälle rauhassa aikaa osoittaa haluamaansa kuvaa ja vahvista valinta ääneen.",
+  "@infoUseCaseChoiceDesc": {
+    "description": "Description for choice-making use case"
+  },
+  "infoUseCaseRoutineTitle": "Päiväjärjestys ja toimintaketjut",
+  "@infoUseCaseRoutineTitle": {
+    "description": "Title for daily routine and sequences use case"
+  },
+  "infoUseCaseRoutineDesc": "Järjestä peräkkäiset toiminnot aikajärjestykseen (esim. aamutoimet tai siirtymät). Ennakoitavuus vähentää epävarmuutta ja tukee arjen sujuvuutta.",
+  "@infoUseCaseRoutineDesc": {
+    "description": "Description for daily routine and sequences use case"
+  },
+  "infoUseCaseSpeechTitle": "Osoittaminen ja puhesynteesi",
+  "@infoUseCaseSpeechTitle": {
+    "description": "Title for pointing and speech modeling use case"
+  },
+  "infoUseCaseSpeechDesc": "Käytä puhepainiketta samalla kun osoitat kuvaa. Kuvan ja puhutun sanan yhdistäminen tukee puheen ymmärtämistä ja sanaston oppimista.",
+  "@infoUseCaseSpeechDesc": {
+    "description": "Description for pointing and speech modeling use case"
+  },
+  "infoAboutTitle": "Tietoa ja lähteet",
+  "@infoAboutTitle": {
+    "description": "Title of About & Attributions section on InfoPage"
   }
 }

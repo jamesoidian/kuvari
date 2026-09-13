@@ -218,4 +218,63 @@ class AppLocalizationsFi extends AppLocalizations {
   String viewImageStoryWithCount(int count) {
     return 'Näytä kuvajono ($count)';
   }
+
+  @override
+  String get infoQuickStartTitle => 'Pikaopas';
+
+  @override
+  String get infoQuickStartSubtitle =>
+      'Näin aloitat Kuvarin käytön arjen kommunikoinnissa:';
+
+  @override
+  String get infoQuickStartStep1Title => '1. Etsi kuvia';
+
+  @override
+  String get infoQuickStartStep1Desc =>
+      'Kirjoita hakusana (esim. ruoka, pukeutuminen tai tunne) hakukenttään ja valitse sopivat kuvat.';
+
+  @override
+  String get infoQuickStartStep2Title => '2. Kokoa jonoon';
+
+  @override
+  String get infoQuickStartStep2Desc =>
+      'Valitsemasi kuvat kertyvät etusivun jonomuotoiselle alustalle viestiksi tai päiväjärjestykseksi.';
+
+  @override
+  String get infoQuickStartStep3Title => '3. Näytä tai kuuntele';
+
+  @override
+  String get infoQuickStartStep3Desc =>
+      'Avaa kuvajono katseluun painamalla \"Näytä kuvajono\" tai kuuntele sana painamalla kaiutinkuvaketta.';
+
+  @override
+  String get infoUseCasesTitle => 'Käytännön tilanteet';
+
+  @override
+  String get infoUseCasesSubtitle =>
+      'Vinkkejä AAC-kommunikointiin arjen vuorovaikutuksessa:';
+
+  @override
+  String get infoUseCaseChoiceTitle => 'Valinnan tekeminen';
+
+  @override
+  String get infoUseCaseChoiceDesc =>
+      'Lisää jonoon 2–3 vaihtoehtoa (esim. mehu tai vesi, ulkoilu tai peli). Anna viestijälle rauhassa aikaa osoittaa haluamaansa kuvaa ja vahvista valinta ääneen.';
+
+  @override
+  String get infoUseCaseRoutineTitle => 'Päiväjärjestys ja toimintaketjut';
+
+  @override
+  String get infoUseCaseRoutineDesc =>
+      'Järjestä peräkkäiset toiminnot aikajärjestykseen (esim. aamutoimet tai siirtymät). Ennakoitavuus vähentää epävarmuutta ja tukee arjen sujuvuutta.';
+
+  @override
+  String get infoUseCaseSpeechTitle => 'Osoittaminen ja puhesynteesi';
+
+  @override
+  String get infoUseCaseSpeechDesc =>
+      'Käytä puhepainiketta samalla kun osoitat kuvaa. Kuvan ja puhutun sanan yhdistäminen tukee puheen ymmärtämistä ja sanaston oppimista.';
+
+  @override
+  String get infoAboutTitle => 'Tietoa ja lähteet';
 }
