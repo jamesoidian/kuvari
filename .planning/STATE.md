@@ -3,16 +3,16 @@ gsd_state_version: "1.0"
 milestone: v1.5.0
 milestone_name: UX & AAC Communication Enhancements
 status: ready_to_discuss
-last_updated: "2026-09-13T16:05:54.403Z"
-state_head: 6a4c2dfbef12d9748d343e72b65c53bc997646fc
+last_updated: "2026-09-13T16:17:35.986Z"
+state_head: e2051f4223a2fbb6354fa23edd095a3ffb8bdef0
 progress:
   total_phases: 4
-  completed_phases: 3
+  completed_phases: 1
   total_plans: 6
-  completed_plans: 4
-  percent: 0
-current_phase_name: native-text-to-speech-ios-android
+  completed_plans: 6
+  percent: 25
 current_phase: 4
+current_phase_name: native-text-to-speech-ios-android
 ---
 
 # State

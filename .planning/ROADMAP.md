@@ -10,7 +10,7 @@
 | 1 | **Terminology & Search Sharpness** | [x] Complete | Correct "Category" to "Image Type" across languages and ensure search images render with high clarity. | TERM-01, IMG-01 | 2 criteria |
 | 2 | **Home Guidance & Collection Queue** | [x] Complete | Keep collection queue visible with instructive empty state and prominent viewer launch action. | JONO-01, JONO-02 | 2 criteria |
 | 3 | **Practical AAC Guidance & Info** | [x] Complete | Expand InfoPage with practical AAC communication examples and structured guides. | GUIDE-01, GUIDE-02 | 2 criteria |
-| 4 | **Native Text-to-Speech (iOS & Android)** | [ ] Planned | Replace flutter_tts with clean, native iOS and Android text-to-speech platform implementations. | TTS-01, TTS-02, TTS-03 | 2 criteria |
+| 4 | **Native Text-to-Speech (iOS & Android)** | [x] Complete | Replace flutter_tts with clean, native iOS and Android text-to-speech platform implementations. | TTS-01, TTS-02, TTS-03 | 2 criteria |
 
 ---
 
@@ -52,7 +52,7 @@
 - **Plans:**
   - [x] `03-01`: Practical AAC Guidance & Info Page Refactor (Wave 1)
 
-### Phase 4: Native Text-to-Speech (iOS & Android)
+### Phase 4: Native Text-to-Speech (iOS & Android) (Completed: 2026-09-13)
 
 **Goal:** Replace `flutter_tts` dependency with native iOS (`AVSpeechSynthesizer`) and Android (`android.speech.tts.TextToSpeech`) platform implementations for cleaner builds and robust speech support.
 
@@ -63,3 +63,6 @@
 - **Success Criteria:**
   1. Speech playback works smoothly in Finnish, Swedish, and English on both iOS and Android without `flutter_tts`.
   2. `flutter_tts` and its third-party build dependencies are completely removed from the project.
+- **Plans:**
+  - [x] `04-01`: Native Platform TTS Handlers for iOS & Android (Wave 1)
+  - [x] `04-02`: Flutter TtsService MethodChannel Refactor & Dependency Cleanup (Wave 2, depends on 04-01)
