@@ -1,10 +1,10 @@
 ---
-status: complete
+status: diagnosed
 phase: 03-practical-aac-guidance-info
 source:
   - .planning/phases/03-practical-aac-guidance-info/03-01-SUMMARY.md
 started: 2026-09-13T19:37:00Z
-updated: 2026-09-13T19:41:50Z
+updated: 2026-09-13T19:42:30Z
 ---
 
 ## Current Test
@@ -49,12 +49,19 @@ blocked: 0
   reason: "User reported: Pikaopas kaipaa parantamista: - Pikaoppaasta puuttuu tallentamisen opastaminen, kuvajonot voi tallentaa toistuvaa käyttöä varten; - Pikaoppaasta puuttuu kuvajonon vierittäminen vasemmalle ja oikealle, järjestyksen muuttaminen pitkään painamalla ja kuvien poistaminen; - 3. kohta pitäisi ennemmin olla 'Näytä ja kuuntele' samoin tekstissä tai -> ja"
   severity: major
   test: 1
+  root_cause: "InfoPage hardcodes only 3 Quick Start steps and ARB copy omits queue scrolling/reordering/deletion, saving stories, and uses 'tai' instead of 'ja'."
   artifacts:
-    - lib/pages/info_page.dart
-    - lib/l10n/intl_fi.arb
-    - lib/l10n/intl_sv.arb
-    - lib/l10n/intl_en.arb
+    - path: "lib/pages/info_page.dart"
+      issue: "Only renders 3 Quick Start steps"
+    - path: "lib/l10n/intl_fi.arb"
+      issue: "Missing step 4 strings and step 2/3 copy lacks queue management and 'ja'"
+    - path: "lib/l10n/intl_sv.arb"
+      issue: "Missing step 4 strings and step 2/3 copy lacks queue management and 'och'"
+    - path: "lib/l10n/intl_en.arb"
+      issue: "Missing step 4 strings and step 2/3 copy lacks queue management and 'and'"
   missing:
-    - "Pikaoppaan askel jonon hallintaan (vieritys, poisto, pitkä painallus järjestämiseen)"
-    - "Pikaoppaan askel tarinan tallentamiseen toistuvaa käyttöä varten"
-    - "3. kohdan otsikon ja tekstin päivitys 'Näytä ja kuuntele' ('tai' -> 'ja')"
+    - "Add step 4 ARB strings for saving stories across fi, sv, en"
+    - "Update step 2 to explain queue scrolling, long-press reorder, and delete"
+    - "Update step 3 title and text to 'Näytä ja kuuntele' with 'ja'"
+    - "Add step 4 widget rendering in InfoPage"
+  debug_session: ".planning/debug/pikaopas-guidance-gaps.md"
