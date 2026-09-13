@@ -9,7 +9,7 @@
 |---|-------|--------|------|--------------|------------------|
 | 1 | **Terminology & Search Sharpness** | [x] Complete | Correct "Category" to "Image Type" across languages and ensure search images render with high clarity. | TERM-01, IMG-01 | 2 criteria |
 | 2 | **Home Guidance & Collection Queue** | [x] Complete | Keep collection queue visible with instructive empty state and prominent viewer launch action. | JONO-01, JONO-02 | 2 criteria |
-| 3 | **Practical AAC Guidance & Info** | [ ] Planned | Expand InfoPage with practical AAC communication examples and structured guides. | GUIDE-01, GUIDE-02 | 2 criteria |
+| 3 | **Practical AAC Guidance & Info** | [x] Complete | Expand InfoPage with practical AAC communication examples and structured guides. | GUIDE-01, GUIDE-02 | 2 criteria |
 | 4 | **Native Text-to-Speech (iOS & Android)** | [ ] Planned | Replace flutter_tts with clean, native iOS and Android text-to-speech platform implementations. | TTS-01, TTS-02, TTS-03 | 2 criteria |
 
 ---
@@ -39,7 +39,7 @@
   - [x] `02-01`: Empty Queue Placeholder & Localization (Wave 1)
   - [x] `02-02`: Home Page Queue Integration & Extended FAB (Wave 2, depends on 02-01)
 
-### Phase 3: Practical AAC Guidance & Info
+### Phase 3: Practical AAC Guidance & Info (Completed: 2026-09-13)
 
 **Goal:** Offer concrete, actionable AAC communication examples on the Info page.
 
@@ -50,7 +50,7 @@
   1. `InfoPage` explains concrete AAC communication scenarios with step-by-step tips.
   2. External links to Papunet, OpenSymbols, and Rinnekodit remain clearly accessible alongside licensing info.
 - **Plans:**
-  - [ ] `03-01`: Practical AAC Guidance & Info Page Refactor (Wave 1)
+  - [x] `03-01`: Practical AAC Guidance & Info Page Refactor (Wave 1)
 
 ### Phase 4: Native Text-to-Speech (iOS & Android)
 

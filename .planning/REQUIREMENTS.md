@@ -17,8 +17,8 @@
 
 ### Practical Communication Guides & Info
 
-- [ ] **GUIDE-01**: `InfoPage` provides practical AAC communication guidance, including real-world examples for choice-making, daily routines, and symbol pointing with speech synthesis.
-- [ ] **GUIDE-02**: `InfoPage` organizes content into distinct sections for Quick Start, Practical Use Cases, and Source & License Attributions.
+- [x] **GUIDE-01**: `InfoPage` provides practical AAC communication guidance, including real-world examples for choice-making, daily routines, and symbol pointing with speech synthesis.
+- [x] **GUIDE-02**: `InfoPage` organizes content into distinct sections for Quick Start, Practical Use Cases, and Source & License Attributions.
 
 ### Native Text-to-Speech
 
@@ -47,8 +47,8 @@
 | IMG-01 | Phase 1 | Complete |
 | JONO-01 | Phase 2 | Complete |
 | JONO-02 | Phase 2 | Complete |
-| GUIDE-01 | Phase 3 | Pending |
-| GUIDE-02 | Phase 3 | Pending |
+| GUIDE-01 | Phase 3 | Complete |
+| GUIDE-02 | Phase 3 | Complete |
 | TTS-01 | Phase 4 | Pending |
 | TTS-02 | Phase 4 | Pending |
 | TTS-03 | Phase 4 | Pending |
