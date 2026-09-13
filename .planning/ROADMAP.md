@@ -51,6 +51,7 @@
   2. External links to Papunet, OpenSymbols, and Rinnekodit remain clearly accessible alongside licensing info.
 - **Plans:**
   - [x] `03-01`: Practical AAC Guidance & Info Page Refactor (Wave 1)
+  - [x] `03-02`: Quick Start Guidance Enhancements & Gap Closure (Wave 2)
 
 ### Phase 4: Native Text-to-Speech (iOS & Android) (Completed: 2026-09-13)
 
