@@ -11,7 +11,15 @@ import 'package:kuvari_app/services/tts_service.dart';
 
 class FakeTtsService extends Fake implements TtsService {
   @override
-  Future<void> speak(String text, String languageCode) async {}
+  Future<void> speak(
+    String text,
+    String languageCode, {
+    double? rate,
+    double? pitch,
+  }) async {}
+
+  @override
+  Future<void> stop() async {}
 }
 
 void main() {
