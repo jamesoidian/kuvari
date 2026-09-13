@@ -3,16 +3,16 @@ gsd_state_version: "1.0"
 milestone: v1.5.0
 milestone_name: UX & AAC Communication Enhancements
 status: unknown
-last_updated: "2026-09-13T18:02:30.000Z"
-state_head: a96f786
+last_updated: "2026-09-13T15:19:16.274Z"
+state_head: 837474a95b80b6ef5f0708c67a2ed0a70b371289
 progress:
   total_phases: 5
   completed_phases: 1
-  total_plans: 1
+  total_plans: 3
   completed_plans: 1
   percent: 20
-current_phase: 2
 current_phase_name: Home Guidance & Collection Queue
+current_phase: 2
 ---
 
 # State
@@ -38,6 +38,7 @@ current_phase_name: Home Guidance & Collection Queue
 ## Accumulated Context
 
 ### Roadmap Evolution
+
 - Phase 5 added: Native Text-to-Speech (iOS & Android) — replace `flutter_tts` dependency with native iOS `AVSpeechSynthesizer` and Android `android.speech.tts.TextToSpeech`.
 
 ## Next Steps

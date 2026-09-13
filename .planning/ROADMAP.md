@@ -32,6 +32,9 @@
 - **Success Criteria:**
   1. Empty state tells user: "Valitsemasi kuvat tulevat tähän jonoon. Voit koota viestin, päiväjärjestyksen tai valintataulun."
   2. Action button to view/play the story is clearly visible and accessible when images are added.
+- **Plans:**
+  - [ ] `02-01`: Empty Queue Placeholder & Localization (Wave 1)
+  - [ ] `02-02`: Home Page Queue Integration & Extended FAB (Wave 2, depends on 02-01)
 
 ### Phase 3: Viewer Choice Mode (Image Pairs)
 **Goal:** Support two-choice AAC decision making directly in `ImageViewerPage`.
