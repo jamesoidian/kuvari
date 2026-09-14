@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> {
   final TtsService _ttsService = TtsService();
   List<KuvariImage> _images = [];
   List<KuvariImage> _selectedImages = [];
+  ImageStory? _editingStory;
 
   bool _isLoading = false;
   List<String> _selectedCategories = [
@@ -247,6 +248,21 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void _startEditingStory(ImageStory story) {
+    setState(() {
+      _editingStory = story;
+      _selectedImages = List.from(story.images);
+      _currentStartIndex = 0;
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          AppLocalizations.of(context)!.editingStoryStarted(story.name),
+        ),
+      ),
+    );
+  }
+
   // Siirtyminen ImageViewerPage:lle
   void _navigateToImageViewer() {
     if (_selectedImages.isEmpty) return;
@@ -325,6 +341,7 @@ class _HomePageState extends State<HomePage> {
           onSave: _saveImageStory,
           setLocale: widget.setLocale,
           analytics: widget.analytics,
+          onEditStory: _startEditingStory,
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),

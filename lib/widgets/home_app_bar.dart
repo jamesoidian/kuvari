@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
+import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/widgets/language_selector.dart';
 import 'package:kuvari_app/pages/saved_image_stories_page.dart';
 import 'package:kuvari_app/pages/info_page.dart';
@@ -11,6 +12,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Function() onSave;
   final Function(Locale) setLocale;
   final FirebaseAnalytics analytics;
+  final Function(ImageStory story)? onEditStory;
 
   const HomeAppBar({
     super.key,
@@ -18,6 +20,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.onSave,
     required this.setLocale,
     required this.analytics,
+    this.onEditStory,
   });
 
   @override
@@ -63,13 +66,19 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         IconButton(
           icon: const Icon(Icons.list),
-          onPressed: () {
-            Navigator.push(
+          onPressed: () async {
+            final storyToEdit = await Navigator.push<ImageStory>(
               context,
               MaterialPageRoute(
-                builder: (_) => const SavedImageStoriesPage(),
+                builder: (_) => SavedImageStoriesPage(
+                  hasActiveQueue: selectedImages.isNotEmpty,
+                  activeQueueCount: selectedImages.length,
+                ),
               ),
             );
+            if (storyToEdit != null && onEditStory != null) {
+              onEditStory!(storyToEdit);
+            }
           },
           tooltip: AppLocalizations.of(context)!.savedImageStories,
         ),

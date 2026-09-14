@@ -7,10 +7,12 @@ import 'package:mockito/mockito.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:kuvari_app/models/kuvari_image.dart';
+import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/pages/home_page.dart';
 import 'package:kuvari_app/pages/image_viewer_page.dart';
 import 'package:kuvari_app/services/kuvari_service.dart';
 import 'package:kuvari_app/widgets/empty_queue_placeholder.dart';
+import 'package:kuvari_app/widgets/home_app_bar.dart';
 import 'package:kuvari_app/widgets/home_search_section.dart';
 import 'home_page_test.mocks.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -191,6 +193,28 @@ void main() {
       expect(find.byType(FloatingActionButton), findsNothing);
       final crossFadeAfterClear = tester.widget<AnimatedCrossFade>(find.byType(AnimatedCrossFade));
       expect(crossFadeAfterClear.crossFadeState, CrossFadeState.showFirst);
+    });
+
+    testWidgets('Opening saved story for editing populates queue and shows SnackBar', (tester) async {
+      await tester.pumpWidget(createHomePage());
+      await tester.pumpAndSettle();
+
+      final homeAppBar = tester.widget<HomeAppBar>(find.byType(HomeAppBar));
+      expect(homeAppBar.onEditStory, isNotNull);
+
+      final story = ImageStory(
+        id: 'test-story-1',
+        name: 'Aamutoimet',
+        images: mockImages,
+      );
+
+      homeAppBar.onEditStory!(story);
+      await tester.pumpAndSettle();
+
+      final crossFade = tester.widget<AnimatedCrossFade>(find.byType(AnimatedCrossFade));
+      expect(crossFade.crossFadeState, CrossFadeState.showSecond);
+      expect(find.text('Näytä kuvajono (2)'), findsOneWidget);
+      expect(find.text('Muokataan kuvajonoa: Aamutoimet'), findsOneWidget);
     });
   });
 }
