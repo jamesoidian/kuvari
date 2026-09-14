@@ -20,10 +20,10 @@
 - [x] **MODE-02**: Guard against accidental data loss in Edit Mode by prompting confirmation when the user taps clear (trash can) or attempts to navigate away with unsaved modifications.
 
 ### Dual-Mode Save Logic
-- [ ] **SAVE-01**: When saving in Edit Mode, present a dialog offering:
+- [x] **SAVE-01**: When saving in Edit Mode, present a dialog offering:
   1. "Päivitä olemassa oleva" (updates existing story in Hive, preserving ID and tags).
   2. "Tallenna uutena kuvajonona..." (prompts for a name, saves a new story with new ID).
-- [ ] **SAVE-02**: Cleanly exit Edit Mode upon saving or explicit cancellation, returning `HomePage` to its standard clean queue state.
+- [x] **SAVE-02**: Cleanly exit Edit Mode upon saving or explicit cancellation, returning `HomePage` to its standard clean queue state.
 
 ---
 
@@ -48,8 +48,8 @@
 | EDIT-03 | Phase 6 | Complete |
 | MODE-01 | Phase 6 | Complete |
 | MODE-02 | Phase 6 | Complete |
-| SAVE-01 | Phase 7 | Pending |
-| SAVE-02 | Phase 7 | Pending |
+| SAVE-01 | Phase 7 | Complete |
+| SAVE-02 | Phase 7 | Complete |
 
 **Coverage:**
 - Milestone v1.6.0 requirements: 9 total
