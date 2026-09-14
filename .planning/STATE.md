@@ -2,13 +2,13 @@
 gsd_state_version: "1.0"
 milestone: v1.6.0
 milestone_name: Story Editing & Safe Queue Management
-status: phase_complete
-last_updated: "2026-09-14T06:18:00.000Z"
+status: planned
+last_updated: "2026-09-14T06:27:00.000Z"
 last_activity: 2026-09-14
 progress:
   total_phases: 3
   completed_phases: 1
-  total_plans: 1
+  total_plans: 3
   completed_plans: 1
   percent: 33
 ---
@@ -19,10 +19,10 @@ progress:
 
 ## Current Position
 
-Phase: Phase 5: Safe Browsing & Carousel Protection
-Plan: 05.01
-Status: Phase 5 complete (1/1 plans)
-Last activity: 2026-09-14 — Phase 5 completed (Safe Browsing & Carousel Protection)
+Phase: Phase 6: Edit on Home Page Transition & Edit Mode UI
+Plan: 06.01
+Status: Phase 6 planned and ready to execute (2 plans: 06.01, 06.02)
+Last activity: 2026-09-14 — Phase 6 plans created (Edit on Home Page Transition & Edit Mode UI)
 
 ## Milestone v1.5.0 Summary
 
@@ -59,4 +59,4 @@ Last activity: 2026-09-14 — Phase 5 completed (Safe Browsing & Carousel Protec
 
 ## Next Steps
  
-1. Plan Phase 6: `/gsd-plan-phase 6` (Edit on Home Page Transition & Edit Mode UI)
+1. Execute Phase 6: `/gsd-execute-phase 6` (Edit on Home Page Transition & Edit Mode UI)
