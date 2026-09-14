@@ -208,8 +208,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get unused => 'Unused';
 
   @override
-  String get tagInfoLabel =>
-      'Add tags by long-pressing the image sequence name';
+  String get tagInfoLabel => 'Add tags by long-pressing the image sequence';
 
   @override
   String get multipleTagsInfoLabel =>

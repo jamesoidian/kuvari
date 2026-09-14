@@ -208,7 +208,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get unused => 'Ei käytössä';
 
   @override
-  String get tagInfoLabel => 'Lisää tägejä painamalla kuvajonon nimeä pitkään';
+  String get tagInfoLabel => 'Lisää tägejä painamalla kuvajonoa pitkään';
 
   @override
   String get multipleTagsInfoLabel => 'Kuvajonolla voi olla monta tägiä';

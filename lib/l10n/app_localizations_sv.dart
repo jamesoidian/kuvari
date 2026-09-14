@@ -209,7 +209,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get tagInfoLabel =>
-      'Lägg till taggar genom att trycka länge på bildsekvensens namn';
+      'Lägg till taggar genom att trycka länge på bildsekvensen';
 
   @override
   String get multipleTagsInfoLabel => 'En bildsekvens kan ha flera taggar';

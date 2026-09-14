@@ -481,7 +481,7 @@ abstract class AppLocalizations {
   /// No description provided for @tagInfoLabel.
   ///
   /// In fi, this message translates to:
-  /// **'Lisää tägejä painamalla kuvajonon nimeä pitkään'**
+  /// **'Lisää tägejä painamalla kuvajonoa pitkään'**
   String get tagInfoLabel;
 
   /// Information label stating that an image sequence can have multiple tags

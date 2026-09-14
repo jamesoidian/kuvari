@@ -75,7 +75,7 @@
   "deleteTag": "Delete Tag",
   "tagInUseWarning": "This tag is used in {count} image sequences. Delete anyway?",
   "unused": "Unused",
-  "tagInfoLabel": "Add tags by long-pressing the image sequence name",
+  "tagInfoLabel": "Add tags by long-pressing the image sequence",
   "multipleTagsInfoLabel": "An image sequence can have multiple tags",
   "@multipleTagsInfoLabel": {
     "description": "Information label stating that an image sequence can have multiple tags"

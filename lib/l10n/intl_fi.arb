@@ -75,7 +75,7 @@
   "deleteTag": "Poista tägi",
   "tagInUseWarning": "Tämä tägi on käytössä {count} kuvajonossa. Poistetaanko silti?",
   "unused": "Ei käytössä",
-  "tagInfoLabel": "Lisää tägejä painamalla kuvajonon nimeä pitkään",
+  "tagInfoLabel": "Lisää tägejä painamalla kuvajonoa pitkään",
   "multipleTagsInfoLabel": "Kuvajonolla voi olla monta tägiä",
   "@multipleTagsInfoLabel": {
     "description": "Information label stating that an image sequence can have multiple tags"

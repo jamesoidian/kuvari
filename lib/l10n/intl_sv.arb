@@ -75,7 +75,7 @@
   "deleteTag": "Radera tagg",
   "tagInUseWarning": "Denna tagg används i {count} bildsekvenser. Radera ändå?",
   "unused": "Oanvänd",
-  "tagInfoLabel": "Lägg till taggar genom att trycka länge på bildsekvensens namn",
+  "tagInfoLabel": "Lägg till taggar genom att trycka länge på bildsekvensen",
   "multipleTagsInfoLabel": "En bildsekvens kan ha flera taggar",
   "@multipleTagsInfoLabel": {
     "description": "Informationsetikett som anger att en bildsekvens kan ha flera taggar"

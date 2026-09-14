@@ -154,7 +154,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('Hae kuvajonoja tägin nimellä...'), findsOneWidget);
-      expect(find.text('Lisää tägejä painamalla kuvajonon nimeä pitkään'), findsOneWidget);
+      expect(find.text('Lisää tägejä painamalla kuvajonoa pitkään'), findsOneWidget);
       expect(find.text('Kuvajonolla voi olla monta tägiä'), findsOneWidget);
       expect(find.text('Poista jono pyyhkäisemällä vasemmalle'), findsOneWidget);
     });
