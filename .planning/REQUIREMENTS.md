@@ -11,13 +11,13 @@
 - [x] **SAFE-02**: Ensure individual image delete buttons are absent in the saved stories carousel to prevent accidental deletion during browsing.
 
 ### Edit on Home Page Transition
-- [ ] **EDIT-01**: Provide an explicit "Muokkaa kotisivulla" (Edit on Home Page) button on each saved story card in `SavedImageStoriesPage`.
-- [ ] **EDIT-02**: Show a confirmation warning dialog when opening a saved story for editing if the home queue already contains selected images.
-- [ ] **EDIT-03**: Transition to `HomePage` in Edit Mode, populating the queue with the story's images and displaying a SnackBar confirming the story is open for editing.
+- [x] **EDIT-01**: Provide an explicit "Muokkaa kotisivulla" (Edit on Home Page) button on each saved story card in `SavedImageStoriesPage`.
+- [x] **EDIT-02**: Show a confirmation warning dialog when opening a saved story for editing if the home queue already contains selected images.
+- [x] **EDIT-03**: Transition to `HomePage` in Edit Mode, populating the queue with the story's images and displaying a SnackBar confirming the story is open for editing.
 
 ### Home Page Edit Mode UI & Protection
-- [ ] **MODE-01**: Render a persistent Edit Mode banner above the collection queue on `HomePage` showing the story name and quick actions ("Tallenna muutokset" and "Lopeta muokkaus").
-- [ ] **MODE-02**: Guard against accidental data loss in Edit Mode by prompting confirmation when the user taps clear (trash can) or attempts to navigate away with unsaved modifications.
+- [x] **MODE-01**: Render a persistent Edit Mode banner above the collection queue on `HomePage` showing the story name and quick actions ("Tallenna muutokset" and "Lopeta muokkaus").
+- [x] **MODE-02**: Guard against accidental data loss in Edit Mode by prompting confirmation when the user taps clear (trash can) or attempts to navigate away with unsaved modifications.
 
 ### Dual-Mode Save Logic
 - [ ] **SAVE-01**: When saving in Edit Mode, present a dialog offering:
@@ -43,11 +43,11 @@
 |-------------|-------|--------|
 | SAFE-01 | Phase 5 | Complete |
 | SAFE-02 | Phase 5 | Complete |
-| EDIT-01 | Phase 6 | Pending |
-| EDIT-02 | Phase 6 | Pending |
-| EDIT-03 | Phase 6 | Pending |
-| MODE-01 | Phase 6 | Pending |
-| MODE-02 | Phase 6 | Pending |
+| EDIT-01 | Phase 6 | Complete |
+| EDIT-02 | Phase 6 | Complete |
+| EDIT-03 | Phase 6 | Complete |
+| MODE-01 | Phase 6 | Complete |
+| MODE-02 | Phase 6 | Complete |
 | SAVE-01 | Phase 7 | Pending |
 | SAVE-02 | Phase 7 | Pending |
 
