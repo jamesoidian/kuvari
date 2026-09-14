@@ -177,5 +177,79 @@
   "infoAboutTitle": "Information och källor",
   "@infoAboutTitle": {
     "description": "Titel för information och källor på InfoPage"
+  },
+  "editOnHomePage": "Redigera på startsidan",
+  "@editOnHomePage": {
+    "description": "Verktygstips och tillgänglighetsetikett för redigeringsknapp på sparad bildsekvens"
+  },
+  "replaceQueueDialogTitle": "Ersätta nuvarande bildsekvens?",
+  "@replaceQueueDialogTitle": {
+    "description": "Titel för bekräftelsedialog vid öppning av sparad sekvens med aktiv kö"
+  },
+  "replaceQueueDialogBody": "Det finns redan {count} valda bilder på startsidan. Vill du ersätta dem med bilderna från \"{storyName}\"?",
+  "@replaceQueueDialogBody": {
+    "description": "Varning vid öppning av sparad sekvens med aktiv kö",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      },
+      "storyName": {
+        "type": "String",
+        "example": "Morgonrutin"
+      }
+    }
+  },
+  "replaceAndEdit": "Ersätt och redigera",
+  "@replaceAndEdit": {
+    "description": "Bekräftelseknapp för att ersätta kö och börja redigera"
+  },
+  "editingStoryStarted": "Redigerar bildsekvens: {storyName}",
+  "@editingStoryStarted": {
+    "description": "SnackBar-meddelande vid start av redigeringsläge",
+    "placeholders": {
+      "storyName": {
+        "type": "String",
+        "example": "Morgonrutin"
+      }
+    }
+  },
+  "editModeBannerTitle": "Redigerar: {storyName}",
+  "@editModeBannerTitle": {
+    "description": "Titel som visas på redigeringsbannern",
+    "placeholders": {
+      "storyName": {
+        "type": "String",
+        "example": "Morgonrutin"
+      }
+    }
+  },
+  "saveChanges": "Spara ändringar",
+  "@saveChanges": {
+    "description": "Knappetikett för att spara ändringar i redigeringsläge"
+  },
+  "stopEditing": "Avsluta redigering",
+  "@stopEditing": {
+    "description": "Knappetikett eller verktygstips för att avsluta redigeringsläge"
+  },
+  "discardChangesDialogTitle": "Avsluta redigering?",
+  "@discardChangesDialogTitle": {
+    "description": "Titel för bekräftelsedialog vid avslutande av redigering med osparade ändringar"
+  },
+  "discardChangesDialogBody": "Det finns osparade ändringar i bildsekvensen. Vill du ignorera ändringarna?",
+  "@discardChangesDialogBody": {
+    "description": "Meddelande vid avslutande av redigering med osparade ändringar"
+  },
+  "discardChanges": "Ignorera ändringar",
+  "@discardChanges": {
+    "description": "Knappetikett för att ignorera ändringar"
+  },
+  "clearQueueDialogTitle": "Tömma bildsekvensen?",
+  "@clearQueueDialogTitle": {
+    "description": "Titel för dialog vid tömning av kö i redigeringsläge"
+  },
+  "clearQueueDialogBody": "Vill du verkligen ta bort alla bilder från bildsekvensen som redigeras?",
+  "@clearQueueDialogBody": {
+    "description": "Meddelande vid tömning av kö i redigeringsläge"
   }
 }

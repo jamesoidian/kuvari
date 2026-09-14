@@ -177,5 +177,79 @@
   "infoAboutTitle": "About & Attributions",
   "@infoAboutTitle": {
     "description": "Title of About & Attributions section on InfoPage"
+  },
+  "editOnHomePage": "Edit on home page",
+  "@editOnHomePage": {
+    "description": "Tooltip and semantics label for edit button on saved story card"
+  },
+  "replaceQueueDialogTitle": "Replace current image sequence?",
+  "@replaceQueueDialogTitle": {
+    "description": "Title of confirmation dialog when opening a saved story with active home queue"
+  },
+  "replaceQueueDialogBody": "There are already {count} images selected on the home page. Do you want to replace them with images from \"{storyName}\"?",
+  "@replaceQueueDialogBody": {
+    "description": "Warning message when opening a saved story with active home queue",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      },
+      "storyName": {
+        "type": "String",
+        "example": "Morning routine"
+      }
+    }
+  },
+  "replaceAndEdit": "Replace and edit",
+  "@replaceAndEdit": {
+    "description": "Confirmation button label to replace queue and start editing"
+  },
+  "editingStoryStarted": "Editing image sequence: {storyName}",
+  "@editingStoryStarted": {
+    "description": "SnackBar message displayed when entering edit mode",
+    "placeholders": {
+      "storyName": {
+        "type": "String",
+        "example": "Morning routine"
+      }
+    }
+  },
+  "editModeBannerTitle": "Editing: {storyName}",
+  "@editModeBannerTitle": {
+    "description": "Title displayed on the edit mode banner",
+    "placeholders": {
+      "storyName": {
+        "type": "String",
+        "example": "Morning routine"
+      }
+    }
+  },
+  "saveChanges": "Save changes",
+  "@saveChanges": {
+    "description": "Button label to save changes in edit mode"
+  },
+  "stopEditing": "Stop editing",
+  "@stopEditing": {
+    "description": "Button label or tooltip to exit edit mode"
+  },
+  "discardChangesDialogTitle": "Stop editing?",
+  "@discardChangesDialogTitle": {
+    "description": "Title of confirmation dialog when exiting edit mode with unsaved changes"
+  },
+  "discardChangesDialogBody": "There are unsaved changes to this image sequence. Do you want to discard the changes?",
+  "@discardChangesDialogBody": {
+    "description": "Body of confirmation dialog when exiting edit mode with unsaved changes"
+  },
+  "discardChanges": "Discard changes",
+  "@discardChanges": {
+    "description": "Button label to discard unsaved changes"
+  },
+  "clearQueueDialogTitle": "Clear image sequence?",
+  "@clearQueueDialogTitle": {
+    "description": "Title of confirmation dialog when clearing queue in edit mode"
+  },
+  "clearQueueDialogBody": "Are you sure you want to clear all images from the sequence being edited?",
+  "@clearQueueDialogBody": {
+    "description": "Body of confirmation dialog when clearing queue in edit mode"
   }
 }

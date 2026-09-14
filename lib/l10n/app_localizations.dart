@@ -627,6 +627,84 @@ abstract class AppLocalizations {
   /// In fi, this message translates to:
   /// **'Tietoa ja lähteet'**
   String get infoAboutTitle;
+
+  /// Tooltip and semantics label for edit button on saved story card
+  ///
+  /// In fi, this message translates to:
+  /// **'Muokkaa kotisivulla'**
+  String get editOnHomePage;
+
+  /// Title of confirmation dialog when opening a saved story with active home queue
+  ///
+  /// In fi, this message translates to:
+  /// **'Korvataanko nykyinen kuvajono?'**
+  String get replaceQueueDialogTitle;
+
+  /// Warning message when opening a saved story with active home queue
+  ///
+  /// In fi, this message translates to:
+  /// **'Kotisivulla on jo valittuna {count} kuvaa. Haluatko korvata ne kuvajonon \"{storyName}\" kuvilla?'**
+  String replaceQueueDialogBody(int count, String storyName);
+
+  /// Confirmation button label to replace queue and start editing
+  ///
+  /// In fi, this message translates to:
+  /// **'Korvaa ja muokkaa'**
+  String get replaceAndEdit;
+
+  /// SnackBar message displayed when entering edit mode
+  ///
+  /// In fi, this message translates to:
+  /// **'Muokataan kuvajonoa: {storyName}'**
+  String editingStoryStarted(String storyName);
+
+  /// Title displayed on the edit mode banner
+  ///
+  /// In fi, this message translates to:
+  /// **'Muokataan: {storyName}'**
+  String editModeBannerTitle(String storyName);
+
+  /// Button label to save changes in edit mode
+  ///
+  /// In fi, this message translates to:
+  /// **'Tallenna muutokset'**
+  String get saveChanges;
+
+  /// Button label or tooltip to exit edit mode
+  ///
+  /// In fi, this message translates to:
+  /// **'Lopeta muokkaus'**
+  String get stopEditing;
+
+  /// Title of confirmation dialog when exiting edit mode with unsaved changes
+  ///
+  /// In fi, this message translates to:
+  /// **'Lopetetaanko muokkaus?'**
+  String get discardChangesDialogTitle;
+
+  /// Body of confirmation dialog when exiting edit mode with unsaved changes
+  ///
+  /// In fi, this message translates to:
+  /// **'Kuvajonoon on tehty muutoksia, joita ei ole tallennettu. Haluatko varmasti hylätä muutokset?'**
+  String get discardChangesDialogBody;
+
+  /// Button label to discard unsaved changes
+  ///
+  /// In fi, this message translates to:
+  /// **'Hylkää muutokset'**
+  String get discardChanges;
+
+  /// Title of confirmation dialog when clearing queue in edit mode
+  ///
+  /// In fi, this message translates to:
+  /// **'Tyhjennetäänkö kuvajono?'**
+  String get clearQueueDialogTitle;
+
+  /// Body of confirmation dialog when clearing queue in edit mode
+  ///
+  /// In fi, this message translates to:
+  /// **'Haluatko varmasti tyhjentää muokattavan kuvajonon kaikki kuvat?'**
+  String get clearQueueDialogBody;
 }
 
 class _AppLocalizationsDelegate

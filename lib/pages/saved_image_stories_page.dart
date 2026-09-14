@@ -15,11 +15,15 @@ import 'package:kuvari_app/services/storage_constants.dart';
 class SavedImageStoriesPage extends StatefulWidget {
   final Box<ImageStory>? imageStoriesBox;
   final Box<Tag>? tagsBox;
+  final bool hasActiveQueue;
+  final int activeQueueCount;
 
   const SavedImageStoriesPage({
     super.key,
     this.imageStoriesBox,
     this.tagsBox,
+    this.hasActiveQueue = false,
+    this.activeQueueCount = 0,
   });
 
   @override
@@ -185,50 +189,61 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
                               showClearButton: false,
                               isReorderable: false,
                             ),
-                            trailing: IconButton(
-                              icon: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      color: Colors.teal,
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                IconButton(
+                                  icon: const Icon(Icons.edit_outlined),
+                                  tooltip: l10n.editOnHomePage,
+                                  onPressed: () => _handleEditStory(story),
+                                ),
+                                IconButton(
+                                  icon: Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      Container(
+                                        width: 40,
+                                        height: 40,
+                                        decoration: BoxDecoration(
+                                          color: Colors.teal,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      ),
+                                      const Icon(
+                                        Icons.play_arrow,
+                                        color: Colors.white,
+                                        size: 30,
+                                      ),
+                                      const Icon(
+                                        Icons.play_arrow,
+                                        color: Colors.teal,
+                                        size: 24,
+                                      ),
+                                    ],
                                   ),
-                                  Icon(
-                                    Icons.play_arrow,
-                                    color: Colors.white,
-                                    size: 30,
-                                  ),
-                                  Icon(
-                                    Icons.play_arrow,
-                                    color: Colors.teal,
-                                    size: 24,
-                                  ),
-                                ],
-                              ),
-                              onPressed: () {
-                                final analytics = FirebaseAnalytics.instance;
+                                  onPressed: () {
+                                    final analytics = FirebaseAnalytics.instance;
 
-                                // Kirjaa katselutapahtuma
-                                analytics.logEvent(
-                                  name: 'view_image_story',
-                                  parameters: {
-                                    'image_count': story.images.length,
-                                    'source': 'saved_stories',
+                                    // Kirjaa katselutapahtuma
+                                    analytics.logEvent(
+                                      name: 'view_image_story',
+                                      parameters: {
+                                        'image_count': story.images.length,
+                                        'source': 'saved_stories',
+                                      },
+                                    );
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) => ImageViewerPage(
+                                            images: story.images),
+                                      ),
+                                    );
                                   },
-                                );
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (_) =>
-                                        ImageViewerPage(images: story.images),
-                                  ),
-                                );
-                              },
-                              tooltip: l10n.viewImageStory,
+                                  tooltip: l10n.viewImageStory,
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -242,6 +257,39 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
         },
       ),
     );
+  }
+
+  Future<void> _handleEditStory(ImageStory story) async {
+    final l10n = AppLocalizations.of(context)!;
+    if (widget.hasActiveQueue) {
+      final confirmed = await showDialog<bool>(
+        context: context,
+        builder: (dialogContext) {
+          return AlertDialog(
+            title: Text(l10n.replaceQueueDialogTitle),
+            content: Text(
+              l10n.replaceQueueDialogBody(widget.activeQueueCount, story.name),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(dialogContext, false),
+                child: Text(l10n.cancel),
+              ),
+              FilledButton(
+                onPressed: () => Navigator.pop(dialogContext, true),
+                child: Text(l10n.replaceAndEdit),
+              ),
+            ],
+          );
+        },
+      );
+
+      if (confirmed != true) return;
+    }
+
+    if (mounted) {
+      Navigator.pop(context, story);
+    }
   }
 
   Widget _buildSearchAndFilters() {

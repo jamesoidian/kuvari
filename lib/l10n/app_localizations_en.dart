@@ -296,4 +296,51 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get infoAboutTitle => 'About & Attributions';
+
+  @override
+  String get editOnHomePage => 'Edit on home page';
+
+  @override
+  String get replaceQueueDialogTitle => 'Replace current image sequence?';
+
+  @override
+  String replaceQueueDialogBody(int count, String storyName) {
+    return 'There are already $count images selected on the home page. Do you want to replace them with images from \"$storyName\"?';
+  }
+
+  @override
+  String get replaceAndEdit => 'Replace and edit';
+
+  @override
+  String editingStoryStarted(String storyName) {
+    return 'Editing image sequence: $storyName';
+  }
+
+  @override
+  String editModeBannerTitle(String storyName) {
+    return 'Editing: $storyName';
+  }
+
+  @override
+  String get saveChanges => 'Save changes';
+
+  @override
+  String get stopEditing => 'Stop editing';
+
+  @override
+  String get discardChangesDialogTitle => 'Stop editing?';
+
+  @override
+  String get discardChangesDialogBody =>
+      'There are unsaved changes to this image sequence. Do you want to discard the changes?';
+
+  @override
+  String get discardChanges => 'Discard changes';
+
+  @override
+  String get clearQueueDialogTitle => 'Clear image sequence?';
+
+  @override
+  String get clearQueueDialogBody =>
+      'Are you sure you want to clear all images from the sequence being edited?';
 }

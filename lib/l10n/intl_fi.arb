@@ -177,5 +177,79 @@
   "infoAboutTitle": "Tietoa ja lähteet",
   "@infoAboutTitle": {
     "description": "Title of About & Attributions section on InfoPage"
+  },
+  "editOnHomePage": "Muokkaa kotisivulla",
+  "@editOnHomePage": {
+    "description": "Tooltip and semantics label for edit button on saved story card"
+  },
+  "replaceQueueDialogTitle": "Korvataanko nykyinen kuvajono?",
+  "@replaceQueueDialogTitle": {
+    "description": "Title of confirmation dialog when opening a saved story with active home queue"
+  },
+  "replaceQueueDialogBody": "Kotisivulla on jo valittuna {count} kuvaa. Haluatko korvata ne kuvajonon \"{storyName}\" kuvilla?",
+  "@replaceQueueDialogBody": {
+    "description": "Warning message when opening a saved story with active home queue",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      },
+      "storyName": {
+        "type": "String",
+        "example": "Aamutoimet"
+      }
+    }
+  },
+  "replaceAndEdit": "Korvaa ja muokkaa",
+  "@replaceAndEdit": {
+    "description": "Confirmation button label to replace queue and start editing"
+  },
+  "editingStoryStarted": "Muokataan kuvajonoa: {storyName}",
+  "@editingStoryStarted": {
+    "description": "SnackBar message displayed when entering edit mode",
+    "placeholders": {
+      "storyName": {
+        "type": "String",
+        "example": "Aamutoimet"
+      }
+    }
+  },
+  "editModeBannerTitle": "Muokataan: {storyName}",
+  "@editModeBannerTitle": {
+    "description": "Title displayed on the edit mode banner",
+    "placeholders": {
+      "storyName": {
+        "type": "String",
+        "example": "Aamutoimet"
+      }
+    }
+  },
+  "saveChanges": "Tallenna muutokset",
+  "@saveChanges": {
+    "description": "Button label to save changes in edit mode"
+  },
+  "stopEditing": "Lopeta muokkaus",
+  "@stopEditing": {
+    "description": "Button label or tooltip to exit edit mode"
+  },
+  "discardChangesDialogTitle": "Lopetetaanko muokkaus?",
+  "@discardChangesDialogTitle": {
+    "description": "Title of confirmation dialog when exiting edit mode with unsaved changes"
+  },
+  "discardChangesDialogBody": "Kuvajonoon on tehty muutoksia, joita ei ole tallennettu. Haluatko varmasti hylätä muutokset?",
+  "@discardChangesDialogBody": {
+    "description": "Body of confirmation dialog when exiting edit mode with unsaved changes"
+  },
+  "discardChanges": "Hylkää muutokset",
+  "@discardChanges": {
+    "description": "Button label to discard unsaved changes"
+  },
+  "clearQueueDialogTitle": "Tyhjennetäänkö kuvajono?",
+  "@clearQueueDialogTitle": {
+    "description": "Title of confirmation dialog when clearing queue in edit mode"
+  },
+  "clearQueueDialogBody": "Haluatko varmasti tyhjentää muokattavan kuvajonon kaikki kuvat?",
+  "@clearQueueDialogBody": {
+    "description": "Body of confirmation dialog when clearing queue in edit mode"
   }
 }

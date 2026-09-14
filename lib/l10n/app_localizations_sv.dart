@@ -294,4 +294,51 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get infoAboutTitle => 'Information och källor';
+
+  @override
+  String get editOnHomePage => 'Redigera på startsidan';
+
+  @override
+  String get replaceQueueDialogTitle => 'Ersätta nuvarande bildsekvens?';
+
+  @override
+  String replaceQueueDialogBody(int count, String storyName) {
+    return 'Det finns redan $count valda bilder på startsidan. Vill du ersätta dem med bilderna från \"$storyName\"?';
+  }
+
+  @override
+  String get replaceAndEdit => 'Ersätt och redigera';
+
+  @override
+  String editingStoryStarted(String storyName) {
+    return 'Redigerar bildsekvens: $storyName';
+  }
+
+  @override
+  String editModeBannerTitle(String storyName) {
+    return 'Redigerar: $storyName';
+  }
+
+  @override
+  String get saveChanges => 'Spara ändringar';
+
+  @override
+  String get stopEditing => 'Avsluta redigering';
+
+  @override
+  String get discardChangesDialogTitle => 'Avsluta redigering?';
+
+  @override
+  String get discardChangesDialogBody =>
+      'Det finns osparade ändringar i bildsekvensen. Vill du ignorera ändringarna?';
+
+  @override
+  String get discardChanges => 'Ignorera ändringar';
+
+  @override
+  String get clearQueueDialogTitle => 'Tömma bildsekvensen?';
+
+  @override
+  String get clearQueueDialogBody =>
+      'Vill du verkligen ta bort alla bilder från bildsekvensen som redigeras?';
 }

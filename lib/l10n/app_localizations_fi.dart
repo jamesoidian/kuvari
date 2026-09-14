@@ -294,4 +294,51 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get infoAboutTitle => 'Tietoa ja lähteet';
+
+  @override
+  String get editOnHomePage => 'Muokkaa kotisivulla';
+
+  @override
+  String get replaceQueueDialogTitle => 'Korvataanko nykyinen kuvajono?';
+
+  @override
+  String replaceQueueDialogBody(int count, String storyName) {
+    return 'Kotisivulla on jo valittuna $count kuvaa. Haluatko korvata ne kuvajonon \"$storyName\" kuvilla?';
+  }
+
+  @override
+  String get replaceAndEdit => 'Korvaa ja muokkaa';
+
+  @override
+  String editingStoryStarted(String storyName) {
+    return 'Muokataan kuvajonoa: $storyName';
+  }
+
+  @override
+  String editModeBannerTitle(String storyName) {
+    return 'Muokataan: $storyName';
+  }
+
+  @override
+  String get saveChanges => 'Tallenna muutokset';
+
+  @override
+  String get stopEditing => 'Lopeta muokkaus';
+
+  @override
+  String get discardChangesDialogTitle => 'Lopetetaanko muokkaus?';
+
+  @override
+  String get discardChangesDialogBody =>
+      'Kuvajonoon on tehty muutoksia, joita ei ole tallennettu. Haluatko varmasti hylätä muutokset?';
+
+  @override
+  String get discardChanges => 'Hylkää muutokset';
+
+  @override
+  String get clearQueueDialogTitle => 'Tyhjennetäänkö kuvajono?';
+
+  @override
+  String get clearQueueDialogBody =>
+      'Haluatko varmasti tyhjentää muokattavan kuvajonon kaikki kuvat?';
 }

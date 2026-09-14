@@ -90,7 +90,7 @@ void main() {
       tagsBox = FakeHiveBox<Tag>();
     });
 
-    Widget createWidget() {
+    Widget createWidget({bool hasActiveQueue = false, int activeQueueCount = 0}) {
       return MaterialApp(
         locale: const Locale('fi'),
         localizationsDelegates: const [
@@ -103,6 +103,8 @@ void main() {
         home: SavedImageStoriesPage(
           imageStoriesBox: storiesBox,
           tagsBox: tagsBox,
+          hasActiveQueue: hasActiveQueue,
+          activeQueueCount: activeQueueCount,
         ),
       );
     }
@@ -181,6 +183,151 @@ void main() {
       expect(find.byType(ListView), findsWidgets);
       expect(find.byIcon(Icons.close), findsNothing);
       expect(find.byIcon(Icons.delete_sweep), findsNothing);
+    });
+
+    testWidgets("Displays edit icon button for each story", (tester) async {
+      await storiesBox.put(
+        0,
+        ImageStory(
+          id: '1',
+          name: 'Story 1',
+          images: [
+            KuvariImage(uid: 1, name: 'Img 1', author: 'A', thumb: '', url: ''),
+          ],
+        ),
+      );
+
+      await tester.pumpWidget(createWidget());
+      await tester.pumpAndSettle();
+
+      expect(find.byIcon(Icons.edit_outlined), findsOneWidget);
+    });
+
+    testWidgets("Tapping edit when hasActiveQueue is false pops with story", (tester) async {
+      await storiesBox.put(
+        0,
+        ImageStory(
+          id: '1',
+          name: 'Story 1',
+          images: [
+            KuvariImage(uid: 1, name: 'Img 1', author: 'A', thumb: '', url: ''),
+          ],
+        ),
+      );
+
+      ImageStory? returnedStory;
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: const Locale('fi'),
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [Locale('fi'), Locale('sv')],
+          home: Builder(
+            builder: (context) => ElevatedButton(
+              onPressed: () async {
+                returnedStory = await Navigator.push<ImageStory>(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => SavedImageStoriesPage(
+                      imageStoriesBox: storiesBox,
+                      tagsBox: tagsBox,
+                      hasActiveQueue: false,
+                    ),
+                  ),
+                );
+              },
+              child: const Text('Open'),
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.text('Open'));
+      await tester.pumpAndSettle();
+
+      expect(find.byIcon(Icons.edit_outlined), findsOneWidget);
+      await tester.tap(find.byIcon(Icons.edit_outlined));
+      await tester.pumpAndSettle();
+
+      expect(returnedStory, isNotNull);
+      expect(returnedStory!.name, 'Story 1');
+    });
+
+    testWidgets("Tapping edit when hasActiveQueue is true shows warning dialog", (tester) async {
+      await storiesBox.put(
+        0,
+        ImageStory(
+          id: '1',
+          name: 'Story 1',
+          images: [
+            KuvariImage(uid: 1, name: 'Img 1', author: 'A', thumb: '', url: ''),
+          ],
+        ),
+      );
+
+      ImageStory? returnedStory;
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: const Locale('fi'),
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [Locale('fi'), Locale('sv')],
+          home: Builder(
+            builder: (context) => ElevatedButton(
+              onPressed: () async {
+                returnedStory = await Navigator.push<ImageStory>(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => SavedImageStoriesPage(
+                      imageStoriesBox: storiesBox,
+                      tagsBox: tagsBox,
+                      hasActiveQueue: true,
+                      activeQueueCount: 3,
+                    ),
+                  ),
+                );
+              },
+              child: const Text('Open'),
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.text('Open'));
+      await tester.pumpAndSettle();
+
+      // Tap edit button
+      await tester.tap(find.byIcon(Icons.edit_outlined));
+      await tester.pumpAndSettle();
+
+      // Warning dialog should appear
+      expect(find.text('Korvataanko nykyinen kuvajono?'), findsOneWidget);
+      expect(find.textContaining('3 kuvaa'), findsOneWidget);
+
+      // Tap cancel
+      await tester.tap(find.text('Peruuta'));
+      await tester.pumpAndSettle();
+
+      expect(returnedStory, isNull);
+      expect(find.text('Story 1'), findsOneWidget);
+
+      // Tap edit again and confirm
+      await tester.tap(find.byIcon(Icons.edit_outlined));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Korvaa ja muokkaa'));
+      await tester.pumpAndSettle();
+
+      expect(returnedStory, isNotNull);
+      expect(returnedStory!.name, 'Story 1');
     });
   });
 }
