@@ -13,32 +13,44 @@ import AVFoundation
   ) -> Bool {
     let result = super.application(application, didFinishLaunchingWithOptions: launchOptions)
 
+    // Fallback for non-scene launches
     if let registrar = self.registrar(forPlugin: "KuvariTts") {
-      let ttsChannel = FlutterMethodChannel(name: ttsChannelName, binaryMessenger: registrar.messenger())
-      ttsChannel.setMethodCallHandler { [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) in
-        guard let self = self else { return }
-        switch call.method {
-        case "speak":
-          guard let args = call.arguments as? [String: Any],
-                let text = args["text"] as? String else {
-            result(FlutterError(code: "INVALID_ARGUMENT", message: "text is required", details: nil))
-            return
-          }
-          let language = args["language"] as? String ?? "en-US"
-          let rate = (args["rate"] as? NSNumber)?.floatValue
-          let pitch = (args["pitch"] as? NSNumber)?.floatValue
-          self.speak(text: text, language: language, rate: rate, pitch: pitch)
-          result(nil)
-        case "stop":
-          self.stopSpeaking()
-          result(nil)
-        default:
-          result(FlutterMethodNotImplemented)
-        }
-      }
+      setupTtsChannel(binaryMessenger: registrar.messenger())
+    } else if let controller = window?.rootViewController as? FlutterViewController {
+      setupTtsChannel(binaryMessenger: controller.binaryMessenger)
     }
 
     return result
+  }
+
+  func didInitializeImplicitFlutterEngine(_ engineBridge: FlutterImplicitEngineBridge) {
+    GeneratedPluginRegistrant.register(with: engineBridge.pluginRegistry)
+    setupTtsChannel(binaryMessenger: engineBridge.applicationRegistrar.messenger())
+  }
+
+  private func setupTtsChannel(binaryMessenger: FlutterBinaryMessenger) {
+    let ttsChannel = FlutterMethodChannel(name: ttsChannelName, binaryMessenger: binaryMessenger)
+    ttsChannel.setMethodCallHandler { [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) in
+      guard let self = self else { return }
+      switch call.method {
+      case "speak":
+        guard let args = call.arguments as? [String: Any],
+              let text = args["text"] as? String else {
+          result(FlutterError(code: "INVALID_ARGUMENT", message: "text is required", details: nil))
+          return
+        }
+        let language = args["language"] as? String ?? "en-US"
+        let rate = (args["rate"] as? NSNumber)?.floatValue
+        let pitch = (args["pitch"] as? NSNumber)?.floatValue
+        self.speak(text: text, language: language, rate: rate, pitch: pitch)
+        result(nil)
+      case "stop":
+        self.stopSpeaking()
+        result(nil)
+      default:
+        result(FlutterMethodNotImplemented)
+      }
+    }
   }
 
   private func configureAudioSession() {
@@ -90,9 +102,5 @@ import AVFoundation
     if speechSynthesizer.isSpeaking {
       speechSynthesizer.stopSpeaking(at: .immediate)
     }
-  }
-
-  func didInitializeImplicitFlutterEngine(_ engineBridge: FlutterImplicitEngineBridge) {
-    GeneratedPluginRegistrant.register(with: engineBridge.pluginRegistry)
   }
 }
