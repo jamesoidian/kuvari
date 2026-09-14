@@ -14,13 +14,15 @@ Providing a fast, simple, and intuitive visual communication tool that empowers 
 - **Support Users**: Speech therapists, special education teachers, caregivers, and family members.
 - **Key Partners / Ecosystem**: Papunet (Finnish/Swedish symbol bank), OpenSymbols (international AAC symbols), Rinnekodit.
 
-## Current State (v1.5.0 Shipped)
+## Current Milestone: v1.6.0 — Story Editing & Safe Queue Management
 
-Milestone v1.5.0 shipped on 2026-09-14: Refined onboarding guidance, terminology ("Kuvatyyppi" / "Tägi"), high-res search image clarity, persistent collection queue with empty state and extended FAB, practical AAC communication guides on InfoPage, and robust native iOS and Android text-to-speech synthesis without `flutter_tts`.
+**Goal:** Mahdollistaa tallennettujen kuvajonojen avaaminen ja muokkaaminen kotisivulla täysillä työkaluilla sekä suojata tallennetut jonot vahinkomuutoksilta.
 
-## Next Milestone Goals
-
-Planning next milestone (e.g. story editing capabilities on HomePage, enhanced choice-making mode, or symbol caching).
+**Target features:**
+- Turvallinen selausnäkymä `SavedImageStoriesPage`-sivulla (estetään raahaaminen ja poistopainikkeet katselussa).
+- "Muokkaa kotisivulla" -painike tallennettujen listaan, korvausvaroitusdialogi ja opastava siirtymä.
+- Kotisivun muokkaustila (visuaalinen tilarivibanneri, tallenna muutokset / lopeta muokkaus, poistumisvarmistus).
+- Joustava tallennusdialogi (päivitä olemassa oleva vs. tallenna uutena kuvajonona).
 
 ## Requirements
 
@@ -45,7 +47,11 @@ Planning next milestone (e.g. story editing capabilities on HomePage, enhanced c
 
 ### Active
 
-*(All requirements for Milestone v1.5.0 completed)*
+- [ ] **EDIT-01**: Disable drag reordering and deletion on `SavedImageStoriesPage` so it acts as a safe, pure browsing carousel.
+- [ ] **EDIT-02**: Add "Muokkaa kotisivulla" action to saved story cards with replacement warning if home queue has items.
+- [ ] **EDIT-03**: Implement HomePage Edit Mode banner with story title, Save changes, and Exit/Cancel actions.
+- [ ] **EDIT-04**: Implement dual-mode save dialog in Edit Mode ("Päivitä olemassa oleva" vs "Tallenna uutena kuvajonona").
+- [ ] **EDIT-05**: Implement unsaved changes confirmation on navigation or queue clearing in Edit Mode.
 
 ### Out of Scope
 

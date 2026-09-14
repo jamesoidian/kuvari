@@ -1,20 +1,16 @@
 ---
 gsd_state_version: "1.0"
-milestone: v1.5.0
-milestone_name: UX & AAC Communication Enhancements
-status: Awaiting next milestone
-last_updated: "2026-09-14T05:54:05.386Z"
+milestone: v1.6.0
+milestone_name: Story Editing & Safe Queue Management
+status: ready_to_plan
+last_updated: "2026-09-14T06:08:00.000Z"
 last_activity: 2026-09-14
-last_activity_desc: Milestone v1.5.0 completed and archived
-state_head: 9024e7c81c9e3c1b502d02adc94d78da1e0c8019
 progress:
-  total_phases: 4
-  completed_phases: 2
-  total_plans: 7
-  completed_plans: 7
-  percent: 50
-current_phase: 4
-current_phase_name: native-text-to-speech-ios-android
+  total_phases: 3
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # State
@@ -23,10 +19,10 @@ current_phase_name: native-text-to-speech-ios-android
 
 ## Current Position
 
-Phase: Milestone v1.5.0 complete
+Phase: Phase 5: Safe Browsing & Carousel Protection
 Plan: —
-Status: Awaiting next milestone
-Last activity: 2026-09-14 — Milestone v1.5.0 completed and archived
+Status: Ready to plan phase 5
+Last activity: 2026-09-14 — Milestone v1.6.0 roadmap created (Phases 5-7)
 
 ## Milestone v1.5.0 Summary
 
@@ -60,9 +56,5 @@ Last activity: 2026-09-14 — Milestone v1.5.0 completed and archived
 | [260914-bya](./quick/260914-bya-update-saved-stories-tag-terminology/) | 2026-09-14 | Complete ✓ | Update saved stories tag terminology ("Avainsana" -> "Tägi"), hints, and guidance |
 
 ## Next Steps
-
-1. Complete Milestone: `/gsd-complete-milestone v1.5.0`
-
-## Operator Next Steps
-
-- Start the next milestone with /gsd-new-milestone
+ 
+1. Plan Phase 5: `/gsd-plan-phase 5` (Safe Browsing & Carousel Protection)
