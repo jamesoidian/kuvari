@@ -10,6 +10,7 @@ import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/services/kuvari_service.dart';
 import 'package:kuvari_app/pages/image_viewer_page.dart';
 import 'package:kuvari_app/widgets/empty_queue_placeholder.dart';
+import 'package:kuvari_app/widgets/edit_mode_banner.dart';
 import 'package:kuvari_app/widgets/home_app_bar.dart';
 import 'package:kuvari_app/widgets/home_search_section.dart';
 import 'package:kuvari_app/widgets/selected_images_carousel.dart';
@@ -149,21 +150,36 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  bool get _isStoryModified {
+    if (_editingStory == null) return false;
+    if (_selectedImages.length != _editingStory!.images.length) return true;
+    for (int i = 0; i < _selectedImages.length; i++) {
+      if (_selectedImages[i].uid != _editingStory!.images[i].uid) return true;
+    }
+    return false;
+  }
+
   // Kuvajonon tyhjentäminen
   void _clearSelectedImages() {
     if (_selectedImages.isEmpty) return;
+
+    final l10n = AppLocalizations.of(context)!;
+    final isEdit = _editingStory != null;
+    final title = isEdit ? l10n.clearQueueDialogTitle : l10n.clearImageStory;
+    final content = isEdit
+        ? l10n.clearQueueDialogBody
+        : l10n.emptySelectedImagesConfirm;
 
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(AppLocalizations.of(context)!.clearImageStory),
-          content:
-              Text(AppLocalizations.of(context)!.emptySelectedImagesConfirm),
+          title: Text(title),
+          content: Text(content),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(), // Peruuta
-              child: Text(AppLocalizations.of(context)!.cancel),
+              child: Text(l10n.cancel),
             ),
             TextButton(
               onPressed: () async {
@@ -175,12 +191,46 @@ class _HomePageState extends State<HomePage> {
                 });
                 Navigator.of(context).pop(); // Sulje dialogi
               },
-              child: Text(AppLocalizations.of(context)!.clear),
+              child: Text(l10n.clear),
             ),
           ],
         );
       },
     );
+  }
+
+  Future<void> _promptExitEditMode() async {
+    final l10n = AppLocalizations.of(context)!;
+    if (_isStoryModified) {
+      final confirmed = await showDialog<bool>(
+        context: context,
+        builder: (dialogContext) {
+          return AlertDialog(
+            title: Text(l10n.discardChangesDialogTitle),
+            content: Text(l10n.discardChangesDialogBody),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(dialogContext, false),
+                child: Text(l10n.cancel),
+              ),
+              FilledButton(
+                onPressed: () => Navigator.pop(dialogContext, true),
+                child: Text(l10n.discardChanges),
+              ),
+            ],
+          );
+        },
+      );
+
+      if (confirmed != true) return;
+    }
+
+    if (!mounted) return;
+    setState(() {
+      _editingStory = null;
+      _selectedImages.clear();
+      _currentStartIndex = 0;
+    });
   }
 
   // Kuvajonon tallentaminen
@@ -334,7 +384,13 @@ class _HomePageState extends State<HomePage> {
         Localizations.localeOf(context).languageCode != 'en';
 
     return PopScope(
-      canPop: _selectedImages.isEmpty,
+      canPop: _selectedImages.isEmpty && _editingStory == null,
+      onPopInvokedWithResult: (didPop, result) async {
+        if (didPop) return;
+        if (_editingStory != null) {
+          await _promptExitEditMode();
+        }
+      },
       child: Scaffold(
         appBar: HomeAppBar(
           selectedImages: _selectedImages,
@@ -347,6 +403,14 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
+              if (_editingStory != null) ...[
+                EditModeBanner(
+                  storyName: _editingStory!.name,
+                  onSave: _saveImageStory,
+                  onStop: _promptExitEditMode,
+                ),
+                const SizedBox(height: 8),
+              ],
               AnimatedCrossFade(
                 firstChild: EmptyQueuePlaceholder(
                   onTap: () => _searchFocusNode.requestFocus(),

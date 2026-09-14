@@ -12,6 +12,8 @@ import 'package:kuvari_app/pages/home_page.dart';
 import 'package:kuvari_app/pages/image_viewer_page.dart';
 import 'package:kuvari_app/services/kuvari_service.dart';
 import 'package:kuvari_app/widgets/empty_queue_placeholder.dart';
+import 'package:kuvari_app/widgets/edit_mode_banner.dart';
+import 'package:kuvari_app/widgets/selected_images_carousel.dart';
 import 'package:kuvari_app/widgets/home_app_bar.dart';
 import 'package:kuvari_app/widgets/home_search_section.dart';
 import 'home_page_test.mocks.dart';
@@ -215,6 +217,172 @@ void main() {
       expect(crossFade.crossFadeState, CrossFadeState.showSecond);
       expect(find.text('Näytä kuvajono (2)'), findsOneWidget);
       expect(find.text('Muokataan kuvajonoa: Aamutoimet'), findsOneWidget);
+    });
+
+    testWidgets('EditModeBanner is displayed when in edit mode', (tester) async {
+      await tester.pumpWidget(createHomePage());
+      await tester.pumpAndSettle();
+
+      final homeAppBar = tester.widget<HomeAppBar>(find.byType(HomeAppBar));
+      final story = ImageStory(
+        id: 'test-story-1',
+        name: 'Aamutoimet',
+        images: mockImages,
+      );
+
+      homeAppBar.onEditStory!(story);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(EditModeBanner), findsOneWidget);
+      expect(find.text('Muokataan: Aamutoimet'), findsOneWidget);
+      expect(find.text('Tallenna'), findsOneWidget);
+      expect(find.byTooltip('Lopeta muokkaus'), findsOneWidget);
+    });
+
+    testWidgets('Tapping clear in edit mode prompts confirmation dialog', (tester) async {
+      await tester.pumpWidget(createHomePage());
+      await tester.pumpAndSettle();
+
+      final homeAppBar = tester.widget<HomeAppBar>(find.byType(HomeAppBar));
+      final story = ImageStory(
+        id: 'test-story-1',
+        name: 'Aamutoimet',
+        images: mockImages,
+      );
+
+      homeAppBar.onEditStory!(story);
+      await tester.pumpAndSettle();
+
+      // Tap clear queue button (delete_sweep icon)
+      await tester.tap(find.byIcon(Icons.delete_sweep));
+      await tester.pumpAndSettle();
+
+      // Verify edit mode clear dialog is shown
+      expect(find.text('Tyhjennetäänkö kuvajono?'), findsOneWidget);
+      expect(find.text('Haluatko varmasti tyhjentää muokattavan kuvajonon kaikki kuvat?'), findsOneWidget);
+
+      // Cancel clearing
+      await tester.tap(find.text('Peruuta'));
+      await tester.pumpAndSettle();
+
+      // Images remain
+      expect(find.text('Näytä kuvajono (2)'), findsOneWidget);
+      expect(find.byType(EditModeBanner), findsOneWidget);
+
+      // Tap clear again and confirm
+      await tester.tap(find.byIcon(Icons.delete_sweep));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Tyhjennä'));
+      await tester.pumpAndSettle();
+
+      // Queue is cleared
+      expect(find.byType(FloatingActionButton), findsNothing);
+    });
+
+    testWidgets('Exiting edit mode without changes exits immediately', (tester) async {
+      await tester.pumpWidget(createHomePage());
+      await tester.pumpAndSettle();
+
+      final homeAppBar = tester.widget<HomeAppBar>(find.byType(HomeAppBar));
+      final story = ImageStory(
+        id: 'test-story-1',
+        name: 'Aamutoimet',
+        images: mockImages,
+      );
+
+      homeAppBar.onEditStory!(story);
+      await tester.pumpAndSettle();
+
+      // Stop editing
+      await tester.tap(find.byTooltip('Lopeta muokkaus'));
+      await tester.pumpAndSettle();
+
+      // No confirmation dialog was shown
+      expect(find.byType(AlertDialog), findsNothing);
+      // Banner and queue are cleared
+      expect(find.byType(EditModeBanner), findsNothing);
+      expect(find.byType(FloatingActionButton), findsNothing);
+    });
+
+    testWidgets('Exiting edit mode with changes prompts discard dialog', (tester) async {
+      await tester.pumpWidget(createHomePage());
+      await tester.pumpAndSettle();
+
+      final homeAppBar = tester.widget<HomeAppBar>(find.byType(HomeAppBar));
+      final story = ImageStory(
+        id: 'test-story-1',
+        name: 'Aamutoimet',
+        images: mockImages,
+      );
+
+      homeAppBar.onEditStory!(story);
+      await tester.pumpAndSettle();
+
+      // Modify queue: remove first image via carousel remove button
+      final removeButtons = find.descendant(
+        of: find.byType(SelectedImagesCarousel),
+        matching: find.byIcon(Icons.close),
+      );
+      await tester.tap(removeButtons.first);
+      await tester.pumpAndSettle();
+
+      expect(find.text('Näytä kuvajono (1)'), findsOneWidget);
+
+      // Try to stop editing
+      await tester.tap(find.byTooltip('Lopeta muokkaus'));
+      await tester.pumpAndSettle();
+
+      // Discard confirmation dialog is shown
+      expect(find.text('Lopetetaanko muokkaus?'), findsOneWidget);
+      expect(
+        find.text('Kuvajonoon on tehty muutoksia, joita ei ole tallennettu. Haluatko varmasti hylätä muutokset?'),
+        findsOneWidget,
+      );
+
+      // Cancel discard
+      await tester.tap(find.text('Peruuta'));
+      await tester.pumpAndSettle();
+      expect(find.byType(EditModeBanner), findsOneWidget);
+
+      // Tap stop again and confirm discard
+      await tester.tap(find.byTooltip('Lopeta muokkaus'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Hylkää muutokset'));
+      await tester.pumpAndSettle();
+
+      // Edit mode exited
+      expect(find.byType(EditModeBanner), findsNothing);
+      expect(find.byType(FloatingActionButton), findsNothing);
+    });
+
+    testWidgets('PopScope prompts discard dialog when back navigation invoked with changes', (tester) async {
+      await tester.pumpWidget(createHomePage());
+      await tester.pumpAndSettle();
+
+      final homeAppBar = tester.widget<HomeAppBar>(find.byType(HomeAppBar));
+      final story = ImageStory(
+        id: 'test-story-1',
+        name: 'Aamutoimet',
+        images: mockImages,
+      );
+
+      homeAppBar.onEditStory!(story);
+      await tester.pumpAndSettle();
+
+      // Modify queue: remove first image
+      final removeButtons = find.descendant(
+        of: find.byType(SelectedImagesCarousel),
+        matching: find.byIcon(Icons.close),
+      );
+      await tester.tap(removeButtons.first);
+      await tester.pumpAndSettle();
+
+      // Trigger pop
+      await tester.binding.handlePopRoute();
+      await tester.pumpAndSettle();
+
+      // Discard confirmation dialog should appear
+      expect(find.text('Lopetetaanko muokkaus?'), findsOneWidget);
     });
   });
 }
