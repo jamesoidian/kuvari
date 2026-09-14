@@ -140,5 +140,34 @@ void main() {
       await tester.tap(find.byIcon(Icons.delete_sweep));
       expect(clearCalled, isTrue);
     });
+
+    testWidgets('Displays standard ListView and no ReorderableListView when isReorderable is false', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [Locale('fi')],
+          home: SelectedImagesCarousel(
+            selectedImages: mockImages,
+            currentStartIndex: 0,
+            maxVisibleImages: 4,
+            onClear: () {},
+            onRemove: (index) {},
+            isReorderable: false,
+            showClearButton: false,
+          ),
+        ),
+      );
+
+      expect(find.byType(ReorderableListView), findsNothing);
+      expect(find.byType(ListView), findsOneWidget);
+      expect(find.byIcon(Icons.close), findsNothing);
+      expect(find.byIcon(Icons.delete_sweep), findsNothing);
+      expect(find.byType(Image), findsNWidgets(mockImages.length));
+    });
   });
 }

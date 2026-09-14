@@ -11,8 +11,9 @@ class SelectedImagesCarousel extends StatefulWidget {
   final int maxVisibleImages;
   final VoidCallback onClear;
   final Function(int) onRemove;
-  final Function(int, int) onReorder;
+  final Function(int, int)? onReorder;
   final bool showClearButton;
+  final bool isReorderable;
 
   const SelectedImagesCarousel({
     super.key,
@@ -21,8 +22,9 @@ class SelectedImagesCarousel extends StatefulWidget {
     required this.maxVisibleImages,
     required this.onClear,
     required this.onRemove,
-    required this.onReorder,
+    this.onReorder,
     this.showClearButton = true,
+    this.isReorderable = true,
   });
 
   @override
@@ -84,6 +86,48 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
     });
   }
 
+  Widget _buildCarouselItem(int i) {
+    return Center(
+      key: ValueKey(widget.selectedImages[i]),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: KuvariImageDisplay(
+                url: widget.selectedImages[i].thumb,
+                width: 60,
+                height: 60,
+                fit: BoxFit.cover,
+                errorWidget: const Icon(Icons.broken_image, size: 60),
+              ),
+            ),
+            if (widget.showClearButton)
+              Positioned(
+                right: 0,
+                top: 0,
+                child: GestureDetector(
+                  onTap: () => widget.onRemove(i),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.black54,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.close,
+                      color: Colors.white,
+                      size: 16,
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -101,55 +145,24 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
                 EdgeInsets.only(right: widget.showClearButton ? 40.0 : 0.0),
             child: SizedBox(
               height: 80,
-              child: ReorderableListView(
-                scrollController: _scrollController,
-                scrollDirection: Axis.horizontal,
-                onReorder: widget.onReorder,
-                children: [
-                  for (int i = 0; i < widget.selectedImages.length; i++)
-                    GestureDetector(
-                      key: ValueKey(widget.selectedImages[i]),
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                          child: Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: KuvariImageDisplay(
-                                  url: widget.selectedImages[i].thumb,
-                                  width: 60,
-                                  height: 60,
-                                  fit: BoxFit.cover,
-                                  errorWidget: const Icon(Icons.broken_image, size: 60),
-                                ),
-                              ),
-                              if (widget.showClearButton)
-                                Positioned(
-                                  right: 0,
-                                  top: 0,
-                                  child: GestureDetector(
-                                    onTap: () => widget.onRemove(i),
-                                    child: Container(
-                                      decoration: const BoxDecoration(
-                                        color: Colors.black54,
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: const Icon(
-                                        Icons.close,
-                                        color: Colors.white,
-                                        size: 16,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ),
-                      ),
+              child: widget.isReorderable
+                  ? ReorderableListView(
+                      scrollController: _scrollController,
+                      scrollDirection: Axis.horizontal,
+                      onReorder: widget.onReorder ?? (int oldIndex, int newIndex) {},
+                      children: [
+                        for (int i = 0; i < widget.selectedImages.length; i++)
+                          _buildCarouselItem(i),
+                      ],
+                    )
+                  : ListView(
+                      controller: _scrollController,
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        for (int i = 0; i < widget.selectedImages.length; i++)
+                          _buildCarouselItem(i),
+                      ],
                     ),
-                ],
-              ),
             ),
           ),
           // Scroll indicators
