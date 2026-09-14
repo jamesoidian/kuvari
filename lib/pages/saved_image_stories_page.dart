@@ -95,6 +95,10 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
                       l10n.tagInfoLabel,
                       style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                     ),
+                    Text(
+                      l10n.multipleTagsInfoLabel,
+                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                    ),
                   ],
                 ),
               ),
@@ -138,7 +142,7 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
                           );
 
                           if (selectedTagIds != null) {
-                            // Päivitetään tarinan avainsanat
+                            // Päivitetään kuvajonon tägit
                             final updatedStory = ImageStory(
                               id: story.id,
                               name: story.name,

@@ -188,7 +188,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get filterByTags => 'Filtrera efter taggar';
 
   @override
-  String get searchStories => 'Sök berättelser...';
+  String get searchStories => 'Sök bildsekvenser med taggnamn...';
 
   @override
   String get none => 'Ingen';
@@ -201,7 +201,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String tagInUseWarning(Object count) {
-    return 'Denna tagg används i $count berättelser. Radera ändå?';
+    return 'Denna tagg används i $count bildsekvenser. Radera ändå?';
   }
 
   @override
@@ -209,7 +209,10 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get tagInfoLabel =>
-      'Lägg till taggar genom att trycka länge på en bildberättelse';
+      'Lägg till taggar genom att trycka länge på bildsekvensens namn';
+
+  @override
+  String get multipleTagsInfoLabel => 'En bildsekvens kan ha flera taggar';
 
   @override
   String get emptyQueueGuidance =>
@@ -260,7 +263,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get infoQuickStartStep5Desc =>
-      'Du kan koppla ämnesspecifika taggar till sparade bildsekvenser (t.ex. morgon, måltid eller lek). Du hittar enkelt berättelserna senare genom att söka eller filtrera med taggar.';
+      'Du kan koppla ämnesspecifika taggar till sparade bildsekvenser (t.ex. morgon, måltid eller lek). Du hittar enkelt bildsekvenserna senare genom att söka eller filtrera med taggar.';
 
   @override
   String get infoUseCasesTitle => 'Praktiska situationer';

@@ -63,19 +63,23 @@
   "showImages": "Näytä kuvat",
   "noSavedStories": "Sinulla ei ole tallennettuja kuvatarinoita.",
    "deleteInfoLabel": "Poista jono pyyhkäisemällä vasemmalle",
-  "manageTags": "Hallitse avainsanoja",
-  "addTag": "Lisää avainsana",
-  "searchTags": "Hae avainsanoja...",
-  "tagName": "Avainsanan nimi",
-  "createTag": "Luo avainsana",
-  "filterByTags": "Suodata avainsanoilla",
-  "searchStories": "Hae tarinoita...",
+  "manageTags": "Hallitse tägejä",
+  "addTag": "Lisää tägi",
+  "searchTags": "Hae tägejä...",
+  "tagName": "Tägin nimi",
+  "createTag": "Luo tägi",
+  "filterByTags": "Suodata tägeillä",
+  "searchStories": "Hae kuvajonoja tägin nimellä...",
   "none": "Ei mitään",
-  "editTag": "Muokkaa avainsanaa",
-  "deleteTag": "Poista avainsana",
-  "tagInUseWarning": "Tämä avainsana on käytössä {count} tarinassa. Poistetaanko silti?",
+  "editTag": "Muokkaa tägiä",
+  "deleteTag": "Poista tägi",
+  "tagInUseWarning": "Tämä tägi on käytössä {count} kuvajonossa. Poistetaanko silti?",
   "unused": "Ei käytössä",
-  "tagInfoLabel": "Lisää avainsanoja painamalla kuvajonoa pitkään",
+  "tagInfoLabel": "Lisää tägejä painamalla kuvajonon nimeä pitkään",
+  "multipleTagsInfoLabel": "Kuvajonolla voi olla monta tägiä",
+  "@multipleTagsInfoLabel": {
+    "description": "Information label stating that an image sequence can have multiple tags"
+  },
   "emptyQueueGuidance": "Valitsemasi kuvat tulevat tähän jonoon. Voit koota viestin, päiväjärjestyksen tai valintataulun.",
   "@emptyQueueGuidance": {
     "description": "Guidance text displayed in the collection queue empty state card"
@@ -134,7 +138,7 @@
   "@infoQuickStartStep5Title": {
     "description": "Step 5 title in Quick Start"
   },
-  "infoQuickStartStep5Desc": "Voit liittää tallennettuihin kuvajonoihin aihekohtaisia tägejä (esim. aamu, ruokailu tai leikki). Löydät tarinat myöhemmin helposti hakemalla tai suodattamalla tägien mukaan.",
+  "infoQuickStartStep5Desc": "Voit liittää tallennettuihin kuvajonoihin aihekohtaisia tägejä (esim. aamu, ruokailu tai leikki). Löydät kuvajonot myöhemmin helposti hakemalla tai suodattamalla tägien mukaan.",
   "@infoQuickStartStep5Desc": {
     "description": "Step 5 description in Quick Start"
   },

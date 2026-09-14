@@ -170,45 +170,48 @@ class AppLocalizationsFi extends AppLocalizations {
   String get deleteInfoLabel => 'Poista jono pyyhkäisemällä vasemmalle';
 
   @override
-  String get manageTags => 'Hallitse avainsanoja';
+  String get manageTags => 'Hallitse tägejä';
 
   @override
-  String get addTag => 'Lisää avainsana';
+  String get addTag => 'Lisää tägi';
 
   @override
-  String get searchTags => 'Hae avainsanoja...';
+  String get searchTags => 'Hae tägejä...';
 
   @override
-  String get tagName => 'Avainsanan nimi';
+  String get tagName => 'Tägin nimi';
 
   @override
-  String get createTag => 'Luo avainsana';
+  String get createTag => 'Luo tägi';
 
   @override
-  String get filterByTags => 'Suodata avainsanoilla';
+  String get filterByTags => 'Suodata tägeillä';
 
   @override
-  String get searchStories => 'Hae tarinoita...';
+  String get searchStories => 'Hae kuvajonoja tägin nimellä...';
 
   @override
   String get none => 'Ei mitään';
 
   @override
-  String get editTag => 'Muokkaa avainsanaa';
+  String get editTag => 'Muokkaa tägiä';
 
   @override
-  String get deleteTag => 'Poista avainsana';
+  String get deleteTag => 'Poista tägi';
 
   @override
   String tagInUseWarning(Object count) {
-    return 'Tämä avainsana on käytössä $count tarinassa. Poistetaanko silti?';
+    return 'Tämä tägi on käytössä $count kuvajonossa. Poistetaanko silti?';
   }
 
   @override
   String get unused => 'Ei käytössä';
 
   @override
-  String get tagInfoLabel => 'Lisää avainsanoja painamalla kuvajonoa pitkään';
+  String get tagInfoLabel => 'Lisää tägejä painamalla kuvajonon nimeä pitkään';
+
+  @override
+  String get multipleTagsInfoLabel => 'Kuvajonolla voi olla monta tägiä';
 
   @override
   String get emptyQueueGuidance =>
@@ -259,7 +262,7 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get infoQuickStartStep5Desc =>
-      'Voit liittää tallennettuihin kuvajonoihin aihekohtaisia tägejä (esim. aamu, ruokailu tai leikki). Löydät tarinat myöhemmin helposti hakemalla tai suodattamalla tägien mukaan.';
+      'Voit liittää tallennettuihin kuvajonoihin aihekohtaisia tägejä (esim. aamu, ruokailu tai leikki). Löydät kuvajonot myöhemmin helposti hakemalla tai suodattamalla tägien mukaan.';
 
   @override
   String get infoUseCasesTitle => 'Käytännön tilanteet';

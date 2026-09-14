@@ -188,7 +188,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get filterByTags => 'Filter by tags';
 
   @override
-  String get searchStories => 'Search stories...';
+  String get searchStories => 'Search image sequences by tag name...';
 
   @override
   String get none => 'None';
@@ -201,14 +201,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String tagInUseWarning(Object count) {
-    return 'This tag is used in $count stories. Delete anyway?';
+    return 'This tag is used in $count image sequences. Delete anyway?';
   }
 
   @override
   String get unused => 'Unused';
 
   @override
-  String get tagInfoLabel => 'Add tags by long-pressing an image story';
+  String get tagInfoLabel =>
+      'Add tags by long-pressing the image sequence name';
+
+  @override
+  String get multipleTagsInfoLabel =>
+      'An image sequence can have multiple tags';
 
   @override
   String get emptyQueueGuidance =>
@@ -259,7 +264,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get infoQuickStartStep5Desc =>
-      'You can add topic tags to saved image sequences (e.g., morning, meals, or play). Find saved stories easily later by searching or filtering by tags.';
+      'You can add topic tags to saved image sequences (e.g., morning, meals, or play). Find saved image sequences easily later by searching or filtering by tags.';
 
   @override
   String get infoUseCasesTitle => 'Practical Situations';

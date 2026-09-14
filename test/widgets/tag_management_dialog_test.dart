@@ -73,9 +73,9 @@ void main() {
     storyBox = FakeStoryBox();
   });
 
-  Widget createWidgetUnderTest(List<String> initialTagIds) {
+  Widget createWidgetUnderTest(List<String> initialTagIds, {Locale locale = const Locale('en')}) {
     return MaterialApp(
-      locale: const Locale('en'),
+      locale: locale,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -136,5 +136,20 @@ void main() {
 
     expect(find.text('New Custom Tag'), findsOneWidget);
     expect(box.values.any((t) => t.name == 'New Custom Tag'), isTrue);
+  });
+
+  testWidgets('TagManagementDialog uses Tägi terminology in Finnish', (WidgetTester tester) async {
+    await tester.pumpWidget(createWidgetUnderTest([], locale: const Locale('fi')));
+    await tester.pump();
+
+    expect(find.text('Hallitse tägejä'), findsOneWidget);
+    expect(find.text('Hae tägejä...'), findsOneWidget);
+    expect(find.text('Lisää tägi'), findsOneWidget);
+
+    await tester.tap(find.text('Lisää tägi'));
+    await tester.pump(const Duration(milliseconds: 500));
+
+    expect(find.text('Luo tägi'), findsOneWidget);
+    expect(find.text('Tägin nimi'), findsOneWidget);
   });
 }

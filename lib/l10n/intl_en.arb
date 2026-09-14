@@ -69,13 +69,17 @@
   "tagName": "Tag Name",
   "createTag": "Create Tag",
   "filterByTags": "Filter by tags",
-  "searchStories": "Search stories...",
+  "searchStories": "Search image sequences by tag name...",
   "none": "None",
   "editTag": "Edit Tag",
   "deleteTag": "Delete Tag",
-  "tagInUseWarning": "This tag is used in {count} stories. Delete anyway?",
+  "tagInUseWarning": "This tag is used in {count} image sequences. Delete anyway?",
   "unused": "Unused",
-  "tagInfoLabel": "Add tags by long-pressing an image story",
+  "tagInfoLabel": "Add tags by long-pressing the image sequence name",
+  "multipleTagsInfoLabel": "An image sequence can have multiple tags",
+  "@multipleTagsInfoLabel": {
+    "description": "Information label stating that an image sequence can have multiple tags"
+  },
   "emptyQueueGuidance": "Your selected images appear in this queue. You can compose a message, daily schedule, or choice board.",
   "@emptyQueueGuidance": {
     "description": "Guidance text displayed in the collection queue empty state card"
@@ -134,7 +138,7 @@
   "@infoQuickStartStep5Title": {
     "description": "Step 5 title in Quick Start"
   },
-  "infoQuickStartStep5Desc": "You can add topic tags to saved image sequences (e.g., morning, meals, or play). Find saved stories easily later by searching or filtering by tags.",
+  "infoQuickStartStep5Desc": "You can add topic tags to saved image sequences (e.g., morning, meals, or play). Find saved image sequences easily later by searching or filtering by tags.",
   "@infoQuickStartStep5Desc": {
     "description": "Step 5 description in Quick Start"
   },

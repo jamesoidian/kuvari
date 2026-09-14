@@ -134,5 +134,26 @@ void main() {
 
       expect(find.text('Story 1'), findsOneWidget);
     });
+
+    testWidgets("Displays updated guidance and search texts", (tester) async {
+      await storiesBox.put(
+        0,
+        ImageStory(
+          id: '1',
+          name: 'Story 1',
+          images: [
+            KuvariImage(uid: 1, name: 'Img 1', author: 'A', thumb: '', url: ''),
+          ],
+        ),
+      );
+
+      await tester.pumpWidget(createWidget());
+      await tester.pumpAndSettle();
+
+      expect(find.text('Hae kuvajonoja tägin nimellä...'), findsOneWidget);
+      expect(find.text('Lisää tägejä painamalla kuvajonon nimeä pitkään'), findsOneWidget);
+      expect(find.text('Kuvajonolla voi olla monta tägiä'), findsOneWidget);
+      expect(find.text('Poista jono pyyhkäisemällä vasemmalle'), findsOneWidget);
+    });
   });
 }

@@ -69,13 +69,17 @@
   "tagName": "Taggnamn",
   "createTag": "Skapa tagg",
   "filterByTags": "Filtrera efter taggar",
-  "searchStories": "Sök berättelser...",
+  "searchStories": "Sök bildsekvenser med taggnamn...",
   "none": "Ingen",
   "editTag": "Redigera tagg",
   "deleteTag": "Radera tagg",
-  "tagInUseWarning": "Denna tagg används i {count} berättelser. Radera ändå?",
+  "tagInUseWarning": "Denna tagg används i {count} bildsekvenser. Radera ändå?",
   "unused": "Oanvänd",
-  "tagInfoLabel": "Lägg till taggar genom att trycka länge på en bildberättelse",
+  "tagInfoLabel": "Lägg till taggar genom att trycka länge på bildsekvensens namn",
+  "multipleTagsInfoLabel": "En bildsekvens kan ha flera taggar",
+  "@multipleTagsInfoLabel": {
+    "description": "Informationsetikett som anger att en bildsekvens kan ha flera taggar"
+  },
   "emptyQueueGuidance": "Dina valda bilder hamnar i denna sekvens. Du kan skapa ett meddelande, en dagsordning eller en valbricka.",
   "@emptyQueueGuidance": {
     "description": "Vägledningstext som visas i samlingskön när den är tom"
@@ -134,7 +138,7 @@
   "@infoQuickStartStep5Title": {
     "description": "Steg 5 titel i snabbguiden"
   },
-  "infoQuickStartStep5Desc": "Du kan koppla ämnesspecifika taggar till sparade bildsekvenser (t.ex. morgon, måltid eller lek). Du hittar enkelt berättelserna senare genom att söka eller filtrera med taggar.",
+  "infoQuickStartStep5Desc": "Du kan koppla ämnesspecifika taggar till sparade bildsekvenser (t.ex. morgon, måltid eller lek). Du hittar enkelt bildsekvenserna senare genom att söka eller filtrera med taggar.",
   "@infoQuickStartStep5Desc": {
     "description": "Steg 5 beskrivning i snabbguiden"
   },

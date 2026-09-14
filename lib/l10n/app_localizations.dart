@@ -409,43 +409,43 @@ abstract class AppLocalizations {
   /// No description provided for @manageTags.
   ///
   /// In fi, this message translates to:
-  /// **'Hallitse avainsanoja'**
+  /// **'Hallitse tägejä'**
   String get manageTags;
 
   /// No description provided for @addTag.
   ///
   /// In fi, this message translates to:
-  /// **'Lisää avainsana'**
+  /// **'Lisää tägi'**
   String get addTag;
 
   /// No description provided for @searchTags.
   ///
   /// In fi, this message translates to:
-  /// **'Hae avainsanoja...'**
+  /// **'Hae tägejä...'**
   String get searchTags;
 
   /// No description provided for @tagName.
   ///
   /// In fi, this message translates to:
-  /// **'Avainsanan nimi'**
+  /// **'Tägin nimi'**
   String get tagName;
 
   /// No description provided for @createTag.
   ///
   /// In fi, this message translates to:
-  /// **'Luo avainsana'**
+  /// **'Luo tägi'**
   String get createTag;
 
   /// No description provided for @filterByTags.
   ///
   /// In fi, this message translates to:
-  /// **'Suodata avainsanoilla'**
+  /// **'Suodata tägeillä'**
   String get filterByTags;
 
   /// No description provided for @searchStories.
   ///
   /// In fi, this message translates to:
-  /// **'Hae tarinoita...'**
+  /// **'Hae kuvajonoja tägin nimellä...'**
   String get searchStories;
 
   /// No description provided for @none.
@@ -457,19 +457,19 @@ abstract class AppLocalizations {
   /// No description provided for @editTag.
   ///
   /// In fi, this message translates to:
-  /// **'Muokkaa avainsanaa'**
+  /// **'Muokkaa tägiä'**
   String get editTag;
 
   /// No description provided for @deleteTag.
   ///
   /// In fi, this message translates to:
-  /// **'Poista avainsana'**
+  /// **'Poista tägi'**
   String get deleteTag;
 
   /// No description provided for @tagInUseWarning.
   ///
   /// In fi, this message translates to:
-  /// **'Tämä avainsana on käytössä {count} tarinassa. Poistetaanko silti?'**
+  /// **'Tämä tägi on käytössä {count} kuvajonossa. Poistetaanko silti?'**
   String tagInUseWarning(Object count);
 
   /// No description provided for @unused.
@@ -481,8 +481,14 @@ abstract class AppLocalizations {
   /// No description provided for @tagInfoLabel.
   ///
   /// In fi, this message translates to:
-  /// **'Lisää avainsanoja painamalla kuvajonoa pitkään'**
+  /// **'Lisää tägejä painamalla kuvajonon nimeä pitkään'**
   String get tagInfoLabel;
+
+  /// Information label stating that an image sequence can have multiple tags
+  ///
+  /// In fi, this message translates to:
+  /// **'Kuvajonolla voi olla monta tägiä'**
+  String get multipleTagsInfoLabel;
 
   /// Guidance text displayed in the collection queue empty state card
   ///
@@ -565,7 +571,7 @@ abstract class AppLocalizations {
   /// Step 5 description in Quick Start
   ///
   /// In fi, this message translates to:
-  /// **'Voit liittää tallennettuihin kuvajonoihin aihekohtaisia tägejä (esim. aamu, ruokailu tai leikki). Löydät tarinat myöhemmin helposti hakemalla tai suodattamalla tägien mukaan.'**
+  /// **'Voit liittää tallennettuihin kuvajonoihin aihekohtaisia tägejä (esim. aamu, ruokailu tai leikki). Löydät kuvajonot myöhemmin helposti hakemalla tai suodattamalla tägien mukaan.'**
   String get infoQuickStartStep5Desc;
 
   /// Title of Practical Use Cases section on InfoPage
