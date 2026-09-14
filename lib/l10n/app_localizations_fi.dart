@@ -19,7 +19,7 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get infoPageParagraph1 =>
-      'Tämä sovellus on syntynyt yhden yksityishenkilön vapaaehtoistyönä. Sovellus käyttää sekä Papunetin että OpenSymbols kuvapankkia ja se on kehitetty epäkaupallisiin tarkoituksiin, erityisesti vaihtoehtoisen kommunikoinnin tueksi. Inspiraatio sovelluksen kehittämiseen on peräisin Rinnekotien asumisyksiköstä käytännön arjen tarpeista.';
+      'Tämä sovellus on syntynyt yhden yksityishenkilön vapaaehtoistyönä. Sovellus käyttää sekä Papunetin että OpenSymbols-kuvapankkia ja se on kehitetty ilmaiseksi apuvälineeksi, erityisesti vaihtoehtoisen kommunikoinnin tueksi. Inspiraatio sovelluksen kehittämiseen on peräisin Rinnekotien asumisyksiköstä käytännön arjen tarpeista.';
 
   @override
   String get papunetLinkLabel => 'Papunetin kuvapankki';
@@ -32,7 +32,7 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get infoPageParagraph2 =>
-      'Papunetin kuvapankin kuvat on lisensoitu Nimeä-EiKaupallinen-JaaSamoin-lisenssillä (Creative Commons). OpenSymbols on kokoelma avoimesti lisensoituja kuvasymboleita, joita voidaan käyttää puhetta tukevassa ja korvaavassa kommunikoinnissa.';
+      'Papunetin kuvapankin kuvat on lisensoitu Nimeä-EiKaupallinen-JaaSamoin-lisenssillä (Creative Commons). Sovellusta ja kuvia saa käyttää maksutta arjessa, opetuksessa, kuntoutuksessa ja työpaikoilla kommunikoinnin tukena, mutta kuvia ei saa myydä tai käyttää kaupallisissa tuotteissa. OpenSymbols on kokoelma avoimesti lisensoituja kuvasymboleita, joita voidaan käyttää puhetta tukevassa ja korvaavassa kommunikoinnissa.';
 
   @override
   String get licenseLinkLabel => 'NIMEÄ-EIKAUPALLINEN-JAASAMOIN 4.0';

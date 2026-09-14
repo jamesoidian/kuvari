@@ -50,6 +50,12 @@ current_phase_name: native-text-to-speech-ios-android
 - Native iOS & Android TTS via MethodChannel replaces third-party plugin issues with swift/kotlin compatibility.
 - AAC speech synthesis interrupts active utterances immediately on symbol selection to support fast non-verbal communication.
 
+## Quick Tasks Completed
+
+| Task | Date | Status | Description |
+|------|------|--------|-------------|
+| `clarify-licensing-and-workplace-use` | 2026-09-14 | Complete ✓ | Clarify free assistive tool status and workplace/care usage in InfoPage and docs |
+
 ## Next Steps
 
 1. Complete Milestone: `/gsd-complete-milestone v1.5.0`

@@ -19,7 +19,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get infoPageParagraph1 =>
-      'Denna applikation har skapats av en privatperson som frivilligt arbete. Applikationen använder både Papunets bildbank och OpenSymbols och har utvecklats för ideellt bruk, särskilt för att stödja alternativ kommunikation. Inspirationen till att utveckla applikationen kommer från praktiska behov i vardagen på Rinnekodernas boendeenhet.';
+      'Denna applikation har skapats av en privatperson som frivilligt arbete. Applikationen använder både Papunets bildbank och OpenSymbols och har utvecklats som ett kostnadsfritt hjälpmedel, särskilt för att stödja alternativ kommunikation. Inspirationen till att utveckla applikationen kommer från praktiska behov i vardagen på Rinnekodernas boendeenhet.';
 
   @override
   String get papunetLinkLabel => 'Papunets bildbank';
@@ -32,7 +32,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get infoPageParagraph2 =>
-      'Bilderna i Papunets bildbank är licensierade under licensen Erkännande-IckeKommersiell-DelaLika (Creative Commons). OpenSymbols är en kokoelma av lisensoerade bildsymboler, som kan användas för att stödja alternativ kommunikation. OpenSymbols är en samling öppet licensierade bildsymboler som kan användas för alternativ och kompletterande kommunikation.';
+      'Bilderna i Papunets bildbank är licensierade under licensen Erkännande-IckeKommersiell-DelaLika (Creative Commons). Bilderna och applikationen får användas kostnadsfritt i vardagen, undervisning, rehabilitering och på arbetsplatser som stöd för kommunikation, men bilderna får inte säljas eller användas i kommersiella produkter. OpenSymbols är en samling öppet licensierade bildsymboler som kan användas för alternativ och kompletterande kommunikation.';
 
   @override
   String get licenseLinkLabel => 'ERKÄNNANDE-ICKEKOMMERSIELL-DELALIKA 4.0';
