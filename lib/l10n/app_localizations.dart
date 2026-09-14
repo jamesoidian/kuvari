@@ -705,6 +705,54 @@ abstract class AppLocalizations {
   /// In fi, this message translates to:
   /// **'Haluatko varmasti tyhjentää muokattavan kuvajonon kaikki kuvat?'**
   String get clearQueueDialogBody;
+
+  /// Option title to update the existing story
+  ///
+  /// In fi, this message translates to:
+  /// **'Päivitä: {storyName}'**
+  String updateExistingStory(String storyName);
+
+  /// Option subtitle explaining that existing story is replaced and tags are kept
+  ///
+  /// In fi, this message translates to:
+  /// **'Korvaa tallennettu versio säilyttäen tägit'**
+  String get updateExistingStoryDescription;
+
+  /// Option title to save as a new image sequence
+  ///
+  /// In fi, this message translates to:
+  /// **'Tallenna uutena kuvajonona...'**
+  String get saveAsNewStory;
+
+  /// Option subtitle explaining that a new sequence is created with a new name
+  ///
+  /// In fi, this message translates to:
+  /// **'Luo uusi kuvajono uudella nimellä'**
+  String get saveAsNewStoryDescription;
+
+  /// Title for name input step when saving as a new story
+  ///
+  /// In fi, this message translates to:
+  /// **'Tallenna uutena'**
+  String get saveAsNewStoryTitle;
+
+  /// Default name when copying or saving a story as new
+  ///
+  /// In fi, this message translates to:
+  /// **'{storyName} (kopio)'**
+  String storyCopySuffix(String storyName);
+
+  /// Message shown when an existing image story is updated
+  ///
+  /// In fi, this message translates to:
+  /// **'Kuvajono \"{name}\" päivitetty.'**
+  String storyUpdated(String name);
+
+  /// Button label to go back
+  ///
+  /// In fi, this message translates to:
+  /// **'Takaisin'**
+  String get back;
 }
 
 class _AppLocalizationsDelegate

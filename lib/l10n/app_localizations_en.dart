@@ -343,4 +343,36 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get clearQueueDialogBody =>
       'Are you sure you want to clear all images from the sequence being edited?';
+
+  @override
+  String updateExistingStory(String storyName) {
+    return 'Update: $storyName';
+  }
+
+  @override
+  String get updateExistingStoryDescription =>
+      'Overwrites saved version and preserves tags';
+
+  @override
+  String get saveAsNewStory => 'Save as new sequence...';
+
+  @override
+  String get saveAsNewStoryDescription =>
+      'Create a new sequence with a new name';
+
+  @override
+  String get saveAsNewStoryTitle => 'Save as new';
+
+  @override
+  String storyCopySuffix(String storyName) {
+    return '$storyName (copy)';
+  }
+
+  @override
+  String storyUpdated(String name) {
+    return 'Image sequence \"$name\" updated.';
+  }
+
+  @override
+  String get back => 'Back';
 }

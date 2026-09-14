@@ -251,5 +251,55 @@
   "clearQueueDialogBody": "Haluatko varmasti tyhjentää muokattavan kuvajonon kaikki kuvat?",
   "@clearQueueDialogBody": {
     "description": "Body of confirmation dialog when clearing queue in edit mode"
+  },
+  "updateExistingStory": "Päivitä: {storyName}",
+  "@updateExistingStory": {
+    "description": "Option title to update the existing story",
+    "placeholders": {
+      "storyName": {
+        "type": "String",
+        "example": "Aamutoimet"
+      }
+    }
+  },
+  "updateExistingStoryDescription": "Korvaa tallennettu versio säilyttäen tägit",
+  "@updateExistingStoryDescription": {
+    "description": "Option subtitle explaining that existing story is replaced and tags are kept"
+  },
+  "saveAsNewStory": "Tallenna uutena kuvajonona...",
+  "@saveAsNewStory": {
+    "description": "Option title to save as a new image sequence"
+  },
+  "saveAsNewStoryDescription": "Luo uusi kuvajono uudella nimellä",
+  "@saveAsNewStoryDescription": {
+    "description": "Option subtitle explaining that a new sequence is created with a new name"
+  },
+  "saveAsNewStoryTitle": "Tallenna uutena",
+  "@saveAsNewStoryTitle": {
+    "description": "Title for name input step when saving as a new story"
+  },
+  "storyCopySuffix": "{storyName} (kopio)",
+  "@storyCopySuffix": {
+    "description": "Default name when copying or saving a story as new",
+    "placeholders": {
+      "storyName": {
+        "type": "String",
+        "example": "Aamutoimet"
+      }
+    }
+  },
+  "storyUpdated": "Kuvajono \"{name}\" päivitetty.",
+  "@storyUpdated": {
+    "description": "Message shown when an existing image story is updated",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "Aamutoimet"
+      }
+    }
+  },
+  "back": "Takaisin",
+  "@back": {
+    "description": "Button label to go back"
   }
 }

@@ -341,4 +341,35 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get clearQueueDialogBody =>
       'Haluatko varmasti tyhjentää muokattavan kuvajonon kaikki kuvat?';
+
+  @override
+  String updateExistingStory(String storyName) {
+    return 'Päivitä: $storyName';
+  }
+
+  @override
+  String get updateExistingStoryDescription =>
+      'Korvaa tallennettu versio säilyttäen tägit';
+
+  @override
+  String get saveAsNewStory => 'Tallenna uutena kuvajonona...';
+
+  @override
+  String get saveAsNewStoryDescription => 'Luo uusi kuvajono uudella nimellä';
+
+  @override
+  String get saveAsNewStoryTitle => 'Tallenna uutena';
+
+  @override
+  String storyCopySuffix(String storyName) {
+    return '$storyName (kopio)';
+  }
+
+  @override
+  String storyUpdated(String name) {
+    return 'Kuvajono \"$name\" päivitetty.';
+  }
+
+  @override
+  String get back => 'Takaisin';
 }

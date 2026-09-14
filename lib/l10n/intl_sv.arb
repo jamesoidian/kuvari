@@ -251,5 +251,55 @@
   "clearQueueDialogBody": "Vill du verkligen ta bort alla bilder från bildsekvensen som redigeras?",
   "@clearQueueDialogBody": {
     "description": "Meddelande vid tömning av kö i redigeringsläge"
+  },
+  "updateExistingStory": "Uppdatera: {storyName}",
+  "@updateExistingStory": {
+    "description": "Alternativrubrik för att uppdatera befintlig bildsekvens",
+    "placeholders": {
+      "storyName": {
+        "type": "String",
+        "example": "Morgonrutin"
+      }
+    }
+  },
+  "updateExistingStoryDescription": "Ersätter den sparade versionen och behåller taggar",
+  "@updateExistingStoryDescription": {
+    "description": "Beskrivning av att befintlig sekvens ersätts och taggar bevaras"
+  },
+  "saveAsNewStory": "Spara som ny bildsekvens...",
+  "@saveAsNewStory": {
+    "description": "Alternativrubrik för att spara som ny bildsekvens"
+  },
+  "saveAsNewStoryDescription": "Skapa en ny bildsekvens med ett nytt namn",
+  "@saveAsNewStoryDescription": {
+    "description": "Beskrivning av att en ny sekvens skapas med ett nytt namn"
+  },
+  "saveAsNewStoryTitle": "Spara som ny",
+  "@saveAsNewStoryTitle": {
+    "description": "Rubrik för namninmatningsdialog vid sparande som ny sekvens"
+  },
+  "storyCopySuffix": "{storyName} (kopia)",
+  "@storyCopySuffix": {
+    "description": "Standardnamn vid kopiering av bildsekvens",
+    "placeholders": {
+      "storyName": {
+        "type": "String",
+        "example": "Morgonrutin"
+      }
+    }
+  },
+  "storyUpdated": "Bildsekvens \"{name}\" uppdaterad.",
+  "@storyUpdated": {
+    "description": "Meddelande när en bildsekvens uppdateras",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "Morgonrutin"
+      }
+    }
+  },
+  "back": "Tillbaka",
+  "@back": {
+    "description": "Knappetikett för att gå tillbaka"
   }
 }

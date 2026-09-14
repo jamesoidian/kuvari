@@ -341,4 +341,36 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get clearQueueDialogBody =>
       'Vill du verkligen ta bort alla bilder från bildsekvensen som redigeras?';
+
+  @override
+  String updateExistingStory(String storyName) {
+    return 'Uppdatera: $storyName';
+  }
+
+  @override
+  String get updateExistingStoryDescription =>
+      'Ersätter den sparade versionen och behåller taggar';
+
+  @override
+  String get saveAsNewStory => 'Spara som ny bildsekvens...';
+
+  @override
+  String get saveAsNewStoryDescription =>
+      'Skapa en ny bildsekvens med ett nytt namn';
+
+  @override
+  String get saveAsNewStoryTitle => 'Spara som ny';
+
+  @override
+  String storyCopySuffix(String storyName) {
+    return '$storyName (kopia)';
+  }
+
+  @override
+  String storyUpdated(String name) {
+    return 'Bildsekvens \"$name\" uppdaterad.';
+  }
+
+  @override
+  String get back => 'Tillbaka';
 }

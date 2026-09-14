@@ -251,5 +251,55 @@
   "clearQueueDialogBody": "Are you sure you want to clear all images from the sequence being edited?",
   "@clearQueueDialogBody": {
     "description": "Body of confirmation dialog when clearing queue in edit mode"
+  },
+  "updateExistingStory": "Update: {storyName}",
+  "@updateExistingStory": {
+    "description": "Option title to update the existing story",
+    "placeholders": {
+      "storyName": {
+        "type": "String",
+        "example": "Morning routine"
+      }
+    }
+  },
+  "updateExistingStoryDescription": "Overwrites saved version and preserves tags",
+  "@updateExistingStoryDescription": {
+    "description": "Option subtitle explaining that existing story is replaced and tags are kept"
+  },
+  "saveAsNewStory": "Save as new sequence...",
+  "@saveAsNewStory": {
+    "description": "Option title to save as a new image sequence"
+  },
+  "saveAsNewStoryDescription": "Create a new sequence with a new name",
+  "@saveAsNewStoryDescription": {
+    "description": "Option subtitle explaining that a new sequence is created with a new name"
+  },
+  "saveAsNewStoryTitle": "Save as new",
+  "@saveAsNewStoryTitle": {
+    "description": "Title for name input step when saving as a new story"
+  },
+  "storyCopySuffix": "{storyName} (copy)",
+  "@storyCopySuffix": {
+    "description": "Default name when copying or saving a story as new",
+    "placeholders": {
+      "storyName": {
+        "type": "String",
+        "example": "Morning routine"
+      }
+    }
+  },
+  "storyUpdated": "Image sequence \"{name}\" updated.",
+  "@storyUpdated": {
+    "description": "Message shown when an existing image story is updated",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "Morning routine"
+      }
+    }
+  },
+  "back": "Back",
+  "@back": {
+    "description": "Button label to go back"
   }
 }
