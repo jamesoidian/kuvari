@@ -11,6 +11,7 @@ import 'package:kuvari_app/services/kuvari_service.dart';
 import 'package:kuvari_app/pages/image_viewer_page.dart';
 import 'package:kuvari_app/widgets/empty_queue_placeholder.dart';
 import 'package:kuvari_app/widgets/edit_mode_banner.dart';
+import 'package:kuvari_app/widgets/edit_mode_save_dialog.dart';
 import 'package:kuvari_app/widgets/home_app_bar.dart';
 import 'package:kuvari_app/widgets/home_search_section.dart';
 import 'package:kuvari_app/widgets/selected_images_carousel.dart';
@@ -25,12 +26,14 @@ class HomePage extends StatefulWidget {
   final KuvariService kuvariService;
   final Function(Locale) setLocale;
   final FirebaseAnalytics analytics;
+  final Box<ImageStory>? imageStoriesBox;
 
   const HomePage({
     super.key,
     required this.kuvariService,
     required this.setLocale,
     required this.analytics,
+    this.imageStoriesBox,
   });
 
   @override
@@ -237,24 +240,115 @@ class _HomePageState extends State<HomePage> {
   Future<void> _saveImageStory() async {
     if (_selectedImages.isEmpty) return;
 
-    final storyNameController = TextEditingController();
     final Box<ImageStory> imageStoriesBox =
-        Hive.box<ImageStory>(StorageConstants.imageStoriesBox);
+        widget.imageStoriesBox ?? Hive.box<ImageStory>(StorageConstants.imageStoriesBox);
+
+    if (_editingStory != null) {
+      final result = await showDialog<EditModeSaveResult>(
+        context: context,
+        builder: (context) => EditModeSaveDialog(storyName: _editingStory!.name),
+      );
+
+      if (result == null || !mounted) return;
+
+      if (result is UpdateExistingStoryResult) {
+        final key = _editingStory!.key ??
+            imageStoriesBox.keys.firstWhere(
+              (k) => imageStoriesBox.get(k)?.id == _editingStory!.id,
+              orElse: () => null,
+            );
+
+        final updatedStory = ImageStory(
+          id: _editingStory!.id,
+          name: _editingStory!.name,
+          images: List<KuvariImage>.from(_selectedImages),
+          tagIds: _editingStory!.tagIds,
+        );
+
+        if (key != null) {
+          await imageStoriesBox.put(key, updatedStory);
+        } else {
+          await imageStoriesBox.add(updatedStory);
+        }
+
+        await widget.analytics.logEvent(
+          name: 'update_image_story',
+          parameters: {
+            'story_name': updatedStory.name,
+            'image_count': updatedStory.images.length,
+          },
+        );
+
+        if (mounted) {
+          ScaffoldMessenger.of(context).clearSnackBars();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                AppLocalizations.of(context)!.storyUpdated(updatedStory.name),
+              ),
+            ),
+          );
+
+          setState(() {
+            _editingStory = null;
+            _selectedImages.clear();
+            _currentStartIndex = 0;
+          });
+        }
+        return;
+      } else if (result is SaveAsNewStoryResult) {
+        final newStory = ImageStory(
+          id: const Uuid().v4(),
+          name: result.name,
+          images: List<KuvariImage>.from(_selectedImages),
+        );
+
+        await imageStoriesBox.add(newStory);
+
+        await widget.analytics.logEvent(
+          name: 'save_image_story',
+          parameters: {
+            'story_name': newStory.name,
+            'image_count': newStory.images.length,
+          },
+        );
+
+        if (mounted) {
+          ScaffoldMessenger.of(context).clearSnackBars();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                AppLocalizations.of(context)!.imageStorySaved(newStory.name),
+              ),
+            ),
+          );
+
+          setState(() {
+            _editingStory = null;
+            _selectedImages.clear();
+            _currentStartIndex = 0;
+          });
+        }
+        return;
+      }
+    }
+
+    final storyNameController = TextEditingController();
 
     await showDialog(
       context: context,
-      builder: (BuildContext context) {
+      builder: (BuildContext dialogContext) {
         return AlertDialog(
-          title: Text(AppLocalizations.of(context)!.saveImageStory),
+          title: Text(AppLocalizations.of(dialogContext)!.saveImageStory),
           content: TextField(
             controller: storyNameController,
             decoration: InputDecoration(
-                labelText: AppLocalizations.of(context)!.giveImageStoryName),
+                labelText: AppLocalizations.of(dialogContext)!.giveImageStoryName),
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text(AppLocalizations.of(context)!.cancel),
+              onPressed: () => Navigator.of(dialogContext).pop(),
+              child: Text(AppLocalizations.of(dialogContext)!.cancel),
             ),
             ElevatedButton(
               onPressed: () async {
@@ -266,7 +360,7 @@ class _HomePageState extends State<HomePage> {
                     images: List<KuvariImage>.from(_selectedImages),
                   );
 
-                  imageStoriesBox.add(newStory);
+                  await imageStoriesBox.add(newStory);
 
                   await widget.analytics.logEvent(
                     name: 'save_image_story',
@@ -276,21 +370,26 @@ class _HomePageState extends State<HomePage> {
                     },
                   );
 
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                        content: Text(AppLocalizations.of(context)!
-                            .imageStorySaved(newStory.name))),
-                  );
+                  if (mounted) {
+                    ScaffoldMessenger.of(context).clearSnackBars();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                          content: Text(AppLocalizations.of(context)!
+                              .imageStorySaved(newStory.name))),
+                    );
 
-                  setState(() {
-                    _selectedImages.clear();
-                    _currentStartIndex = 0;
-                  });
+                    setState(() {
+                      _selectedImages.clear();
+                      _currentStartIndex = 0;
+                    });
+                  }
 
-                  Navigator.of(context).pop();
+                  if (dialogContext.mounted) {
+                    Navigator.of(dialogContext).pop();
+                  }
                 }
               },
-              child: Text(AppLocalizations.of(context)!.save),
+              child: Text(AppLocalizations.of(dialogContext)!.save),
             ),
           ],
         );

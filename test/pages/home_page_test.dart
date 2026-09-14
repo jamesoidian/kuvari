@@ -16,6 +16,8 @@ import 'package:kuvari_app/widgets/edit_mode_banner.dart';
 import 'package:kuvari_app/widgets/selected_images_carousel.dart';
 import 'package:kuvari_app/widgets/home_app_bar.dart';
 import 'package:kuvari_app/widgets/home_search_section.dart';
+import 'package:hive/hive.dart';
+import 'package:kuvari_app/widgets/edit_mode_save_dialog.dart';
 import 'home_page_test.mocks.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
@@ -29,6 +31,31 @@ class FakeFirebaseAnalytics extends Fake implements FirebaseAnalytics {
     List<AnalyticsEventItem>? items,
   }) async {
     // Do nothing in tests
+  }
+}
+
+class FakeHiveBox<T> extends Fake implements Box<T> {
+  final Map<dynamic, T> items = {};
+
+  @override
+  Iterable<T> get values => items.values;
+
+  @override
+  Iterable<dynamic> get keys => items.keys;
+
+  @override
+  T? get(dynamic key, {T? defaultValue}) => items[key] ?? defaultValue;
+
+  @override
+  Future<void> put(dynamic key, T value) async {
+    items[key] = value;
+  }
+
+  @override
+  Future<int> add(T value) async {
+    final key = items.length;
+    items[key] = value;
+    return key;
   }
 }
 
@@ -60,7 +87,10 @@ void main() {
       mockKuvariService = MockKuvariService();
     });
 
-    Widget createHomePage({Locale locale = const Locale('fi')}) {
+    Widget createHomePage({
+      Locale locale = const Locale('fi'),
+      Box<ImageStory>? imageStoriesBox,
+    }) {
       return MaterialApp(
         locale: locale,
         localizationsDelegates: const [
@@ -78,6 +108,7 @@ void main() {
           kuvariService: mockKuvariService,
           setLocale: (_) {},
           analytics: FakeFirebaseAnalytics(),
+          imageStoriesBox: imageStoriesBox,
         ),
       );
     }
@@ -383,6 +414,179 @@ void main() {
 
       // Discard confirmation dialog should appear
       expect(find.text('Lopetetaanko muokkaus?'), findsOneWidget);
+    });
+
+    testWidgets('Saving in edit mode with Päivitä updates story in Hive and resets queue', (tester) async {
+      final fakeBox = FakeHiveBox<ImageStory>();
+      final originalStory = ImageStory(
+        id: 'story-1',
+        name: 'Aamutoimet',
+        images: [mockImages.first],
+        tagIds: ['tag-1'],
+      );
+      await fakeBox.put(0, originalStory);
+
+      await tester.pumpWidget(createHomePage(imageStoriesBox: fakeBox));
+      await tester.pumpAndSettle();
+
+      final homeAppBar = tester.widget<HomeAppBar>(find.byType(HomeAppBar));
+      homeAppBar.onEditStory!(originalStory);
+      await tester.pumpAndSettle();
+
+      // Tap Tallenna in EditModeBanner
+      final saveButton = find.descendant(
+        of: find.byType(EditModeBanner),
+        matching: find.text('Tallenna'),
+      );
+      await tester.tap(saveButton);
+      await tester.pumpAndSettle();
+
+      // EditModeSaveDialog appears
+      expect(find.byType(EditModeSaveDialog), findsOneWidget);
+      expect(find.text('Päivitä: Aamutoimet'), findsOneWidget);
+
+      // Tap Päivitä
+      await tester.tap(find.text('Päivitä: Aamutoimet'));
+      await tester.pumpAndSettle();
+
+      // Verify Hive updated
+      expect(fakeBox.values.length, 1);
+      final updated = fakeBox.values.first;
+      expect(updated.id, 'story-1');
+      expect(updated.name, 'Aamutoimet');
+      expect(updated.tagIds, ['tag-1']);
+
+      // Verify feedback and state reset
+      expect(find.text('Kuvajono "Aamutoimet" päivitetty.'), findsOneWidget);
+      expect(find.byType(EditModeBanner), findsNothing);
+      expect(find.byType(FloatingActionButton), findsNothing);
+    });
+
+    testWidgets('Saving in edit mode with Tallenna uutena creates new story in Hive and resets queue', (tester) async {
+      final fakeBox = FakeHiveBox<ImageStory>();
+      final originalStory = ImageStory(
+        id: 'story-1',
+        name: 'Aamutoimet',
+        images: mockImages,
+        tagIds: ['tag-1'],
+      );
+      await fakeBox.put(0, originalStory);
+
+      await tester.pumpWidget(createHomePage(imageStoriesBox: fakeBox));
+      await tester.pumpAndSettle();
+
+      final homeAppBar = tester.widget<HomeAppBar>(find.byType(HomeAppBar));
+      homeAppBar.onEditStory!(originalStory);
+      await tester.pumpAndSettle();
+
+      // Tap Tallenna in EditModeBanner
+      final saveButton = find.descendant(
+        of: find.byType(EditModeBanner),
+        matching: find.text('Tallenna'),
+      );
+      await tester.tap(saveButton);
+      await tester.pumpAndSettle();
+
+      // Tap Tallenna uutena kuvajonona...
+      await tester.tap(find.text('Tallenna uutena kuvajonona...'));
+      await tester.pumpAndSettle();
+
+      // Name field prefilled with 'Aamutoimet (kopio)'
+      expect(find.text('Aamutoimet (kopio)'), findsOneWidget);
+
+      // Tap Tallenna in dialog
+      final dialogSaveButton = find.descendant(
+        of: find.byType(EditModeSaveDialog),
+        matching: find.text('Tallenna'),
+      );
+      await tester.tap(dialogSaveButton);
+      await tester.pumpAndSettle();
+
+      // Verify 2 stories in Hive
+      expect(fakeBox.values.length, 2);
+      final original = fakeBox.values.first;
+      final copy = fakeBox.values.last;
+      expect(original.name, 'Aamutoimet');
+      expect(copy.name, 'Aamutoimet (kopio)');
+      expect(copy.id, isNot('story-1'));
+
+      // Verify feedback and state reset
+      expect(find.text('Kuvajono "Aamutoimet (kopio)" tallennettu.'), findsOneWidget);
+      expect(find.byType(EditModeBanner), findsNothing);
+      expect(find.byType(FloatingActionButton), findsNothing);
+    });
+
+    testWidgets('Cancelling save dialog in edit mode preserves edit mode and queue', (tester) async {
+      final fakeBox = FakeHiveBox<ImageStory>();
+      final originalStory = ImageStory(
+        id: 'story-1',
+        name: 'Aamutoimet',
+        images: mockImages,
+      );
+      await fakeBox.put(0, originalStory);
+
+      await tester.pumpWidget(createHomePage(imageStoriesBox: fakeBox));
+      await tester.pumpAndSettle();
+
+      final homeAppBar = tester.widget<HomeAppBar>(find.byType(HomeAppBar));
+      homeAppBar.onEditStory!(originalStory);
+      await tester.pumpAndSettle();
+
+      // Tap Tallenna in EditModeBanner
+      final saveButton = find.descendant(
+        of: find.byType(EditModeBanner),
+        matching: find.text('Tallenna'),
+      );
+      await tester.tap(saveButton);
+      await tester.pumpAndSettle();
+
+      // Tap Peruuta
+      await tester.tap(find.text('Peruuta'));
+      await tester.pumpAndSettle();
+
+      // EditModeBanner and queue remain active
+      expect(find.byType(EditModeBanner), findsOneWidget);
+      expect(find.text('Näytä kuvajono (2)'), findsOneWidget);
+      expect(fakeBox.values.length, 1);
+    });
+
+    testWidgets('Standard save outside edit mode saves new story and clears queue', (tester) async {
+      final fakeBox = FakeHiveBox<ImageStory>();
+      when(mockKuvariService.searchImages('test', any, any))
+          .thenAnswer((_) async => mockImages);
+
+      await tester.pumpWidget(createHomePage(imageStoriesBox: fakeBox));
+      await tester.pump();
+
+      // Search and select image
+      await tester.enterText(find.byType(TextField), 'test');
+      await tester.tap(find.byIcon(Icons.search_outlined));
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 2));
+
+      await tester.tap(find.byType(Image).first);
+      await tester.pumpAndSettle();
+
+      // Trigger save via HomeAppBar
+      final homeAppBar = tester.widget<HomeAppBar>(find.byType(HomeAppBar));
+      homeAppBar.onSave();
+      await tester.pumpAndSettle();
+
+      // Standard save dialog appears
+      expect(find.text('Tallenna kuvajono'), findsOneWidget);
+      expect(find.byType(TextField), findsWidgets);
+
+      // Enter name and save
+      await tester.enterText(find.byType(TextField).last, 'Uusi kuvajono');
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Tallenna'));
+      await tester.pumpAndSettle();
+
+      expect(fakeBox.values.length, 1);
+      expect(fakeBox.values.first.name, 'Uusi kuvajono');
+      expect(find.text('Kuvajono "Uusi kuvajono" tallennettu.'), findsOneWidget);
+      expect(find.byType(FloatingActionButton), findsNothing);
     });
   });
 }
