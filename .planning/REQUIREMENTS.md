@@ -7,8 +7,8 @@
 ## v1.6.0 Requirements
 
 ### Safe Story Carousel
-- [ ] **SAFE-01**: Disable drag reordering on `SavedImageStoriesPage` carousel (`isReorderable: false` / pure horizontal scroll) so viewing and swiping stories does not trigger accidental reorders.
-- [ ] **SAFE-02**: Ensure individual image delete buttons are absent in the saved stories carousel to prevent accidental deletion during browsing.
+- [x] **SAFE-01**: Disable drag reordering on `SavedImageStoriesPage` carousel (`isReorderable: false` / pure horizontal scroll) so viewing and swiping stories does not trigger accidental reorders.
+- [x] **SAFE-02**: Ensure individual image delete buttons are absent in the saved stories carousel to prevent accidental deletion during browsing.
 
 ### Edit on Home Page Transition
 - [ ] **EDIT-01**: Provide an explicit "Muokkaa kotisivulla" (Edit on Home Page) button on each saved story card in `SavedImageStoriesPage`.
@@ -41,8 +41,8 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SAFE-01 | Phase 5 | Pending |
-| SAFE-02 | Phase 5 | Pending |
+| SAFE-01 | Phase 5 | Complete |
+| SAFE-02 | Phase 5 | Complete |
 | EDIT-01 | Phase 6 | Pending |
 | EDIT-02 | Phase 6 | Pending |
 | EDIT-03 | Phase 6 | Pending |

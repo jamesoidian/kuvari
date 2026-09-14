@@ -23,7 +23,7 @@
 
 | # | Phase | Status | Goal | Requirements | Success Criteria |
 |---|-------|--------|------|--------------|------------------|
-| 5 | **Safe Browsing & Carousel Protection** | [ ] Planned | Ensure saved stories carousel is purely scrollable without accidental drag-to-reorder or deletions. | SAFE-01, SAFE-02 | 2 criteria |
+| 5 | **Safe Browsing & Carousel Protection** | [x] Complete (1/1 plans) | Ensure saved stories carousel is purely scrollable without accidental drag-to-reorder or deletions. | SAFE-01, SAFE-02 | 2 criteria |
 | 6 | **Edit on Home Page Transition & Edit Mode UI** | [ ] Planned | Enable opening saved stories for editing on HomePage with replacement warning and visual Edit Mode banner. | EDIT-01, EDIT-02, EDIT-03, MODE-01, MODE-02 | 4 criteria |
 | 7 | **Dual-Mode Save Logic & Localization** | [ ] Planned | Implement save dialog ("Päivitä olemassa oleva" vs "Tallenna uutena") with full trilingual localization. | SAVE-01, SAVE-02 | 5 criteria |
 
