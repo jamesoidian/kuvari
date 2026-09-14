@@ -17,14 +17,14 @@ current_phase_name: native-text-to-speech-ios-android
 
 # State
 
-> Last Updated: 2026-09-13
+> Last Updated: 2026-09-14
 
 ## Current Position
 
 - **Milestone**: v1.5.0 — UX & AAC Communication Enhancements
 - **Phase**: Phase 4: Native Text-to-Speech (iOS & Android)
 - **Status**: Milestone complete — all 4 phases finished and verified
-- **Last activity**: 2026-09-13 — Completed Phase 4 UAT verification (4 passed, 0 issues)
+- **Last activity**: 2026-09-14 — Completed quick task 260914-bya: update saved stories tag terminology
 
 ## Milestone v1.5.0 Summary
 
@@ -55,6 +55,7 @@ current_phase_name: native-text-to-speech-ios-android
 | Task | Date | Status | Description |
 |------|------|--------|-------------|
 | `clarify-licensing-and-workplace-use` | 2026-09-14 | Complete ✓ | Clarify free assistive tool status and workplace/care usage in InfoPage and docs |
+| [260914-bya](./quick/260914-bya-update-saved-stories-tag-terminology/) | 2026-09-14 | Complete ✓ | Update saved stories tag terminology ("Avainsana" -> "Tägi"), hints, and guidance |
 
 ## Next Steps
 
