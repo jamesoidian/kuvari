@@ -11,6 +11,7 @@ import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:kuvari_app/models/tag.dart';
 import 'package:flutter/foundation.dart';
 import 'package:kuvari_app/widgets/tag_management_dialog.dart';
+import 'package:kuvari_app/widgets/selected_images_carousel.dart';
 
 class FakeHiveBox<T> extends Fake implements Box<T> {
   final Map<dynamic, T> _items = {};
@@ -154,6 +155,32 @@ void main() {
       expect(find.text('Lisää tägejä painamalla kuvajonon nimeä pitkään'), findsOneWidget);
       expect(find.text('Kuvajonolla voi olla monta tägiä'), findsOneWidget);
       expect(find.text('Poista jono pyyhkäisemällä vasemmalle'), findsOneWidget);
+    });
+
+    testWidgets("Renders read-only carousel without ReorderableListView or delete buttons", (tester) async {
+      await storiesBox.put(
+        0,
+        ImageStory(
+          id: '1',
+          name: 'Story 1',
+          images: [
+            KuvariImage(uid: 1, name: 'Img 1', author: 'A', thumb: '', url: ''),
+            KuvariImage(uid: 2, name: 'Img 2', author: 'B', thumb: '', url: ''),
+          ],
+        ),
+      );
+
+      await tester.pumpWidget(createWidget());
+      await tester.pumpAndSettle();
+
+      expect(find.byType(SelectedImagesCarousel), findsOneWidget);
+      final carouselWidget = tester.widget<SelectedImagesCarousel>(find.byType(SelectedImagesCarousel));
+      expect(carouselWidget.isReorderable, isFalse);
+      expect(carouselWidget.showClearButton, isFalse);
+      expect(find.byType(ReorderableListView), findsNothing);
+      expect(find.byType(ListView), findsWidgets);
+      expect(find.byIcon(Icons.close), findsNothing);
+      expect(find.byIcon(Icons.delete_sweep), findsNothing);
     });
   });
 }

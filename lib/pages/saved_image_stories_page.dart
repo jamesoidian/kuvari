@@ -183,7 +183,7 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
                               onClear: () {},
                               onRemove: (i) {},
                               showClearButton: false,
-                              onReorder: (int oldIndex, int newIndex) {},
+                              isReorderable: false,
                             ),
                             trailing: IconButton(
                               icon: Stack(
