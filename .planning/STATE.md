@@ -57,6 +57,7 @@ Last activity: 2026-09-14 — Phase 7 completed (Dual-Mode Save Logic & Localiza
 | `clarify-licensing-and-workplace-use` | 2026-09-14 | Complete ✓ | Clarify free assistive tool status and workplace/care usage in InfoPage and docs |
 | [260914-bya](./quick/260914-bya-update-saved-stories-tag-terminology/) | 2026-09-14 | Complete ✓ | Update saved stories tag terminology ("Avainsana" -> "Tägi"), hints, and guidance |
 | [260914-update-saved-stories-tag-hint](./quick/260914-update-saved-stories-tag-hint/) | 2026-09-14 | Complete ✓ | Update tag hint copy on saved stories page ("...kuvajonoa pitkään") |
+| [260914-stack-saved-stories-action-icons](./quick/260914-stack-saved-stories-action-icons/) | 2026-09-14 | Complete ✓ | Stack edit and play icons vertically on saved stories cards |
 
 ## Next Steps
  

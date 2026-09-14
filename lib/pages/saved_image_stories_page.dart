@@ -36,7 +36,6 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
   late final Box<Tag> tagsBox = widget.tagsBox ?? Hive.box<Tag>(StorageConstants.tagsBox);
 
   final Map<String, int> _currentStartIndices = {};
-  int _maxVisibleImages = 1;
   String _searchQuery = '';
   final List<String> _selectedTagIds = [];
 
@@ -177,71 +176,104 @@ class _SavedImageStoriesPageState extends State<SavedImageStoriesPage> {
                         },
                         child: Card(
                           margin: const EdgeInsets.all(8.0),
-                          child: ListTile(
-                            title: Text(story.name),
-                            subtitle: SelectedImagesCarousel(
-                              selectedImages: story.images,
-                              currentStartIndex:
-                                  _currentStartIndices[story.id] ?? 0,
-                              maxVisibleImages: currentMaxVisibleImages,
-                              onClear: () {},
-                              onRemove: (i) {},
-                              showClearButton: false,
-                              isReorderable: false,
-                            ),
-                            trailing: Row(
-                              mainAxisSize: MainAxisSize.min,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16.0, vertical: 12.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                IconButton(
-                                  icon: const Icon(Icons.edit_outlined),
-                                  tooltip: l10n.editOnHomePage,
-                                  onPressed: () => _handleEditStory(story),
-                                ),
-                                IconButton(
-                                  icon: Stack(
-                                    alignment: Alignment.center,
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Container(
-                                        width: 40,
-                                        height: 40,
-                                        decoration: BoxDecoration(
-                                          color: Colors.teal,
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
+                                      Text(
+                                        story.name,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
                                       ),
-                                      const Icon(
-                                        Icons.play_arrow,
-                                        color: Colors.white,
-                                        size: 30,
-                                      ),
-                                      const Icon(
-                                        Icons.play_arrow,
-                                        color: Colors.teal,
-                                        size: 24,
+                                      const SizedBox(height: 8),
+                                      SelectedImagesCarousel(
+                                        selectedImages: story.images,
+                                        currentStartIndex:
+                                            _currentStartIndices[story.id] ?? 0,
+                                        maxVisibleImages:
+                                            currentMaxVisibleImages,
+                                        onClear: () {},
+                                        onRemove: (i) {},
+                                        showClearButton: false,
+                                        isReorderable: false,
                                       ),
                                     ],
                                   ),
-                                  onPressed: () {
-                                    final analytics = FirebaseAnalytics.instance;
-
-                                    // Kirjaa katselutapahtuma
-                                    analytics.logEvent(
-                                      name: 'view_image_story',
-                                      parameters: {
-                                        'image_count': story.images.length,
-                                        'source': 'saved_stories',
-                                      },
-                                    );
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (_) => ImageViewerPage(
-                                            images: story.images),
+                                ),
+                                const SizedBox(width: 8),
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    IconButton(
+                                      visualDensity: VisualDensity.compact,
+                                      padding: EdgeInsets.zero,
+                                      constraints: const BoxConstraints(),
+                                      icon: const Icon(Icons.edit_outlined),
+                                      tooltip: l10n.editOnHomePage,
+                                      onPressed: () => _handleEditStory(story),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    IconButton(
+                                      visualDensity: VisualDensity.compact,
+                                      padding: EdgeInsets.zero,
+                                      constraints: const BoxConstraints(),
+                                      icon: Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          Container(
+                                            width: 38,
+                                            height: 38,
+                                            decoration: BoxDecoration(
+                                              color: Colors.teal,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                          ),
+                                          const Icon(
+                                            Icons.play_arrow,
+                                            color: Colors.white,
+                                            size: 28,
+                                          ),
+                                          const Icon(
+                                            Icons.play_arrow,
+                                            color: Colors.teal,
+                                            size: 22,
+                                          ),
+                                        ],
                                       ),
-                                    );
-                                  },
-                                  tooltip: l10n.viewImageStory,
+                                      onPressed: () {
+                                        final analytics =
+                                            FirebaseAnalytics.instance;
+
+                                        // Kirjaa katselutapahtuma
+                                        analytics.logEvent(
+                                          name: 'view_image_story',
+                                          parameters: {
+                                            'image_count': story.images.length,
+                                            'source': 'saved_stories',
+                                          },
+                                        );
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (_) => ImageViewerPage(
+                                                images: story.images),
+                                          ),
+                                        );
+                                      },
+                                      tooltip: l10n.viewImageStory,
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),

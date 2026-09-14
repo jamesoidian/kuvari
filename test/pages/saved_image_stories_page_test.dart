@@ -10,7 +10,6 @@ import 'package:kuvari_app/l10n/app_localizations.dart';
 
 import 'package:kuvari_app/models/tag.dart';
 import 'package:flutter/foundation.dart';
-import 'package:kuvari_app/widgets/tag_management_dialog.dart';
 import 'package:kuvari_app/widgets/selected_images_carousel.dart';
 
 class FakeHiveBox<T> extends Fake implements Box<T> {
@@ -65,7 +64,6 @@ class FakeHiveBox<T> extends Fake implements Box<T> {
     return const Stream.empty();
   }
 
-  @override
   ValueListenable<Box<T>> listenable({List<dynamic>? keys}) => _listenable;
 }
 
@@ -105,17 +103,6 @@ void main() {
           tagsBox: tagsBox,
           hasActiveQueue: hasActiveQueue,
           activeQueueCount: activeQueueCount,
-        ),
-      );
-    }
-
-    Widget createSanityWidget() {
-      return const MaterialApp(
-        home: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(50),
-            child: Text('Sanity Check'),
-          ),
         ),
       );
     }
@@ -185,7 +172,7 @@ void main() {
       expect(find.byIcon(Icons.delete_sweep), findsNothing);
     });
 
-    testWidgets("Displays edit icon button for each story", (tester) async {
+    testWidgets("Displays edit and play buttons stacked vertically on right edge", (tester) async {
       await storiesBox.put(
         0,
         ImageStory(
@@ -201,7 +188,20 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byIcon(Icons.edit_outlined), findsOneWidget);
+      expect(find.byIcon(Icons.play_arrow), findsWidgets);
+
+      final editCenter = tester.getCenter(find.byIcon(Icons.edit_outlined));
+      final playCenter = tester.getCenter(find.byIcon(Icons.play_arrow).first);
+      final carouselRect = tester.getRect(find.byType(SelectedImagesCarousel));
+
+      // Vertically stacked: edit above play
+      expect(editCenter.dy, lessThan(playCenter.dy));
+      // Horizontally aligned in the same right column
+      expect((editCenter.dx - playCenter.dx).abs(), lessThan(5.0));
+      // To the right of the carousel
+      expect(editCenter.dx, greaterThan(carouselRect.right));
     });
+
 
     testWidgets("Tapping edit when hasActiveQueue is false pops with story", (tester) async {
       await storiesBox.put(
