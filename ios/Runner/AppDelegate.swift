@@ -13,8 +13,8 @@ import AVFoundation
   ) -> Bool {
     let result = super.application(application, didFinishLaunchingWithOptions: launchOptions)
 
-    if let controller = window?.rootViewController as? FlutterViewController {
-      let ttsChannel = FlutterMethodChannel(name: ttsChannelName, binaryMessenger: controller.binaryMessenger)
+    if let registrar = self.registrar(forPlugin: "KuvariTts") {
+      let ttsChannel = FlutterMethodChannel(name: ttsChannelName, binaryMessenger: registrar.messenger())
       ttsChannel.setMethodCallHandler { [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) in
         guard let self = self else { return }
         switch call.method {
