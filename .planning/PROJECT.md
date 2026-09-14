@@ -14,15 +14,10 @@ Providing a fast, simple, and intuitive visual communication tool that empowers 
 - **Support Users**: Speech therapists, special education teachers, caregivers, and family members.
 - **Key Partners / Ecosystem**: Papunet (Finnish/Swedish symbol bank), OpenSymbols (international AAC symbols), Rinnekodit.
 
-## Current Milestone: v1.6.0 — Story Editing & Safe Queue Management
+## Current State: v1.6.0 (Shipped: 2026-09-14)
 
-**Goal:** Mahdollistaa tallennettujen kuvajonojen avaaminen ja muokkaaminen kotisivulla täysillä työkaluilla sekä suojata tallennetut jonot vahinkomuutoksilta.
-
-**Target features:**
-- Turvallinen selausnäkymä `SavedImageStoriesPage`-sivulla (estetään raahaaminen ja poistopainikkeet katselussa).
-- "Muokkaa kotisivulla" -painike tallennettujen listaan, korvausvaroitusdialogi ja opastava siirtymä.
-- Kotisivun muokkaustila (visuaalinen tilarivibanneri, tallenna muutokset / lopeta muokkaus, poistumisvarmistus).
-- Joustava tallennusdialogi (päivitä olemassa oleva vs. tallenna uutena kuvajonona).
+**Latest Milestone Shipped:** v1.6.0 — Story Editing & Safe Queue Management  
+**Status:** All v1.6.0 phases and requirements validated. Ready for `/gsd-new-milestone`.
 
 ## Requirements
 
@@ -35,29 +30,35 @@ Providing a fast, simple, and intuitive visual communication tool that empowers 
 - ✓ Tagging and organizing saved stories with tag management — v1.3
 - ✓ Text-to-Speech (TTS) voice synthesis for symbols across FI, SV, EN — v1.4
 - ✓ Modernized build toolchain (KGP 2.2.21, Swift Package Manager) — v1.4
-- ✓ **TERM-01**: Rename "Category" / "Kategoria" to "Image Type" / "Kuvatyyppi" in all UI texts and localization files — Phase 1
-- ✓ **IMG-01**: Improve image search result quality and sharpness on high-DPI Retina screens — Phase 1
-- ✓ **JONO-01**: Always display the selected images collection area on the home screen with a clear, helpful empty state — Phase 2
-- ✓ **JONO-02**: Add a prominent, intuitive action button to open the image viewer directly from the collection area — Phase 2
-- ✓ **GUIDE-01**: Upgrade InfoPage to include practical guidance and examples for AAC communication routines — Phase 3
-- ✓ **GUIDE-02**: Structure InfoPage into Quick Start, Practical Use Cases, and Attributions — Phase 3
-- ✓ **TTS-01**: Implement native iOS speech channel using `AVSpeechSynthesizer` with language, rate, pitch, and silent mode playback — Phase 4
-- ✓ **TTS-02**: Implement native Android speech channel using `TextToSpeech` with immediate interruption and lifecycle handling — Phase 4
-- ✓ **TTS-03**: Refactor `TtsService` to communicate directly over `io.github.jamesoidian.kuvari/tts` and remove `flutter_tts` dependency — Phase 4
+- ✓ **TERM-01**: Rename "Category" / "Kategoria" to "Image Type" / "Kuvatyyppi" in all UI texts and localization files — v1.5.0
+- ✓ **IMG-01**: Improve image search result quality and sharpness on high-DPI Retina screens — v1.5.0
+- ✓ **JONO-01**: Always display the selected images collection area on the home screen with a clear, helpful empty state — v1.5.0
+- ✓ **JONO-02**: Add a prominent, intuitive action button to open the image viewer directly from the collection area — v1.5.0
+- ✓ **GUIDE-01**: Upgrade InfoPage to include practical guidance and examples for AAC communication routines — v1.5.0
+- ✓ **GUIDE-02**: Structure InfoPage into Quick Start, Practical Use Cases, and Attributions — v1.5.0
+- ✓ **TTS-01**: Implement native iOS speech channel using `AVSpeechSynthesizer` with language, rate, pitch, and silent mode playback — v1.5.0
+- ✓ **TTS-02**: Implement native Android speech channel using `TextToSpeech` with immediate interruption and lifecycle handling — v1.5.0
+- ✓ **TTS-03**: Refactor `TtsService` to communicate directly over `io.github.jamesoidian.kuvari/tts` and remove `flutter_tts` dependency — v1.5.0
+- ✓ **SAFE-01**: Disable drag reordering on `SavedImageStoriesPage` carousel (`isReorderable: false`) — v1.6.0
+- ✓ **SAFE-02**: Ensure individual image delete buttons are absent in saved stories carousel — v1.6.0
+- ✓ **EDIT-01**: Provide explicit "Muokkaa kotisivulla" action button on saved story cards — v1.6.0
+- ✓ **EDIT-02**: Show confirmation warning dialog when opening story if home queue has items — v1.6.0
+- ✓ **EDIT-03**: Transition to `HomePage` in Edit Mode, populating queue with feedback SnackBar — v1.6.0
+- ✓ **MODE-01**: Persistent `EditModeBanner` above collection queue with story name, save, and exit actions — v1.6.0
+- ✓ **MODE-02**: Guard against data loss on queue clear or navigation with unsaved modifications — v1.6.0
+- ✓ **SAVE-01**: Dual-mode save dialog offering "Päivitä olemassa oleva" vs "Tallenna uutena..." — v1.6.0
+- ✓ **SAVE-02**: Clean exit from Edit Mode upon saving or cancellation, returning queue to clean state — v1.6.0
 
 ### Active
 
-- [ ] **EDIT-01**: Disable drag reordering and deletion on `SavedImageStoriesPage` so it acts as a safe, pure browsing carousel.
-- [ ] **EDIT-02**: Add "Muokkaa kotisivulla" action to saved story cards with replacement warning if home queue has items.
-- [ ] **EDIT-03**: Implement HomePage Edit Mode banner with story title, Save changes, and Exit/Cancel actions.
-- [ ] **EDIT-04**: Implement dual-mode save dialog in Edit Mode ("Päivitä olemassa oleva" vs "Tallenna uutena kuvajonona").
-- [ ] **EDIT-05**: Implement unsaved changes confirmation on navigation or queue clearing in Edit Mode.
+*(None — define next milestone with `/gsd-new-milestone`)*
 
 ### Out of Scope
 
 - **Full custom phrase building engine**: Kuvari focuses on sequential stories and choice pairs, not complex grammar composition.
 - **Cloud synchronization of stories**: Local Hive offline storage remains the priority for privacy and offline reliability.
 - **Complex multi-level folder hierarchies**: Flat tags remain the chosen approach for simplicity.
+
 
 ## Context
 
