@@ -14,9 +14,13 @@ Providing a fast, simple, and intuitive visual communication tool that empowers 
 - **Support Users**: Speech therapists, special education teachers, caregivers, and family members.
 - **Key Partners / Ecosystem**: Papunet (Finnish/Swedish symbol bank), OpenSymbols (international AAC symbols), Rinnekodit.
 
-## Current Milestone: v1.5.0 — UX & AAC Communication Enhancements
+## Current State (v1.5.0 Shipped)
 
-Focusing on expert feedback from Papunet: improving initial discovery and guidance, refining terminology from "category" to "image type", enhancing search thumbnail resolution, adding side-by-side choice-making (image pairs) in the viewer, and providing concrete practical AAC examples on the info page.
+Milestone v1.5.0 shipped on 2026-09-14: Refined onboarding guidance, terminology ("Kuvatyyppi" / "Tägi"), high-res search image clarity, persistent collection queue with empty state and extended FAB, practical AAC communication guides on InfoPage, and robust native iOS and Android text-to-speech synthesis without `flutter_tts`.
+
+## Next Milestone Goals
+
+Planning next milestone (e.g. story editing capabilities on HomePage, enhanced choice-making mode, or symbol caching).
 
 ## Requirements
 
@@ -88,3 +92,7 @@ This document evolves at phase transitions and milestone boundaries.
 2. Core Value check — still the right priority?
 3. Audit Out of Scope — reasons still valid?
 4. Update Context with current state
+
+---
+*Last updated: 2026-09-14 after v1.5.0 milestone*
+

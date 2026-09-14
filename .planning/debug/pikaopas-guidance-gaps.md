@@ -1,3 +1,7 @@
+---
+status: resolved
+---
+
 # Debug Session: Pikaopas (Quick Start) Guidance Gaps
 
 ## Issue Description

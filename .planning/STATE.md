@@ -2,15 +2,17 @@
 gsd_state_version: "1.0"
 milestone: v1.5.0
 milestone_name: UX & AAC Communication Enhancements
-status: complete
-last_updated: "2026-09-13T19:36:00.000Z"
-state_head: 64dd401
+status: Awaiting next milestone
+last_updated: "2026-09-14T05:54:05.386Z"
+last_activity: 2026-09-14
+last_activity_desc: Milestone v1.5.0 completed and archived
+state_head: 9024e7c81c9e3c1b502d02adc94d78da1e0c8019
 progress:
   total_phases: 4
-  completed_phases: 4
-  total_plans: 6
-  completed_plans: 6
-  percent: 100
+  completed_phases: 2
+  total_plans: 7
+  completed_plans: 7
+  percent: 50
 current_phase: 4
 current_phase_name: native-text-to-speech-ios-android
 ---
@@ -21,10 +23,10 @@ current_phase_name: native-text-to-speech-ios-android
 
 ## Current Position
 
-- **Milestone**: v1.5.0 — UX & AAC Communication Enhancements
-- **Phase**: Phase 4: Native Text-to-Speech (iOS & Android)
-- **Status**: Milestone complete — all 4 phases finished and verified
-- **Last activity**: 2026-09-14 — Completed quick task 260914-bya: update saved stories tag terminology
+Phase: Milestone v1.5.0 complete
+Plan: —
+Status: Awaiting next milestone
+Last activity: 2026-09-14 — Milestone v1.5.0 completed and archived
 
 ## Milestone v1.5.0 Summary
 
@@ -60,3 +62,7 @@ current_phase_name: native-text-to-speech-ios-android
 ## Next Steps
 
 1. Complete Milestone: `/gsd-complete-milestone v1.5.0`
+
+## Operator Next Steps
+
+- Start the next milestone with /gsd-new-milestone
