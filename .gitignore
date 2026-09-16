@@ -38,6 +38,7 @@ screenshots/
 /ios/Runner/GoogleService-Info.plist
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
+**/android/build/
 **/android/captures/
 **/android/gradlew
 **/android/gradlew.bat

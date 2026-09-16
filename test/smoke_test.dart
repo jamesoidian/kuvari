@@ -3,7 +3,6 @@
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
-import 'package:kuvari_app/models/image_story.dart';
 import 'package:kuvari_app/models/tag.dart';
 import 'package:kuvari_app/services/storage_service.dart';
 

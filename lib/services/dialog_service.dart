@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kuvari_app/l10n/app_localizations.dart';
-import 'package:kuvari_app/models/kuvari_image.dart';
 
 class DialogService {
   static Future<String?> showSaveImageStoryDialog(

@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kuvari_app/l10n/app_localizations.dart';
 import 'package:kuvari_app/services/tts_service.dart';
 
 void main() {
@@ -9,11 +12,13 @@ void main() {
     late TtsService ttsService;
     late List<MethodCall> methodCalls;
     bool shouldThrowPlatformException = false;
+    String platformExceptionCode = 'TTS_ERROR';
     bool shouldThrowMissingPluginException = false;
 
     setUp(() {
       methodCalls = <MethodCall>[];
       shouldThrowPlatformException = false;
+      platformExceptionCode = 'TTS_ERROR';
       shouldThrowMissingPluginException = false;
 
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
@@ -23,7 +28,7 @@ void main() {
 
         if (shouldThrowPlatformException) {
           throw PlatformException(
-              code: 'TTS_ERROR', message: 'Simulated TTS failure');
+              code: platformExceptionCode, message: 'Simulated TTS failure');
         }
         if (shouldThrowMissingPluginException) {
           throw MissingPluginException('No channel implementation');
@@ -101,6 +106,43 @@ void main() {
       expect(methodCalls.first.arguments, isNull);
     });
 
+    test('openTtsSettings invokes openTtsSettings on channel', () async {
+      await ttsService.openTtsSettings();
+
+      expect(methodCalls.length, equals(1));
+      expect(methodCalls.first.method, equals('openTtsSettings'));
+    });
+
+    test('speak triggers onLanguageUnavailable on LANGUAGE_NOT_SUPPORTED',
+        () async {
+      shouldThrowPlatformException = true;
+      platformExceptionCode = 'LANGUAGE_NOT_SUPPORTED';
+
+      String? unavailableLang;
+      ttsService.onLanguageUnavailable = (lang) {
+        unavailableLang = lang;
+      };
+
+      await ttsService.speak('kissa', 'fi');
+
+      expect(unavailableLang, equals('fi'));
+    });
+
+    test('speak triggers onLanguageUnavailable on LANGUAGE_MISSING_DATA',
+        () async {
+      shouldThrowPlatformException = true;
+      platformExceptionCode = 'LANGUAGE_MISSING_DATA';
+
+      String? unavailableLang;
+      ttsService.onLanguageUnavailable = (lang) {
+        unavailableLang = lang;
+      };
+
+      await ttsService.speak('katt', 'sv');
+
+      expect(unavailableLang, equals('sv'));
+    });
+
     test('speak catches PlatformException gracefully without rethrowing',
         () async {
       shouldThrowPlatformException = true;
@@ -124,5 +166,49 @@ void main() {
       shouldThrowMissingPluginException = true;
       expect(() async => await ttsService.stop(), returnsNormally);
     });
+
+    testWidgets(
+        'showLanguageUnavailableSnackBar renders localized text and action',
+        (tester) async {
+      bool settingsOpened = false;
+
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: const Locale('fi'),
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [Locale('fi'), Locale('sv'), Locale('en')],
+          home: Scaffold(
+            body: Builder(
+              builder: (context) => ElevatedButton(
+                onPressed: () => TtsService.showLanguageUnavailableSnackBar(
+                  context,
+                  'fi',
+                  onOpenSettings: () => settingsOpened = true,
+                ),
+                child: const Text('Show'),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.text('Show'));
+      await tester.pumpAndSettle();
+
+      expect(find.textContaining('Laitteestasi puuttuu tuki kielelle suomi'),
+          findsOneWidget);
+      expect(find.text('Asetukset'), findsOneWidget);
+
+      await tester.tap(find.text('Asetukset'));
+      await tester.pumpAndSettle();
+
+      expect(settingsOpened, isTrue);
+    });
+
   });
 }

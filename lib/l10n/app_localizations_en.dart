@@ -374,4 +374,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get back => 'Back';
+
+  @override
+  String ttsLanguageNotSupported(String language) {
+    return 'Your device does not support the language $language. You can enable Google Speech Services or download a voice pack in settings.';
+  }
+
+  @override
+  String get openSettings => 'Settings';
 }

@@ -47,6 +47,11 @@ import AVFoundation
       case "stop":
         self.stopSpeaking()
         result(nil)
+      case "openTtsSettings":
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+          UIApplication.shared.open(url)
+        }
+        result(true)
       default:
         result(FlutterMethodNotImplemented)
       }

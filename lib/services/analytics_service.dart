@@ -8,10 +8,7 @@ class AnalyticsService {
   static AnalyticsService? _instance;
   
   static AnalyticsService get instance {
-    if (_instance == null) {
-      _instance = AnalyticsService(FirebaseAnalytics.instance);
-    }
-    return _instance!;
+    return _instance ??= AnalyticsService(FirebaseAnalytics.instance);
   }
 
   Future<void> logSearch(String query, String languageCode) async {

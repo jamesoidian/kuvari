@@ -301,5 +301,20 @@
   "back": "Takaisin",
   "@back": {
     "description": "Button label to go back"
+  },
+  "ttsLanguageNotSupported": "Laitteestasi puuttuu tuki kielelle {language}. Voit ottaa käyttöön Googlen puhepalvelut tai ladata kielipaketin asetuksista.",
+  "@ttsLanguageNotSupported": {
+    "description": "Message shown when TTS engine does not support selected language",
+    "placeholders": {
+      "language": {
+        "type": "String",
+        "example": "suomi"
+      }
+    }
+  },
+  "openSettings": "Asetukset",
+  "@openSettings": {
+    "description": "Button label to open settings"
   }
 }
+

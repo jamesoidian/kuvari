@@ -48,18 +48,18 @@ class _TagManagementDialogState extends State<TagManagementDialog> {
 
     showDialog(
       context: context,
-      builder: (context) {
+      builder: (dialogContext) {
         return StatefulBuilder(
-          builder: (context, setDialogState) {
+          builder: (dialogContext, setDialogState) {
             return AlertDialog(
-              title: Text(AppLocalizations.of(context)!.createTag),
+              title: Text(AppLocalizations.of(dialogContext)!.createTag),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   TextField(
                     controller: _newTagNameController,
                     decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context)!.tagName,
+                      labelText: AppLocalizations.of(dialogContext)!.tagName,
                     ),
                     onChanged: (value) => setDialogState(() {}),
                     autofocus: true,
@@ -68,8 +68,8 @@ class _TagManagementDialogState extends State<TagManagementDialog> {
               ),
               actions: [
                 TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: Text(AppLocalizations.of(context)!.cancel),
+                  onPressed: () => Navigator.pop(dialogContext),
+                  child: Text(AppLocalizations.of(dialogContext)!.cancel),
                 ),
                 ElevatedButton(
                   onPressed: _newTagNameController.text.trim().isEmpty
@@ -88,9 +88,9 @@ class _TagManagementDialogState extends State<TagManagementDialog> {
                               _selectedTagIds.add(newTag.id);
                             });
                           }
-                          if (mounted) Navigator.pop(context);
+                          if (dialogContext.mounted) Navigator.pop(dialogContext);
                         },
-                  child: Text(AppLocalizations.of(context)!.ok),
+                  child: Text(AppLocalizations.of(dialogContext)!.ok),
                 ),
               ],
             );

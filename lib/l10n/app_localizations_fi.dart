@@ -372,4 +372,12 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get back => 'Takaisin';
+
+  @override
+  String ttsLanguageNotSupported(String language) {
+    return 'Laitteestasi puuttuu tuki kielelle $language. Voit ottaa käyttöön Googlen puhepalvelut tai ladata kielipaketin asetuksista.';
+  }
+
+  @override
+  String get openSettings => 'Asetukset';
 }

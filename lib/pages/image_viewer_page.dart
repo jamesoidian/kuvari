@@ -28,6 +28,12 @@ class _ImageViewerPageState extends State<ImageViewerPage> {
     super.initState();
     _pageController = PageController(initialPage: _currentPage);
     _scrollController.addListener(_scrollListener);
+    _ttsService.onLanguageUnavailable = (lang) {
+      if (mounted) {
+        TtsService.showLanguageUnavailableSnackBar(context, lang,
+            onOpenSettings: _ttsService.openTtsSettings);
+      }
+    };
   }
 
   @override

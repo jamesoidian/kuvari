@@ -81,6 +81,7 @@ class _KuvariAppState extends State<KuvariApp> {
     final kuvariService = KuvariService();
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       navigatorObservers: [observer],
       onGenerateTitle: (context) => "KUVARI",
       theme: ThemeData(

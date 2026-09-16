@@ -70,6 +70,17 @@ class _HomePageState extends State<HomePage> {
   bool _shouldSelectAll = false;
 
   @override
+  void initState() {
+    super.initState();
+    _ttsService.onLanguageUnavailable = (lang) {
+      if (mounted) {
+        TtsService.showLanguageUnavailableSnackBar(context, lang,
+            onOpenSettings: _ttsService.openTtsSettings);
+      }
+    };
+  }
+
+  @override
   void dispose() {
     _searchController.dispose(); // Varmistetaan, että controllerit suljetaan
     _searchFocusNode.dispose();
@@ -80,14 +91,17 @@ class _HomePageState extends State<HomePage> {
   Future<void> _search() async {
     final query = _searchController.text.trim();
     if (query.isEmpty) return;
+    final languageCode = Localizations.localeOf(context).languageCode;
 
     await widget.analytics.logEvent(
       name: 'search',
       parameters: {
         'query': query,
-        'language': Localizations.localeOf(context).languageCode,
+        'language': languageCode,
       },
     );
+
+    if (!mounted) return;
 
     setState(() {
       _isLoading = true;
@@ -95,22 +109,25 @@ class _HomePageState extends State<HomePage> {
     });
 
     try {
-      final languageCode = Localizations.localeOf(context).languageCode;
       final results = await widget.kuvariService
           .searchImages(query, _selectedCategories, languageCode);
+      if (!mounted) return;
       setState(() {
         _images = results;
       });
     } catch (e) {
+      if (!mounted) return;
       // Virheenkäsittely
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
             content: Text('${AppLocalizations.of(context)!.searchError} $e')),
       );
     } finally {
-      setState(() {
-        _isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     }
   }
 

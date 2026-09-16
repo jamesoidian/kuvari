@@ -301,5 +301,20 @@
   "back": "Tillbaka",
   "@back": {
     "description": "Knappetikett för att gå tillbaka"
+  },
+  "ttsLanguageNotSupported": "Enheten saknar stöd för språket {language}. Du kan aktivera Googles taltjänster eller ladda ner språkpaket i inställningarna.",
+  "@ttsLanguageNotSupported": {
+    "description": "Meddelande som visas när talsyntesen inte stöder det valda språket",
+    "placeholders": {
+      "language": {
+        "type": "String",
+        "example": "svenska"
+      }
+    }
+  },
+  "openSettings": "Inställningar",
+  "@openSettings": {
+    "description": "Knappetikett för att öppna inställningar"
   }
 }
+

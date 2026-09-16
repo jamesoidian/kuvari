@@ -149,6 +149,7 @@ class _SelectedImagesCarouselState extends State<SelectedImagesCarousel> {
                   ? ReorderableListView(
                       scrollController: _scrollController,
                       scrollDirection: Axis.horizontal,
+                      // ignore: deprecated_member_use
                       onReorder: widget.onReorder ?? (int oldIndex, int newIndex) {},
                       children: [
                         for (int i = 0; i < widget.selectedImages.length; i++)

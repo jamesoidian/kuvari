@@ -1,6 +1,8 @@
 package io.github.jamesoidian.kuvari
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.speech.tts.TextToSpeech
 import androidx.activity.enableEdgeToEdge
 import io.flutter.embedding.android.FlutterFragmentActivity
@@ -13,11 +15,27 @@ class MainActivity: FlutterFragmentActivity(), TextToSpeech.OnInitListener {
     private var isTtsInitialized = false
     private var pendingUtterance: Runnable? = null
     private val channelName = "io.github.jamesoidian.kuvari/tts"
+    private var triedGoogleEngine = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        tts = TextToSpeech(this, this)
+        initTtsEngine()
+    }
+
+    private fun initTtsEngine() {
+        val googleEngine = "com.google.android.tts"
+        val ttsIntent = Intent(TextToSpeech.Engine.INTENT_ACTION_TTS_SERVICE)
+        val hasGoogleTts = packageManager.queryIntentServices(ttsIntent, 0)
+            .any { it.serviceInfo?.packageName == googleEngine }
+
+        if (hasGoogleTts) {
+            triedGoogleEngine = true
+            tts = TextToSpeech(this, this, googleEngine)
+        } else {
+            triedGoogleEngine = false
+            tts = TextToSpeech(this, this)
+        }
     }
 
     override fun onInit(status: Int) {
@@ -28,8 +46,15 @@ class MainActivity: FlutterFragmentActivity(), TextToSpeech.OnInitListener {
             pendingUtterance?.run()
             pendingUtterance = null
         } else {
-            isTtsInitialized = false
-            pendingUtterance = null
+            // Fallback to default engine if Google TTS failed to initialize
+            if (triedGoogleEngine) {
+                triedGoogleEngine = false
+                tts?.shutdown()
+                tts = TextToSpeech(this, this)
+            } else {
+                isTtsInitialized = false
+                pendingUtterance = null
+            }
         }
     }
 
@@ -44,26 +69,50 @@ class MainActivity: FlutterFragmentActivity(), TextToSpeech.OnInitListener {
                     val pitch = (call.argument<Double>("pitch"))?.toFloat() ?: 1.0f
 
                     if (isTtsInitialized) {
-                        speakText(text, language, rate, pitch)
+                        speakText(text, language, rate, pitch, result)
                     } else {
                         pendingUtterance = Runnable {
-                            speakText(text, language, rate, pitch)
+                            speakText(text, language, rate, pitch, result)
                         }
                     }
-                    result.success(null)
                 }
                 "stop" -> {
                     pendingUtterance = null
                     stopSpeaking()
                     result.success(null)
                 }
+                "openTtsSettings" -> {
+                    openTtsSettings(result)
+                }
                 else -> result.notImplemented()
             }
         }
     }
 
-    private fun speakText(text: String, language: String, rate: Float, pitch: Float) {
-        val ttsEngine = tts ?: return
+    private fun openTtsSettings(result: MethodChannel.Result) {
+        try {
+            val intent = Intent("com.android.settings.TTS_SETTINGS")
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+            result.success(true)
+        } catch (e: Exception) {
+            try {
+                val intent = Intent(Settings.ACTION_SETTINGS)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                result.success(true)
+            } catch (e2: Exception) {
+                result.error("CANNOT_OPEN_SETTINGS", e2.message, null)
+            }
+        }
+    }
+
+    private fun speakText(text: String, language: String, rate: Float, pitch: Float, result: MethodChannel.Result? = null) {
+        val ttsEngine = tts
+        if (ttsEngine == null) {
+            result?.error("TTS_NOT_INITIALIZED", "TTS engine is null", null)
+            return
+        }
 
         val locale = when (language.lowercase()) {
             "fi", "fi-fi" -> Locale("fi", "FI")
@@ -79,10 +128,12 @@ class MainActivity: FlutterFragmentActivity(), TextToSpeech.OnInitListener {
 
         val langResult = ttsEngine.setLanguage(locale)
         if (langResult == TextToSpeech.LANG_MISSING_DATA || langResult == TextToSpeech.LANG_NOT_SUPPORTED) {
-            val fallbackResult = ttsEngine.setLanguage(Locale.US)
-            if (fallbackResult == TextToSpeech.LANG_MISSING_DATA || fallbackResult == TextToSpeech.LANG_NOT_SUPPORTED) {
-                ttsEngine.language = Locale.getDefault()
-            }
+            result?.error(
+                "LANGUAGE_NOT_SUPPORTED",
+                "Language '$language' is not supported by the active TTS engine.",
+                mapOf("language" to language, "missingData" to (langResult == TextToSpeech.LANG_MISSING_DATA))
+            )
+            return
         }
 
         ttsEngine.setPitch(pitch)
@@ -90,6 +141,7 @@ class MainActivity: FlutterFragmentActivity(), TextToSpeech.OnInitListener {
 
         val utteranceId = "kuvari_${System.currentTimeMillis()}"
         ttsEngine.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId)
+        result?.success(null)
     }
 
     private fun stopSpeaking() {

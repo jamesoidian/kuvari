@@ -373,4 +373,12 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get back => 'Tillbaka';
+
+  @override
+  String ttsLanguageNotSupported(String language) {
+    return 'Enheten saknar stöd för språket $language. Du kan aktivera Googles taltjänster eller ladda ner språkpaket i inställningarna.';
+  }
+
+  @override
+  String get openSettings => 'Inställningar';
 }

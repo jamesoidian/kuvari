@@ -3,8 +3,8 @@ gsd_state_version: "1.0"
 milestone: v1.6.0
 milestone_name: Story Editing & Safe Queue Management
 status: completed
-last_updated: "2026-09-14T10:27:00.000Z"
-last_activity: 2026-09-14
+last_updated: "2026-09-16T11:21:00.000Z"
+last_activity: 2026-09-16
 progress:
   total_phases: 3
   completed_phases: 3
@@ -55,6 +55,7 @@ Last activity: 2026-09-14 — Milestone v1.6.0 archived and tagged.
 | [260914-bya](./milestones/v1.6.0-quick/260914-bya-update-saved-stories-tag-terminology/) | 2026-09-14 | Complete ✓ | Update saved stories tag terminology ("Avainsana" -> "Tägi"), hints, and guidance |
 | [260914-update-saved-stories-tag-hint](./milestones/v1.6.0-quick/260914-update-saved-stories-tag-hint/) | 2026-09-14 | Complete ✓ | Update tag hint copy on saved stories page ("...kuvajonoa pitkään") |
 | [260914-stack-saved-stories-action-icons](./milestones/v1.6.0-quick/260914-stack-saved-stories-action-icons/) | 2026-09-14 | Complete ✓ | Stack edit and play icons vertically on saved stories cards |
+| [260916-android-tts-engine-fallback](./quick/260916-android-tts-engine-fallback/) | 2026-09-16 | Complete ✓ | Prefer Google TTS engine on Android and guard missing language support |
 
 ## Next Steps
 

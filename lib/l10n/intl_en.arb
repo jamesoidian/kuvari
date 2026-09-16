@@ -301,5 +301,20 @@
   "back": "Back",
   "@back": {
     "description": "Button label to go back"
+  },
+  "ttsLanguageNotSupported": "Your device does not support the language {language}. You can enable Google Speech Services or download a voice pack in settings.",
+  "@ttsLanguageNotSupported": {
+    "description": "Message shown when TTS engine does not support selected language",
+    "placeholders": {
+      "language": {
+        "type": "String",
+        "example": "English"
+      }
+    }
+  },
+  "openSettings": "Settings",
+  "@openSettings": {
+    "description": "Button label to open settings"
   }
 }
+

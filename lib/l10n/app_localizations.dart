@@ -753,6 +753,18 @@ abstract class AppLocalizations {
   /// In fi, this message translates to:
   /// **'Takaisin'**
   String get back;
+
+  /// Message shown when TTS engine does not support selected language
+  ///
+  /// In fi, this message translates to:
+  /// **'Laitteestasi puuttuu tuki kielelle {language}. Voit ottaa käyttöön Googlen puhepalvelut tai ladata kielipaketin asetuksista.'**
+  String ttsLanguageNotSupported(String language);
+
+  /// Button label to open settings
+  ///
+  /// In fi, this message translates to:
+  /// **'Asetukset'**
+  String get openSettings;
 }
 
 class _AppLocalizationsDelegate
